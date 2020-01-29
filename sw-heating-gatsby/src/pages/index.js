@@ -1,20 +1,66 @@
 import React from "react"
-import { Link } from "gatsby"
-
+import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
 
-const IndexPage = () => (
+import { Head, Services, About, Feedback, ContactForm } from '../components/index'
+
+export const pageQuery = graphql`
+  query HomePageQuery {
+    allSanityWork {
+      edges {
+        node {
+          title
+          slug {
+            current
+          }
+          _rawDescription
+          mainImage {
+            asset {
+              fluid(maxWidth: 1000) {
+                ...GatsbySanityImageFluid
+              }
+            }
+          }
+        }
+      }
+    }
+    sanityLandingPage {
+      title
+      strapLine
+      mainImage {
+        asset {
+          fluid(maxWidth: 1000) {
+            ...GatsbySanityImageFluid
+          }
+        }
+      }
+      secondImage {
+        asset {
+          fluid(maxWidth: 1000) {
+            ...GatsbySanityImageFluid
+          }
+        }
+      }
+      thirdImage {
+        asset {
+          fluid(maxWidth: 1000) {
+            ...GatsbySanityImageFluid
+          }
+        }
+      }
+    }
+  }
+`
+
+const IndexPage = ({ data }, props) => (
   <Layout>
     <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
+    <Head sanityLandingPage={data.sanityLandingPage} />
+    <Services allSanityWork={data.allSanityWork} />
+    <About /* sanityAboutPage={data.sanityAboutPage} */ />
+    <Feedback /*allSanityFeedbackPage={data.allSanityFeedbackPage}*/ />
+    <ContactForm />
   </Layout>
 )
 

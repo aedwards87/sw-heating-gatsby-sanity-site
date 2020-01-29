@@ -7,19 +7,19 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 // We import object and document schemas
 import blockContent from './blockContent'
 import landingPage from './landingPage'
-// import post from './post'
+import post2 from './post2'
 import work from './work'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
   // We name our schema
-  name: 'default',
+  name: 'SW-Heating Schema',
   // Then proceed to concatenate our document type
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
     // The following are document types which will appear
     // in the studio.
-    // post,
+    post2,
     work,
     landingPage,
     // When added to this list, object types can be used as

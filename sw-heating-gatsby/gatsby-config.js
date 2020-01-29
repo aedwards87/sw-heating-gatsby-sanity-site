@@ -1,8 +1,12 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`
+})
+
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `SW Heating`,
+    description: `Fill this in`,
+    author: `Adam Edwards`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -20,11 +24,36 @@ module.exports = {
       options: {
         projectId: 'z4ilqqhg',
         dataset: 'production',
+        overlayDrafts: true,
+        watchMode: true,
+        // projectId: process.env.SANITY_PROJECT_ID,
+        // dataset: process.env.SANITY_PROJECT_DATASET,
         // a token with read permissions is required
         // if you have a private dataset
-        token: process.env.MY_SANITY_TOKEN,
+        // token: 'skowJfP7FOsDhtTcI3YiEWpaAvkP84BxUqPCsTvIR9WDHSFfxwuZyz2eV9UaLDqjiKjVJzoZvyPJt4Vj2Ryb99TQwyVeZiQjpKhPtEOiCL1hXZgPh5JNdebV0pyaLIyp8KmTHVsz3K8GWvvsLR0U00Vvb2UhzTI7QrRF9rbdmWSMRTvq8Ym6',
+        token: process.env.SANITY_TOKEN,
       },
     },
+    {
+      resolve: `gatsby-plugin-styled-components`,
+    },
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /assets/
+        }
+      }
+    },
+    // {
+    //   resolve: 'gatsby-source-sanity',
+    //   options: {
+    //     projectId: process.env.SANITY_PROJECT_ID,
+    //     dataset: process.env.SANITY_DATASET,
+    //     token: process.env.SANITY_TOKEN
+    //     // ...
+    //   }
+    // },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

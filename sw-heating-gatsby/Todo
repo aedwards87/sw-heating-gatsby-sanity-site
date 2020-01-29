@@ -1,0 +1,27 @@
+SANITY_TOKEN = skowJfP7FOsDhtTcI3YiEWpaAvkP84BxUqPCsTvIR9WDHSFfxwuZyz2eV9UaLDqjiKjVJzoZvyPJt4Vj2Ryb99TQwyVeZiQjpKhPtEOiCL1hXZgPh5JNdebV0pyaLIyp8KmTHVsz3K8GWvvsLR0U00Vvb2UhzTI7QrRF9rbdmWSMRTvq8Ym6
+
+// In your .env file
+SANITY_PROJECT_ID = abc123
+SANITY_DATASET = production
+SANITY_TOKEN = my-super-secret-token
+
+// In your gatsby-config.js file
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`
+})
+
+module.exports = {
+  // ...
+  plugins: [
+    {
+      resolve: 'gatsby-source-sanity',
+      options: {
+        projectId: process.env.SANITY_PROJECT_ID,
+        dataset: process.env.SANITY_DATASET,
+        token: process.env.SANITY_TOKEN
+        // ...
+      }
+    }
+  ]
+  // ...
+}

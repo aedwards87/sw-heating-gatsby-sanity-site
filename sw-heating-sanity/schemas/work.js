@@ -50,7 +50,23 @@ export default {
           styles: [{ title: 'Normal', value: 'normal' }],
         }
       ]
-    }
+    },
+    {
+      name: 'secondImage',
+      title: 'Second image',
+      type: 'image',
+      options: {
+        hotspot: true
+      }
+    },
+    {
+      name: 'thirdImage',
+      title: 'Third image',
+      type: 'image',
+      options: {
+        hotspot: true
+      }
+    },
   ],
   preview: {
     select: {

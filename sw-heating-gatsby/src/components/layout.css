@@ -1,5 +1,31 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap');
+
+:root {
+  --main-text: #0f0d24;
+  --lighter: 100;
+  --light: 400;
+  --normal: 500;
+  --bold: 600;
+  --bolder: 800;
+  --primary-one: rgb(253, 197, 0);
+  --primary-one-raw: 253, 197, 0;
+  --primary-two: rgb(227, 6, 19);
+  --primary-two-raw: 227, 6, 19;
+  --primary-three: rgb(49, 42, 113);
+  --primary-three-raw: 49, 42, 113;
+  --primary-four: rgb(0, 162, 222);
+  --primary-four-raw: 0, 162, 222;
+  --gradient-one: linear-gradient(135deg, rgba(253,199,50,1) 0%, rgba(227,7,25,1) 51%, rgba(49,42,113,1) 100%);
+  --gradient-two: linear-gradient(to right, rgba(253,199,50,1) 0%, rgba(227,7,25,1) 51%, rgba(49,42,113,1) 100%);
+}
+
 html {
-  font-family: sans-serif;
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
@@ -7,6 +33,9 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+  position: relative;
+  /* letter-spacing: 0.1px; */
 }
 article,
 aside,
@@ -40,6 +69,7 @@ template {
   display: none;
 }
 a {
+  text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
 }
@@ -55,7 +85,7 @@ abbr[title] {
 b,
 strong {
   font-weight: inherit;
-  font-weight: bolder;
+  font-weight: var(--bolder);
 }
 dfn {
   font-style: italic;
@@ -66,7 +96,7 @@ h1 {
 }
 mark {
   background-color: #ff0;
-  color: #000;
+  color: var(--main-text);
 }
 small {
   font-size: 80%;
@@ -185,7 +215,7 @@ textarea {
   font: inherit;
 }
 html {
-  font: 112.5%/1.45em georgia, serif;
+  font: 112.5%/1.45em 'Montserrat', Helvetica, Arial, sans-serif;
   box-sizing: border-box;
   overflow-y: scroll;
 }
@@ -199,9 +229,9 @@ html {
   box-sizing: inherit;
 }
 body {
-  color: hsla(0, 0%, 0%, 0.8);
-  font-family: georgia, serif;
-  font-weight: normal;
+  color: var(--main-text);
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+  font-weight: var(--normal);
   word-wrap: break-word;
   font-kerning: normal;
   -moz-font-feature-settings: "kern", "liga", "clig", "calt";
@@ -230,9 +260,8 @@ h1 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  font-weight: bold;
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+  font-weight: var(--bold);
   text-rendering: optimizeLegibility;
   font-size: 2.25rem;
   line-height: 1.1;
@@ -247,9 +276,8 @@ h2 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  font-weight: bold;
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+  font-weight: var(--bold);
   text-rendering: optimizeLegibility;
   font-size: 1.62671rem;
   line-height: 1.1;
@@ -264,9 +292,8 @@ h3 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  font-weight: bold;
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+  font-weight: var(--bold);
   text-rendering: optimizeLegibility;
   font-size: 1.38316rem;
   line-height: 1.1;
@@ -281,9 +308,8 @@ h4 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  font-weight: bold;
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+  font-weight: var(--bold);
   text-rendering: optimizeLegibility;
   font-size: 1rem;
   line-height: 1.1;
@@ -298,9 +324,8 @@ h5 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  font-weight: bold;
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+  font-weight: var(--bold);
   text-rendering: optimizeLegibility;
   font-size: 0.85028rem;
   line-height: 1.1;
@@ -315,9 +340,8 @@ h6 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  font-weight: bold;
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+  font-weight: var(--bold);
   text-rendering: optimizeLegibility;
   font-size: 0.78405rem;
   line-height: 1.1;
@@ -497,16 +521,16 @@ address {
   margin-bottom: 1.45rem;
 }
 b {
-  font-weight: bold;
+  font-weight: var(--bold);
 }
 strong {
-  font-weight: bold;
+  font-weight: var(--bold);
 }
 dt {
-  font-weight: bold;
+  font-weight: var(--bold);
 }
 th {
-  font-weight: bold;
+  font-weight: var(--bold);
 }
 li {
   margin-bottom: calc(1.45rem / 2);
@@ -592,8 +616,7 @@ tt,
 code {
   background-color: hsla(0, 0%, 0%, 0.04);
   border-radius: 3px;
-  font-family: "SFMono-Regular", Consolas, "Roboto Mono", "Droid Sans Mono",
-    "Liberation Mono", Menlo, Courier, monospace;
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
   padding: 0;
   padding-top: 0.2em;
   padding-bottom: 0.2em;
