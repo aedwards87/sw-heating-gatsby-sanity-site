@@ -46,11 +46,11 @@ const StyledServicesContainer = styled.section`
   height: 100%;
   width: 100%;
   background: var(--light-bg);
-  padding: 7rem 5%;
   > div {
-    max-width: 2000px;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 7rem 5%;
   }
-
 `
 
 const StyledImageContainer = styled.div`
@@ -58,7 +58,7 @@ const StyledImageContainer = styled.div`
   > div {
     height: 100%;
   }
-  height: 28vmin;
+  height: 200px;
 `
 
 const StyledList = styled.ul`

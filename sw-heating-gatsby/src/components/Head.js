@@ -48,7 +48,8 @@ const Head = ({ sanityLandingPage }) => {
 
 
 const StyledHeadContainer = styled.section`
-  max-width: 2000px;
+  max-width: 1600px;
+  margin: 0 auto;
   padding: 0 5%;
   height: ${({ navBarHeight }) => `calc(100vh - ${navBarHeight.navBarHeight}px)`};
   display: grid;
@@ -56,9 +57,10 @@ const StyledHeadContainer = styled.section`
   grid-gap: 6%;
   align-items: center;
   h1 {
-    font-size: 3.2rem;
+    font-size: 3.8rem;
     font-weight: var(--bolder);
     margin-bottom: 2.5rem;
+    transition: font-size 0.3s ease;
   }
   p {
     font-size: 1rem;
@@ -66,18 +68,30 @@ const StyledHeadContainer = styled.section`
   > div:first-of-type {
     grid-column: 1 / span 2;
     margin-bottom: 40px;
-    width: 95%;
+    width: 100%;
   }
-  > div > a > div:hover button {
-    background: transparent;
-    color: white;
+  @media (min-width: 1700px) {
+    h1 {
+      font-size: 4.4rem;
+    }
+    > div:first-of-type {
+      width: 125%;
+    }
+
+  @media (min-width: 1550px) {
+    > div:first-of-type {
+      width: 100%;
+    }
   }
-  > div > a > div {
-    transition: all 0.3s ease;
-  }
-  > div > a > div:hover {
-    transform: translate(0, -2px);
-    box-shadow: 0 3px 7px 0 rgba(0,0,0,0.06), 0 8px 20px 0 rgba(0,0,0,0.15);
+  /* @media (min-width: 1300px) {
+    > div:first-of-type {
+      width: 125%;
+    }
+  } */
+  @media (min-width: 1280px) {
+    > div:first-of-type {
+      width: 120%;
+    }
   }
 `
 
@@ -95,10 +109,16 @@ const StyledMainImageContainer = styled.header`
     /* left: 3%; */
     object-fit: cover;
     /* object-position: 70% 50%; */
-    object-position: -10px 0;
+    object-position: 5vw 0;
     height: 100vh;
     width: 100%;
-    transform: scale(1.03)
+    transform: scale(1.03);
+    transition: object-position 1s ease;
+  }
+  @media (min-width: 1280px) {
+    img {
+      object-position: 7vw 0;
+    }
   }
 `
 
@@ -108,10 +128,21 @@ const StyledButtonBorder = styled.div`
   background: var(--gradient-one);
   display: inline-block;
   margin-top: 1.5rem;
+  transition: all 0.3s ease;
+  :hover button {
+    background: transparent;
+    color: white;
+  }
+  :hover {
+    transform: translate(0, -2px);
+    box-shadow: 0 5px 12px 0 rgba(49, 42, 113,0.08), 
+                  0 12px 30px 0 rgba(49, 42, 113,0.2),
+                  0 22px 60px 0 rgba(49, 42, 113,0.25);
+  }
 `
 
 const StyledButton = styled.button`
-  padding: 2.6vmin 6vmin;
+  padding: 1.3rem 2.8rem;
   color: white;
   background: white;
   color: var(--main-text);

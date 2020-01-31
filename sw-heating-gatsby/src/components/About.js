@@ -5,24 +5,34 @@ import SWLetters from "../assets/sw-letters";
 
 const About = () => {
   return (
-    <StyledAboutContainer>
-      <StyledTitle>Who we are?</StyledTitle>
-      <StyledContainer>
+    <>
+      <StyledAboutContainer>
         <div>
-          <p><strong style={{ fontSize: '1.3rem', lineHeight: '1.43' }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempus urna et pharetra pharetra massa massa ultricies mi quis.</strong></p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempus urna et pharetra pharetra massa massa ultricies mi quis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempus urna et pharetra pharetra massa massa ultricies mi quis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempus urna et pharetra pharetra massa massa ultricies mi quis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempus urna et pharetra pharetra massa massa ultricies mi quis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempus urna et pharetra pharetra massa massa ultricies mi quis.</p>
+          <StyledTitle>Who we are?</StyledTitle>
+          <StyledContainer>
+            <div>
+              <p><strong style={{ fontSize: '1.3rem', lineHeight: '1.43' }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempus urna et pharetra pharetra massa massa ultricies mi quis.</strong></p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempus urna et pharetra pharetra massa massa ultricies mi quis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempus urna et pharetra pharetra massa massa ultricies mi quis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempus urna et pharetra pharetra massa massa ultricies mi quis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempus urna et pharetra pharetra massa massa ultricies mi quis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempus urna et pharetra pharetra massa massa ultricies mi quis.</p>
+            </div>
+            
+          </StyledContainer>
         </div>
         <StyledSWLetters />
-      </StyledContainer>
-    </StyledAboutContainer>
+      </StyledAboutContainer>
+     
+
+    </>
   )
 }
 
 
 const StyledAboutContainer = styled.section`
-  max-width: 2000px;
-  padding: 7rem 5%;
   position: relative;
+  > div {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 7rem 5%;
+  }
   p { 
     width: 85%;
     z-index: 999
@@ -31,7 +41,7 @@ const StyledAboutContainer = styled.section`
     margin-bottom: 0;
   }
   @media(min-width: 800px) {
-    padding-top: 16vw;
+    padding-top: 11vw;
   }
 `
 
@@ -53,7 +63,7 @@ const StyledSWLetters = styled(SWLetters)`
   top: 5vw;
   right: 0;
   opacity: 20%;
-  index: -1;
+  z-index: -1;
   @media(max-width: 850px) {
     display: none;
   }

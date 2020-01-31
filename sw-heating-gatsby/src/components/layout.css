@@ -8,10 +8,10 @@
 :root {
   --main-text: #0f0d24;
   --lighter: 100;
-  --light: 400;
-  --normal: 500;
-  --bold: 600;
-  --bolder: 800;
+  --light: 300;
+  --normal: 400;
+  --bold: 500;
+  --bolder: 600;
   --primary-one: rgb(253, 197, 0);
   --primary-one-raw: 253, 197, 0;
   --primary-two: rgb(227, 6, 19);

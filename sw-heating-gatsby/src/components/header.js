@@ -65,7 +65,7 @@ const StyledHeader = styled.header`
   /* border-bottom: 1px solid #E6EAEA; */
   > div {
     margin: 0 auto;
-    max-width: 2000px;
+    max-width: 1600px;
     padding: 1.8rem 5%;
     display: flex;
     justify-content: space-between;
@@ -78,7 +78,7 @@ const StyledHeader = styled.header`
   nav { height: 100%; }
   a {
     color: var(--main-text);
-    font-weight: var(--normal);
+    font-weight: var(--bold);
     font-size: 0.9rem;
     margin: 0;
     position: relative;
