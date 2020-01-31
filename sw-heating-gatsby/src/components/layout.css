@@ -20,6 +20,7 @@
   --primary-three-raw: 49, 42, 113;
   --primary-four: rgb(0, 162, 222);
   --primary-four-raw: 0, 162, 222;
+  --light-bg: #F9F9FA;
   --gradient-one: linear-gradient(135deg, rgba(253,199,50,1) 0%, rgba(227,7,25,1) 51%, rgba(49,42,113,1) 100%);
   --gradient-two: linear-gradient(to right, rgba(253,199,50,1) 0%, rgba(227,7,25,1) 51%, rgba(49,42,113,1) 100%);
 }

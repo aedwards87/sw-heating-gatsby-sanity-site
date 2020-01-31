@@ -5,13 +5,15 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React, { useState, useLayoutEffect, useRef } from "react"
+import React, { useState, useLayoutEffect, useRef, createContext } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
 import Footer from "./footer"
 import "./layout.css"
+
+export const UserContext = createContext()
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -24,27 +26,29 @@ const Layout = ({ children }) => {
     }
   `)
 
-  const [ navBarHeight, setNavBarHeight ] = useState('')
+  const [navBarHeight, setNavBarHeight] = useState('')
   const ref = useRef(null)
   useLayoutEffect(() => {
     try { setNavBarHeight(ref.current.clientHeight) }
     catch { return }
-  },[ref])
-  
+  }, [ref])
+
   return (
-    <>
+    <UserContext.Provider
+      value={{
+        navBarHeight: navBarHeight
+      }}
+    >
       <Header siteTitle={data.site.siteMetadata.title} ref={ref} />
       <div
         style={{
           margin: `${navBarHeight}px auto 0`,
-          maxWidth: 1500,
-          padding: `0 5%`,
         }}
       >
         <main>{children}</main>
       </div>
       <Footer navBarHeight={navBarHeight} />
-    </>
+    </UserContext.Provider>
   )
 }
 

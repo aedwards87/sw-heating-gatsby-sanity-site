@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useLayoutEffect, useRef } from 'react'
 import Image from 'gatsby-image'
 import styled from 'styled-components'
 import { Link } from "gatsby"
@@ -8,30 +8,32 @@ import { StyledTitle } from '../components-styled/index'
 const Services = ({ allSanityWork }) => {
   return (
     <StyledServicesContainer>
-      <StyledTitle>Our services</StyledTitle>
-      <StyledList>
-        {allSanityWork.edges.map(({ node: work }) => (
-          <li key={work.slug.current}>
-            <Link to={`/${work.slug.current}`}>
-              <StyledImageContainer>
-                <StyledImage 
-                  fluid={work.mainImage.asset.fluid}
-                  alt={work.title} 
-                />
-              </StyledImageContainer>
-              <div className="list-heading-container">
-                <h3>{work.title}</h3>
-              </div>
-            </Link>
-              {/* {work._rawDescription.map(({ children }) => (
-                children.map(({ text }) => (
-                  <p key={children[0]._key}>
-                    {text}
-                  </p>
-              ))))} */}
-          </li>
-        ))}
-      </StyledList>
+      <div>
+        <StyledTitle>Our services</StyledTitle>
+        <StyledList>
+          {allSanityWork.edges.map(({ node: work }) => (
+            <li key={work.slug.current}>
+              <Link to={`/${work.slug.current}`}>
+                <StyledImageContainer>
+                  <StyledImage 
+                    fluid={work.mainImage.asset.fluid}
+                    alt={work.title} 
+                  />
+                </StyledImageContainer>
+                <div className="list-heading-container">
+                  <h3>{work.title}</h3>
+                </div>
+              </Link>
+                {/* {work._rawDescription.map(({ children }) => (
+                  children.map(({ text }) => (
+                    <p key={children[0]._key}>
+                      {text}
+                    </p>
+                ))))} */}
+            </li>
+          ))}
+        </StyledList>
+      </div>
     </StyledServicesContainer>
   )
 }
@@ -41,30 +43,14 @@ const StyledImage = styled(Image)`
 `
 
 const StyledServicesContainer = styled.section`
-  ::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    width: 100%;
-    z-index: -1;
-  } 
-  h2 {
-    font-size: 2.5rem;
-    margin-top: 8rem;
-    margin-bottom: 6rem;
-    position: relative;
-    display: inline-block;
-    font-weight: var(--bolder);
+  height: 100%;
+  width: 100%;
+  background: var(--light-bg);
+  padding: 7rem 5%;
+  > div {
+    max-width: 2000px;
   }
-  h2::after {
-    content: "";
-    position: absolute;
-    bottom: -20px;
-    left: 0;
-    height: 5px;
-    width: 100%;
-    background: var(--gradient-one);
-  }
+
 `
 
 const StyledImageContainer = styled.div`
@@ -88,13 +74,13 @@ const StyledList = styled.ul`
     margin: 0;
     padding: 0;
     transition: all 0.3s ease;
-    box-shadow: 0 3px 12px 0 rgba(0,0,0,0.08);
-
+    box-shadow: 0 3px 12px 0 rgba(49, 42, 113,0.08);
+    background: white;
     :hover {
       background: white;
-      box-shadow: 0 3px 7px 0 rgba(0,0,0,0.06), 
-                  0 8px 20px 0 rgba(0,0,0,0.15),
-                  0 12px 40px 0 rgba(0,0,0,0.20);
+      box-shadow: 0 3px 7px 0 rgba(49, 42, 113,0.06), 
+                  0 8px 20px 0 rgba(49, 42, 113,0.15),
+                  0 12px 40px 0 rgba(49, 42, 113,0.20);
       transform: translate(0, -10px);
     :hover a h3 {
       color: var(--primary-three);

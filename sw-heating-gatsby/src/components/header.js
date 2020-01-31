@@ -2,7 +2,8 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React, { useState, useEffect } from "react"
 import styled from 'styled-components'
-import SWHeatingLogo from "../assets/sw-heating-logo.svg";
+import { SWHeatingLogo } from "../assets/index";
+
 
 const Header = (props, ref) => {
 
@@ -20,6 +21,7 @@ const Header = (props, ref) => {
       window.removeEventListener("scroll", handleScroll);
     })
   })
+
 
   const navLinks = ['Services', 'Review', 'About', 'Contact']
 
@@ -63,7 +65,7 @@ const StyledHeader = styled.header`
   /* border-bottom: 1px solid #E6EAEA; */
   > div {
     margin: 0 auto;
-    max-width: 1500px;
+    max-width: 2000px;
     padding: 1.8rem 5%;
     display: flex;
     justify-content: space-between;
@@ -76,14 +78,14 @@ const StyledHeader = styled.header`
   nav { height: 100%; }
   a {
     color: var(--main-text);
-    font-weight: var(--bold);
+    font-weight: var(--normal);
     font-size: 0.9rem;
     margin: 0;
     position: relative;
   }
   ul > li > a {
     transition: all 0.3s ease;
-    margin-top: -40px;
+    /* margin-top: -40px; */
     :hover {
       color: var(--primary-two);
     }
@@ -116,7 +118,7 @@ const StyledHeader = styled.header`
     transition: all 0.3s ease;
   }
   ul > li:last-child {
-    margin-right: 0;
+    padding-right: 0;
   }
   svg {
     transform: scale(1.12);

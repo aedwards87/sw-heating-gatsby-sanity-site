@@ -6,7 +6,7 @@ import Feedback from '../components/Feedback'
 import Header from '../components/header'
 import Footer from '../components/footer'
 import Image from '../components/image'
-
+import { UserContext } from './layout'
 
 export {
   Head,
@@ -17,4 +17,5 @@ export {
   Header,
   Footer,
   Image,
+  UserContext,
 }

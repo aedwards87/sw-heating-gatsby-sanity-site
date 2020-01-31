@@ -21,22 +21,29 @@ const footer = ({ navBarHeight }) => {
 
         */}
       </div>
+      <div>
+      </div>
     </StyledFooter>
   )
 }
 
 const StyledFooter = styled.footer`
-  background: rgba(0,0,0,0.09);
-  margin-top: 6rem;
-  > div {
+  background: var(--light-bg);
+  padding-top: 6rem;
+  > div:first-of-type {
     margin: 0 auto;
-    max-width: 1300px;
+    max-width: 2000px;
     padding: 5rem 5%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 6%;
     align-items: center;
     height: 100%;
+  }
+  > div:last-of-type {
+    height: 120px;
+    width: 100%;
+    background: var(--main-text);
   }
 `
 
