@@ -35,7 +35,7 @@ const StyledContactForm = styled.section`
     justify-self: start;
   }
   > div {
-    max-width: 1600px;
+    max-width: 1900px;
     margin: 0 auto;
     padding: 7rem 5%;
     height: 100%;

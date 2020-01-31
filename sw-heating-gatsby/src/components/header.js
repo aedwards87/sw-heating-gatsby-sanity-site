@@ -65,7 +65,7 @@ const StyledHeader = styled.header`
   /* border-bottom: 1px solid #E6EAEA; */
   > div {
     margin: 0 auto;
-    max-width: 1600px;
+    max-width: 1900px;
     padding: 1.8rem 5%;
     display: flex;
     justify-content: space-between;

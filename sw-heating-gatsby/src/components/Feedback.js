@@ -26,7 +26,7 @@ const StyledFeedBack = styled.section`
   width: 100%;
   background: var(--light-bg);
   > div {
-    max-width: 1600px;
+    max-width: 1900px;
     padding: 7rem 5% 0;
     margin: 0 auto;
   }
