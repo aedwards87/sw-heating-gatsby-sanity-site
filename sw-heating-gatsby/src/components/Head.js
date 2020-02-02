@@ -39,7 +39,7 @@ const Head = ({ sanityLandingPage }) => {
        /> */}
 
       <StyledMainImageContainer navBarHeight={navBarHeight}>
-        <img src={require("../images/flame4.png")} alt={/* {sanityLandingPage.blah} */ 'To come'} />
+        <img src={require("../images/Flame-image-3.png")} alt={/* {sanityLandingPage.blah} */ 'To come'} />
       </StyledMainImageContainer>
       <StyledDiv />
     </StyledHeadContainer>
@@ -54,12 +54,13 @@ const StyledHeadContainer = styled.header`
   padding: 0 5%;
   height: ${({ navBarHeight }) => `calc(100vh - ${navBarHeight.navBarHeight}px)`};
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr;
   grid-gap: 6%;
   align-items: center;
+  width: 80%;
   h1 {
-    font-size: 3.8rem;
-    font-weight: var(--bolder);
+    font-size: 4.5rem;
+    font-weight: var(--boldest);
     margin-bottom: 5vmin;
     transition: font-size 0.5s ease;
   }
@@ -72,6 +73,18 @@ const StyledHeadContainer = styled.header`
     grid-column: 1 / span 2;
     margin-bottom: 40px;
     width: 100%;
+  }
+  /* Tablet */
+  @media (min-width: 770px) {
+    grid-template-columns: repeat(4, 1fr);
+    width: auto;
+  }
+
+  @media (min-width: 980px) {
+    h1 { font-size: 3.2rem; }
+  }
+  @media (min-width: 1100px) {
+    h1 { font-size: 3.6rem; }
   }
 
   @media (min-width: 1300px) {
@@ -120,19 +133,35 @@ const StyledMainImageContainer = styled.div`
   z-index: -1;
   overflow: hidden;
   img {
-    position: absolute;
-    /* left: 3%; */
+    /* position: absolute;
     object-fit: cover;
-    /* object-position: 70% 50%; */
-    object-position: 0 0;
+    object-position: 2vw 50%;
     height: 100vh;
     width: 100%;
     transform: scale(1.03);
     transition: object-position 1s ease;
+    opacity: 90%; */
+    display: none;
+  }
+  @media (min-width: 768px) {
+    img {
+      display: block;
+      position: absolute;
+      /* left: 3%; */
+      object-fit: cover;
+      /* object-position: 70% 50%; */
+      object-position: 2vw 50%;
+
+      height: 100vh;
+      width: 100%;
+      transform: scale(1.03);
+      transition: object-position 1s ease;
+      opacity: 90%;
+    }
   }
   @media (min-width: 1280px) {
     img {
-      object-position: 5vw 0;
+      object-position: 8vw 50%;
     }
   }
   @media (min-width: 1600px) {
@@ -143,8 +172,8 @@ const StyledMainImageContainer = styled.div`
 `
 
 const StyledButtonBorder = styled.div`
-  padding: 0.2rem;
-  border-radius: 15px;
+  padding: 0.22rem;
+  border-radius: 16px;
   background: var(--gradient-one);
   display: inline-block;
   transition: all 0.3s ease;
@@ -155,23 +184,27 @@ const StyledButtonBorder = styled.div`
   :hover {
     transform: translate(0, -2px);
     box-shadow: 0 5px 12px 0 rgba(49, 42, 113,0.08), 
-                  0 12px 30px 0 rgba(49, 42, 113,0.2),
-                  0 22px 60px 0 rgba(49, 42, 113,0.25);
+                0 12px 30px 0 rgba(49, 42, 113,0.2),
+                0 22px 60px 0 rgba(49, 42, 113,0.25);
   }
 `
 
 const StyledButton = styled.button`
-  padding: 1.3rem 2.8rem;
+  padding: 1rem 2.3rem;
   color: white;
   background: white;
   color: var(--main-text);
-  font-weight: var(--bolder);
+  font-weight: var(--boldest);
   font-size: 1.2rem;
-  border-radius: 12px;
+  border-radius: 13px;
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
   letter-spacing: 0.1px;
+  @media (min-width: 1100px) {
+    padding: 1.15rem 2.5rem;
+    font-size: 1.2rem;
+  }
 `
 
 

@@ -78,7 +78,8 @@ const StyledHeader = styled.header`
   nav { height: 100%; }
   a {
     color: var(--main-text);
-    font-weight: var(--bold);
+    font-weight: var(--bolder);
+    font-weight: 600;
     font-size: 0.9rem;
     margin: 0;
     position: relative;

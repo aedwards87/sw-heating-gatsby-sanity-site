@@ -2,12 +2,12 @@ import styled from 'styled-components'
 
 export const StyledTitle = styled.h2`
   font-size: 2.5rem;
-  /* margin-top: 8rem; */
+  margin: ${({ center }) => center && '0 auto'};;
   margin-bottom: 6rem;
   position: relative;
   display: inline-block;
-  color: ${({color}) => !color ? 'var(--main-text)' : color};
-  font-weight: var(--bolder);
+  color: ${({ color }) => !color ? 'var(--main-text)' : color};
+  font-weight: var(--boldest);
   ::after {
     content: "";
     position: absolute;
@@ -15,6 +15,6 @@ export const StyledTitle = styled.h2`
     left: 0;
     height: 5px;
     width: 100%;
-    background: ${({lineColor}) => !lineColor ? 'var(--gradient-one)' : lineColor};
+    background: ${({ lineColor }) => !lineColor ? 'var(--gradient-one)' : lineColor};
   }
 `

@@ -6,8 +6,8 @@ const ContactForm = () => {
   return (
     <StyledContactForm>
       <div>
-        <StyledTitle lineColor="white" color="white" >Contact</StyledTitle>
-        <p>Some sentence here...</p>
+        <StyledTitle center lineColor="white" color="white" >Contact</StyledTitle>
+        <p>Don't eat yellow snow</p>
         <StyledListContainer>
           <li>
             <div>Full name: </div>
@@ -31,8 +31,8 @@ const StyledContactForm = styled.section`
   height: 105vh;
   background: var(--gradient-one);
   color: white;
-  > p {
-    justify-self: start;
+  > div > p {
+    /* justify-self: start; */
   }
   > div {
     max-width: 1900px;
@@ -40,26 +40,25 @@ const StyledContactForm = styled.section`
     padding: 7rem 5%;
     height: 100%;
     display: grid;
+    grid-template-columns: 0.75fr;
     justify-content: center;
-    justify-items: center;
-    align-content: center;
   }
 `
 
 const StyledListContainer = styled.ul`
-  min-width: 700px;
   display: grid;
+  max-width: 700px;
   grid-gap: 20px;
   justify-items: center;
   list-style: none;
   margin: 0;
   padding: 0;
-  margin-top: 3rem;
+  margin-top: 1rem;
   > li {
     width: 100%;
     display: grid;
     grid-template-columns: auto 1fr;
-    align-items: center;
+    /* align-items: center; */
     border-radius: 500px;
     border: 2px solid white;
     font-size: 1.05rem;
@@ -89,12 +88,16 @@ const StyledListContainer = styled.ul`
     border: 2px solid white;
     font-size: 1.1rem;
     font-weight: 600;
+    transition: box-shadow 0.3s ease;
+    transition: transform 0.3s ease;
     :hover {
       background: white;
       color: var(--primary-two);
       cursor: pointer;
       transform: translate(0, -2px);
-      box-shadow: 0 3px 7px 0 rgba(0,0,0,0.06), 0 8px 20px 0 rgba(0,0,0,0.15);
+      box-shadow: 0 5px 12px 0 rgba(49, 42, 113,0.08), 
+                0 12px 30px 0 rgba(49, 42, 113,0.2),
+                0 22px 60px 0 rgba(49, 42, 113,0.25);
     }
   }
   > li > input {
