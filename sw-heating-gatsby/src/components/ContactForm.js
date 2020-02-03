@@ -6,8 +6,10 @@ const ContactForm = () => {
   return (
     <StyledContactForm>
       <div>
-        <StyledTitle center lineColor="white" color="white" >Contact</StyledTitle>
-        <p>Don't eat yellow snow</p>
+        <div>
+          <StyledTitle center lineColor="white" color="white" >Contact</StyledTitle>
+          <p>Don't eat yellow snow</p>
+        </div>
         <StyledListContainer>
           <li>
             <div>Full name: </div>
@@ -82,7 +84,7 @@ const StyledListContainer = styled.ul`
     background: transparent;
     outline: none;
     border: none;
-    padding: 1.1rem;
+    /* padding: 1.1rem; */
     color: white;
     border-radius: 500px;
     border: 2px solid white;
@@ -105,7 +107,7 @@ const StyledListContainer = styled.ul`
     color: white;
     outline: none;
     border: none;
-    padding: 1.1rem;
+    /* padding: 1rem; */
     font-weight: 400;
     display: inline-block;
     border-radius: 0 500px 500px 0;

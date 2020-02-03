@@ -34,14 +34,18 @@ const StyledAboutContainer = styled.section`
     padding: 7rem 5%;
   }
   p { 
-    width: 85%;
-    z-index: 999
+    width: 100%;
+    z-index: 999;
   }
   p:last-of-type {
     margin-bottom: 0;
   }
   @media(min-width: 800px) {
     padding-top: 11vw;
+    p { 
+      width: 85%;
+      z-index: 999;
+    }
   }
 `
 

@@ -47,7 +47,7 @@ const StyledServicesContainer = styled.section`
   width: 100%;
   background: var(--light-bg);
   > div {
-    max-width: 1600px;
+    max-width: 1900px;
     margin: 0 auto;
     padding: 7rem 5%;
   }
@@ -58,14 +58,20 @@ const StyledImageContainer = styled.div`
   > div {
     height: 100%;
   }
-  height: 200px;
+  height: 20vmax;
+  @media (min-width: 727px) {
+    height: 200px;
+  }
+  @media (min-width: 1800px) {
+    height: 230px;
+  }
 `
 
 const StyledList = styled.ul`
   list-style: none;
   margin: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 5.5vmin;
   li {
     border-radius: 10px;

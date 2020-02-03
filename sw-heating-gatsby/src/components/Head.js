@@ -59,7 +59,7 @@ const StyledHeadContainer = styled.header`
   align-items: center;
   width: 80%;
   h1 {
-    font-size: 4.5rem;
+    font-size: 3.5rem;
     font-weight: var(--boldest);
     margin-bottom: 5vmin;
     transition: font-size 0.5s ease;
