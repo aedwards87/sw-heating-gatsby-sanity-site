@@ -38,9 +38,6 @@ const Services = ({ allSanityWork }) => {
   )
 }
 
-const StyledImage = styled(Image)`
-  border-radius: 10px 10px 0 0;
-`
 
 const StyledServicesContainer = styled.section`
   height: 100%;
@@ -65,6 +62,10 @@ const StyledImageContainer = styled.div`
   @media (min-width: 1800px) {
     height: 230px;
   }
+`
+
+const StyledImage = styled(Image)`
+  border-radius: 10px 10px 0 0;
 `
 
 const StyledList = styled.ul`

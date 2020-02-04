@@ -2,7 +2,8 @@ import styled from 'styled-components'
 
 export const StyledTitle = styled.h2`
   font-size: 2.5rem;
-  margin: ${({ center }) => center && '0 auto'};;
+  margin: ${({ center }) => center && '0 auto'};
+  text-align: ${({ center }) => center && 'center'};
   margin-bottom: 6rem;
   position: relative;
   display: inline-block;

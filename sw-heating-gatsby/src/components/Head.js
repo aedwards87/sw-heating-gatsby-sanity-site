@@ -11,6 +11,7 @@ const Head = ({ sanityLandingPage }) => {
   return (
     <StyledHeadContainer navBarHeight={navBarHeight}>
       <div>
+      <div>
         <h1>
           {sanityLandingPage.title}
         </h1>
@@ -42,6 +43,7 @@ const Head = ({ sanityLandingPage }) => {
         <img src={require("../images/Flame-image-3.png")} alt={/* {sanityLandingPage.blah} */ 'To come'} />
       </StyledMainImageContainer>
       <StyledDiv />
+      </div>
     </StyledHeadContainer>
   )
 }
@@ -49,15 +51,19 @@ const Head = ({ sanityLandingPage }) => {
 
 
 const StyledHeadContainer = styled.header`
-  max-width: 1900px;
-  margin: 0 auto;
-  padding: 0 5%;
+  position: relative;
+  width: 100%;
   height: ${({ navBarHeight }) => `calc(100vh - ${navBarHeight.navBarHeight}px)`};
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 6%;
-  align-items: center;
-  width: 80%;
+  > div {
+    max-width: 1900px;
+    height: 97%;
+    margin: 0 auto;
+    padding: 0 5%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 6%;
+    align-items: center;
+  }
   h1 {
     font-size: 3.5rem;
     font-weight: var(--boldest);
@@ -69,15 +75,14 @@ const StyledHeadContainer = styled.header`
     padding: 0;
     margin-bottom: 6vmin;
   }
-  > div:first-of-type {
+  > div > div:first-of-type {
     grid-column: 1 / span 2;
     margin-bottom: 40px;
     width: 100%;
   }
   /* Tablet */
   @media (min-width: 770px) {
-    grid-template-columns: repeat(4, 1fr);
-    width: auto;
+    > div {grid-template-columns: repeat(4, 1fr)};
   }
 
   @media (min-width: 980px) {
@@ -88,12 +93,12 @@ const StyledHeadContainer = styled.header`
   }
 
   @media (min-width: 1300px) {
-    > div:first-of-type {
+    > div > div:first-of-type {
       width: 120%;
     }
   }
   @media (min-width: 1550px) {
-    > div:first-of-type {
+    >  div > div:first-of-type {
       width: 110%;
     }
   }
@@ -102,12 +107,12 @@ const StyledHeadContainer = styled.header`
     h1 {
       font-size: 4.4rem;
     }
-    > div:first-of-type {
+    > div > div:first-of-type {
       width: 120%;
     }
   }
   @media (min-width: 1800px) {
-    > div:first-of-type {
+    > div > div:first-of-type {
       width: 100%;
     }
   }
@@ -120,7 +125,7 @@ const StyledDiv = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  background: var(-gradient-one);
+  background: black;
 `
 
 const StyledMainImageContainer = styled.div`
@@ -133,14 +138,6 @@ const StyledMainImageContainer = styled.div`
   z-index: -1;
   overflow: hidden;
   img {
-    /* position: absolute;
-    object-fit: cover;
-    object-position: 2vw 50%;
-    height: 100vh;
-    width: 100%;
-    transform: scale(1.03);
-    transition: object-position 1s ease;
-    opacity: 90%; */
     display: none;
   }
   @media (min-width: 768px) {
@@ -151,12 +148,11 @@ const StyledMainImageContainer = styled.div`
       object-fit: cover;
       /* object-position: 70% 50%; */
       object-position: 2vw 50%;
-
       height: 100vh;
       width: 100%;
       transform: scale(1.03);
       transition: object-position 1s ease;
-      opacity: 90%;
+      opacity: 100%;
     }
   }
   @media (min-width: 1280px) {
@@ -183,9 +179,7 @@ const StyledButtonBorder = styled.div`
   }
   :hover {
     transform: translate(0, -2px);
-    box-shadow: 0 5px 12px 0 rgba(49, 42, 113,0.08), 
-                0 12px 30px 0 rgba(49, 42, 113,0.2),
-                0 22px 60px 0 rgba(49, 42, 113,0.25);
+    box-shadow: var(--shadow-one)
   }
 `
 

@@ -24,6 +24,7 @@
   --light-bg: #F9F9FA;
   --gradient-one: linear-gradient(135deg, rgba(253,199,50,1) 0%, rgba(227,7,25,1) 51%, rgba(49,42,113,1) 100%);
   --gradient-two: linear-gradient(to right, rgba(253,199,50,1) 0%, rgba(227,7,25,1) 51%, rgba(49,42,113,1) 100%);
+  --shadow-one: 0 5px 12px 0 rgba(49, 42, 113,0.08), 0 12px 30px 0 rgba(49, 42, 113,0.2), 0 22px 60px 0 rgba(49, 42, 113,0.25)
 }
 
 html {

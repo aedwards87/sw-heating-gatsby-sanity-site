@@ -6,11 +6,11 @@ const ContactForm = () => {
   return (
     <StyledContactForm>
       <div>
-        <div>
-          <StyledTitle center lineColor="white" color="white" >Contact</StyledTitle>
-          <p>Don't eat yellow snow</p>
-        </div>
+        <StyledTitle center lineColor="white" color="white" >Contact</StyledTitle>
         <StyledListContainer>
+          <li>
+            <p>Don't eat yellow snow</p>
+          </li>
           <li>
             <div>Full name: </div>
             <input type="text" placeholder="Type full name here..." />
@@ -33,34 +33,24 @@ const StyledContactForm = styled.section`
   height: 105vh;
   background: var(--gradient-one);
   color: white;
-  > div > p {
-    /* justify-self: start; */
-  }
   > div {
     max-width: 1900px;
     margin: 0 auto;
     padding: 7rem 5%;
-    height: 100%;
-    display: grid;
-    grid-template-columns: 0.75fr;
-    justify-content: center;
+    text-align: center;
   }
 `
 
 const StyledListContainer = styled.ul`
   display: grid;
-  max-width: 700px;
-  grid-gap: 20px;
-  justify-items: center;
+  grid-template-columns: 1fr;
+  grid-gap: 0.5rem;
   list-style: none;
   margin: 0;
   padding: 0;
-  margin-top: 1rem;
   > li {
-    width: 100%;
     display: grid;
     grid-template-columns: auto 1fr;
-    /* align-items: center; */
     border-radius: 500px;
     border: 2px solid white;
     font-size: 1.05rem;
@@ -70,26 +60,33 @@ const StyledListContainer = styled.ul`
       width: 150px;
       display: grid;
       align-items: center;
-      justify-items: start;
-      padding-left: 2.5rem;
+      justify-content: end;
+      padding-right: 0.2rem;
+      font-weight: var(--bold);
     }
+  }
+  
+  > li:first-child {
+    border: none;
+    justify-self: center;
   }
   > li:last-child {
     grid-template-columns: 1fr;
-    width: 50%;
+    justify-self: center;
     padding: 0;
+    width: 50%;
     border: none;
   }
   button {
     background: transparent;
     outline: none;
     border: none;
-    /* padding: 1.1rem; */
+    padding: 1rem;
     color: white;
     border-radius: 500px;
     border: 2px solid white;
     font-size: 1.1rem;
-    font-weight: 600;
+    font-weight: var(--bolder);
     transition: box-shadow 0.3s ease;
     transition: transform 0.3s ease;
     :hover {
@@ -97,9 +94,7 @@ const StyledListContainer = styled.ul`
       color: var(--primary-two);
       cursor: pointer;
       transform: translate(0, -2px);
-      box-shadow: 0 5px 12px 0 rgba(49, 42, 113,0.08), 
-                0 12px 30px 0 rgba(49, 42, 113,0.2),
-                0 22px 60px 0 rgba(49, 42, 113,0.25);
+      box-shadow: var(--shadow-one);
     }
   }
   > li > input {
@@ -107,10 +102,23 @@ const StyledListContainer = styled.ul`
     color: white;
     outline: none;
     border: none;
-    /* padding: 1rem; */
+    padding: 1rem;
     font-weight: 400;
     display: inline-block;
     border-radius: 0 500px 500px 0;
+  }
+  @media (min-width: 880px) {
+    grid-template-columns: repeat(6, 1fr);
+    > li {
+      grid-column: 2 / span 4;
+      /* :first-child {
+        justify-self: start;
+      } */
+      :last-child {
+        grid-column: 3 / span 2;
+        width: 100%;
+      }
+    }
   }
 `
 

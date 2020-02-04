@@ -19,8 +19,6 @@ const About = () => {
         </div>
         <StyledSWLetters />
       </StyledAboutContainer>
-     
-
     </>
   )
 }
