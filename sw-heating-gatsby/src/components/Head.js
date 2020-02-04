@@ -97,7 +97,7 @@ const StyledHeadContainer = styled.header`
       width: 120%;
     }
   }
-  @media (min-width: 1550px) {
+  @media (min-width: 1500px) {
     >  div > div:first-of-type {
       width: 110%;
     }
@@ -120,12 +120,34 @@ const StyledHeadContainer = styled.header`
 
 const StyledDiv = styled.div`
   position: absolute;
-  height: 10vh;
+  height: var(--head-gradient-height);
   width: 100%;
   bottom: 0;
   left: 0;
   right: 0;
-  background: black;
+  background: var(--gradient-one);
+  mix-blend-mode: multiply;
+  ::after {
+    content: "";
+    height: var(--head-gradient-height);
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* mix-blend-mode: multiply; */
+    background: var(--gradient-four);
+  }
+  ::before {
+    content: "";
+    height: var(--head-gradient-height);
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--gradient-five);
+  }
 `
 
 const StyledMainImageContainer = styled.div`
@@ -137,22 +159,37 @@ const StyledMainImageContainer = styled.div`
   width: 61%;
   z-index: -1;
   overflow: hidden;
+  ::after {
+    content: "";
+    height: var(--head-gradient-height);
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background: white;
+    background: var(--gradient-three);
+    z-index: 99;
+    left: 0;
+    right: 0;
+  }
   img {
-    display: none;
+    /* display: none; */
+    display: block;
+    position: absolute;
+    object-fit: cover;
+    object-position: 0 0;
+    height: 50%;
+    width: 100%;
+    bottom: 0;
   }
   @media (min-width: 768px) {
     img {
       display: block;
       position: absolute;
-      /* left: 3%; */
       object-fit: cover;
-      /* object-position: 70% 50%; */
       object-position: 2vw 50%;
       height: 100vh;
       width: 100%;
-      transform: scale(1.03);
       transition: object-position 1s ease;
-      opacity: 100%;
     }
   }
   @media (min-width: 1280px) {
@@ -188,7 +225,7 @@ const StyledButton = styled.button`
   color: white;
   background: white;
   color: var(--main-text);
-  font-weight: var(--boldest);
+  font-weight: var(--bolder);
   font-size: 1.2rem;
   border-radius: 13px;
   border: none;

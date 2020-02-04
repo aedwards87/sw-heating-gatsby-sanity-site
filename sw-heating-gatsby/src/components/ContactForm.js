@@ -35,9 +35,10 @@ const StyledContactForm = styled.section`
   color: white;
   > div {
     max-width: 1900px;
-    margin: 0 auto;
+    height: 100%;
     padding: 7rem 5%;
     text-align: center;
+    margin: auto auto;
   }
 `
 
@@ -46,8 +47,8 @@ const StyledListContainer = styled.ul`
   grid-template-columns: 1fr;
   grid-gap: 0.5rem;
   list-style: none;
-  margin: 0;
-  padding: 0;
+  margin-left: 0;
+  /* padding: 0; */
   > li {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -56,7 +57,7 @@ const StyledListContainer = styled.ul`
     font-size: 1.05rem;
     > div {
       height: 100%;
-      display: inline-block;
+      /* display: inline-block; */
       width: 150px;
       display: grid;
       align-items: center;
@@ -76,6 +77,7 @@ const StyledListContainer = styled.ul`
     padding: 0;
     width: 50%;
     border: none;
+    outline: none;
   }
   button {
     background: transparent;
