@@ -7,6 +7,10 @@
 
 :root {
   --main-text: #242c39;
+  --color-dark: #242c39;
+  --color-light-1: #f2f7ff;
+  --color-light-2: #BBC0C1;
+  --light-bg: #f2f7ff;
   /* --main-text: #0f0d24; */
   --lighter: 100;
   --light: 300;
@@ -22,7 +26,6 @@
   --primary-three-raw: 49, 42, 113;
   --primary-four: rgb(0, 162, 222);
   --primary-four-raw: 0, 162, 222;
-  --light-bg: #f2f7ff;
   --gradient-one: linear-gradient(135deg, rgba(253,199,50,1) 0%, rgba(227,7,25,1) 51%, rgba(49,42,113,1) 100%);
   --gradient-two: linear-gradient(to right, rgba(253,199,50,1) 0%, rgba(227,7,25,1) 51%, rgba(49,42,113,1) 100%);
   --gradient-three: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 90%);

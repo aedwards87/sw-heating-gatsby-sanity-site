@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react"
 import styled from 'styled-components'
 import { SWHeatingLogo } from "../assets/index";
 
+export const navLinks = ['Services', 'Review', 'About', 'Contact']
 
 const Header = (props, ref) => {
 
@@ -21,10 +22,6 @@ const Header = (props, ref) => {
       window.removeEventListener("scroll", handleScroll);
     })
   })
-
-
-  const navLinks = ['Services', 'Review', 'About', 'Contact']
-
 
   // TODO: Create a hook to check if at top of page 
   // to change state in order to make the background transparent
