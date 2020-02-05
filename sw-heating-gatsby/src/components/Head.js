@@ -11,21 +11,21 @@ const Head = ({ sanityLandingPage }) => {
   return (
     <StyledHeadContainer navBarHeight={navBarHeight}>
       <div>
-      <div>
-        <h1>
-          {sanityLandingPage.title}
-        </h1>
-        <p>
-          {sanityLandingPage.strapLine}
-        </p>
-        <Link to='/'>
-          <StyledButtonBorder>
-            <StyledButton>Contact us</StyledButton>
-          </StyledButtonBorder>
-        </Link>
-      </div>
+        <div>
+          <h1>
+            {sanityLandingPage.title}
+          </h1>
+          <p>
+            {sanityLandingPage.strapLine}
+          </p>
+          <Link to='/'>
+            <StyledButtonBorder>
+              <StyledButton>Contact us</StyledButton>
+            </StyledButtonBorder>
+          </Link>
+        </div>
 
-      {/* <Image 
+        {/* <Image 
         style={{
           position: 'absolute',
           top: -125, 
@@ -39,10 +39,10 @@ const Head = ({ sanityLandingPage }) => {
         alt={sanityLandingPage.title} 
        /> */}
 
-      <StyledMainImageContainer navBarHeight={navBarHeight}>
-        <img src={require("../images/Flame-image-3.png")} alt={/* {sanityLandingPage.blah} */ 'To come'} />
-      </StyledMainImageContainer>
-      <StyledDiv />
+        <StyledMainImageContainer navBarHeight={navBarHeight}>
+          <img src={require("../images/Flame-image-3.png")} alt={/* {sanityLandingPage.blah} */ 'To come'} />
+        </StyledMainImageContainer>
+        <StyledDiv />
       </div>
     </StyledHeadContainer>
   )
@@ -56,16 +56,18 @@ const StyledHeadContainer = styled.header`
   height: ${({ navBarHeight }) => `calc(100vh - ${navBarHeight.navBarHeight}px)`};
   > div {
     max-width: 1900px;
-    height: 97%;
-    margin: 0 auto;
+    height: 70%;
+    /* margin: 0 auto; */
     padding: 0 5%;
     display: grid;
-    grid-template-columns: 1fr;
+    width: 80%;
+    /* grid-template-columns: 1fr; */
     grid-gap: 6%;
     align-items: center;
+    transition: height .3s ease;
   }
   h1 {
-    font-size: 3.5rem;
+    font-size: 2.8rem;
     font-weight: var(--boldest);
     margin-bottom: 5vmin;
     transition: font-size 0.5s ease;
@@ -78,11 +80,20 @@ const StyledHeadContainer = styled.header`
   > div > div:first-of-type {
     grid-column: 1 / span 2;
     margin-bottom: 40px;
-    width: 100%;
+    width: 75%;
   }
   /* Tablet */
   @media (min-width: 770px) {
-    > div {grid-template-columns: repeat(4, 1fr)};
+    > div {
+      grid-template-columns: repeat(4, 1fr);
+      height: 97%;
+      margin: 0 auto;
+      width: 100%;
+      > div:first-of-type {
+        width: 100%;
+      }
+    };
+    
   }
 
   @media (min-width: 980px) {
@@ -135,7 +146,6 @@ const StyledDiv = styled.div`
     bottom: 0;
     left: 0;
     right: 0;
-    /* mix-blend-mode: multiply; */
     background: var(--gradient-four);
   }
   ::before {
@@ -176,12 +186,12 @@ const StyledMainImageContainer = styled.div`
     display: block;
     position: absolute;
     object-fit: cover;
-    object-position: 0 0;
-    height: 50%;
+    object-position: 5vmax 0;
+    height: 60%;
     width: 100%;
     bottom: 0;
   }
-  @media (min-width: 768px) {
+  @media (min-width: 770px) {
     img {
       display: block;
       position: absolute;

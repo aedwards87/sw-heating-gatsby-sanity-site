@@ -122,8 +122,14 @@ const StyledHeader = styled.header`
     padding-right: 0;
   }
   svg {
-    transform: scale(1.12);
-    margin-left: 15px;
+    /* transform: scale(1.12); */
+    margin-left: 5px;
+  }
+  @media (min-width: 770px) {
+    svg {
+      transform: scale(1.12);
+      margin-left: 15px;
+    }
   }
 `
 

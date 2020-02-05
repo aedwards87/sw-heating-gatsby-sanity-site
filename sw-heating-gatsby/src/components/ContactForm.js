@@ -6,10 +6,10 @@ const ContactForm = () => {
   return (
     <StyledContactForm>
       <div>
-        <StyledTitle center lineColor="white" color="white" >Contact</StyledTitle>
+        <StyledTitle center lineColor="white" color="white">Contact us</StyledTitle>
         <StyledListContainer>
           <li>
-            <p>Don't eat yellow snow</p>
+            <p>If you have any questions or queries, or would like to request a quote or even book an appointment, please get in touch with a member of our team using the form below:</p>
           </li>
           <li>
             <div>Full name: </div>
@@ -18,6 +18,14 @@ const ContactForm = () => {
           <li>
             <div>Email: </div>
             <input type="text" placeholder="Type email here..." />
+          </li>
+          <li>
+            <div>Subject: </div>
+            <input type="text" placeholder="Type subject here..." />
+          </li>
+          <li>
+            <div>Message: </div>
+            <input type="text" placeholder="Type message here..." />
           </li>
           <li>
             <button type="submit" children="Send" />
@@ -30,7 +38,7 @@ const ContactForm = () => {
 
 const StyledContactForm = styled.section`
   width: 100%;
-  height: 105vh;
+  /* height: 105vh; */
   background: var(--gradient-one);
   color: white;
   > div {
@@ -45,14 +53,15 @@ const StyledContactForm = styled.section`
 const StyledListContainer = styled.ul`
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: 0.5rem;
+  grid-gap: 1rem;
   list-style: none;
   margin-left: 0;
+  transition: all .3s ease;
   /* padding: 0; */
   > li {
     display: grid;
     grid-template-columns: auto 1fr;
-    border-radius: 500px;
+    border-radius: 12px;
     border: 2px solid white;
     font-size: 1.05rem;
     > div {
@@ -61,15 +70,17 @@ const StyledListContainer = styled.ul`
       width: 150px;
       display: grid;
       align-items: center;
-      justify-content: end;
-      padding-right: 0.2rem;
+      justify-content: start;
+      padding-left: 1.5rem;
+      /* padding-right: 0.2rem; */
       font-weight: var(--bold);
     }
   }
   
   > li:first-child {
     border: none;
-    justify-self: center;
+    text-align: left;
+    margin-bottom: 2rem;
   }
   > li:last-child {
     grid-template-columns: 1fr;
@@ -85,7 +96,7 @@ const StyledListContainer = styled.ul`
     border: none;
     padding: 1rem;
     color: white;
-    border-radius: 500px;
+    border-radius: 12px;
     border: 2px solid white;
     font-size: 1.1rem;
     font-weight: var(--bolder);
