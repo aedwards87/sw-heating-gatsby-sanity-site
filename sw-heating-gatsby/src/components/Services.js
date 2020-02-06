@@ -15,16 +15,16 @@ const Services = ({ allSanityWork }) => {
             <li key={work.slug.current}>
               <Link to={`/${work.slug.current}`}>
                 <StyledImageContainer>
-                  <StyledImage 
+                  <StyledImage
                     fluid={work.mainImage.asset.fluid}
-                    alt={work.title} 
+                    alt={work.title}
                   />
                 </StyledImageContainer>
                 <div className="list-heading-container">
                   <h3>{work.title}</h3>
                 </div>
               </Link>
-                {/* {work._rawDescription.map(({ children }) => (
+              {/* {work._rawDescription.map(({ children }) => (
                   children.map(({ text }) => (
                     <p key={children[0]._key}>
                       {text}
@@ -55,7 +55,7 @@ const StyledImageContainer = styled.div`
   > div {
     height: 100%;
   }
-  height: 20vmax;
+  height: 25vmax;
   @media (min-width: 727px) {
     height: 200px;
   }
@@ -130,9 +130,9 @@ const StyledList = styled.ul`
 
 
 
-   /* <StyledButton>
-      <Arrow style={{transform: 'scale(1.2)'}} />
-    </StyledButton> */
+/* <StyledButton>
+   <Arrow style={{transform: 'scale(1.2)'}} />
+ </StyledButton> */
 
 /* // const StyledButton = styled.button`
 //   display: flex;

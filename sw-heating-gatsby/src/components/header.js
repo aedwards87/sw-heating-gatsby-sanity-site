@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react"
 import styled from 'styled-components'
 import { SWHeatingLogo } from "../assets/index";
 
-export const navLinks = ['Services', 'Review', 'About', 'Contact']
+export const navLinks = ['Services', 'Gallery', 'About', 'Reviews', 'Contact']
 
 const Header = (props, ref) => {
 
@@ -31,7 +31,7 @@ const Header = (props, ref) => {
       <div>
         <h1>
           <Link to="/">
-            <SWHeatingLogo />
+            <SWHeatingLogo height="49" />
           </Link>
         </h1>
         <nav>
@@ -118,14 +118,9 @@ const StyledHeader = styled.header`
   ul > li:last-child {
     padding-right: 0;
   }
-  svg {
-    /* transform: scale(1.12); */
-    margin-left: 5px;
-  }
   @media (min-width: 770px) {
     svg {
-      transform: scale(1.12);
-      margin-left: 15px;
+      height: 55px;
     }
   }
 `
