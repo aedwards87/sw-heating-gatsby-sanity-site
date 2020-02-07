@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg enable-background="new 0 0 595.3 841.9" version="1.1" viewBox="0 0 595.3 841.9" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+<style type="text/css">
+	.st0{fill:url(#a);}
+</style>
+<linearGradient id="a" x1="229.3" x2="368.11" y1="329" y2="536.59" gradientUnits="userSpaceOnUse">
+	<stop stop-color="#FDC500" offset=".1518"/>
+	<stop stop-color="#E30613" offset=".5277"/>
+	<stop stop-color="#312A71" offset="1"/>
+</linearGradient>
+<path class="st0" d="m323.2 311.5s-75 28.2-66.5 86.3c0 0-4.9-7.6-15.3-9.9 0 0 11.8 26.2-9.1 55.8-21.7 30.7 9.6 81.8 62.5 81.8s77.3-29.7 79-52.4c1.2-15.8-6.1-28.2-6.8-38.7-0.6-10.5 3.7-23.9-9.4-39.9 0 0 0.6 10.7-8.8 19.3 0 0 3.3-17.5-11.1-38.5s-27.5-30.2-14.5-63.8z"/>
+</svg>

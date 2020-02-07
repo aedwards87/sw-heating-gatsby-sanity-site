@@ -85,7 +85,7 @@ const StyledList = styled.ul`
     background: white;
     :hover {
       background: white;
-      box-shadow: var(--shadow-one)
+      box-shadow: var(--shadow-one);
       transform: translate(0, -10px);
     :hover a h3 {
       color: var(--primary-three);
