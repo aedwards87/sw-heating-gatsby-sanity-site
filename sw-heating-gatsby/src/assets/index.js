@@ -11,6 +11,9 @@ import Arror2 from './arrow2.svg'
 import Email from './email'
 import Phone from './phone'
 import Mobile from './mobile'
+import SWDroplet from './sw-droplet'
+import SWDropletQuotes from './sw-droplet-quotes'
+import HeadFlameBackground from './head-flame-background-1'
 
 
 export {
@@ -26,4 +29,7 @@ export {
   Email,
   Phone,
   Mobile,
+  SWDroplet,
+  SWDropletQuotes,
+  HeadFlameBackground,
 }

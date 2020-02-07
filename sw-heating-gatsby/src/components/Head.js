@@ -3,6 +3,8 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { Link } from "gatsby"
 import { UserContext } from './index'
+import { StyledMainImageContainer } from '../components-styled/index'
+import { HeadFlameBackground } from '../assets/index'
 
 
 const Head = ({ sanityLandingPage }) => {
@@ -39,15 +41,19 @@ const Head = ({ sanityLandingPage }) => {
         alt={sanityLandingPage.title} 
        /> */}
 
-        <StyledMainImageContainer navBarHeight={navBarHeight}>
-          <img src={require("../images/Flame-image-3.png")} alt={/* {sanityLandingPage.blah} */ 'To come'} />
-        </StyledMainImageContainer>
-        <StyledDiv />
+        {/* <StyledMainImageContainer navBarHeight={navBarHeight}>
+          <img src={require("../images/Flame-image-3.png")} alt={ {sanityLandingPage.blah}  'To come'} />
+        </StyledMainImageContainer> */}
+
+
+          <HeadFlameBackground navBarHeight={navBarHeight} />
+
+
+        {/* <StyledDiv /> */}
       </div>
     </StyledHeadContainer>
   )
 }
-
 
 
 const StyledHeadContainer = styled.header`
@@ -57,11 +63,9 @@ const StyledHeadContainer = styled.header`
   > div {
     max-width: 1900px;
     height: 70%;
-    /* margin: 0 auto; */
     padding: 0 5%;
     display: grid;
     width: 80%;
-    /* grid-template-columns: 1fr; */
     grid-gap: 6%;
     align-items: center;
     transition: height .3s ease;
@@ -86,7 +90,7 @@ const StyledHeadContainer = styled.header`
   @media (min-width: 770px) {
     > div {
       grid-template-columns: repeat(4, 1fr);
-      height: 97%;
+      height: 100%;
       margin: 0 auto;
       width: 100%;
       > div:first-of-type {
@@ -160,63 +164,11 @@ const StyledDiv = styled.div`
   }
 `
 
-const StyledMainImageContainer = styled.div`
-  position: absolute;
-  top: -${({ navBarHeight }) => navBarHeight.navBarHeight}px;
-  /* top: -118.6px; */
-  right: 0;
-  height: 100vh;
-  width: 61%;
-  z-index: -1;
-  overflow: hidden;
-  ::after {
-    content: "";
-    height: var(--head-gradient-height);
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    background: white;
-    background: var(--gradient-three);
-    z-index: 99;
-    left: 0;
-    right: 0;
-  }
-  img {
-    /* display: none; */
-    display: block;
-    position: absolute;
-    object-fit: cover;
-    object-position: 5vmax 0;
-    height: 60%;
-    width: 100%;
-    bottom: 0;
-  }
-  @media (min-width: 770px) {
-    img {
-      display: block;
-      position: absolute;
-      object-fit: cover;
-      object-position: 2vw 50%;
-      height: 100vh;
-      width: 100%;
-      transition: object-position 1s ease;
-    }
-  }
-  @media (min-width: 1280px) {
-    img {
-      object-position: 8vw 50%;
-    }
-  }
-  @media (min-width: 1600px) {
-    img {
-      object-position: 6vw 50%;
-    }
-  }
-`
+
 
 const StyledButtonBorder = styled.div`
   padding: 0.22rem;
-  border-radius: 16px;
+  border-radius: 10px;
   background: var(--gradient-one);
   display: inline-block;
   transition: all 0.3s ease;
@@ -237,7 +189,7 @@ const StyledButton = styled.button`
   color: var(--main-text);
   font-weight: var(--bolder);
   font-size: 1.2rem;
-  border-radius: 13px;
+  border-radius: 7px;
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;

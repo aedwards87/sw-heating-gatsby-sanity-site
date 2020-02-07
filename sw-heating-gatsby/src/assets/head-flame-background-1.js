@@ -1,0 +1,84 @@
+import React from 'react'
+import styled from 'styled-components'
+
+const HeadFlameBackground = ({ height, className, navBarHeight }) => {
+  return (
+    <StyledContainer navBarHeight={navBarHeight} >
+      <StyledHeadFlameBackgroundSVG height={height} className={className} viewBox="0 0 1371 1235" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clipPath="url(#clip0)">
+        <path d="M539.1 0C539.1 0 123.7 156.3 170.8 478.3C170.8 478.3 143.7 436.2 86 423.5C86 423.5 151.4 568.7 35.6 732.7C-119.9 956.2 226.1 1457.3 1220.8 1122.9C1275 1104.7 1324.8 1082.9 1370.7 1058.1V0H539.1Z" fill="url(#paint0_radial)"/>
+        </g>
+        <defs>
+        <radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(333.123 69.17) scale(1060.97)">
+        <stop offset="0.16" stopColor="#FDC500"/>
+        <stop offset="0.2691" stopColor="#FAB102"/>
+        <stop offset="0.4096" stopColor="#F37E07"/>
+        <stop offset="0.5517" stopColor="#E82C0F"/>
+        <stop offset="0.579" stopColor="#E61A11"/>
+        <stop offset="0.6128" stopColor="#E40B12"/>
+        <stop offset="0.6402" stopColor="#E30613"/>
+        <stop offset="0.677" stopColor="#DB0817"/>
+        <stop offset="0.7349" stopColor="#C40C23"/>
+        <stop offset="0.7375" stopColor="#C30C24"/>
+        <stop offset="0.8745" stopColor="#741D4E"/>
+        <stop offset="1" stopColor="#312A71"/>
+        </radialGradient>
+        <clipPath id="clip0">
+        <rect width="1370.7" height="1234.7" fill="white"/>
+        </clipPath>
+        </defs>
+      </StyledHeadFlameBackgroundSVG>
+    </StyledContainer>
+  )
+}
+
+const StyledHeadFlameBackgroundSVG = styled.svg`
+  /* height: 120vh; */
+  /* mix-blend-mode: multiply; */
+  position: relative;
+  top: -130px;
+  right: 0;
+  width: 130vh;
+  transition: all .3s ease;
+  /* @media (max-height: 650px ) and (min-width: 1100px) {
+    min-width: 100vmin;
+  } */
+  @media (max-height: 1100px) {
+    width: 65vmax;
+  }
+  @media (max-height: 1100px) and (max-width: 2200px) {
+    width: 140vmin;
+  }
+  @media (max-height: 870px) and (max-width: 2200px) {
+    /* right: -5%; */
+    width: 65vmax;
+  }
+  @media (max-height: 1100px) and (max-width: 1000px) {
+    width: 140vmax;
+  }
+  /* @media (max-height: 900px) and (max-width: 600px) {
+    width: 140vmax;
+  } */
+ 
+`
+
+const StyledContainer = styled.div`
+  position: absolute;
+  top: -${({ navBarHeight }) => navBarHeight.navBarHeight}px;
+  right: 0;
+  /* background: pink; */
+  height: auto;
+  width: 55%;
+  overflow: hidden;
+  /* display: flex;
+  justify-content: stretch;
+  align-items: stretch; */
+  /* @media (max-wdith: 740px ) and (min-width: 1600px) {
+    height: 200vh;
+    background: pink;
+  } */
+`
+
+
+
+export default HeadFlameBackground

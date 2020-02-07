@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components';
 import { StyledTitle } from '../components-styled/index'
 import { horizontalDraggableScroll } from '../helpers/horizontalDraggableScroll'
+import { SWDropletQuotes } from '../assets/index';
 
 const Feedback = ({ /* allSanityFeedBack */ }) => {
   const ref = useRef(null)
@@ -21,6 +22,7 @@ const Feedback = ({ /* allSanityFeedBack */ }) => {
           <li>{work.text}</li> */}
         {/* <ul className="items" ref={ref}> */}
         <li>
+          <SWDropletQuotes />
           <blockquote>
             <p>
               Nisi eu tempor Lorem voluptate. Commodo non dolore consectetur voluptate in culpa reprehenderit duis dolore dolore. Aute duis quis proident labore nostrud adipisicing Lorem laboris minim minim ullamco nisi ad incididunt. Exercitation tempor cupidatat eu irure anim sint ad labore dolor.
@@ -29,6 +31,7 @@ const Feedback = ({ /* allSanityFeedBack */ }) => {
           </blockquote>
         </li>
         <li>
+          <SWDropletQuotes />
           <blockquote>
             <p>
               Voluptate aliqua et fugiat sit pariatur officia nostrud do. Ipsum culpa commodo amet veniam duis ex. Ipsum id id veniam cillum ad laboris nisi reprehenderit aliqua velit quis. Id aute irure nisi labore nostrud culpa. Veniam quis pariatur dolor commodo qui ea officia exercitation ut. Sit excepteur anim do tempor excepteur.
@@ -37,6 +40,7 @@ const Feedback = ({ /* allSanityFeedBack */ }) => {
           </blockquote>
         </li>
         <li>
+          <SWDropletQuotes />
           <blockquote>
             <p>
               Cupidatat sit id eiusmod aliqua nulla in. Enim aliqua cupidatat fugiat laboris culpa aliqua occaecat. Ipsum est adipisicing sint mollit aute sint Lorem incididunt qui.
@@ -45,6 +49,7 @@ const Feedback = ({ /* allSanityFeedBack */ }) => {
           </blockquote>
         </li>
         <li>
+          <SWDropletQuotes />
           <blockquote>
             <p>
               Enim sint ullamco elit consectetur laborum duis veniam laborum anim. Esse exercitation eiusmod labore ex minim commodo. Qui velit ad sint eu pariatur. Sint nostrud amet culpa laboris pariatur. Ullamco nostrud ut excepteur ullamco amet id duis.
@@ -53,6 +58,7 @@ const Feedback = ({ /* allSanityFeedBack */ }) => {
           </blockquote>
         </li>
         <li>
+          <SWDropletQuotes />
           <blockquote>
             <p>
               Tempor proident est elit ullamco ad qui eiusmod voluptate proident excepteur. Culpa exercitation cillum deserunt incididunt. Non eiusmod excepteur ipsum excepteur adipisicing consectetur sit do magna deserunt dolore irure non qui. Proident est est veniam nostrud anim deserunt consequat esse ex exercitation. Incididunt excepteur pariatur sunt reprehenderit consequat. Dolor laboris occaecat sit pariatur id consequat qui.
@@ -61,6 +67,7 @@ const Feedback = ({ /* allSanityFeedBack */ }) => {
           </blockquote>
         </li>
         <li>
+          <SWDropletQuotes />
           <blockquote>
             <p>
               Amet aliquip qui ut esse voluptate et sit officia in dolor. Qui occaecat dolore dolore tempor deserunt est enim culpa incididunt consectetur laboris. Anim laborum consectetur anim cillum aliquip non. Commodo qui do amet do. Est anim exercitation exercitation tempor laborum aute sint do est mollit nostrud.
@@ -69,6 +76,7 @@ const Feedback = ({ /* allSanityFeedBack */ }) => {
           </blockquote>
         </li>
         <li>
+          <SWDropletQuotes />
           <blockquote>
             <p>
               Cillum elit est irure non reprehenderit amet et velit. Exercitation fugiat nisi laboris amet aute nostrud tempor duis elit. Reprehenderit id exercitation cillum sint amet esse consectetur. Laboris esse ad dolore et in aliqua consectetur eu aliqua nostrud. Do sunt aliquip nulla occaecat minim non est velit eu. Est reprehenderit ut culpa commodo.
@@ -77,6 +85,7 @@ const Feedback = ({ /* allSanityFeedBack */ }) => {
           </blockquote>
         </li>
         <li>
+          <SWDropletQuotes />
           <blockquote>
             <p>
               Irure elit Lorem reprehenderit adipisicing aliquip aliquip cupidatat irure ad nostrud mollit qui. Ipsum laborum fugiat adipisicing laboris. Sunt sint cupidatat dolor ad. Incididunt quis proident ullamco nulla cupidatat consequat magna et ullamco fugiat velit.
@@ -115,7 +124,7 @@ const StyledListContainer = styled.ul`
   grid-gap: 5%;
   grid-template-columns: 10px;
   grid-auto-flow: column;
-  grid-auto-columns: minmax(450px, 1fr);
+  grid-auto-columns: minmax(500px, 1fr);
   overflow-x: scroll;
   /* scroll-snap-type: x proximity; */
   scrollbar-width: none;
@@ -143,7 +152,13 @@ const StyledListContainer = styled.ul`
     :before, :after {
       position: absolute;
     } 
-    :after {
+    > svg {
+      position: absolute;
+      top: -60px;
+      left: calc(50% - (69.5px / 2));
+      filter: drop-shadow( 0 4px 8px rgba(49, 42, 113, .3) );
+    }
+    /* :after {
       content: '"';
       top: 0;
       left: calc(50% - 1rem);
@@ -159,13 +174,10 @@ const StyledListContainer = styled.ul`
       width: 80px;
       background: #fff;
       background: var(--primary-four);
-      /* background: var(--gradient-one); */
-
       border-radius: 100%;
       box-shadow: var(--shadow-two);
       border: 6px solid #fff;
-      /* border: 8px solid var(--gradient-one); */
-    }
+    } */
   }
   :hover {
     cursor: grab;

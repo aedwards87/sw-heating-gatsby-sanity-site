@@ -97,6 +97,7 @@ const StyledHeader = styled.header`
     width: 0;
     background: var(--primary-one);
     transition: all 0.3s ease;
+    mix-blend-mode: multiply;
   }
   ul > li > a:hover::after,
   ul > li > a:active::after {
