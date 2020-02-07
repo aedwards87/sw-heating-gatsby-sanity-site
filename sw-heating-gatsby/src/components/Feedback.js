@@ -14,25 +14,38 @@ const Feedback = ({ /* allSanityFeedBack */ }) => {
   return (
     <StyledFeedBack>
       <div>
-        <StyledTitle id="feed">Feedback</StyledTitle>
+        <StyledTitle>Feedback</StyledTitle>
       </div>
-        <StyledListContainer className="items" ref={ref} >
+      <StyledListContainer className="items" ref={ref} >
         {/* {allSanityWork.edges.map(({ node: work }) => (
           <li>{work.text}</li> */}
         {/* <ul className="items" ref={ref}> */}
-          <li>1</li>
-          {/* {console.log(ref)} */}
-          <li>2</li>
-          <li>3</li>
-          <li>4</li>
-          <li>5</li>
-          <li>6</li>
-          <li>7</li>
-          <li>8</li>
-          {/* </ul> */}
+        <li>
+          <blockquote>
+            SW Heating is the best!
+            <footer>- Daron Fenton</footer>
+          </blockquote>
+        </li>
+        {/* {console.log(ref)} */}
+        <li>
+          <blockquote>
+            <p>
+              SW Heating is the best! SW Heating is
+               the best! SW Heating is the best! SW Heating is the best! SW Heating is the best! SW Heating is the best! SW Heating is the best!
+            </p>
+            <footer>- Daron Fenton</footer>
+          </blockquote>
+        </li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        {/* </ul> */}
         {/* )} */}
-        </StyledListContainer>
-        
+      </StyledListContainer>
+
     </StyledFeedBack>
   )
 }
@@ -41,7 +54,9 @@ const StyledFeedBack = styled.section`
   width: 100%;
   background: var(--light-bg);
   margin: 0 auto;
-  
+  h2 {
+    margin-bottom: 0;
+  }
   > div {
     max-width: 1900px;
     padding: 7rem 5% 0;
@@ -50,35 +65,62 @@ const StyledFeedBack = styled.section`
 `
 
 const StyledListContainer = styled.ul`
-  display: flex;
   list-style: none;
-  margin: 0 auto;
-  padding: 0;
-  padding-bottom: 7rem;
-  overflow: hidden;
-  white-space: nowrap;
-  transition: all 0.2s;
-  will-change: transform;
-  user-select: none;
-  padding-left: 5%;
-
-  /* width: calc(100vw - (100vw - 100%)); */
-  li {
-    height: 200px;
-    min-width: 500px;
-    margin-right: 5%;
-    background: var(--primary-one);
+  padding: 8rem 0 7rem;
+  margin: 0;
+  display: grid;
+  grid-gap: 5%;
+  grid-template-columns: 10px;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(450px, 1fr);
+  overflow-x: scroll;
+  /* scroll-snap-type: x proximity; */
+  scrollbar-width: none;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  :before,
+  :after {
+    content: '';
+    width: 10px;
+  }
+  > li {
+    scroll-snap-align: center;
+    position: relative;
+    padding: 4rem 3.5rem;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 20px;
-    flex: 0 0 auto;
-    /* :first-of-type {
-      margin-left: 5%;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: var(--shadow-two);
+    :before, :after {
+      position: absolute;
+    } 
+    :after {
+      content: '"';
+      top: 0;
+      left: calc(50% - 1rem);
+      font-size: 3rem;
+      font-family: var(--fancy-font);
+      color: #fff;
     }
-    :last-of-type {
-      margin-right: 5%;
-    } */
+    :before {
+      content: "";
+      top: -40px;
+      left: calc(50% - 40px);
+      height: 80px;
+      width: 80px;
+      background: #fff;
+      background: var(--primary-four);
+      /* background: var(--gradient-one); */
+
+      border-radius: 100%;
+      box-shadow: var(--shadow-two);
+      border: 6px solid #fff;
+      /* border: 8px solid var(--gradient-one); */
+    }
   }
   :hover {
     cursor: grab;
@@ -86,6 +128,22 @@ const StyledListContainer = styled.ul`
   :active {
     cursor: grabbing
   }
+  blockquote {
+    margin: 0;
+    position: relative;
+    font-size: 0.9rem;
+    p {
+      margin-bottom: 0;
+    }
+    footer {
+      position: absolute;
+      bottom: -2rem;
+      right: 0;
+      font-weight: var(--normal);
+      font-size: 0.7rem;
+    }
+  }
+  
 `
 
 

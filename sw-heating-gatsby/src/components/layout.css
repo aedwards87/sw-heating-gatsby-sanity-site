@@ -13,6 +13,8 @@
   --color-light-2: #BBC0C1;
   --light-bg: #f2f7ff;
   /* --main-text: #0f0d24; */
+  --gutter: 20px;
+
   --lighter: 100;
   --light: 300;
   --normal: 400;
@@ -34,6 +36,7 @@
   --gradient-five: linear-gradient(0deg, rgba(255,255,255,0) 15%, rgba(255,255,255,0.6) 51%, rgba(255,255,255,1) 100%);
   --head-gradient-height: 25vh;
   --shadow-one: 0 5px 12px 0 rgba(49, 42, 113,0.08), 0 12px 30px 0 rgba(49, 42, 113,0.2), 0 22px 60px 0 rgba(49, 42, 113,0.25);
+  --shadow-two: 0 3px 12px 0 rgba(49, 42, 113,0.08);
   --fancy-font: 'Pacifico', cursive;
 }
 

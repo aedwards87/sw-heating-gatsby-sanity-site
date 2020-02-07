@@ -81,13 +81,11 @@ const StyledList = styled.ul`
     margin: 0;
     padding: 0;
     transition: all 0.3s ease;
-    box-shadow: 0 3px 12px 0 rgba(49, 42, 113,0.08);
+    box-shadow: var(--shadow-two);
     background: white;
     :hover {
       background: white;
-      box-shadow: 0 3px 7px 0 rgba(49, 42, 113,0.06), 
-                  0 8px 20px 0 rgba(49, 42, 113,0.15),
-                  0 12px 40px 0 rgba(49, 42, 113,0.20);
+      box-shadow: var(--shadow-one)
       transform: translate(0, -10px);
     :hover a h3 {
       color: var(--primary-three);
