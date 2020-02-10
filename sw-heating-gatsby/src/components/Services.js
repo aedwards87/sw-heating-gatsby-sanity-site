@@ -55,12 +55,12 @@ const StyledImageContainer = styled.div`
   > div {
     height: 100%;
   }
-  height: 25vmax;
+  height: 200px;
   @media (min-width: 727px) {
-    height: 200px;
+    height: 190px;
   }
   @media (min-width: 1800px) {
-    height: 230px;
+    /* height: 230px; */
   }
 `
 
@@ -72,7 +72,7 @@ const StyledList = styled.ul`
   list-style: none;
   margin: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
   grid-gap: 5.5vmin;
   li {
     border-radius: 10px;
@@ -124,7 +124,6 @@ const StyledList = styled.ul`
     line-height: 1.7;
   }
 `
-
 
 
 

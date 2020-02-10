@@ -40,14 +40,12 @@ const Head = ({ sanityLandingPage }) => {
         fluid={sanityLandingPage.thirdImage.asset.fluid}
         alt={sanityLandingPage.title} 
        /> */}
-
-        {/* <StyledMainImageContainer navBarHeight={navBarHeight}>
-          <img src={require("../images/Flame-image-3.png")} alt={ {sanityLandingPage.blah}  'To come'} />
+        {/* 
+        <StyledMainImageContainer navBarHeight={navBarHeight}>
+          <img src={require("../assets/head-flame.svg")} alt={'To come'} />
         </StyledMainImageContainer> */}
 
-
-          <HeadFlameBackground navBarHeight={navBarHeight} />
-
+        <HeadFlameBackground navBarHeight={navBarHeight} />
 
         {/* <StyledDiv /> */}
       </div>
@@ -59,6 +57,7 @@ const Head = ({ sanityLandingPage }) => {
 const StyledHeadContainer = styled.header`
   position: relative;
   width: 100%;
+  min-height: ${({ navBarHeight }) => `calc(650px - ${navBarHeight.navBarHeight}px)`};;
   height: ${({ navBarHeight }) => `calc(100vh - ${navBarHeight.navBarHeight}px)`};
   > div {
     max-width: 1900px;
@@ -81,10 +80,14 @@ const StyledHeadContainer = styled.header`
     padding: 0;
     margin-bottom: 6vmin;
   }
+  img {
+    height: 100%;
+  }
   > div > div:first-of-type {
     grid-column: 1 / span 2;
     margin-bottom: 40px;
     width: 75%;
+    z-index: 1;
   }
   /* Tablet */
   @media (min-width: 770px) {
@@ -97,23 +100,22 @@ const StyledHeadContainer = styled.header`
         width: 100%;
       }
     };
-    
   }
 
   @media (min-width: 980px) {
     h1 { font-size: 3.2rem; }
   }
   @media (min-width: 1100px) {
-    h1 { font-size: 3.6rem; }
+    h1 { font-size: 3.3rem; }
   }
 
   @media (min-width: 1300px) {
     > div > div:first-of-type {
-      width: 120%;
+      width: 110%;
     }
   }
   @media (min-width: 1500px) {
-    >  div > div:first-of-type {
+    > div > div:first-of-type {
       width: 110%;
     }
   }
@@ -183,7 +185,7 @@ const StyledButtonBorder = styled.div`
 `
 
 const StyledButton = styled.button`
-  padding: 1rem 2.3rem;
+  padding: 1rem 2rem;
   color: white;
   background: white;
   color: var(--main-text);
@@ -195,7 +197,7 @@ const StyledButton = styled.button`
   transition: all 0.3s ease;
   letter-spacing: 0.1px;
   @media (min-width: 1100px) {
-    padding: 1.15rem 2.5rem;
+    padding: 1rem 2.2rem;
     font-size: 1.2rem;
   }
 `

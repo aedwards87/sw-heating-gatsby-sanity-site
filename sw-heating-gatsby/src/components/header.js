@@ -38,7 +38,10 @@ const Header = (props, ref) => {
           <ul>
             {navLinks.map(navLink =>
               <li key={navLink}>
-                <Link to={`/${navLink.toLowerCase()}`}>
+                <Link
+                  to={`/${navLink.toLowerCase()}`}
+                  className={scrollUp ? 'active' : null}
+                >
                   {navLink}
                 </Link>
               </li>
@@ -85,7 +88,8 @@ const StyledHeader = styled.header`
     transition: all 0.3s ease;
     /* margin-top: -40px; */
     :hover {
-      color: var(--primary-two);
+      color: ${({ goingUp, position }) => position === 0 || !goingUp ? 'var(--main-text)' : 'var(--primary-two)'}
+      /* var(--primary-two); */
     }
   }
   ul > li > a::after {
@@ -95,7 +99,7 @@ const StyledHeader = styled.header`
     left: 50%;
     height: 3px;
     width: 0;
-    background: var(--primary-one);
+    background: ${({ goingUp, position }) => position === 0 || !goingUp ? 'var(--main-text)' : 'var(--primary-one)'};
     transition: all 0.3s ease;
     mix-blend-mode: multiply;
   }
@@ -113,7 +117,7 @@ const StyledHeader = styled.header`
   }
   li {
     margin: 0;
-    padding: 0.5rem 1.8rem;
+    padding: 0.5rem 2.1rem;
     transition: all 0.3s ease;
   }
   ul > li:last-child {

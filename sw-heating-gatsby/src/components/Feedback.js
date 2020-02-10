@@ -93,7 +93,7 @@ const Feedback = ({ /* allSanityFeedBack */ }) => {
             <footer>- Daron Fenton</footer>
           </blockquote>
         </li>
-        
+
         {/* </ul> */}
         {/* )} */}
       </StyledListContainer>
@@ -124,7 +124,7 @@ const StyledListContainer = styled.ul`
   grid-gap: 5%;
   grid-template-columns: 10px;
   grid-auto-flow: column;
-  grid-auto-columns: minmax(500px, 1fr);
+  grid-auto-columns: 80vw;
   overflow-x: scroll;
   /* scroll-snap-type: x proximity; */
   scrollbar-width: none;
@@ -141,7 +141,7 @@ const StyledListContainer = styled.ul`
     align-self: center;
     scroll-snap-align: center;
     position: relative;
-    padding: 4rem 3.5rem;
+    padding: 4rem 10% ;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -154,9 +154,14 @@ const StyledListContainer = styled.ul`
     } 
     > svg {
       position: absolute;
-      top: -60px;
-      left: calc(50% - (69.5px / 2));
+      top: -50px;
+      left: calc(50% - (60px / 2));
       filter: drop-shadow( 0 4px 8px rgba(49, 42, 113, .3) );
+      @media(min-width: 480px) {
+        top: -60px;
+        left: calc(50% - (70px / 2));
+        width: 70px;
+      }
     }
     /* :after {
       content: '"';
@@ -184,6 +189,12 @@ const StyledListContainer = styled.ul`
   }
   :active {
     cursor: grabbing
+  }
+  @media (min-width: 736px) {
+    grid-auto-columns: minmax(500px, 1fr);
+    > li {
+      padding: 4rem 3.5rem;
+    }
   }
   blockquote {
     margin: 0;

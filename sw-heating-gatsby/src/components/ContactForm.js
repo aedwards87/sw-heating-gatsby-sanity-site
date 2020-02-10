@@ -36,17 +36,17 @@ const ContactForm = () => {
             {inputTitles.map(({ name, type }) =>
               <li key={name}>
                 <label>{name}: </label>
-                {type === 'text' ? 
-                  <Input 
-                    type={type} 
-                    name={`${name.toLowerCase().replace(/\s+/g, '-')}`} 
-                    placeholder={`${name} here...`} 
+                {type === 'text' ?
+                  <Input
+                    type={type}
+                    name={`${name.toLowerCase().replace(/\s+/g, '-')}`}
+                    placeholder={`${name} here...`}
                   />
                   :
-                  <Input 
+                  <Input
                     as={type}
-                    name={`${name.toLowerCase().replace(/\s+/g, '-')}`} 
-                    placeholder={`${name} here...`} 
+                    name={`${name.toLowerCase().replace(/\s+/g, '-')}`}
+                    placeholder={`${name} here...`}
                   />
                 }
               </li>
@@ -70,8 +70,13 @@ const StyledContactForm = styled.section`
     max-width: 1900px;
     height: 100%;
     padding: 7rem 5%;
-    text-align: center;
+    /* text-align: left; */
     margin: auto auto;
+  }
+  @media(min-width: 480px) {
+    > div {
+      text-align: center;
+    }
   }
 `
 
@@ -160,7 +165,7 @@ const Input = styled.input`
   border-radius: 0 10px 10px 0;
   box-sizing: border-box;
   resize: none;
-  height: ${({as}) => as && '300px'};
+  height: ${({ as }) => as && '300px'};
   :focus {
     background: rgba(var(--primary-one-raw),0.3);
   }
