@@ -56,8 +56,12 @@ const Head = ({ sanityLandingPage }) => {
 const StyledHeadContainer = styled.header`
   position: relative;
   width: 100%;
-  min-height: ${({ navBarHeight }) => `calc(650px - ${navBarHeight.navBarHeight}px)`};;
+  /* min-height: ${({ navBarHeight }) => `calc(650px - ${navBarHeight.navBarHeight}px)`}; */
+  min-height: ${({ navBarHeight }) => `calc(650px - ${navBarHeight.navBarHeight}px)`};
   height: ${({ navBarHeight }) => `calc(100vh - ${navBarHeight.navBarHeight}px)`};
+  @media (min-width: 1680px) {
+    min-height: 800px;
+  }
   > div {
     max-width: 1900px;
     height: 70%;

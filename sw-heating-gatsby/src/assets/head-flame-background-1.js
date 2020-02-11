@@ -32,14 +32,6 @@ const HeadFlameBackground = ({ height, className, navBarHeight }) => {
   )
 }
 
-const StyledHeadFlameBackgroundSVG = styled.svg`
-  position: relative;
-  right: -2vw;
-  top: -100px;
-  height: 130vh;
-  min-height: 800px;
-`
-
 const StyledContainer = styled.div`
   position: absolute;
   top: -${({ navBarHeight }) => navBarHeight.navBarHeight}px;
@@ -48,6 +40,30 @@ const StyledContainer = styled.div`
   width: 55%;
   overflow: hidden;
 `
+
+const StyledHeadFlameBackgroundSVG = styled.svg`
+  position: relative;
+  right: -2vw;
+  top: -100px;
+  height: 130vh;
+  min-height: 850px;
+  transition: all 0.3s ease;
+  @media (min-width: 1680px) {
+    min-height: 1180px;
+    height: 120vh;
+    transition: all 0.3s ease;
+  }
+  @media (min-height: 980px) {
+    height: 125vh;
+    /* transition: all 0.3s ease; */
+  }
+  @media (min-height: 1100px) {
+    height: 120vh;
+    /* transition: all 0.3s ease; */
+  }
+`
+
+
 
 
 
