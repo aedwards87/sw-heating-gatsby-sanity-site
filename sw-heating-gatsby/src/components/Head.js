@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { Link } from "gatsby"
 import { UserContext } from './index'
 import { StyledMainImageContainer } from '../components-styled/index'
-import { HeadFlameBackground } from '../assets/index'
+import { HeadFlameBackground, SWDropletMask } from '../assets/index'
 
 
 const Head = ({ sanityLandingPage }) => {
@@ -46,8 +46,7 @@ const Head = ({ sanityLandingPage }) => {
         </StyledMainImageContainer> */}
 
         <HeadFlameBackground navBarHeight={navBarHeight} />
-
-        {/* <StyledDiv /> */}
+        <SWDropletMask navBarHeight={navBarHeight} />
       </div>
     </StyledHeadContainer>
   )

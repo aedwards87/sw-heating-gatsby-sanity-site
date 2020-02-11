@@ -2,6 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Slider from "../components/Slider"
 
 import { Head, Services, About, Feedback, ContactForm } from '../components/index'
 

@@ -86,10 +86,8 @@ const StyledHeader = styled.header`
   }
   ul > li > a {
     transition: all 0.3s ease;
-    /* margin-top: -40px; */
     :hover {
       color: ${({ goingUp, position }) => position === 0 || !goingUp ? 'var(--main-text)' : 'var(--primary-two)'}
-      /* var(--primary-two); */
     }
   }
   ul > li > a::after {
@@ -99,9 +97,9 @@ const StyledHeader = styled.header`
     left: 50%;
     height: 3px;
     width: 0;
-    background: ${({ goingUp, position }) => position === 0 || !goingUp ? 'var(--main-text)' : 'var(--primary-one)'};
+    background: ${({ goingUp, position }) => position === 0 || !goingUp ? 'var(--primary-two)' : 'var(--primary-one)'};
     transition: all 0.3s ease;
-    mix-blend-mode: multiply;
+    /* mix-blend-mode: exclusion; */
   }
   ul > li > a:hover::after,
   ul > li > a:active::after {
