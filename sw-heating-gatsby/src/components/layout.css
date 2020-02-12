@@ -36,6 +36,7 @@
   --head-gradient-height: 25vh;
   --shadow-one: 0 5px 12px rgba(49, 42, 113, .08), 0 12px 30px rgba(49, 42, 113, .2), 0 22px 60px rgba(49, 42, 113, .25);
   --shadow-two: 0 3px 12px rgba(49, 42, 113, .08);
+  --shadow-three: 20px 20px 20px rgba(49, 42, 113, .08), 20px 20px 20px rgba(49, 42, 113, .2), 20px 20px 20px rgba(49, 42, 113, .7);
   --fancy-font: 'Pacifico', cursive;
 }
 

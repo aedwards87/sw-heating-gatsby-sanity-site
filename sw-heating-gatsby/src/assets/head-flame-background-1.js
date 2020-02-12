@@ -47,11 +47,11 @@ const StyledHeadFlameBackgroundSVG = styled.svg`
   top: -100px;
   height: 130vh;
   min-height: 850px;
-  transition: all 0.3s ease;
+  transition: min-height 0.5s ease;
   @media (min-width: 1680px) {
     min-height: 1180px;
     height: 120vh;
-    transition: all 0.3s ease;
+    transition: min-height 0.5s ease;
   }
   @media (min-height: 980px) {
     height: 125vh;

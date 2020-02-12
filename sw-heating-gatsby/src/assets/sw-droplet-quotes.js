@@ -8,7 +8,7 @@ const SWDropletQuotes = ({ width = 60, className }) => {
       <defs>
         <linearGradient id="paint0_linear" x1="33.8503" y1="14.4231" x2="191.148" y2="358.147" gradientUnits="userSpaceOnUse">
           <stop stopColor="#B2D9F4" />
-          <stop offset="0.8714" stop-color="#00ABE7" />
+          <stop offset="0.8714" stopColor="#00ABE7" />
         </linearGradient>
       </defs>
     </svg>
