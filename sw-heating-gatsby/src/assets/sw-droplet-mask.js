@@ -5,11 +5,14 @@ import styled from 'styled-components'
 const SWDropletMask = ({ height = '80vh', className, navBarHeight }) => {
   return (
     <StyledSWDropletMaskContainer navBarHeight={navBarHeight}>
-      <StyledMaskContainer>
+      <StyledMaskContainer navBarHeight={navBarHeight}>
 
-        <svg height={height} className={className} viewBox="0 0 476 588" fill="none" style={{filter: 'drop-shadow(40px 55px 40px rgba(49, 42, 113, .7))'}}>
+        <svg height={height} className={className} viewBox="0 0 476 588" fill="none" 
+          style={{filter: 'drop-shadow(40px 55px 40px rgba(0, 0, 0, .7))'}}
+
+        >
           <defs>
-            <clipPath id="myClip" >filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7))
+            <clipPath id="myClip" >
               <path d="M239.588 588C137.587 588 51.9062 532.875 15.1858 447.125C-17.4546 365.458 2.94566 273.583 72.3064 202.125C186.548 87.7917 225.308 44.9167 237.548 0C249.788 46.9583 292.629 89.8333 402.79 202.125C472.151 271.542 494.591 365.458 459.91 447.125C427.27 532.875 341.589 588 239.588 588Z" fill="black" />
             </clipPath>
           </defs>
@@ -30,11 +33,11 @@ const StyledSWDropletMaskContainer = styled.div`
   position: absolute;
   right: 0;
   /* top: calc(46% - (588px / 2)); */
-  top: -20px;
+  top: -${({ navBarHeight }) => navBarHeight.navBarHeight}px;
   /* top: 0; */
   width: 44%;
   min-height: 500px;
-  height: ${({ navBarHeight }) => `calc(100vh - ${navBarHeight.navBarHeight}px)`};
+  height: 120vh;
   overflow: hidden;
   > div > svg {
     min-height: 500px;
@@ -57,8 +60,11 @@ const StyledMaskContainer = styled.div`
   width: 100%;
   /* height: 600px;
   height: 100%; */
-  top: 50%;
-  transform: translateY(-50%);
+  top: 90px;
+  @media (min-height: 630px) {
+    top: 45%;
+    transform: translateY(-50%);
+  }
 `
 
 const StyledImage = styled.image`
