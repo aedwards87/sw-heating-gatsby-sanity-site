@@ -56,7 +56,6 @@ const Head = ({ sanityLandingPage }) => {
 const StyledHeadContainer = styled.header`
   position: relative;
   width: 100%;
-  /* min-height: ${({ navBarHeight }) => `calc(650px - ${navBarHeight.navBarHeight}px)`}; */
   min-height: ${({ navBarHeight }) => `calc(650px - ${navBarHeight.navBarHeight}px)`};
   height: ${({ navBarHeight }) => `calc(100vh - ${navBarHeight.navBarHeight}px)`};
   @media (min-width: 1680px) {
@@ -64,13 +63,18 @@ const StyledHeadContainer = styled.header`
   }
   > div {
     max-width: 1900px;
-    height: 70%;
+    height: 100%;
     padding: 0 5%;
     display: grid;
     width: 80%;
     grid-gap: 6%;
     align-items: center;
     transition: height .3s ease;
+    > div:first-of-type {
+      margin-bottom: 40px;
+      width: 75%;
+      z-index: 1;
+    }
   }
   h1 {
     font-size: 2.8rem;
@@ -86,21 +90,15 @@ const StyledHeadContainer = styled.header`
   img {
     height: 100%;
   }
-  > div > div:first-of-type {
-    grid-column: 1 / span 2;
-    margin-bottom: 40px;
-    width: 75%;
-    z-index: 1;
-  }
   /* Tablet */
   @media (min-width: 770px) {
     > div {
       grid-template-columns: repeat(4, 1fr);
-      height: 100%;
       margin: 0 auto;
       width: 100%;
       > div:first-of-type {
         width: 100%;
+        grid-column: 1 / span 2;
       }
     };
   }
@@ -138,39 +136,6 @@ const StyledHeadContainer = styled.header`
   }
 `
 
-const StyledDiv = styled.div`
-  position: absolute;
-  height: var(--head-gradient-height);
-  width: 100%;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: var(--gradient-one);
-  mix-blend-mode: multiply;
-  ::after {
-    content: "";
-    height: var(--head-gradient-height);
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: var(--gradient-four);
-  }
-  ::before {
-    content: "";
-    height: var(--head-gradient-height);
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: var(--gradient-five);
-  }
-`
-
-
-
 const StyledButtonBorder = styled.div`
   padding: 0.22rem;
   border-radius: 10px;
@@ -205,6 +170,38 @@ const StyledButton = styled.button`
   }
 `
 
+
+// Old Gradient
+// const StyledDiv = styled.div`
+//   position: absolute;
+//   height: var(--head-gradient-height);
+//   width: 100%;
+//   bottom: 0;
+//   left: 0;
+//   right: 0;
+//   background: var(--gradient-one);
+//   mix-blend-mode: multiply;
+//   ::after {
+//     content: "";
+//     height: var(--head-gradient-height);
+//     width: 100%;
+//     position: absolute;
+//     bottom: 0;
+//     left: 0;
+//     right: 0;
+//     background: var(--gradient-four);
+//   }
+//   ::before {
+//     content: "";
+//     height: var(--head-gradient-height);
+//     width: 100%;
+//     position: absolute;
+//     bottom: 0;
+//     left: 0;
+//     right: 0;
+//     background: var(--gradient-five);
+//   }
+// `
 
 
 
