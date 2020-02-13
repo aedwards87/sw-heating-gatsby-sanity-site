@@ -65,6 +65,7 @@ const StyledContainer = styled.div`
 const StyledSWLetters = styled(SWLetters)`
   position: absolute;
   height: 30vmax;
+  /* max-height: 700px; */
   top: 5vw;
   right: 0;
   opacity: 20%;

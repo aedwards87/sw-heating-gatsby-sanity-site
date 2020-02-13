@@ -144,6 +144,11 @@ const StyledListContainer = styled.ul`
     > label {
       padding-left: 1.8rem;
     }
+    /* > li {
+      grid-template-columns: 150px 1fr;
+    } */
+  }
+  @media (min-width: 481px) {
     > li {
       grid-template-columns: 150px 1fr;
     }

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const StyledTitle = styled.h2`
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   margin: ${({ center }) => center && '0 auto'};
   text-align: left;
   margin-bottom: 6rem;
@@ -17,5 +17,8 @@ export const StyledTitle = styled.h2`
     height: 5px;
     width: 100%;
     background: ${({ lineColor }) => !lineColor ? 'var(--gradient-one)' : lineColor};
+  }
+  @media (minwidth: 980px) {
+    font-size: 2.5rem;
   }
 `

@@ -40,10 +40,7 @@ const Head = ({ sanityLandingPage }) => {
         fluid={sanityLandingPage.thirdImage.asset.fluid}
         alt={sanityLandingPage.title} 
        /> */}
-        {/* 
-        <StyledMainImageContainer navBarHeight={navBarHeight}>
-          <img src={require("../assets/head-flame.svg")} alt={'To come'} />
-        </StyledMainImageContainer> */}
+        
 
         <HeadFlameBackground navBarHeight={navBarHeight} />
         <SWDropletMask navBarHeight={navBarHeight} />
@@ -153,55 +150,22 @@ const StyledButtonBorder = styled.div`
 `
 
 const StyledButton = styled.button`
-  padding: 1rem 2rem;
+  padding: 0.8rem 1.8rem;
   color: white;
   background: white;
   color: var(--main-text);
   font-weight: var(--bolder);
-  font-size: 1.2rem;
+  font-size: 1.05rem;
   border-radius: 7px;
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
   letter-spacing: 0.1px;
-  @media (min-width: 1100px) {
+  @media (min-width: 980px) {
     padding: 1rem 2.2rem;
     font-size: 1.2rem;
   }
 `
-
-
-// Old Gradient
-// const StyledDiv = styled.div`
-//   position: absolute;
-//   height: var(--head-gradient-height);
-//   width: 100%;
-//   bottom: 0;
-//   left: 0;
-//   right: 0;
-//   background: var(--gradient-one);
-//   mix-blend-mode: multiply;
-//   ::after {
-//     content: "";
-//     height: var(--head-gradient-height);
-//     width: 100%;
-//     position: absolute;
-//     bottom: 0;
-//     left: 0;
-//     right: 0;
-//     background: var(--gradient-four);
-//   }
-//   ::before {
-//     content: "";
-//     height: var(--head-gradient-height);
-//     width: 100%;
-//     position: absolute;
-//     bottom: 0;
-//     left: 0;
-//     right: 0;
-//     background: var(--gradient-five);
-//   }
-// `
 
 
 
