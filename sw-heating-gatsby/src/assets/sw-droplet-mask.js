@@ -1,15 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
+import { UserContext } from '../components/index'
 
 
-const SWDropletMask = ({ height = '80vh', className, navBarHeight }) => {
+const SWDropletMask = ({ height = '80vh', className }) => {
+  const navBarHeight = useContext(UserContext)
+
   return (
     <StyledSWDropletMaskContainer navBarHeight={navBarHeight}>
       <StyledMaskContainer navBarHeight={navBarHeight}>
 
-        <svg height={height} className={className} viewBox="0 0 476 588" fill="none" 
-          style={{filter: 'drop-shadow(40px 55px 40px rgba(0, 0, 0, .7))'}}
-
+        <svg height={height} className={className} viewBox="0 0 476 588" fill="none"
+          style={{ filter: 'drop-shadow(40px 55px 40px rgba(0, 0, 0, .7))' }}
         >
           <defs>
             <clipPath id="myClip" >
@@ -32,9 +34,7 @@ const SWDropletMask = ({ height = '80vh', className, navBarHeight }) => {
 const StyledSWDropletMaskContainer = styled.div`
   position: absolute;
   right: 0;
-  /* top: calc(46% - (588px / 2)); */
   top: -${({ navBarHeight }) => navBarHeight.navBarHeight}px;
-  /* top: 0; */
   width: 44%;
   min-height: 500px;
   height: 120vh;
@@ -55,11 +55,9 @@ const StyledSWDropletMaskContainer = styled.div`
 
 const StyledMaskContainer = styled.div`
   position: relative;
-  right: -4vw;
+  right: -3.75vw;
   width: 476px;
   width: 100%;
-  /* height: 600px;
-  height: 100%; */
   top: 90px;
   @media (min-height: 630px) {
     top: 45%;
@@ -78,10 +76,7 @@ const StyledDropletBorderSVG = styled.svg`
   position: absolute;
   top: 0;
   left: 0;
-  /* min-width: 476px; */
-  /* height: 588px; */
   transform: scale(1.013)
-  
 `
 
 export default SWDropletMask

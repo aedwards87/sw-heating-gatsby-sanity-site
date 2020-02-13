@@ -96,9 +96,14 @@ const StyledList = styled.ul`
   }
   .list-heading-container {
     padding: 23px;
-    padding-left: 30px;
+    padding-left: 26px;
     margin: auto 0;
     height: 100%;
+  }
+  @media (min-width: 480px) {
+    .list-heading-container {
+      padding-left: 30px;
+    }
   }
   div {
     transition: all 1s ease;

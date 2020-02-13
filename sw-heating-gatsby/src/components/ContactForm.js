@@ -90,7 +90,7 @@ const StyledListContainer = styled.ul`
   /* padding: 0; */
   > li {
     display: grid;
-    grid-template-columns: 150px 1fr;
+    grid-template-columns: 110px 1fr;
     border-radius: 12px;
     border: 2px solid white;
     font-size: 1.05rem;
@@ -113,7 +113,7 @@ const StyledListContainer = styled.ul`
       height: 100%;
       display: grid;
       /* align-items: center; */
-      padding-left: 1.8rem;
+      padding-left: 1.1rem;
       font-weight: var(--bold);
       margin-top: 1rem;
     }
@@ -140,6 +140,14 @@ const StyledListContainer = styled.ul`
     }
   }
 
+  @media (min-width: 440px) {
+    > label {
+      padding-left: 1.8rem;
+    }
+    > li {
+      grid-template-columns: 150px 1fr;
+    }
+  }
   @media (min-width: 880px) {
     grid-template-columns: repeat(6, 1fr);
     > li {

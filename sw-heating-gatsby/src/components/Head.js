@@ -3,7 +3,7 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { Link } from "gatsby"
 import { UserContext } from './index'
-import { StyledMainImageContainer } from '../components-styled/index'
+// import { StyledMainImageContainer } from '../components-styled/index'
 import { HeadFlameBackground, SWDropletMask } from '../assets/index'
 
 

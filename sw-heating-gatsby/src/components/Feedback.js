@@ -4,8 +4,8 @@ import { StyledTitle } from '../components-styled/index'
 import { horizontalDraggableScroll } from '../helpers/horizontalDraggableScroll'
 import { SWDropletQuotes } from '../assets/index';
 
-const Feedback = ({ /* allSanityFeedBack */ }) => {
-  const ref = useRef(null)
+const Feedback = () => {
+  const ref = useRef(0)
   useEffect(() => {
     horizontalDraggableScroll(ref)
     // console.log(window.document.getElementById('feed').offsetLeft)

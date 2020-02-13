@@ -1,19 +1,20 @@
 import React, { useState } from 'react'
 import { useTransition, animated } from 'react-spring'
-import './styles.css'
+import styled from 'styled-components'
+import SWDropletMask from '../assets/sw-droplet-mask'
 
 const pages = [
-  ({ style }) => <animated.div style={{ ...style, background: 'lightpink' }}>A</animated.div>,
-  ({ style }) => <animated.div style={{ ...style, background: 'lightblue' }}>B</animated.div>,
-  ({ style }) => <animated.div style={{ ...style, background: 'lightgreen' }}>C</animated.div>,
-  ({ style }) => <animated.div style={{ ...style, background: 'red' }}>D</animated.div>,
-  ({ style }) => <animated.div style={{ ...style, background: 'yellow' }}>E</animated.div>,
+  ({ style }) => <animated.div style={{ ...style, background: 'lightpink' }}><SWDropletMask /></animated.div>,
+  ({ style }) => <animated.div style={{ ...style, background: 'lightblue' }}><SWDropletMask /></animated.div>,
+  ({ style }) => <animated.div style={{ ...style, background: 'lightgreen' }}><SWDropletMask /></animated.div>,
+  ({ style }) => <animated.div style={{ ...style, background: 'red' }}><SWDropletMask /></animated.div>,
+  ({ style }) => <animated.div style={{ ...style, background: 'yellow' }}><SWDropletMask /></animated.div>,
 ]
 
-export default function App() {
+export default function AnimatedSlider() {
   const [index, setIndex] = useState(0)
-  const [index2, setIndex2] = useState(index + 1)
-  const [index3, setIndex3] = useState(index2 + 1)
+  const [index2, setIndex2] = useState(1)
+  const [index3, setIndex3] = useState(2)
   const onClick = () => (
     setIndex(state => (state + 1) % 5),
     setIndex2(state => (state + 1) % 5),
@@ -46,39 +47,41 @@ export default function App() {
   )
   // const onClick2 = useCallback(() => setIndex2(state => (state + 1) % 3), [])
   const transitions = useTransition(index, p => p, {
-    from: { opacity: 0, transform: 'translate3d(100%,0,0)' },
-    enter: { opacity: 1, transform: 'translate3d(0%,0,0)' },
-    leave: { opacity: 0, transform: 'translate3d(-50%,0,0)' },
+    from: { opacity: 0.5, transform: 'translate3d(100%,0,0)', zIndex: 4 },
+    enter: { opacity: 1, transform: 'translate3d(0%,0,0)', zIndex: 5 },
+    leave: { opacity: 0, transform: 'translate3d(-50%,0,0)', zIndex: 6 },
   })
-  const transitions2 = useTransition((index), p => p, {
-    from: { opacity: 0, transform: 'translate3d(100%,0,0)' },
-    enter: { opacity: 1, transform: 'translate3d(0%,0,0)' },
-    leave: { opacity: 0, transform: 'translate3d(-100%,0,0)' },
+  const transitions2 = useTransition((index2), p => p, {
+    from: { opacity: 0, transform: 'translate3d(100%,0,0)', zIndex: 2 },
+    enter: { opacity: 0.5, transform: 'translate3d(0%,0,0)', zIndex: 3 },
+    leave: { opacity: 0, transform: 'translate3d(-100%,0,0)', zIndex: 4 },
   })
   const transitions3 = useTransition((index3), p => p, {
-    from: { opacity: 0, transform: 'translate3d(100%,0,0)' },
-    enter: { opacity: 1, transform: 'translate3d(0%,0,0)' },
-    leave: { opacity: 0, transform: 'translate3d(-100%,0,0)' },
+    from: { opacity: 0, transform: 'translate3d(100%,0,0)', zIndex: 0 },
+    enter: { opacity: 0.2, transform: 'translate3d(0%,0,0)', zIndex: 1 },
+    leave: { opacity: 0, transform: 'translate3d(-100%,0,0)', zIndex: 2 },
   })
   return (
-    <>
-      <div className="simple-trans-main" onClick={onClick}>
-        {transitions.map(({ item, props, key }) => {
-          const Page = pages[item]
-          return <Page key={key} style={props} />
-        })}
-      </div>
-      <div className="simple-trans-main-2" onClick={onClick}>
-        {transitions2.map(({ item, props, key }) => {
-          const Page = pages[item]
-          return <Page key={key} style={props} />
-        })}
-      </div>
-      <div className="simple-trans-main-3" onClick={onClick}>
-        {transitions3.map(({ item, props, key }) => {
-          const Page = pages[item]
-          return <Page key={key} style={props} />
-        })}
+    <StyledDiv>
+      <div>
+        <div className="simple-trans-main" onClick={onClick}>
+          {transitions.map(({ item, props, key }) => {
+            const Page = pages[item]
+            return <Page key={key} style={props} />
+          })}
+        </div>
+        <div className="simple-trans-main-2" onClick={onClick}>
+          {transitions2.map(({ item, props, key }) => {
+            const Page = pages[item]
+            return <Page key={key} style={props} />
+          })}
+        </div>
+        <div className="simple-trans-main-3" onClick={onClick}>
+          {transitions3.map(({ item, props, key }) => {
+            const Page = pages[item]
+            return <Page key={key} style={props} />
+          })}
+        </div>
       </div>
       <section>
         <button onClick={handleClick1} className={index === 0 && 'active'}>1</button>
@@ -87,20 +90,22 @@ export default function App() {
         <button onClick={handleClick4} className={index === 3 && 'active'}>4</button>
         <button onClick={handleClick5} className={index === 4 && 'active'}>5</button>
       </section>
-    </>
+    </StyledDiv>
   )
 }
 
 
 
 
-const Styles = styled.div`
-
-  .simple-trans-main > div {
+const StyledDiv = styled.div`
+  .simple-trans-main > div,
+  .simple-trans-main-2 > div,
+  .simple-trans-main-3 > div
+   {
     cursor: pointer;
     position: absolute;
     width: calc(100% / 3);
-    height: 100%;
+    height: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -112,34 +117,10 @@ const Styles = styled.div`
   }
 
   .simple-trans-main-2 > div {
-    cursor: pointer;
-    position: absolute;
     left: calc(100% / 3);
-    width: calc(100% / 3);
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-weight: 800;
-    font-size: 25em;
-    will-change: transform, opacity;
-    text-shadow: 0px 2px 40px #00000020, 0px 2px 5px #00000030;
   }
   .simple-trans-main-3 > div {
-    cursor: pointer;
-    position: absolute;
     left: calc((100% / 3) * 2);
-    width: calc(100% / 3);
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-weight: 800;
-    font-size: 25em;
-    will-change: transform, opacity;
-    text-shadow: 0px 2px 40px #00000020, 0px 2px 5px #00000030;
   }
 
   .active {
