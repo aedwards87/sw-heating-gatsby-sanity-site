@@ -15,7 +15,7 @@ import "./layout.css"
 
 export const UserContext = createContext()
 
-const Layout = ({ children }) => {
+const Layout = ({ allSanityWork, children }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -34,7 +34,11 @@ const Layout = ({ children }) => {
   }, [ref])
 
   return (
-    <UserContext.Provider value={{ navBarHeight: navBarHeight }}>
+    <UserContext.Provider value={{ 
+        navBarHeight: navBarHeight,  
+        allSanityWork: allSanityWork
+      }}
+    >
       <Header siteTitle={data.site.siteMetadata.title} ref={ref} />
       <div
         style={{

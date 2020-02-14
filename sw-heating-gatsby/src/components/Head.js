@@ -3,8 +3,7 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { Link } from "gatsby"
 import { UserContext } from './index'
-// import { StyledMainImageContainer } from '../components-styled/index'
-import { HeadFlameBackground, SWDropletMask } from '../assets/index'
+import { HeadFlameBackground, SWDropletMask } from '../assetsjs/index'
 
 
 const Head = ({ sanityLandingPage }) => {
@@ -76,13 +75,13 @@ const StyledHeadContainer = styled.header`
   h1 {
     font-size: 2.8rem;
     font-weight: var(--boldest);
-    margin-bottom: 5vmin;
+    margin-bottom: 2.5rem;
     transition: font-size 0.5s ease;
   }
   p {
     font-size: 1rem;
     padding: 0;
-    margin-bottom: 6vmin;
+    margin-bottom: 2.5rem;
   }
   img {
     height: 100%;

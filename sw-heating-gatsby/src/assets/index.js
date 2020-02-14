@@ -1,35 +1,10 @@
-import SWFlameDroplet from './sw-flame-droplet.svg'
-// import SWHeatingLogo from './sw-heating-logo.svg'
-import SWHeatingLogo from './sw-heating-logo'
-import SWLetters from './sw-letters.svg'
-import Facebook from './facebook'
-import BritishGas from './british-gas'
-import Vaillant from './vaillant'
-import Ciphe from './ciphe'
-import EnvAgency from './environment-agency'
-import Arror2 from './arrow2.svg'
-import Email from './email'
-import Phone from './phone'
-import Mobile from './mobile'
-import SWDropletMask from './sw-droplet-mask'
-import SWDropletQuotes from './sw-droplet-quotes'
-import HeadFlameBackground from './head-flame-background-1'
+import SWFlameDropletSVG from './sw-flame-droplet.svg'
+import SWLettersSVG from './sw-letters.svg'
+import Arror2SVG from './arrow2.svg'
 
 
 export {
-  SWFlameDroplet,
-  SWHeatingLogo,
-  SWLetters,
-  Facebook,
-  BritishGas,
-  Vaillant,
-  Ciphe,
-  EnvAgency,
-  Arror2,
-  Email,
-  Phone,
-  Mobile,
-  SWDropletMask,
-  SWDropletQuotes,
-  HeadFlameBackground,
+  SWFlameDropletSVG,
+  SWLettersSVG,
+  Arror2SVG,
 }

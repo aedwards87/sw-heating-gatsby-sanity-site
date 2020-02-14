@@ -2,7 +2,6 @@ import React from 'react'
 import Image from 'gatsby-image'
 import styled from 'styled-components'
 import { Link } from "gatsby"
-// import Arrow from "../assets/arrow.svg";
 import { StyledTitle } from '../components-styled/index'
 
 const Services = ({ allSanityWork }) => {
@@ -123,10 +122,6 @@ const StyledList = styled.ul`
     height: 100%;
     display: grid;
     grid-template-columns: 1fr;
-  }
-  p {
-    font-size: 0.8rem;
-    line-height: 1.7;
   }
 `
 

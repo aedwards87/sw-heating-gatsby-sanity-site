@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components';
 import { StyledTitle } from '../components-styled/index'
 import { horizontalDraggableScroll } from '../helpers/horizontalDraggableScroll'
-import { SWDropletQuotes } from '../assets/index';
+import { SWDropletQuotes } from '../assetsjs/index';
 
 const Feedback = () => {
   const ref = useRef(0)
@@ -15,7 +15,7 @@ const Feedback = () => {
   return (
     <StyledFeedBack>
       <div>
-        <StyledTitle>Feedback</StyledTitle>
+        <StyledTitle smallerLine="232" >What our customers<br/>say about us</StyledTitle>
       </div>
       <StyledListContainer className="items" ref={ref} >
         {/* {allSanityWork.edges.map(({ node: work }) => (

@@ -8,17 +8,17 @@ const DropletImageMask = ({ height = '80vh', className }) => {
 
   return (
     <StyledDropletImageMaskContainer navBarHeight={navBarHeight}>
-      <StyledMaskContainer navBarHeight={navBarHeight}>
+      <StyledMaskContainer>
 
         <svg height={height} className={className} viewBox="0 0 476 588" fill="none"
           style={{ filter: 'drop-shadow(40px 55px 40px rgba(0, 0, 0, .7))' }}
         >
           <defs>
-            <clipPath id="myClip" >
+            <clipPath id="myClip">
               <path d="M239.588 588C137.587 588 51.9062 532.875 15.1858 447.125C-17.4546 365.458 2.94566 273.583 72.3064 202.125C186.548 87.7917 225.308 44.9167 237.548 0C249.788 46.9583 292.629 89.8333 402.79 202.125C472.151 271.542 494.591 365.458 459.91 447.125C427.27 532.875 341.589 588 239.588 588Z" fill="black" />
             </clipPath>
           </defs>
-          <StyledImage navBarHeight={navBarHeight} xlinkHref={require("../images/image1.jpg")} alt={'To come'} className="clip-svg" />
+          <StyledImage xlinkHref={require("../images/image1.jpg")} alt={'To come'} className="clip-svg" />
         </svg>
 
         <StyledDropletBorderSVG height={height} className={className} viewBox="0 0 476 588" fill="none">
@@ -38,7 +38,7 @@ const StyledDropletImageMaskContainer = styled.div`
   width: 44%;
   min-height: 500px;
   height: 120vh;
-  overflow: hidden;
+  /* overflow: hidden; */
   > div > svg {
     min-height: 500px;
     transition: min-height 0.5s ease;
@@ -69,7 +69,6 @@ const StyledImage = styled.image`
   clip-path: url(#myClip);
   object-fit: cover;
   height: 100%;
-  
 `
 
 const StyledDropletBorderSVG = styled.svg`

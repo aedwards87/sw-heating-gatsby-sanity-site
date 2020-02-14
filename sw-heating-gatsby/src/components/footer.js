@@ -1,10 +1,9 @@
-// import { Link } from "gatsby"
 // import PropTypes from "prop-types"
 import React from "react"
 import styled from 'styled-components'
 import { Link } from "gatsby"
 import { navLinks } from './header'
-import { SWHeatingLogo, Facebook, BritishGas, Ciphe, EnvAgency, Vaillant, Phone, Email, Mobile } from "../assets/index";
+import { SWHeatingLogo, Facebook, BritishGas, Ciphe, EnvAgency, Vaillant, Phone, Email, Mobile } from "../assetsjs/index";
 
 
 const footer = ({ navBarHeight }) => {

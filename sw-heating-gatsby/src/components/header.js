@@ -2,7 +2,7 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React, { useState, useEffect } from "react"
 import styled from 'styled-components'
-import { SWHeatingLogo } from "../assets/index";
+import { SWHeatingLogo } from "../assetsjs/index";
 
 export const navLinks = ['Services', 'Gallery', 'About', 'Reviews', 'Contact']
 
@@ -29,11 +29,11 @@ const Header = (props, ref) => {
   return (
     <StyledHeader id="header" goingUp={scrollUp ? true : false} position={currentPosition} ref={ref} >
       <div>
-        <h1>
+        <div>
           <Link to="/">
             <SWHeatingLogo height="49" />
           </Link>
-        </h1>
+        </div>
         <nav>
           <ul>
             {navLinks.map(navLink =>
@@ -42,7 +42,13 @@ const Header = (props, ref) => {
                   to={`/${navLink.toLowerCase()}`}
                   className={scrollUp ? 'active' : null}
                 >
-                  {navLink}
+                  {navLink
+
+                    // if navLink.dropdown === true show component
+                    // Have it display: none but with navLink:hover display: block;
+
+                  
+                  }
                 </Link>
               </li>
             )}
@@ -71,10 +77,10 @@ const StyledHeader = styled.header`
     justify-content: space-between;
     align-items: center;
   }
-  > div > h1 {
+  /* > div > h1 {
     font-size: 1.5rem;
     margin: 0;
-  }
+  } */
   nav { height: 100%; }
   a {
     color: var(--main-text);

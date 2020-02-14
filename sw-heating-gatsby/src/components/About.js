@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import { StyledTitle } from '../components-styled/index'
-import SWLetters from "../assets/sw-letters";
+import SWLettersSVG from "../assets/sw-letters.svg";
 
-const About = ( /* allSanityFAboutUs */ ) => {
+const About = ( /* allSanityAboutUs */ ) => {
   return (
     <>
       <StyledAboutContainer>
@@ -20,7 +20,7 @@ const About = ( /* allSanityFAboutUs */ ) => {
             </div>
           </StyledContainer>
         </div>
-        <StyledSWLetters />
+        <StyledSWLettersSVG />
       </StyledAboutContainer>
     </>
   )
@@ -62,7 +62,7 @@ const StyledContainer = styled.div`
   }
 `
 
-const StyledSWLetters = styled(SWLetters)`
+const StyledSWLettersSVG = styled(SWLettersSVG)`
   position: absolute;
   height: 30vmax;
   /* max-height: 700px; */
