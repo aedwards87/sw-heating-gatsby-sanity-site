@@ -72,7 +72,10 @@ const StyledList = styled.ul`
   margin: 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-  grid-gap: 5.5vmin;
+  grid-gap: 2.5rem;
+  @media(min-width: 1820px) {
+    grid-gap: 4rem;
+  }
   li {
     border-radius: 10px;
     overflow: hidden;

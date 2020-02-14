@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useTransition, animated, config } from 'react-spring'
 import styled from 'styled-components'
 import { SWDropletMask } from '../assetsjs/index'
@@ -13,52 +13,55 @@ const pages = [
 
 export default function AnimatedSlider() {
   const [index, setIndex] = useState(0)
-  const [index2, setIndex2] = useState(1)
+  // const [index2, setIndex2] = useState(1)
   // const [index3, setIndex3] = useState(2)
+
+  // useEffect(() => void setInterval(() => setIndex(state => (state + 1) % 5), 4010), [])
+  // useEffect(() => void setInterval(() => setIndex2(state => (state + 1) % 5), 4000), [])
+
   const onClick = () => (
-    setIndex(state => (state + 1) % 5),
-    setIndex2(state => (state + 1) % 5)
+    setIndex(state => (state + 1) % 5)
+    // , setIndex2(state => (state + 1) % 5)
     // setIndex3(state => (state + 1) % 5)
   )
   const handleClick1 = () => (
-    setIndex(0),
-    setIndex2(1)
+    setIndex(0)
+    // , setIndex2(1)
     // setIndex3(2)
   )
   const handleClick2 = () => (
-    setIndex(1),
-    setIndex2(2)
+    setIndex(1)
+    // ,    setIndex2(2)
     // setIndex3(3)/
   )
   const handleClick3 = () => (
-    setIndex(2),
-    setIndex2(3)
+    setIndex(2)
+    // ,    setIndex2(3)
     // setIndex3(4)
   )
   const handleClick4 = () => (
-    setIndex(3),
-    setIndex2(4)
+    setIndex(3)
+    // ,    setIndex2(4)
     // setIndex3(0)
   )
   const handleClick5 = () => (
-    setIndex(4),
-    setIndex2(0)
+    setIndex(4)
+    // ,    setIndex2(0)
     // setIndex3(1)
   )
   // const onClick2 = useCallback(() => setIndex2(state => (state + 1) % 3), [])
   const transitions = useTransition(index, p => p, {
-    from: { opacity: 0, transform: 'translate3d(150%,0,0) scale(0.9)', zIndex: 4 },
+    from: { opacity: 0, transform: 'translate3d(60%,0,0) scale(0.75)', zIndex: 4 },
     enter: { opacity: 1, transform: 'translate3d(0%,0,0) scale(1)', zIndex: 5 },
-    leave: { opacity: 0, transform: 'translate3d(-50%,0,0) scale(1.1)', zIndex: 6 },
-    config: config.gentle,
+    leave: { opacity: 0, transform: 'translate3d(-60%,0,0) scale(1.25)', zIndex: 6 },
+    config: { mass: 10, tension: 80, friction: 50 }
   })
-  const transitions2 = useTransition((index2), p => p, {
-    from: { opacity: 0, transform: 'translate3d(100%,0,0) scale(0.8)', zIndex: 2 },
-    enter: { opacity: 0.5, transform: 'translate3d(0%,0,0) scale(0.9)', zIndex: 3 },
-    leave: { opacity: 0, transform: 'translate3d(-150%,0,0) scale(1)', zIndex: 4 },
-    config: config.gentle,
-
-  })
+  // const transitions2 = useTransition((index2), p => p, {
+  //   from: { opacity: 0, transform: 'translate3d(60%,0,0) scale(0.5)', zIndex: 2 },
+  //   enter: { opacity: 0.5, transform: 'translate3d(0%,0,0) scale(0.75)', zIndex: 3 },
+  //   leave: { opacity: 0.75, transform: 'translate3d(-100%,0,0) scale(1)', zIndex: 4 },
+  //   config: { mass: 10, tension: 80, friction: 50 }
+  // })
   // const transitions3 = useTransition((index3), p => p, {
   //   from: { opacity: 0, transform: 'translate3d(100%,0,0) scale(0.5)', zIndex: 0 },
   //   enter: { opacity: 0.2, transform: 'translate3d(0%,0,0) scale(0.6)', zIndex: 1 },
@@ -75,12 +78,12 @@ export default function AnimatedSlider() {
             return <Page key={key} style={props} />
           })}
         </div>
-        <div className="simple-trans-main-2" onClick={onClick}>
+        {/* <div className="simple-trans-main-2" onClick={onClick}>
           {transitions2.map(({ item, props, key }) => {
             const Page = pages[item]
             return <Page key={key} style={props} />
           })}
-        </div>
+        </div> */}
         {/* <div className="simple-trans-main-3" onClick={onClick}>
           {transitions3.map(({ item, props, key }) => {
             const Page = pages[item]
@@ -134,7 +137,7 @@ const StyledDiv = styled.div`
 
   section {
     position: absolute;
-    top: 90%;
+    bottom: -20%;
     left: 43%;
   }
 
