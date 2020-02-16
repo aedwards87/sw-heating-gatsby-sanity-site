@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import { StyledTitle } from '../components-styled/index'
-import SWLettersSVG from "../assets/sw-letters.svg";
+import SWLettersSVG from "../assetsjs/sw-letters";
 
-const About = ( /* allSanityAboutUs */ ) => {
+const About = ( /* allSanityAboutUs */) => {
   return (
     <>
       <StyledAboutContainer>

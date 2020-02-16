@@ -10,7 +10,7 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
-// import Footer from "./footer"
+import Footer from "./footer"
 import "./layout.css"
 
 export const UserContext = createContext()
@@ -34,10 +34,10 @@ const Layout = ({ allSanityWork, children }) => {
   }, [ref])
 
   return (
-    <UserContext.Provider value={{ 
-        navBarHeight: navBarHeight,  
-        allSanityWork: allSanityWork
-      }}
+    <UserContext.Provider value={{
+      navBarHeight: navBarHeight,
+      allSanityWork: allSanityWork
+    }}
     >
       <Header siteTitle={data.site.siteMetadata.title} ref={ref} />
       <div
@@ -47,7 +47,7 @@ const Layout = ({ allSanityWork, children }) => {
       >
         <main>{children}</main>
       </div>
-      {/* <Footer navBarHeight={navBarHeight} /> */}
+      <Footer navBarHeight={navBarHeight} />
     </UserContext.Provider>
   )
 }

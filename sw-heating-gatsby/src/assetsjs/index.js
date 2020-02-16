@@ -10,6 +10,7 @@ import Mobile from './mobile'
 import SWDropletMask from './sw-droplet-mask'
 import SWDropletQuotes from './sw-droplet-quotes'
 import HeadFlameBackground from './head-flame-background'
+import SWLettersSVG from './sw-letters'
 
 
 export {
@@ -25,4 +26,5 @@ export {
   SWDropletMask,
   SWDropletQuotes,
   HeadFlameBackground,
+  SWLettersSVG,
 }

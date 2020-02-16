@@ -39,7 +39,7 @@ const Head = ({ sanityLandingPage }) => {
         fluid={sanityLandingPage.thirdImage.asset.fluid}
         alt={sanityLandingPage.title} 
        /> */}
-        
+
 
         <HeadFlameBackground navBarHeight={navBarHeight} />
         <SWDropletMask navBarHeight={navBarHeight} />

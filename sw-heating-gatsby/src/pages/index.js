@@ -4,7 +4,6 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 import { Head, Services, About, Feedback, ContactForm } from '../components/index'
-import AnimatedSlider from '../components/AnimatedSlider'
 
 export const pageQuery = graphql`
   query HomePageQuery {
@@ -62,7 +61,6 @@ const IndexPage = ({ data }, props) => (
     <About /* sanityAboutPage={data.sanityAboutPage} */ />
     <Feedback /*allSanityFeedbackPage={data.allSanityFeedbackPage}*/ />
     <ContactForm />
-    <AnimatedSlider />
   </Layout>
 )
 
