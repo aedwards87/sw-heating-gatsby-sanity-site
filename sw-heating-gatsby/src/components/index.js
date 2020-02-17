@@ -7,6 +7,7 @@ import Header from '../components/header'
 import Footer from '../components/footer'
 import Image from '../components/image'
 import { UserContext } from './layout'
+import Carousel from './carousel'
 
 export {
   Head,
@@ -18,4 +19,5 @@ export {
   Footer,
   Image,
   UserContext,
+  Carousel,
 }

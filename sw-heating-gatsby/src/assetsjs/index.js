@@ -7,7 +7,7 @@ import EnvAgency from './environment-agency'
 import Email from './email'
 import Phone from './phone'
 import Mobile from './mobile'
-import SWDropletMask from './sw-droplet-mask'
+import CarouselDropletMask from './carousel-droplet-mask'
 import SWDropletQuotes from './sw-droplet-quotes'
 import HeadFlameBackground from './head-flame-background'
 import SWLettersSVG from './sw-letters'
@@ -23,7 +23,7 @@ export {
   Email,
   Phone,
   Mobile,
-  SWDropletMask,
+  CarouselDropletMask,
   SWDropletQuotes,
   HeadFlameBackground,
   SWLettersSVG,

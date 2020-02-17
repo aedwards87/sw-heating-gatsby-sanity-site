@@ -2,8 +2,8 @@ import React, { useContext } from 'react'
 // import Image from 'gatsby-image'
 import styled from 'styled-components'
 import { Link } from "gatsby"
-import { UserContext } from './index'
-import { HeadFlameBackground, SWDropletMask } from '../assetsjs/index'
+import { UserContext, Carousel } from './index'
+import { HeadFlameBackground, CarouselDropletMask } from '../assetsjs/index'
 
 
 const Head = ({ sanityLandingPage }) => {
@@ -40,9 +40,8 @@ const Head = ({ sanityLandingPage }) => {
         alt={sanityLandingPage.title} 
        /> */}
 
-
         <HeadFlameBackground navBarHeight={navBarHeight} />
-        <SWDropletMask navBarHeight={navBarHeight} />
+        <Carousel navBarHeight={navBarHeight} />
       </div>
     </StyledHeadContainer>
   )
