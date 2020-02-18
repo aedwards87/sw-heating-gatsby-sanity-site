@@ -96,12 +96,11 @@ const StyledTopFooter = styled.div`
   height: 100%;
   > ul {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: auto auto;
-    grid-gap: 8vw 3vw;
+    grid-template-columns: auto auto;
+    grid-template-rows: repeat(3, auto);
+    grid-gap: 8vmax 3vw;
   }
   .item1 {
-    grid-column: 1 / span 2
   }
   .item1 > p {
     font-family: var(--fancy-font);
@@ -109,13 +108,13 @@ const StyledTopFooter = styled.div`
     font-size: 1.2rem;
   }
   .item2 {
-    grid-column: 3 / span 2;
     justify-self: end;
     align-self: start;
     display: flex;
     align-items: center;
   }
   .item2 > strong {
+    display: none;
     color: #1877F2;
     font-size: 0.95rem;
     padding-right: 1rem;
@@ -129,23 +128,49 @@ const StyledTopFooter = styled.div`
     grid-template-rows: auto auto;
   }
   .item5 {
-    grid-column: 3 / span 2;
-    grid-row: 2;
+    grid-column: span 2;
+    /* grid-row: 3; */
     display: grid;
-    grid-template: auto auto / 1fr auto;
-    justify-items: end;
+    grid-template-columns: repeat(auto-fit, minmax(60px, auto));
+    justify-items: center;
+    justify-content: start;
     grid-gap: 1.5rem 2rem;
     > svg {
       align-self: end;
     }
   }
 
-
-  @media (max-width: 980px) {
- 
+  @media (max-width: 650px) {
+    .item5 {
+      /* grid-template-rows: auto auto; */
+      grid-template-columns: auto;
+    }
   }
+
   @media (min-width: 980px) {
     font-size: 0.82rem;
+    > ul {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: auto auto;
+    }
+    .item1 {
+      grid-column: 1 / span 2
+    }
+    .item2 {
+      grid-column: 3 / span 2;
+      > strong {
+        display: inline-block;
+      }
+    }
+    .item5 {
+      grid-column: 3 / span 2;
+      grid-row: 2;
+      justify-items: end;
+      justify-content: auto;
+      grid-template: auto auto / 1fr auto;
+      display: grid;
+      grid-gap: 1.5rem 2rem;
+    }
   }
   address {
     width: 110%;
@@ -172,7 +197,7 @@ const StyledBottomFooter = styled.div`
     display: flex;
     flex-wrap: wrap;
     padding: 2rem 5%;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     > p, a, ul, li {
       color: var(--color-light-2);
@@ -185,7 +210,7 @@ const StyledBottomFooter = styled.div`
       padding-top: 0.8rem;
     }
     > ul {
-      display: flex;
+      display: none;
       align-items: center;
       padding-top: 0.8rem;
       padding-bottom: 0.8rem;
@@ -212,6 +237,14 @@ const StyledBottomFooter = styled.div`
             width: 100%;
           }
         }
+      }
+    }
+  }
+  @media (min-width: 480px) {
+    > div {
+      justify-content: space-between;
+      > ul {
+        display: flex;
       }
     }
   }
