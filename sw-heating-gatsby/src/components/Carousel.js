@@ -2,22 +2,35 @@ import React, { useContext, useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { UserContext } from '../components/index'
 import { useTransition } from 'react-spring'
-import { CarouselDropletMask } from '../assetsjs/index'
+import { CarouselDroplet } from '../assetsjs/index'
+import CarouselButton from '../components/Carousel/CarouselButton'
+import image1 from '../images/image1.jpg'
 
 
-const Carousel = ({ height = '80vh', className }) => {
+const uuidv4 = require('uuid/v4') // Creates Unique Identifier keu
+
+const slides = [
+  ({ style, click }) => <CarouselDroplet style={style} click={click} imageURI={image1} />,
+  ({ style, click }) => <CarouselDroplet style={style} click={click} imageURI={image1} />,
+  ({ style, click }) => <CarouselDroplet style={style} click={click} imageURI={image1} />,
+  ({ style, click }) => <CarouselDroplet style={style} click={click} imageURI={image1} />,
+  ({ style, click }) => <CarouselDroplet style={style} click={click} imageURI={image1} />
+]
+
+
+const Carousel = () => {
   const navBarHeight = useContext(UserContext)
   const [index, setIndex] = useState(0)
 
   const nextSlide = () => setIndex(state => (state + 1) % 5)
-  const targetedSlide = (e) => setIndex(parseInt(e.target.value)) 
+  const targetSlide = (e) => setIndex(parseInt(e.target.value)) 
 
-  useEffect(() => {
-    const Timer = setInterval(() => {
-      setIndex(state => (state + 1) % 5)
-    }, 4000)
-    return () => clearInterval(Timer)
-  })
+  // useEffect(() => {
+  //   const Timer = setInterval(() => {
+  //     setIndex(state => (state + 1) % 5)
+  //   }, 4000)
+  //   return () => clearInterval(Timer)
+  // })
 
   const transitions = useTransition(index, p => p, {
     from: { opacity: 0, position: 'absolute', transform: 'translate3d(60%,5%,0) scale(0.5)', zIndex: 4 },
@@ -28,26 +41,15 @@ const Carousel = ({ height = '80vh', className }) => {
 
   return (
     <S.Carousel navBarHeight={navBarHeight} >
-      {transitions.map(({ item, props, key }) => 
-        item && (
-          <CarouselDropletMask 
-            key={key} 
-            style={props} 
-            navBarHeight={navBarHeight} 
-            className={className} 
-            height={height} 
-            click={nextSlide} 
-          />
-        )
-      )}
-      <ButtonsContainer>
-        <Button onClick={targetedSlide} value={0} className={index === 0 && 'active'} />
-        <Button onClick={targetedSlide} value={1} className={index === 1 && 'active'} />
-        <Button onClick={targetedSlide} value={2} className={index === 2 && 'active'} />
-        <Button onClick={targetedSlide} value={3} className={index === 3 && 'active'} />
-        <Button onClick={targetedSlide} value={4} className={index === 4 && 'active'} />
-        {/* <label><input type="radio" /></label> */}
-      </ButtonsContainer>
+      {transitions.map(({ item, props, key }) => {
+        const Slide = slides[item]
+        return <Slide key={key} style={props} click={nextSlide} />
+      })}
+      <S.ButtonsContainer>
+        {slides.map((_, i) => 
+          <CarouselButton key={uuidv4()} click={targetSlide} value={i} index={index} /> 
+        )}
+      </S.ButtonsContainer>
     </S.Carousel>
   )
 }
@@ -65,33 +67,19 @@ const S = {
       min-height: 800px;
       transition: min-height 0.5s ease;
     }
+  `,
+  ButtonsContainer: styled.div`
+    position: absolute;
+    left: 5%;
+    bottom: 240px;
+    z-index: 99999;
+    input {
+      border: 2px solid var(--primary-two);
+      background: transparent;
+    }
   `
 }
 
-const ButtonsContainer = styled.div`
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  z-index: 99999;
-  input {
-    border: 2px solid #000000;
-    background: transparent;
-  }
-`
-
-const Button = styled.button`
-  border-radius: 100%;
-  height: 10px;
-  width: 10px;
-  border: 2px solid #000000;
-  background: transparent;
-  margin: 3px;
-  cursor: pointer;
-  :hover,
-  &.active {
-    background: #000000;
-  }
-`
 
 
 

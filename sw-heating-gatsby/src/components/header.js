@@ -81,7 +81,7 @@ const StyledHeader = styled.header`
     font-size: 1.5rem;
     margin: 0;
   } */
-  nav { height: 100%; }
+  nav { height: 100%; display: none; }
   a {
     color: var(--main-text);
     font-weight: var(--bolder);
@@ -121,16 +121,20 @@ const StyledHeader = styled.header`
   }
   li {
     margin: 0;
-    padding: 0.5rem 2.1rem;
+    padding: 0.5rem 1.15rem;
     transition: all 0.3s ease;
   }
   ul > li:last-child {
     padding-right: 0;
   }
-  @media (min-width: 770px) {
-    svg {
-      height: 55px;
-    }
+  @media (min-width: 980px) {
+    svg { height: 55px; }
+    nav { display: block; }
+    li { padding-left: 1.4rem; padding-right: 1.4rem }
+    transition: li 0.3s ease;
+  }
+  @media (min-width: 1600px) {
+    li { padding-left: 2.15rem; padding-right: 2.15rem }
   }
 `
 
