@@ -36,6 +36,9 @@ const S = {
     @media(min-width: 980px) {
       height: 60px;
     }
+    @media(min-width: 650px) {
+      height: 50px;
+    }
   `
 }
 

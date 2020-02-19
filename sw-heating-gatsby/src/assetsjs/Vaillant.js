@@ -30,6 +30,9 @@ const S = {
     @media(min-width: 980px) {
       height: 47px;
     }
+    @media(min-width: 650px) {
+      height: 37px;
+    }
   `
 }
 

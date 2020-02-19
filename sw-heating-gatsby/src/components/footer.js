@@ -27,7 +27,10 @@ const footer = ({ navBarHeight }) => {
               <Phone /><a href="tel:+441268778501">01268 778501</a>
               <Mobile /><a href="tel:+447852128577">07852 128577</a>
               <Email /><a href="mailto:sw-heating@icloud.com">sw-heating@icloud.com</a>
-              <p>Company No. 9948546</p>
+              <p>
+                <strong>Company No.</strong> 9948546<br />
+                <strong>VAT No.</strong> 132032668
+              </p>
             </address>
           </li>
           <li className="item4">
@@ -36,9 +39,7 @@ const footer = ({ navBarHeight }) => {
               <strong>Mon-Fri:</strong>
               <time>8am - 6pm</time>
               <strong>Sat-Sun:</strong>
-              <div style={{ width: '110%' }}>
-                By arrangement or emergency only
-              </div>
+              <div>By arrangement or emergency only</div>
             </div>
           </li>
           <li className="item5">
@@ -70,7 +71,7 @@ const footer = ({ navBarHeight }) => {
 const StyledFooterContainer = styled.footer`
   /* height: ${({ height }) => `calc(90vh - ${height}px)`}; */
   background: var(--light-bg);
-  font-size: 0.78rem;
+  font-size: 0.9rem;
   /* font-weight: var(--bold); */
   ul {
     list-style: none;
@@ -96,11 +97,9 @@ const StyledTopFooter = styled.div`
   height: 100%;
   > ul {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 250px auto;
     grid-template-rows: repeat(3, auto);
     grid-gap: 8vmax 3vw;
-  }
-  .item1 {
   }
   .item1 > p {
     font-family: var(--fancy-font);
@@ -114,18 +113,18 @@ const StyledTopFooter = styled.div`
     align-items: center;
   }
   .item2 > strong {
-    display: none;
     color: #1877F2;
     font-size: 0.95rem;
     padding-right: 1rem;
   }
   .item3, .item4 {
-    padding-top: 1rem;
+    grid-column: span 2;
   }
   .item4 > div {
     display: grid;
     grid-template-columns: 70px 1fr;
     grid-template-rows: auto auto;
+    grid-column-gap: 0.8rem;
   }
   .item5 {
     grid-column: span 2;
@@ -139,13 +138,51 @@ const StyledTopFooter = styled.div`
       align-self: end;
     }
   }
+  address {
+    width: 110%;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-column-gap: 0.8rem;
+    align-items: center;
+    > svg {
+      justify-self: center;
+      color: var(--main-text);
+    }
+    > p {
+      grid-column: span 2;
+    }
+  }
+  
+  @media (min-width: 480px) {
+    .item3, .item4 {
+      grid-column: auto;
+    }
+  }
 
   @media (max-width: 650px) {
     .item5 {
-      /* grid-template-rows: auto auto; */
-      grid-template-columns: auto;
+      grid-gap: 2.5rem 2.2rem;
+      grid-template-columns: auto auto;
+      grid-template-rows: auto auto;
+      justify-items: start;
+    }
+    > ul {
+      grid-template-columns: minmax(230px, 43%) auto;
+    }
+    address {
+      width: 100%;
+    }
+    .item2 > strong {
+      display: none;
     }
   }
+
+  @media (min-width: 600px) {
+    .item4 {
+      width: 240px;
+    }
+  }
+
 
   @media (min-width: 980px) {
     font-size: 0.82rem;
@@ -162,6 +199,13 @@ const StyledTopFooter = styled.div`
         display: inline-block;
       }
     }
+    .item4  {
+      width: 120%;
+      margin-left: 30px;
+      > div {
+        width: auto;
+      }
+    }
     .item5 {
       grid-column: 3 / span 2;
       grid-row: 2;
@@ -169,24 +213,28 @@ const StyledTopFooter = styled.div`
       justify-content: auto;
       grid-template: auto auto / 1fr auto;
       display: grid;
-      grid-gap: 1.5rem 2rem;
     }
+    
   }
-  address {
-    width: 110%;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    grid-column-gap: 0.8rem;
-    align-items: baseline;
-    > svg {
-      justify-self: center;
-      color: var(--main-text);
-    }
-    > p {
-      grid-column: span 2;
-    }
-  }
+  
 `
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const StyledBottomFooter = styled.div`
   width: 100%;
@@ -197,8 +245,9 @@ const StyledBottomFooter = styled.div`
     display: flex;
     flex-wrap: wrap;
     padding: 2rem 5%;
-    justify-content: center;
-    align-items: center;
+    justify-content: start;
+    align-content: center;
+    align-items: baseline;
     > p, a, ul, li {
       color: var(--color-light-2);
       margin: 0;
@@ -206,8 +255,8 @@ const StyledBottomFooter = styled.div`
       justify-self: center;
     }
     > p {
-      padding-bottom: 0.8rem;
-      padding-top: 0.8rem;
+      padding-top: 0.4rem;
+      font-size: 0.6rem;
     }
     > ul {
       display: none;
@@ -215,7 +264,7 @@ const StyledBottomFooter = styled.div`
       padding-top: 0.8rem;
       padding-bottom: 0.8rem;
       > li {
-        margin-right: 2.5rem;
+        margin-right: 2.3rem;
         > a {
           position: relative;
           :hover {
@@ -224,7 +273,7 @@ const StyledBottomFooter = styled.div`
           ::after {
             content: "";
             position: absolute;
-            bottom: -20px;
+            bottom: -16px;
             left: 50%;
             height: 3px;
             width: 0;
@@ -243,6 +292,10 @@ const StyledBottomFooter = styled.div`
   @media (min-width: 480px) {
     > div {
       justify-content: space-between;
+    }
+  }
+  @media (min-width:651px) {
+    > div {
       > ul {
         display: flex;
       }

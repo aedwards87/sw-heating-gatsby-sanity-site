@@ -18,6 +18,9 @@ const S = {
     @media(min-width: 980px) {
       height: 70px;
     }
+    @media(min-width: 650px) {
+      height: 60px;
+    }
   `
 }
 

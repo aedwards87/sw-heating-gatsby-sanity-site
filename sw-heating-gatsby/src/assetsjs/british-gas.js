@@ -32,6 +32,9 @@ const S = {
     @media(min-width: 980px) {
       height: 74px;
     }
+    @media(min-width: 650px) {
+      height: 64px;
+    }
   `
 }
 
