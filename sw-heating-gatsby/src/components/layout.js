@@ -40,14 +40,10 @@ const Layout = ({ allSanityWork, children }) => {
     }}
     >
       <Header siteTitle={data.site.siteMetadata.title} ref={ref} />
-      <div
-        style={{
-          margin: `${navBarHeight}px auto 0`,
-        }}
-      >
+      <div style={{ margin: `${navBarHeight}px auto 0` }} >
         <main>{children}</main>
       </div>
-      <Footer navBarHeight={navBarHeight} />
+      <Footer />
     </UserContext.Provider>
   )
 }

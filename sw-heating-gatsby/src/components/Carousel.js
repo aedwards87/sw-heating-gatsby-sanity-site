@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 import { UserContext } from '../components/index'
 import { useTransition } from 'react-spring'
@@ -18,12 +18,12 @@ const slides = [
 ]
 
 
-const Carousel = () => {
-  const navBarHeight = useContext(UserContext)
+const Carousel = ({ navbarheight }) => {
+  // const navBarHeight = useContext(UserContext)
   const [index, setIndex] = useState(0)
 
   const nextSlide = () => setIndex(state => (state + 1) % 5)
-  const targetSlide = (e) => setIndex(parseInt(e.target.value)) 
+  const targetSlide = (e) => setIndex(parseInt(e.target.value))
 
   // useEffect(() => {
   //   const Timer = setInterval(() => {
@@ -40,14 +40,14 @@ const Carousel = () => {
   })
 
   return (
-    <S.Carousel navBarHeight={navBarHeight} >
+    <S.Carousel navbarheight={navbarheight} >
       {transitions.map(({ item, props, key }) => {
         const Slide = slides[item]
         return <Slide key={key} style={props} click={nextSlide} />
       })}
       <S.ButtonsContainer>
-        {slides.map((_, i) => 
-          <CarouselButton key={uuidv4()} click={targetSlide} value={i} index={index} /> 
+        {slides.map((_, i) =>
+          <CarouselButton key={uuidv4()} click={targetSlide} value={i} index={index} />
         )}
       </S.ButtonsContainer>
     </S.Carousel>
@@ -58,7 +58,7 @@ const S = {
   Carousel: styled.div`
     position: absolute;
     right: 0;
-    top: -${({ navBarHeight }) => navBarHeight.navBarHeight}px;
+    top: -${({ navbarheight }) => navbarheight.navBarHeight}px;
     width: 100%;
     min-height: 500px;
     height: 120vh;

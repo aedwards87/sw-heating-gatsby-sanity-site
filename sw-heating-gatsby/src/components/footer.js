@@ -5,10 +5,11 @@ import { Link } from "gatsby"
 import { navLinks } from './header'
 import { SWHeatingLogo, Facebook, BritishGas, Ciphe, EnvAgency, Vaillant, Phone, Email, Mobile } from "../assetsjs/index";
 
+const uuidv4 = require('uuid/v4')
 
-const footer = ({ navBarHeight }) => {
+const footer = () => {
   return (
-    <StyledFooterContainer height={navBarHeight}>
+    <StyledFooterContainer>
       <StyledTopFooter>
         <ul>
           <li className="item1">
@@ -18,8 +19,10 @@ const footer = ({ navBarHeight }) => {
             <p>Fully insured</p>
           </li>
           <li className="item2">
-            <strong>Like us on</strong>
-            <Facebook />
+            <a href="/">
+              <strong>Like us on</strong>
+              <Facebook />
+            </a>
           </li>
           <li className="item3">
             <h3>Contact info:</h3>
@@ -43,10 +46,10 @@ const footer = ({ navBarHeight }) => {
             </div>
           </li>
           <li className="item5">
-            <BritishGas />
-            <Vaillant />
-            <Ciphe />
-            <EnvAgency />
+            <a href="/"><BritishGas /></a>
+            <a href="/"><Vaillant /></a>
+            <a href="/"><Ciphe /></a>
+            <a href="/"><EnvAgency /></a>
           </li>
         </ul>
       </StyledTopFooter>
@@ -54,9 +57,9 @@ const footer = ({ navBarHeight }) => {
         <div>
           <ul>
             {navLinks.map(navLink =>
-              <li key={navLink}>
-                <Link to={`/${navLink.toLowerCase()}`}>
-                  {navLink}
+              <li key={`${navLink.title}-${Date.now()}`}>
+                <Link to={`/${navLink.title.toLowerCase()}`}>
+                  {navLink.title}
                 </Link>
               </li>
             )}
@@ -69,10 +72,8 @@ const footer = ({ navBarHeight }) => {
 }
 
 const StyledFooterContainer = styled.footer`
-  /* height: ${({ height }) => `calc(90vh - ${height}px)`}; */
   background: var(--light-bg);
   font-size: 0.9rem;
-  /* font-weight: var(--bold); */
   ul {
     list-style: none;
     height: 100%;
@@ -109,13 +110,15 @@ const StyledTopFooter = styled.div`
   .item2 {
     justify-self: end;
     align-self: start;
-    display: flex;
-    align-items: center;
-  }
-  .item2 > strong {
-    color: #1877F2;
-    font-size: 0.95rem;
-    padding-right: 1rem;
+    > a {
+      color: #1877F2;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      > strong {
+        margin-right: 1rem;
+      }
+    }
   }
   .item3, .item4 {
     grid-column: span 2;
@@ -133,6 +136,7 @@ const StyledTopFooter = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(60px, auto));
     justify-items: center;
     justify-content: start;
+    align-items: end;
     grid-gap: 1.5rem 2rem;
     > svg {
       align-self: end;
@@ -172,7 +176,7 @@ const StyledTopFooter = styled.div`
     address {
       width: 100%;
     }
-    .item2 > strong {
+    .item2 > a > strong {
       display: none;
     }
   }
@@ -199,7 +203,7 @@ const StyledTopFooter = styled.div`
         display: inline-block;
       }
     }
-    .item4  {
+    .item4 {
       width: 120%;
       margin-left: 30px;
       > div {
@@ -210,7 +214,6 @@ const StyledTopFooter = styled.div`
       grid-column: 3 / span 2;
       grid-row: 2;
       justify-items: end;
-      justify-content: auto;
       grid-template: auto auto / 1fr auto;
       display: grid;
     }

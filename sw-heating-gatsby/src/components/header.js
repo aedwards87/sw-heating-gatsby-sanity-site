@@ -3,8 +3,30 @@ import PropTypes from "prop-types"
 import React, { useState, useEffect } from "react"
 import styled from 'styled-components'
 import { SWHeatingLogo } from "../assetsjs/index";
+import { Toggle, Dropdown } from './index'
 
-export const navLinks = ['Services', 'Gallery', 'About', 'Reviews', 'Contact']
+export const navLinks = [
+  {
+    title: 'Services',
+    dropdown: true
+  },
+  {
+    title: 'Gallery',
+    dropdown: false
+  },
+  {
+    title: 'About',
+    dropdown: false
+  },
+  {
+    title: 'Reviews',
+    dropdown: false
+  },
+  {
+    title: 'Contact',
+    dropdown: false
+  },
+]
 
 const Header = (props, ref) => {
 
@@ -23,11 +45,13 @@ const Header = (props, ref) => {
     })
   })
 
-  // TODO: Create a hook to check if at top of page 
-  // to change state in order to make the background transparent
-
   return (
-    <StyledHeader id="header" goingUp={scrollUp ? true : false} position={currentPosition} ref={ref} >
+    <StyledHeader
+      id="header"
+      goingUp={scrollUp ? true : false}
+      position={currentPosition}
+      ref={ref}
+    >
       <div>
         <div>
           <Link to="/">
@@ -37,19 +61,23 @@ const Header = (props, ref) => {
         <nav>
           <ul>
             {navLinks.map(navLink =>
-              <li key={navLink}>
-                <Link
-                  to={`/${navLink.toLowerCase()}`}
-                  className={scrollUp ? 'active' : null}
-                >
-                  {navLink
-
-                    // if navLink.dropdown === true show component
-                    // Have it display: none but with navLink:hover display: block;
-
-                  
-                  }
-                </Link>
+              <li key={navLink.title} style={{ position: 'relative' }} className="bob">
+                <Toggle>
+                  {({ on, toggle }) => (
+                    <>
+                      <Link
+                        // to={`/${navLink.title.toLowerCase()}`}
+                        to="/"
+                        className={scrollUp ? 'active' : null, 'bob'}
+                      >
+                        {navLink.title}
+                        {/* // if navLink.dropdown === true show component
+                          // Have it display: none but with navLink:hover display: block; */}
+                      </Link>
+                      {navLink.dropdown && <Dropdown type={navLink.title} className="dropdown" />}
+                    </>
+                  )}
+                </Toggle>
               </li>
             )}
           </ul>
@@ -77,10 +105,12 @@ const StyledHeader = styled.header`
     justify-content: space-between;
     align-items: center;
   }
-  /* > div > h1 {
-    font-size: 1.5rem;
-    margin: 0;
-  } */
+  .dropdown {
+    display: none;
+  }
+  div > nav > ul > li:hover .dropdown {
+    display: block;
+  }
   nav { height: 100%; display: none; }
   a {
     color: var(--main-text);
@@ -90,13 +120,13 @@ const StyledHeader = styled.header`
     margin: 0;
     position: relative;
   }
-  ul > li > a {
+  div > nav > ul > li > a {
     transition: all 0.3s ease;
     :hover {
       color: ${({ goingUp, position }) => position === 0 || !goingUp ? 'var(--main-text)' : 'var(--primary-two)'}
     }
   }
-  ul > li > a::after {
+  div > nav > ul > li > a::after {
     content: "";
     position: absolute;
     bottom: -20px;
@@ -107,34 +137,39 @@ const StyledHeader = styled.header`
     transition: all 0.3s ease;
     /* mix-blend-mode: exclusion; */
   }
-  ul > li > a:hover::after,
-  ul > li > a:active::after {
+  div > nav > ul > li > a:hover::after,
+  div > nav > ul > li > a:active::after {
     left: 0;
     width: 100%;
   }
-  ul {
+  a:hover .dropdown {
+    display: none;
+  }
+
+  div > nav > ul {
     list-style: none;
     display: flex;
     align-items: center;
     height: 100%;
     margin: 0;
+    > li {
+      margin: 0;
+      padding: 0.5rem 1.15rem;
+      transition: all 0.3s ease;
+    }
   }
-  li {
-    margin: 0;
-    padding: 0.5rem 1.15rem;
-    transition: all 0.3s ease;
-  }
-  ul > li:last-child {
+  
+  div > nav > ul > li:last-child {
     padding-right: 0;
   }
   @media (min-width: 980px) {
     svg { height: 55px; }
     nav { display: block; }
-    li { padding-left: 1.4rem; padding-right: 1.4rem }
+    nav > ul > li { padding-left: 1.4rem; padding-right: 1.4rem }
     transition: li 0.3s ease;
   }
   @media (min-width: 1600px) {
-    li { padding-left: 2.15rem; padding-right: 2.15rem }
+    nav > ul > li { padding-left: 2.15rem; padding-right: 2.15rem }
   }
 `
 

@@ -8,6 +8,10 @@ import Footer from '../components/footer'
 import Image from '../components/image'
 import { UserContext } from './layout'
 import Carousel from './carousel'
+import GradientButton from './GradientButton'
+import Dropdown from './Dropdown'
+// import DropdownList from './DropdownList'
+import Toggle from './Toggle'
 
 export {
   Head,
@@ -20,4 +24,8 @@ export {
   Image,
   UserContext,
   Carousel,
+  GradientButton,
+  Dropdown,
+  // DropdownList,
+  Toggle,
 }

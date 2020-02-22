@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Mobile = ({ height = 18, className }) => {
+const Mobile = ({ height = 17.5, className }) => {
   return (
     <svg height={height} className={className} viewBox="0 0 12 17" xmlns="http://www.w3.org/2000/svg">
       <path d="m9.6429 0h-8.0357c-0.88634 0-1.6071 0.7208-1.6071 1.6071v12.857c0 0.8863 0.7208 1.6071 1.6071 1.6071h8.0357c0.88634 0 1.6071-0.7208 1.6071-1.6071v-12.857c0-0.88634-0.7208-1.6071-1.6071-1.6071zm-8.0357 12.054v-10.446h8.0357l0.0016 10.446h-8.0373z" fill="#073642" />

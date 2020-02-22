@@ -2,8 +2,8 @@ import React, { useContext } from 'react'
 // import Image from 'gatsby-image'
 import styled from 'styled-components'
 import { Link } from "gatsby"
-import { UserContext, Carousel } from './index'
-import { HeadFlameBackground, CarouselDropletMask } from '../assetsjs/index'
+import { UserContext, Carousel, GradientButton } from './index'
+import { HeadFlameBackground } from '../assetsjs/index'
 
 
 const Head = ({ sanityLandingPage }) => {
@@ -13,16 +13,11 @@ const Head = ({ sanityLandingPage }) => {
     <StyledHeadContainer navBarHeight={navBarHeight}>
       <div>
         <div>
-          <h1>
-            {sanityLandingPage.title}
-          </h1>
-          <p>
-            {sanityLandingPage.strapLine}
-          </p>
+          <h1>{sanityLandingPage.title}</h1>
+          <p>{sanityLandingPage.strapLine}</p>
+          {console.log(navBarHeight)}
           <Link to='/'>
-            <StyledButtonBorder>
-              <StyledButton>Contact us</StyledButton>
-            </StyledButtonBorder>
+            <GradientButton children="Contact us" />
           </Link>
         </div>
 
@@ -40,8 +35,8 @@ const Head = ({ sanityLandingPage }) => {
         alt={sanityLandingPage.title} 
        /> */}
 
-        <HeadFlameBackground navBarHeight={navBarHeight} />
-        <Carousel navBarHeight={navBarHeight} />
+        <HeadFlameBackground navbarheight={navBarHeight} />
+        <Carousel navbarheight={navBarHeight} />
       </div>
     </StyledHeadContainer>
   )
@@ -128,40 +123,6 @@ const StyledHeadContainer = styled.header`
     > div > div:first-of-type {
       width: 100%;
     }
-  }
-`
-
-const StyledButtonBorder = styled.div`
-  padding: 0.22rem;
-  border-radius: 10px;
-  background: var(--gradient-one);
-  display: inline-block;
-  transition: all 0.3s ease;
-  :hover button {
-    background: transparent;
-    color: white;
-  }
-  :hover {
-    transform: translate(0, -2px);
-    box-shadow: var(--shadow-one)
-  }
-`
-
-const StyledButton = styled.button`
-  padding: 0.8rem 1.8rem;
-  color: white;
-  background: white;
-  color: var(--main-text);
-  font-weight: var(--bolder);
-  font-size: 1.05rem;
-  border-radius: 7px;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  letter-spacing: 0.1px;
-  @media (min-width: 980px) {
-    padding: 1rem 2.2rem;
-    font-size: 1.2rem;
   }
 `
 

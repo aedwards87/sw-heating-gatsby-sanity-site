@@ -35,20 +35,21 @@ const ContactForm = () => {
             </li>
             {inputTitles.map(({ name, type }) =>
               <li key={name}>
-                <label>{name}: </label>
-                {type !== 'textarea' ?
-                  <S.Input
-                    type={type}
-                    name={`${name.toLowerCase().replace(/\s+/g, '-')}`}
-                    placeholder={`${name} here...`}
-                  />
-                  :
-                  <S.Input
-                    as={type}
-                    name={`${name.toLowerCase().replace(/\s+/g, '-')}`}
-                    placeholder={`${name} here...`}
-                  />
-                }
+                <label>{name}:
+                  {type !== 'textarea' ?
+                    <S.Input
+                      type={type}
+                      name={`${name.toLowerCase().replace(/\s+/g, '-')}`}
+                    // placeholder={`${name} here...`}
+                    />
+                    :
+                    <S.Input
+                      as={type}
+                      name={`${name.toLowerCase().replace(/\s+/g, '-')}`}
+                    // placeholder={`${name} here...`}
+                    />
+                  }
+                </label>
               </li>
             )}
             <li>
@@ -91,7 +92,6 @@ const S = {
     /* padding: 0; */
     > li {
       display: grid;
-      grid-template-columns: 110px 1fr;
       border-radius: 12px;
       border: 2px solid white;
       font-size: 1.05rem;
@@ -112,11 +112,13 @@ const S = {
       }
       > label {
         height: 100%;
+        width: 100%;
         display: grid;
-        /* align-items: center; */
+        grid-template-columns: 110px 1fr;
+        align-items: baseline;
+        justify-items: start;
         padding-left: 1.1rem;
         font-weight: var(--bold);
-        margin-top: 1rem;
       }
       > button {
         background: transparent;
@@ -142,16 +144,17 @@ const S = {
     }
 
     @media (min-width: 440px) {
-      > label {
+      > li > label {
         padding-left: 1.8rem;
+        grid-template-columns: 120px 1fr;
       }
       /* > li {
-        grid-template-columns: 150px 1fr;
+        grid-template-columns: 120px 1fr;
       } */
     }
     @media (min-width: 481px) {
-      > li {
-        grid-template-columns: 150px 1fr;
+      > li > label {
+        /* grid-template-columns: 150px 1fr; */
       }
     }
     @media (min-width: 880px) {
@@ -179,6 +182,7 @@ const S = {
     box-sizing: border-box;
     resize: none;
     height: ${({ as }) => as && '300px'};
+    :hover,
     :focus {
       background: rgba(var(--primary-one-raw),0.3);
     }

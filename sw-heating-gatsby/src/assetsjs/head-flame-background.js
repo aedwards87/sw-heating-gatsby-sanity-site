@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const HeadFlameBackground = ({ height, className, navBarHeight }) => {
+const HeadFlameBackground = ({ height, className, navbarheight }) => {
   return (
-    <StyledContainer navBarHeight={navBarHeight} >
+    <StyledContainer navbarheight={navbarheight} >
       <StyledHeadFlameBackgroundSVG height={height} className={className} viewBox="0 0 1371 1235" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M539.131 0C539.131 0 123.731 156.3 170.831 478.3C170.831 478.3 143.731 436.2 86.0313 423.5C86.0313 423.5 151.431 568.7 35.6313 732.7C-119.869 956.2 226.131 1457.3 1220.83 1122.9C1275.03 1104.7 1324.83 1082.9 1370.73 1058.1V0H539.131Z" fill="url(#paint0_radial)" />
         <defs>
@@ -29,7 +29,7 @@ const HeadFlameBackground = ({ height, className, navBarHeight }) => {
 
 const StyledContainer = styled.div`
   position: absolute;
-  top: -${({ navBarHeight }) => navBarHeight.navBarHeight}px;
+  top: -${({ navbarheight }) => navbarheight.navBarHeight}px;
   right: 0;
   height: auto;
   width: 55%;
