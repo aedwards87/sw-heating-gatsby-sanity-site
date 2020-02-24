@@ -23,7 +23,7 @@ const S = {
   CarouselDropletHousing: styled(AnimCarouselDropletHousing)`
     position: relative;
     right: -3.75vw;
-    width: 476px;
+    /* width: 476px; */
     width: 44%;
     height: ${({ navBarHeight }) => `calc(100% - (${navBarHeight.navBarHeight}px) - 15px)`};
     top: ${({ navBarHeight }) => `calc(${navBarHeight.navBarHeight}px - 15px)`};

@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-// import image1 from '../images/image1.jpg'
 
 const CarouselDropletMaskSVG = ({ height = '80vh', click, imageURI }) => {
   return (
@@ -48,14 +47,14 @@ const S = {
     position: absolute;
     top: 0;
     left: 0;
-    transform: scale(1.013);
+    transform: scale(1.02);
     min-height: 550px;
     transition: min-height 0.5s ease;
     cursor: pointer;
     @media (min-height: 680px) and (max-width: 1678px),
     (min-height: 930px) and (min-width: 1678px) {
       top: 45%;
-      transform: translateY(-55%) scale(1.013);
+      transform: translateY(-55%) scale(1.02);
     }
     @media (min-width: 1680px) {
       min-height: 800px;

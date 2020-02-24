@@ -5,11 +5,17 @@ import { Link } from "gatsby"
 
 
 
-const Dropdown = ({ children, toggle, className, on, setOn }) => {
+const Dropdown = ({ children, toggle, className, on, setOn, style }) => {
   const { allSanityWork } = useContext(UserContext)
 
   return (
-    <S.DropdownHousing className={className}>
+    <S.DropdownHousing 
+      className={className} 
+      style={style} 
+      onMouseEnter={() => setOn(true)} 
+      onMouseLeave={() => setOn(false)} 
+      on={() => setOn(false)} 
+    >
       <S.DropdownListHousing>
         {allSanityWork.edges.map(({ node: work }) => (
           <li key={work.slug.current}>
@@ -28,6 +34,7 @@ const S = {
   DropdownHousing: styled.div`
     position: absolute;
     top: 2.6rem;
+    /* top: 2rem; */
     left: -100%;
     transform: translate(9%, 0);
     min-width: 280px;
