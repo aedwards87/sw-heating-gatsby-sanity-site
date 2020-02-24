@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import React, { useState, useEffect } from "react"
 import styled from 'styled-components'
 import { SWHeatingLogo } from "../assetsjs/index";
-import { Toggle, Dropdown } from './index'
+import { Dropdown } from './index'
 
 export const navLinks = [
   {
@@ -29,6 +29,15 @@ export const navLinks = [
 ]
 
 const Header = (props, ref) => {
+
+  const [on, setOn] = useState(false)
+  const toggle = () => setOn(!on)
+
+  const scrollToId = () => {
+    let element = document.querySelector('#Services')
+    element.scrollIntoView(true)
+    window.scrollBy(0, -130)
+  }
 
   // Nav Bar shows on scroll up and vanishes on scroll down
   const [currentPosition, setCurrentPosition] = useState(window.pageYOffset)
@@ -62,22 +71,32 @@ const Header = (props, ref) => {
           <ul>
             {navLinks.map(navLink =>
               <li key={navLink.title} style={{ position: 'relative' }} className="bob">
-                <Toggle>
-                  {({ on, toggle }) => (
-                    <>
-                      <Link
-                        // to={`/${navLink.title.toLowerCase()}`}
-                        to="/"
-                        className={scrollUp ? 'active' : null, 'bob'}
-                      >
-                        {navLink.title}
-                        {/* // if navLink.dropdown === true show component
-                          // Have it display: none but with navLink:hover display: block; */}
-                      </Link>
-                      {navLink.dropdown && <Dropdown type={navLink.title} className="dropdown" />}
-                    </>
-                  )}
-                </Toggle>
+                {navLink.title !== 'Services' ?
+                  <StyledLink
+                    // to={`/${navLink.title.toLowerCase()}`}
+                    to="/"
+                    className={scrollUp ? 'active' : null, 'bob'}
+                  >
+                    {navLink.title}
+                  </StyledLink>
+                  :
+                  <StyledLink
+                    as="button"
+                    className={scrollUp ? 'active' : null}
+                    onClick={navLink.title === 'Services' && scrollToId}
+                    onMouseDown={navLink.title === 'Services' && toggle}
+                    onMouseUp={navLink.title === 'Services' && toggle}
+                  >
+                    {navLink.title}
+                    {console.log(on)}
+                  </StyledLink>
+                }
+
+                {navLink.dropdown &&
+                  <Dropdown
+                    type={navLink.title}
+                    className={`dropdown ${on && 'hide'}`}
+                  />}
               </li>
             )}
           </ul>
@@ -87,6 +106,36 @@ const Header = (props, ref) => {
   )
 }
 
+const StyledLink = styled(Link)`
+    color: var(--main-text);
+    font-weight: var(--bolder);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin: 0;
+    position: relative;
+    transition: all 0.3s ease;
+    :hover {
+      color: ${({ goingUp, position }) => position === 0 || !goingUp ? 'var(--main-text)' : 'var(--primary-two)'}
+    }
+  ::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    height: 3px;
+    width: 0;
+    background: ${({ goingUp, position }) => position === 0 || !goingUp ? 'var(--primary-two)' : 'var(--primary-one)'};
+    transition: all 0.3s ease;
+  }
+  :hover::after,
+  :active::after {
+    left: 0;
+    width: 100%;
+  }
+  :hover .dropdown {
+    display: none;
+  }
+`
 
 const StyledHeader = styled.header`
   position: fixed;
@@ -105,14 +154,20 @@ const StyledHeader = styled.header`
     justify-content: space-between;
     align-items: center;
   }
-  .dropdown {
+  button {
+    background: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+  }
+  .dropdown, .hide {
     display: none;
   }
   div > nav > ul > li:hover .dropdown {
     display: block;
   }
   nav { height: 100%; display: none; }
-  a {
+  /* a {
     color: var(--main-text);
     font-weight: var(--bolder);
     font-weight: 600;
@@ -135,7 +190,6 @@ const StyledHeader = styled.header`
     width: 0;
     background: ${({ goingUp, position }) => position === 0 || !goingUp ? 'var(--primary-two)' : 'var(--primary-one)'};
     transition: all 0.3s ease;
-    /* mix-blend-mode: exclusion; */
   }
   div > nav > ul > li > a:hover::after,
   div > nav > ul > li > a:active::after {
@@ -144,7 +198,7 @@ const StyledHeader = styled.header`
   }
   a:hover .dropdown {
     display: none;
-  }
+  } */
 
   div > nav > ul {
     list-style: none;

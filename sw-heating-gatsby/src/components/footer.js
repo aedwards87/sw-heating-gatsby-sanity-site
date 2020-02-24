@@ -96,6 +96,9 @@ const StyledTopFooter = styled.div`
   margin: 0 auto;
   padding: 5rem 5%;
   height: 100%;
+  a:hover {
+    color: var(--primary-two)
+  }
   > ul {
     display: grid;
     grid-template-columns: 250px auto;

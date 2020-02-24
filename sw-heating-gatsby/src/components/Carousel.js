@@ -1,20 +1,24 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { UserContext } from '../components/index'
 import { useTransition } from 'react-spring'
 import { CarouselDroplet } from '../assetsjs/index'
 import CarouselButton from '../components/Carousel/CarouselButton'
 import image1 from '../images/image1.jpg'
+import image2 from '../images/image2.jpg'
+import image3 from '../images/image3.jpg'
+import image4 from '../images/image4.jpg'
+import image5 from '../images/image5.jpg'
 
 
 const uuidv4 = require('uuid/v4') // Creates Unique Identifier keu
 
 const slides = [
   ({ style, click }) => <CarouselDroplet style={style} click={click} imageURI={image1} />,
-  ({ style, click }) => <CarouselDroplet style={style} click={click} imageURI={image1} />,
-  ({ style, click }) => <CarouselDroplet style={style} click={click} imageURI={image1} />,
-  ({ style, click }) => <CarouselDroplet style={style} click={click} imageURI={image1} />,
-  ({ style, click }) => <CarouselDroplet style={style} click={click} imageURI={image1} />
+  ({ style, click }) => <CarouselDroplet style={style} click={click} imageURI={image2} />,
+  ({ style, click }) => <CarouselDroplet style={style} click={click} imageURI={image3} />,
+  ({ style, click }) => <CarouselDroplet style={style} click={click} imageURI={image4} />,
+  ({ style, click }) => <CarouselDroplet style={style} click={click} imageURI={image5} />
 ]
 
 
@@ -45,11 +49,11 @@ const Carousel = ({ navbarheight }) => {
         const Slide = slides[item]
         return <Slide key={key} style={props} click={nextSlide} />
       })}
-      <S.ButtonsContainer>
+      {/* <S.ButtonsContainer>
         {slides.map((_, i) =>
           <CarouselButton key={uuidv4()} click={targetSlide} value={i} index={index} />
         )}
-      </S.ButtonsContainer>
+      </S.ButtonsContainer> */}
     </S.Carousel>
   )
 }

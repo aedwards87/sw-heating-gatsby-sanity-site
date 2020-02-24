@@ -8,7 +8,7 @@ const Services = ({ allSanityWork }) => {
   return (
     <StyledServicesContainer>
       <div>
-        <StyledTitle>Our services</StyledTitle>
+        <StyledTitle id="Services" >Our services</StyledTitle>
         <StyledList>
           {allSanityWork.edges.map(({ node: work }) => (
             <li key={work.slug.current}>

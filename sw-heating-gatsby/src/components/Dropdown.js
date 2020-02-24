@@ -5,7 +5,7 @@ import { Link } from "gatsby"
 
 
 
-const Dropdown = ({ children, toggle, className }) => {
+const Dropdown = ({ children, toggle, className, on, setOn }) => {
   const { allSanityWork } = useContext(UserContext)
 
   return (

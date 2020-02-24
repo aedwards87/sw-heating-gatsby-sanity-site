@@ -26,9 +26,22 @@ const ContactForm = () => {
   return (
     <S.ContactForm>
       <div>
-        <StyledTitle center lineColor="white" color="white">Contact us</StyledTitle>
+        <StyledTitle
+          center
+          lineColor="white"
+          color="white"
+          id="contact-form"
+        >
+          Contact us
+        </StyledTitle>
         <form>
-          <input type="hidden" name="form-name" value="contact-form" />
+
+          <input
+            type="hidden"
+            name="form-name"
+            value="contact-form"
+          // hidden input for Netlify to do there magic
+          />
           <S.ListContainer>
             <li>
               <p>If you have any questions or queries, or would like to request a quote or even book an appointment, please get in touch with a member of our team using the form below:</p>
@@ -119,6 +132,7 @@ const S = {
         justify-items: start;
         padding-left: 1.1rem;
         font-weight: var(--bold);
+        cursor: text;
       }
       > button {
         background: transparent;
