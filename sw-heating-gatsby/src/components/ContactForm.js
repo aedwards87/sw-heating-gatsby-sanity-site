@@ -1,26 +1,55 @@
-import React from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import styled from 'styled-components';
 import { StyledTitle } from '../components-styled/index'
 
+const inputTitles = [
+  {
+    name: 'Full name',
+    type: 'text'
+  },
+  {
+    name: 'Email',
+    type: 'email'
+  },
+  {
+    name: 'Subject',
+    type: 'text'
+  },
+  {
+    name: 'Message',
+    type: 'textarea'
+  }
+]
+
+
 const ContactForm = () => {
-  const inputTitles = [
-    {
-      name: 'Full name',
-      type: 'text'
-    },
-    {
-      name: 'Email',
-      type: 'email'
-    },
-    {
-      name: 'Subject',
-      type: 'text'
-    },
-    {
-      name: 'Message',
-      type: 'textarea'
-    }
-  ]
+
+  const [state, setState] = useState([{ 
+    fullname: "",
+    email: "",
+    subject: "",
+    message: "",
+  }])
+  const [disable, setDisable] = useState("")
+
+
+  // Disable button in initial render.
+  useEffect(() => {
+    setDisable(true);
+  }, []);
+
+
+  const handleChange = useCallback(e => {
+    const name = e.target.name
+    const value = e.target.value
+    
+    setState(state => ([{
+      [name]: state[0][name] = value
+    }]))
+    
+    console.log(state[0][name])
+
+  })
 
 
   return (
@@ -48,18 +77,21 @@ const ContactForm = () => {
             </li>
             {inputTitles.map(({ name, type }) =>
               <li key={name}>
-                <label>{name}:
-                  {type !== 'textarea' ?
+                <label htmlFor={`${name.toLowerCase().replace(/\s+/g, '')}`}>{name}:
+                  {type !== 'textarea' ? // not equal to
+                  <>
+                  {/* {console.log(`${name.toLowerCase().replace(/\s+/g, '')}`)} */}
                     <S.Input
                       type={type}
-                      name={`${name.toLowerCase().replace(/\s+/g, '-')}`}
-                    // placeholder={`${name} here...`}
+                      name={`${name.toLowerCase().replace(/\s+/g, '')}`}
+                      value={state[0][`${name.toLowerCase().replace(/\s+/g, '')}`]}
+                      onChange={handleChange}
                     />
+                    </>
                     :
                     <S.Input
                       as={type}
                       name={`${name.toLowerCase().replace(/\s+/g, '-')}`}
-                    // placeholder={`${name} here...`}
                     />
                   }
                 </label>

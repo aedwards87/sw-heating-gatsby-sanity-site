@@ -88,16 +88,13 @@ const Header = (props, ref) => {
                     role="button"
                     aria-haspopup="true"
                     aria-expanded={on ? true : null}
-                    className={
-                      scrollUp ? 'active' : null
-                    }
+                    className={scrollUp ? 'active' : null}
                     onClick={() => scrollToId(navLink.title)}
-                    onMouseUp={() => setOn(false)}
                     onMouseOver={() => setOn(true)}
                     onMouseLeave={() => setOn(false)}
+                    onMouseUp={() => setOn(false)}
                     onFocus={() => setOn(true)}
-                    onMouseOut={() => setOn(false)}
-                  // onBlur={() => setOn(false)} On tab out setOn(false)
+                    onBlur={() => setOn(false)} 
                   >
                     {navLink.title}
                   </S.Link>
@@ -105,13 +102,10 @@ const Header = (props, ref) => {
                 {transition.map(({ item, key, props }) => (
                   item && navLink.dropdown &&
                   <AnimDropdown
-                    type={navLink.title}
+                    key={key}
                     setOn={setOn}
                     style={props}
-                    className={
-                      !on ? 'hide' : null,
-                      !scrollUp ? 'hide' : null
-                    }
+                    className={!on && 'hide'}
                   />
                 ))}
               </li>
@@ -137,7 +131,7 @@ const S = {
     :hover {
       color: ${({ goingUp, position }) => position === 0 || !goingUp ? 'var(--main-text)' : 'var(--primary-two)'}
     }
-    ::after {
+    /* ::after {
       content: "";
       position: absolute;
       bottom: -20px;
@@ -146,7 +140,7 @@ const S = {
       width: 0;
       background: ${({ goingUp, position }) => position === 0 || !goingUp ? 'var(--primary-two)' : 'var(--primary-one)'};
       transition: all 0.3s ease;
-    }
+    } */
     :hover::after,
     :focus::after,
     :active::after {
@@ -176,13 +170,17 @@ const S = {
     }
     button {
       background: none;
-      outline: none;
       border: none;
       cursor: pointer;
+      outline: none;
     }
-    .dropdown, .hide {
+    .hide {
       display: none;
     }
+    .show {
+      display: block;
+    }
+    
     div > nav > ul > li:hover .dropdown {
       display: block;
     }
@@ -198,20 +196,22 @@ const S = {
     div > nav > ul > li > button, 
     div > nav > ul > li > a {
       transition: all 0.3s ease;
+      padding: 1rem 0;
       :hover {
-        color: ${({ goingUp, position }) => position === 0 || !goingUp ? 'var(--main-text)' : 'var(--primary-two)'}
+        color: ${({ goingUp, position }) => position === 0 || !goingUp ? 'var(--primary-three)' : 'var(--primary-two)'}
       }
     }
     div > nav > ul > li > a::after {
       content: "";
       position: absolute;
-      bottom: -20px;
+      bottom: -5px;
       left: 50%;
       height: 3px;
       width: 0;
       background: ${({ goingUp, position }) => position === 0 || !goingUp ? 'var(--primary-two)' : 'var(--primary-one)'};
       transition: all 0.3s ease;
     }
+
     /* div > nav > ul > li > a:hover::after,
     div > nav > ul > li > a:active::after {
       left: 0;
@@ -229,7 +229,7 @@ const S = {
       margin: 0;
       > li {
         margin: 0;
-        padding: 0.5rem 1.15rem;
+        padding: 0 1.15rem;
         transition: all 0.3s ease;
       }
     }

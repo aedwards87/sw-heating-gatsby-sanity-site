@@ -5,8 +5,16 @@ import { Link } from "gatsby"
 
 
 
-const Dropdown = ({ children, toggle, className, on, setOn, style }) => {
+const Dropdown = ({ children, toggle, className, on, setOn, style, onFocus, onBlur }) => {
   const { allSanityWork } = useContext(UserContext)
+
+  const blur = (e) => {
+    // console.log(e.currentTarget)
+    if (!e.currentTarget.contains(document.activeElement)) {
+      console.log('blurred')
+    }
+  }
+
 
   return (
     <S.DropdownHousing
@@ -15,9 +23,8 @@ const Dropdown = ({ children, toggle, className, on, setOn, style }) => {
       onMouseEnter={() => setOn(true)}
       onMouseLeave={() => setOn(false)}
     >
-      <S.DropdownListHousing
-      >
-        {allSanityWork.edges.map(({ node: work }, i) => (
+      <S.DropdownListHousing>
+        {allSanityWork.edges.map(({ node: work }) => (
           <li
             key={work.slug.current}
           >
@@ -35,7 +42,7 @@ const Dropdown = ({ children, toggle, className, on, setOn, style }) => {
 const S = {
   DropdownHousing: styled.div`
     position: absolute;
-    top: 2.6rem;
+    top: 3.3rem;
     /* top: 2rem; */
     left: -100%;
     transform: translate(9%, 0);
@@ -82,15 +89,15 @@ const S = {
     padding: 1.8rem 2rem;
     /* margin: 5px; */
     > li > a {
-      /* font-size: 0.85rem; */
-      /* font-weight: var(--bold); */
+      font-size: 0.9rem;
+      font-weight: var(--bold);
       line-height: 1.3rem;
       transition: all .3s ease;
       width: 100%;
       display: block;
       :hover {
         color: var(--primary-two);
-        transform: translate(5%, 0) scale(1.05);
+        transform: translate(5%, 0) scale(1.07);
     }
   `
 }
