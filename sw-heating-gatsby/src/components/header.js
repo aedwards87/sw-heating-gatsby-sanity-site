@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import { SWHeatingLogo } from "../assetsjs/index";
 import { Dropdown } from './index'
 import { scrollToId } from '../helpers/scrollToId'
-import {useTransition, animated} from 'react-spring'
+import { useTransition, animated } from 'react-spring'
 
 
 export const navLinks = [
@@ -34,7 +34,7 @@ export const navLinks = [
 const Header = (props, ref) => {
   const [on, setOn] = useState(false)
   const toggle = () => setOn(!on)
-  
+
   // Nav Bar shows on scroll up and vanishes on scroll down
   const [currentPosition, setCurrentPosition] = useState(window.pageYOffset)
   const [scrollUp, setScrollUp] = useState(false)
@@ -52,11 +52,11 @@ const Header = (props, ref) => {
   })
 
   const transition = useTransition(on, null, {
-    from: { opacity: 0 },
+    from: { position: 'absolute', opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 }
   })
-  
+
 
   return (
     <S.Header
@@ -88,13 +88,16 @@ const Header = (props, ref) => {
                     role="button"
                     aria-haspopup="true"
                     aria-expanded={on ? true : null}
-                    className={scrollUp ? 'active' : null}
+                    className={
+                      scrollUp ? 'active' : null
+                    }
                     onClick={() => scrollToId(navLink.title)}
                     onMouseUp={() => setOn(false)}
                     onMouseOver={() => setOn(true)}
                     onMouseLeave={() => setOn(false)}
                     onFocus={() => setOn(true)}
-                    // onBlur={() => setOn(false)} On tab out setOn(false)
+                    onMouseOut={() => setOn(false)}
+                  // onBlur={() => setOn(false)} On tab out setOn(false)
                   >
                     {navLink.title}
                   </S.Link>
@@ -102,10 +105,13 @@ const Header = (props, ref) => {
                 {transition.map(({ item, key, props }) => (
                   item && navLink.dropdown &&
                   <AnimDropdown
-                    key={key}
                     type={navLink.title}
                     setOn={setOn}
                     style={props}
+                    className={
+                      !on ? 'hide' : null,
+                      !scrollUp ? 'hide' : null
+                    }
                   />
                 ))}
               </li>

@@ -9,16 +9,18 @@ const Dropdown = ({ children, toggle, className, on, setOn, style }) => {
   const { allSanityWork } = useContext(UserContext)
 
   return (
-    <S.DropdownHousing 
-      className={className} 
-      style={style} 
-      onMouseEnter={() => setOn(true)} 
-      onMouseLeave={() => setOn(false)} 
-      on={() => setOn(false)} 
+    <S.DropdownHousing
+      className={className}
+      style={style}
+      onMouseEnter={() => setOn(true)}
+      onMouseLeave={() => setOn(false)}
     >
-      <S.DropdownListHousing>
-        {allSanityWork.edges.map(({ node: work }) => (
-          <li key={work.slug.current}>
+      <S.DropdownListHousing
+      >
+        {allSanityWork.edges.map(({ node: work }, i) => (
+          <li
+            key={work.slug.current}
+          >
             <Link to={`/${work.slug.current}`}>
               <span>{work.title}</span>
             </Link>
