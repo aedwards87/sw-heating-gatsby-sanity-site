@@ -5,7 +5,7 @@ import { Link } from "gatsby"
 import { navLinks } from './header'
 import { SWHeatingLogo, Facebook, BritishGas, Ciphe, EnvAgency, Vaillant, Phone, Email, Mobile } from "../assetsjs/index";
 
-const uuidv4 = require('uuid/v4')
+// const uuidv4 = require('uuid/v4')
 
 const footer = () => {
   return (

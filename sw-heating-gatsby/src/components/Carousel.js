@@ -1,17 +1,14 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
-import { UserContext } from '../components/index'
 import { useTransition } from 'react-spring'
 import { CarouselDroplet } from '../assetsjs/index'
-import CarouselButton from '../components/Carousel/CarouselButton'
+// import CarouselButton from '../components/Carousel/CarouselButton'
 import image1 from '../images/image1.jpg'
 import image2 from '../images/image2.jpg'
 import image3 from '../images/image3.jpg'
 import image4 from '../images/image4.jpg'
 import image5 from '../images/image5.jpg'
-
-
-const uuidv4 = require('uuid/v4') // Creates Unique Identifier keu
+// const uuidv4 = require('uuid/v4') // Creates Unique Identifier keu
 
 const slides = [
   ({ style, click }) => <CarouselDroplet style={style} click={click} imageURI={image1} />,
@@ -27,7 +24,7 @@ const Carousel = ({ navbarheight }) => {
   const [index, setIndex] = useState(0)
 
   const nextSlide = () => setIndex(state => (state + 1) % 5)
-  const targetSlide = (e) => setIndex(parseInt(e.target.value))
+  // const targetSlide = (e) => setIndex(parseInt(e.target.value)) // Selects slide matching button value
 
   // useEffect(() => {
   //   const Timer = setInterval(() => {

@@ -5,16 +5,8 @@ import { Link } from "gatsby"
 
 
 
-const Dropdown = ({ children, toggle, className, on, setOn, style, onFocus, onBlur }) => {
+const Dropdown = ({ className, setOn, style }) => {
   const { allSanityWork } = useContext(UserContext)
-
-  const blur = (e) => {
-    // console.log(e.currentTarget)
-    if (!e.currentTarget.contains(document.activeElement)) {
-      console.log('blurred')
-    }
-  }
-
 
   return (
     <S.DropdownHousing

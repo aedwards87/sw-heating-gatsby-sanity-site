@@ -33,7 +33,6 @@ export const navLinks = [
 
 const Header = (props, ref) => {
   const [on, setOn] = useState(false)
-  const toggle = () => setOn(!on)
 
   // Nav Bar shows on scroll up and vanishes on scroll down
   const [currentPosition, setCurrentPosition] = useState(window.pageYOffset)
@@ -74,11 +73,14 @@ const Header = (props, ref) => {
         <nav>
           <ul>
             {navLinks.map(navLink =>
-              <li key={navLink.title} style={{ position: 'relative' }} className="bob">
+              <li
+                key={`${navLink.title}-${Date.now()}`}
+                style={{ position: 'relative' }}
+              >
                 {!navLink.dropdown ?
                   <S.Link
                     to={`/${navLink.title.toLowerCase()}`}
-                    className={scrollUp ? 'active' : null, 'bob'}
+                    className={scrollUp ? 'active' : null}
                   >
                     {navLink.title}
                   </S.Link>
@@ -88,13 +90,13 @@ const Header = (props, ref) => {
                     role="button"
                     aria-haspopup="true"
                     aria-expanded={on ? true : null}
-                    className={scrollUp ? 'active' : null}
-                    onClick={() => scrollToId(navLink.title)}
+                    className={scrollUp ? 'active' : null} //
+                    onClick={() => scrollToId(navLink.title)} //Scrolls to top of element matching the ID
                     onMouseOver={() => setOn(true)}
                     onMouseLeave={() => setOn(false)}
                     onMouseUp={() => setOn(false)}
                     onFocus={() => setOn(true)}
-                    onBlur={() => setOn(false)} 
+                    onBlur={() => setOn(false)}
                   >
                     {navLink.title}
                   </S.Link>
