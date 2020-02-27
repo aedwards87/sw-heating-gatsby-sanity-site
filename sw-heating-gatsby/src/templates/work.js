@@ -3,7 +3,9 @@ import { graphql } from 'gatsby'
 import Image from 'gatsby-image'
 import styled from 'styled-components'
 import Layout from "../components/layout"
+import { Services } from '../components/index' 
 import { StyledTitle } from '../components-styled/index'
+
 
 export const query = graphql`
   query ($slug: String) {
@@ -28,16 +30,25 @@ export default ({ data }) => {
       <S.Housing>
         <div>
           <div>
-            <StyledTitle as="h1" main >{data.sanityWork.title}</StyledTitle>
+            <StyledTitle as="h1" >{data.sanityWork.title}</StyledTitle>
           </div>
-          <article>
-            <Image fluid={data.sanityWork.mainImage.asset.fluid} alt={data.sanityWork.title} />
-          </article>
           <div>
             <p>{data.sanityWork._rawDescription[0].children[0].text}</p>
           </div>
+          <S.ImageContainer>
+            <Image fluid={data.sanityWork.mainImage.asset.fluid} alt={data.sanityWork.title} />
+            <Image fluid={data.sanityWork.mainImage.asset.fluid} alt={data.sanityWork.title} />
+            <Image fluid={data.sanityWork.mainImage.asset.fluid} alt={data.sanityWork.title} />
+            <Image fluid={data.sanityWork.mainImage.asset.fluid} alt={data.sanityWork.title} />
+            <Image fluid={data.sanityWork.mainImage.asset.fluid} alt={data.sanityWork.title} />
+            <Image fluid={data.sanityWork.mainImage.asset.fluid} alt={data.sanityWork.title} />
+            <Image fluid={data.sanityWork.mainImage.asset.fluid} alt={data.sanityWork.title} />
+            <Image fluid={data.sanityWork.mainImage.asset.fluid} alt={data.sanityWork.title} />
+            <Image fluid={data.sanityWork.mainImage.asset.fluid} alt={data.sanityWork.title} />
+          </S.ImageContainer>
         </div>
       </S.Housing>
+      <Services />
     </Layout>
   )
 }
@@ -48,17 +59,47 @@ const S = {
     > div {
       margin: 0 auto;
       max-width: 1900px;
-      padding: 1.8rem 5%;
+      padding: 6vmax 5%;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: auto auto;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 1fr;
       grid-column-gap: 10%;
-      > article {
-        grid-column-start: 2;
-        grid-row: 1 / span 2;
-        border-radius: 10px;
-        height: 500px;
+    };
+    @media (min-width: 980px) {
+      > div {
+        grid-template-columns: 1fr 1fr
       }
+    }
+  `,
+  ImageContainer: styled.div`
+    display: grid;
+    grid-template-columns: repeat(4, minmax(50px, 1fr));
+    grid-template-rows: repeat(3, auto);
+    grid-gap: 2vmax;
+    align-content: start;
+    div {
+      transition: all .3s ease;
+    }
+    > div:hover {
+      box-shadow: var(--shadow-one);
+      overflow: hidden;
+      transform: translate(0, -10px);
+    }
+    > .gatsby-image-wrapper {
+      border-radius: 10px;
+      max-height: 8vw;
+      img:hover {
+        transform: scale(1.1);
+        cursor: pointer;
+      }
+    }
+    > .gatsby-image-wrapper:first-of-type {
+      min-height: 35vw;
+      grid-column: 1 / -1
+    }
+    @media (min-width: 980px) {
+      grid-column-start: 2;
+      grid-row: 1 / span 2;
     }
   `
 }

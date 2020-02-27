@@ -4,19 +4,71 @@ import { UserContext } from './index'
 import { Link } from "gatsby"
 
 
+export const TempSanityWork = {
+  edges: [
+    {
+      node: {
+        title: 'Servicing & Maintenance',
+        slug: {current: 'servicing'},
+      }
+    },
+    {
+      node: {
+        title: 'Property Maintenance',
+        slug: {current: 'property-maintenance'},
+      }
+    },
+    {
+      node: {
+        title: 'Gas',
+        slug: {current: 'gas'},
+      }
+    },
+    {
+      node: {
+        title: 'Power Flushing',
+        slug: {current: 'power-flushing'},
+      }
+    },
+    {
+      node: {
+        title: 'Plumbing',
+        slug: {current: 'plumbing'},
+      }
+    },    
+    {
+      node: {
+        title: 'Boiler Installations',
+        slug: {current: 'plumbing-job-004'},
+      }
+    },    
+    {
+      node: {
+        title: 'Heating & Hot Water',
+        slug: {current: 'heating-and-hot-water'},
+      }
+    },    
+    {
+      node: {
+        title: 'Bespoke Bathrooms',
+        slug: {current: 'bespoke-bathrooms'},
+      }
+    },    
+  ]
+}
 
-const Dropdown = ({ className, setOn, style }) => {
-  const { allSanityWork } = useContext(UserContext)
 
+const Dropdown = ({ className, ToggleOn, ToggleOff, style }) => {
+  console.log(TempSanityWork)
   return (
     <S.DropdownHousing
       className={className}
       style={style}
-      onMouseEnter={() => setOn(true)}
-      onMouseLeave={() => setOn(false)}
+      onMouseEnter={ToggleOn}
+      onMouseLeave={ToggleOff}
     >
       <S.DropdownListHousing>
-        {allSanityWork.edges.map(({ node: work }) => (
+        {TempSanityWork.edges.map(({ node: work }) => (
           <li
             key={work.slug.current}
           >
@@ -35,15 +87,15 @@ const S = {
   DropdownHousing: styled.div`
     position: absolute;
     top: 3.3rem;
-    /* top: 2rem; */
-    left: -100%;
-    transform: translate(9%, 0);
-    min-width: 280px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    min-width: 295px;
     padding: 5px;
     background: var(--gradient-one);
     border-radius: 10px;
     box-shadow: var(--shadow-one);
     z-index: 99;
+    /* Triangle arrow at top of dropdown */
     ::before {
       content: "";
       height: 22px;
@@ -83,13 +135,14 @@ const S = {
     > li > a {
       font-size: 0.9rem;
       font-weight: var(--bold);
-      line-height: 1.3rem;
+      line-height: 1.4rem;
       transition: all .3s ease;
       width: 100%;
       display: block;
-      :hover {
+      :hover, :active, :focus {
         color: var(--primary-two);
         transform: translate(5%, 0) scale(1.07);
+      }
     }
   `
 }

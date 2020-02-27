@@ -55,7 +55,7 @@ const ContactForm = () => {
           center
           lineColor="white"
           color="white"
-          id="contact-form"
+          id="Contact"
         >
           Contact us
         </StyledTitle>

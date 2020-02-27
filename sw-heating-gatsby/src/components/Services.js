@@ -3,12 +3,39 @@ import Image from 'gatsby-image'
 import styled from 'styled-components'
 import { Link } from "gatsby"
 import { StyledTitle } from '../components-styled/index'
+import { useStaticQuery, graphql } from "gatsby"
 
-const Services = ({ allSanityWork }) => {
+const Services = () => {
+  const { allSanityWork } = useStaticQuery(
+    graphql`
+      query ServicesQuery {
+        allSanityWork {
+          edges {
+            node {
+              title
+              slug {
+                current
+              }
+              _rawDescription
+              mainImage {
+                asset {
+                  fluid(maxWidth: 1000) {
+                    ...GatsbySanityImageFluid
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    `
+  )
+
   return (
     <StyledServicesContainer>
       <div>
         <StyledTitle id="Services" >Our services</StyledTitle>
+        {console.log(allSanityWork)}
         <StyledList>
           {allSanityWork.edges.map(({ node: work }) => (
             <li key={work.slug.current}>
@@ -89,6 +116,7 @@ const StyledList = styled.ul`
       background: white;
       box-shadow: var(--shadow-one);
       transform: translate(0, -10px);
+    }
     :hover a h3 {
       color: var(--primary-three);
     }

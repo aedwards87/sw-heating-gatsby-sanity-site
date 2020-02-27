@@ -1,43 +1,30 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useCallback } from "react"
 import styled from 'styled-components'
 import { SWHeatingLogo } from "../assetsjs/index";
 import { Dropdown } from './index'
-import { scrollToId } from '../helpers/scrollToId'
+import { scrollToElement, scrollToParent, getOffSetTopValue } from '../helpers/scrollTo'
 import { useTransition, animated } from 'react-spring'
 
 
 export const navLinks = [
-  {
-    title: 'Services',
-    dropdown: true
-  },
-  {
-    title: 'Gallery',
-    dropdown: false
-  },
-  {
-    title: 'About',
-    dropdown: false
-  },
-  {
-    title: 'Reviews',
-    dropdown: false
-  },
-  {
-    title: 'Contact',
-    dropdown: false
-  },
+  { title: 'Services', dropdown: true, link: false },
+  { title: 'Gallery', dropdown: false, link: true },
+  { title: 'About', dropdown: false, link: false },
+  { title: 'Reviews', dropdown: false, link: true },
+  { title: 'Contact', dropdown: false, link: false }
 ]
 
 const Header = (props, ref) => {
   const [on, setOn] = useState(false)
-
-  // Nav Bar shows on scroll up and vanishes on scroll down
   const [currentPosition, setCurrentPosition] = useState(window.pageYOffset)
   const [scrollUp, setScrollUp] = useState(false)
 
+  const ToggleOn = useCallback(() => {setOn(true)}, [on])
+  const ToggleOff = useCallback(() => {setOn(false)}, [on])
+
+  // Listens for the when the page is scrolled up
   useEffect(() => {
     const handleScroll = () => {
       const newPosition = window.pageYOffset
@@ -55,7 +42,6 @@ const Header = (props, ref) => {
     enter: { opacity: 1 },
     leave: { opacity: 0 }
   })
-
 
   return (
     <S.Header
@@ -76,7 +62,13 @@ const Header = (props, ref) => {
               <li key={navLink.title} style={{ position: 'relative' }} >
                 {!navLink.dropdown ?
                   <S.Link
-                    to={`/${navLink.title.toLowerCase()}`}
+                    as={!navLink.link && "button"}
+                    to={navLink.link && `/${navLink.title.toLowerCase()}`}
+                    onClick={!navLink.link && (() => 
+                      getOffSetTopValue(navLink.title) < 400 ? 
+                      scrollToParent(navLink.title) :
+                      scrollToElement(navLink.title)
+                    )}
                     className={scrollUp ? 'active' : null}
                   >
                     {navLink.title}
@@ -88,12 +80,12 @@ const Header = (props, ref) => {
                     aria-haspopup="true"
                     aria-expanded={on ? true : null}
                     className={scrollUp ? 'active' : null}
-                    onClick={() => scrollToId(navLink.title)}
-                    onMouseOver={() => setOn(true)}
-                    onMouseLeave={() => setOn(false)}
-                    onMouseUp={() => setOn(false)}
-                    onFocus={() => setOn(true)}
-                    onBlur={() => setOn(false)}
+                    onClick={() => scrollToElement(navLink.title)}
+                    onMouseOver={ToggleOn}
+                    onMouseLeave={ToggleOff}
+                    onMouseUp={ToggleOff}
+                    onFocus={ToggleOn}
+                    onBlur={ToggleOff}
                   >
                     {navLink.title}
                   </S.Link>
@@ -102,7 +94,8 @@ const Header = (props, ref) => {
                   item && navLink.dropdown &&
                   <AnimDropdown
                     key={key}
-                    setOn={setOn}
+                    ToggleOn={ToggleOn}
+                    ToggleOff={ToggleOff}
                     style={props}
                     className={!on && 'hide'}
                   />

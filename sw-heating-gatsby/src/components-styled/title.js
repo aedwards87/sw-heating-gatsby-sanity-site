@@ -4,7 +4,6 @@ export const StyledTitle = styled.h2`
   font-size: 2.2rem;
   margin: ${({ center }) => center && '0 auto'};
   text-align: left;
-  margin-top: ${({ main }) => main && '2rem'};
   margin-bottom: 6rem;
   position: relative;
   display: inline-block;
