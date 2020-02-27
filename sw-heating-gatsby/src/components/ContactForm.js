@@ -44,7 +44,7 @@ const ContactForm = () => {
     setState(state => ([{
       [name]: state[0][name] = value
     }]))
-  })
+  }, [])
 
   console.log(state[0])
 

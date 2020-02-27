@@ -48,7 +48,7 @@ const Header = (props, ref) => {
     return (() => {
       window.removeEventListener("scroll", handleScroll);
     })
-  })
+  }, [scrollUp, currentPosition])
 
   const transition = useTransition(on, null, {
     from: { position: 'absolute', opacity: 0 },
@@ -73,10 +73,7 @@ const Header = (props, ref) => {
         <nav>
           <ul>
             {navLinks.map(navLink =>
-              <li
-                key={`${navLink.title}-${Date.now()}`}
-                style={{ position: 'relative' }}
-              >
+              <li key={navLink.title} style={{ position: 'relative' }} >
                 {!navLink.dropdown ?
                   <S.Link
                     to={`/${navLink.title.toLowerCase()}`}
@@ -90,8 +87,8 @@ const Header = (props, ref) => {
                     role="button"
                     aria-haspopup="true"
                     aria-expanded={on ? true : null}
-                    className={scrollUp ? 'active' : null} //
-                    onClick={() => scrollToId(navLink.title)} //Scrolls to top of element matching the ID
+                    className={scrollUp ? 'active' : null}
+                    onClick={() => scrollToId(navLink.title)}
                     onMouseOver={() => setOn(true)}
                     onMouseLeave={() => setOn(false)}
                     onMouseUp={() => setOn(false)}
