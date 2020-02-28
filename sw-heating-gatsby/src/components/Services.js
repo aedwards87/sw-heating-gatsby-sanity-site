@@ -35,7 +35,6 @@ const Services = () => {
     <StyledServicesContainer>
       <div>
         <StyledTitle id="Services" >Our services</StyledTitle>
-        {console.log(allSanityWork)}
         <StyledList>
           {allSanityWork.edges.map(({ node: work }) => (
             <li key={work.slug.current}>

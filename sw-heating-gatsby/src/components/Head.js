@@ -15,7 +15,6 @@ const Head = ({ sanityLandingPage }) => {
         <div>
           <h1>{sanityLandingPage.title}</h1>
           <p>{sanityLandingPage.strapLine}</p>
-          {console.log(navBarHeight)}
           <Link to='/'>
             <GradientButton children="Contact us" />
           </Link>

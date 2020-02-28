@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import Image from 'gatsby-image'
 import styled from 'styled-components'
 import Layout from "../components/layout"
-import { Services } from '../components/index' 
+import { Services } from '../components/index'
 import { StyledTitle } from '../components-styled/index'
 
 
@@ -83,17 +83,19 @@ const S = {
     > div:hover {
       box-shadow: var(--shadow-one);
       overflow: hidden;
-      transform: translate(0, -10px);
+      transform: translate(0, -10px) scale(1.1);
     }
-    > .gatsby-image-wrapper {
+    > div:first-of-type:hover {
+      transform: translate(0, -3vmax) scale(1.1);
+    }
+    .gatsby-image-wrapper {
       border-radius: 10px;
       max-height: 8vw;
       img:hover {
-        transform: scale(1.1);
         cursor: pointer;
       }
     }
-    > .gatsby-image-wrapper:first-of-type {
+    .gatsby-image-wrapper:first-of-type {
       min-height: 35vw;
       grid-column: 1 / -1
     }

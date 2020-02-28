@@ -21,8 +21,8 @@ const Header = (props, ref) => {
   const [currentPosition, setCurrentPosition] = useState(window.pageYOffset)
   const [scrollUp, setScrollUp] = useState(false)
 
-  const ToggleOn = useCallback(() => {setOn(true)}, [on])
-  const ToggleOff = useCallback(() => {setOn(false)}, [on])
+  const ToggleOn = useCallback(() => { setOn(true) }, [on])
+  const ToggleOff = useCallback(() => { setOn(false) }, [on])
 
   // Listens for the when the page is scrolled up
   useEffect(() => {
@@ -62,14 +62,17 @@ const Header = (props, ref) => {
               <li key={navLink.title} style={{ position: 'relative' }} >
                 {!navLink.dropdown ?
                   <S.Link
-                    as={!navLink.link && "button"}
-                    to={navLink.link && `/${navLink.title.toLowerCase()}`}
-                    onClick={!navLink.link && (() => 
-                      getOffSetTopValue(navLink.title) < 400 ? 
-                      scrollToParent(navLink.title) :
-                      scrollToElement(navLink.title)
-                    )}
-                    className={scrollUp ? 'active' : null}
+                    // as={!navLink.link ? "button" : null}
+                    to={navLink.link ? `/${navLink.title.toLowerCase()}` : `/`}
+                    // TODO: take code from conference app, we need to add navLink.title to search
+                    // bar and create a function that takes us to the desired section/id 
+                    onClick={!navLink.link ? (() =>
+                      getOffSetTopValue(navLink.title) < 400 ?
+                        scrollToParent(navLink.title) :
+                        scrollToElement(navLink.title)
+                    ) : null}
+                    activeClassName="active"
+                  // className={scrollUp ? 'active' : null}
                   >
                     {navLink.title}
                   </S.Link>
@@ -79,7 +82,9 @@ const Header = (props, ref) => {
                     role="button"
                     aria-haspopup="true"
                     aria-expanded={on ? true : null}
-                    className={scrollUp ? 'active' : null}
+                    // activeClassName="active" Doesnt work because it is a button,
+                    // TODO: give it an active class when #hashtag in the url
+                    // className={url === `#${navLink.title}` && "active"}
                     onClick={() => scrollToElement(navLink.title)}
                     onMouseOver={ToggleOn}
                     onMouseLeave={ToggleOff}
@@ -105,7 +110,7 @@ const Header = (props, ref) => {
           </ul>
         </nav>
       </div>
-    </S.Header>
+    </S.Header >
   )
 }
 
@@ -135,10 +140,13 @@ const S = {
     } */
     :hover::after,
     :focus::after,
-    :active::after {
+    :active::after,
+    &.active::after,
+    button.active::after {
       left: 0;
       width: 100%;
     }
+    
     :hover .dropdown {
       display: none;
     }
@@ -189,11 +197,12 @@ const S = {
     div > nav > ul > li > a {
       transition: all 0.3s ease;
       padding: 1rem 0;
-      :hover {
+      :hover, &.active {
         color: ${({ goingUp, position }) => position === 0 || !goingUp ? 'var(--primary-three)' : 'var(--primary-two)'}
       }
     }
-    div > nav > ul > li > a::after {
+    div > nav > ul > li > a::after,
+    button.active::after {
       content: "";
       position: absolute;
       bottom: -5px;

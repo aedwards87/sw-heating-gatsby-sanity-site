@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
-import { UserContext } from './index'
 import { Link } from "gatsby"
 
 
@@ -9,51 +8,51 @@ export const TempSanityWork = {
     {
       node: {
         title: 'Servicing & Maintenance',
-        slug: {current: 'servicing'},
+        slug: { current: 'servicing' },
       }
     },
     {
       node: {
         title: 'Property Maintenance',
-        slug: {current: 'property-maintenance'},
+        slug: { current: 'property-maintenance' },
       }
     },
     {
       node: {
         title: 'Gas',
-        slug: {current: 'gas'},
+        slug: { current: 'gas' },
       }
     },
     {
       node: {
         title: 'Power Flushing',
-        slug: {current: 'power-flushing'},
+        slug: { current: 'power-flushing' },
       }
     },
     {
       node: {
         title: 'Plumbing',
-        slug: {current: 'plumbing'},
+        slug: { current: 'plumbing' },
       }
-    },    
+    },
     {
       node: {
         title: 'Boiler Installations',
-        slug: {current: 'plumbing-job-004'},
+        slug: { current: 'plumbing-job-004' },
       }
-    },    
+    },
     {
       node: {
         title: 'Heating & Hot Water',
-        slug: {current: 'heating-and-hot-water'},
+        slug: { current: 'heating-and-hot-water' },
       }
-    },    
+    },
     {
       node: {
         title: 'Bespoke Bathrooms',
-        slug: {current: 'bespoke-bathrooms'},
+        slug: { current: 'bespoke-bathrooms' },
       }
-    },    
+    },
   ]
 }
 
