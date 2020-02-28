@@ -15,7 +15,7 @@ const Feedback = () => {
   return (
     <StyledFeedBack>
       <div>
-        <StyledTitle smallerLine="232" >What our customers<br/>say about us</StyledTitle>
+        <StyledTitle /*smallerLine="252"*/ >What our customers<br/>say about us</StyledTitle>
       </div>
       <StyledListContainer className="items" ref={ref} >
         {/* {allSanityWork.edges.map(({ node: work }) => (
@@ -111,7 +111,7 @@ const StyledFeedBack = styled.section`
   }
   > div {
     max-width: 1900px;
-    padding: 7rem 5% 0;
+    padding: 0 5%;
     margin: 0 auto;
   }
 `

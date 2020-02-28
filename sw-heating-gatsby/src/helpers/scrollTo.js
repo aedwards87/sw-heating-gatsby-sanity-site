@@ -3,7 +3,9 @@ export const scrollToElement = (idName) => {
   // element.scrollIntoView(true)
   // window.scrollTo(0, -130)
   if (document.querySelector(`#${idName}`)) 
-  return window.scrollTo(0, document.querySelector(`#${idName}`).offsetTop)
+  // return window.scrollTo(0, document.querySelector(`#${idName}`).offsetTop)
+  return window.scrollTo(0, `${document.querySelector(`#${idName}`).offsetTop + 127}`)
+  
 }
 
 export const scrollToParent = (idName) => {

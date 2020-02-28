@@ -51,14 +51,16 @@ const ContactForm = () => {
   return (
     <S.ContactForm>
       <div>
-        <StyledTitle
-          center
-          lineColor="white"
-          color="white"
-          id="Contact"
-        >
-          Contact us
-        </StyledTitle>
+        <div style={{marginBottom: '6rem', display: 'grid'}}>
+          <StyledTitle
+            center
+            lineColor="white"
+            color="white"
+            id="Contact"
+          >
+            Contact us
+          </StyledTitle>
+        </div>
         <form>
 
           <input
@@ -112,13 +114,13 @@ const S = {
     > div {
       max-width: 1900px;
       height: 100%;
-      padding: 7rem 5%;
+      padding: 0 5% 7rem;
       /* text-align: left; */
       margin: auto auto;
     }
     @media(min-width: 480px) {
       > div {
-        text-align: center;
+        /* text-align: center; */
       }
     }
   `,
@@ -198,7 +200,7 @@ const S = {
         /* grid-template-columns: 150px 1fr; */
       }
     }
-    @media (min-width: 880px) {
+    @media (min-width: 980px) {
       grid-template-columns: repeat(6, 1fr);
       > li {
         grid-column: 2 / span 4;

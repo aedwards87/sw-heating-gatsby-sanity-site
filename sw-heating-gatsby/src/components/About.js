@@ -5,9 +5,11 @@ import SWLettersSVG from "../assetsjs/sw-letters";
 
 const About = ( /* allSanityAboutUs */) => {
   return (
-    <StyledAboutContainer >
+    <StyledAboutContainer>
       <div>
-        <StyledTitle id="About">Who we are?</StyledTitle>
+        <div style={{marginBottom: '6rem'}}>
+          <StyledTitle id="About" tall>Who we are?</StyledTitle>
+        </div>
         <StyledContainer>
           <div>
             <p>
@@ -30,7 +32,7 @@ const StyledAboutContainer = styled.section`
   > div {
     max-width: 1900px;
     margin: 0 auto;
-    padding: 7rem 5%;
+    padding: 0 5% 7rem;
   }
   p { 
     width: 100%;
@@ -40,7 +42,6 @@ const StyledAboutContainer = styled.section`
     margin-bottom: 0;
   }
   @media(min-width: 800px) {
-    padding-top: 11vw;
     p { 
       width: 85%;
       z-index: 999;

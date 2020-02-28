@@ -1,11 +1,12 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import React, { useState, useEffect, useCallback } from "react"
+import React, { useState, useEffect, useCallback, useMemo } from "react"
 import styled from 'styled-components'
 import { SWHeatingLogo } from "../assetsjs/index";
 import { Dropdown } from './index'
 import { scrollToElement, scrollToParent, getOffSetTopValue } from '../helpers/scrollTo'
 import { useTransition, animated } from 'react-spring'
+import { navigate } from '@reach/router';
 
 
 export const navLinks = [
@@ -62,17 +63,15 @@ const Header = (props, ref) => {
               <li key={navLink.title} style={{ position: 'relative' }} >
                 {!navLink.dropdown ?
                   <S.Link
-                    // as={!navLink.link ? "button" : null}
-                    to={navLink.link ? `/${navLink.title.toLowerCase()}` : `/`}
+                    to={navLink.link ? `/${navLink.title.toLowerCase()}` : `/#${navLink.title}`}
                     // TODO: take code from conference app, we need to add navLink.title to search
                     // bar and create a function that takes us to the desired section/id 
-                    onClick={!navLink.link ? (() =>
-                      getOffSetTopValue(navLink.title) < 400 ?
-                        scrollToParent(navLink.title) :
-                        scrollToElement(navLink.title)
-                    ) : null}
+                    
+                    // onClick={!navLink.link ? (() =>
+                    //   getOffSetTopValue(navLink.title) < 400 ?
+                    //   scrollToParent(navLink.title) : scrollToElement(navLink.title)
+                    // ) : null}
                     activeClassName="active"
-                  // className={scrollUp ? 'active' : null}
                   >
                     {navLink.title}
                   </S.Link>

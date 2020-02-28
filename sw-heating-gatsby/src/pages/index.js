@@ -2,11 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-
-import {
-  Head,
-  Services, About, Feedback, ContactForm
-} from '../components/index'
+import { Head,Services, About, Feedback, ContactForm } from '../components/index'
 
 export const pageQuery = graphql`
   query HomePageQuery {

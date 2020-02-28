@@ -34,7 +34,9 @@ const Services = () => {
   return (
     <StyledServicesContainer>
       <div>
-        <StyledTitle id="Services" >Our services</StyledTitle>
+        <div style={{marginBottom: '6rem'}}>
+          <StyledTitle id="Services" >Our services</StyledTitle>
+        </div>
         <StyledList>
           {allSanityWork.edges.map(({ node: work }) => (
             <li key={work.slug.current}>
@@ -71,7 +73,7 @@ const StyledServicesContainer = styled.section`
   > div {
     max-width: 1900px;
     margin: 0 auto;
-    padding: 7rem 5%;
+    padding: 0 5% 7rem;
   }
 `
 

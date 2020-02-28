@@ -27,13 +27,30 @@ export default ({ data }) => {
 
   return (
     <Layout>
-      <S.Housing>
+      <S.TemplateContainer>
         <div>
-          <div>
-            <StyledTitle as="h1" >{data.sanityWork.title}</StyledTitle>
+          <div style={{marginBottom: '6rem'}}>
+            <StyledTitle as="h1" normal >{data.sanityWork.title}</StyledTitle>
           </div>
           <div>
-            <p>{data.sanityWork._rawDescription[0].children[0].text}</p>
+            <p>
+              {/* {data.sanityWork._rawDescription[0].children[0].text.split('\n')} */}
+
+              {data.sanityWork._rawDescription[0].children[0].text.split('\n').map((text, i) => (
+                <React.Fragment key={i}>
+                  {text}
+                  {data.sanityWork._rawDescription[0].children[0].text.split('\n').length - 1 ===
+                  i ? null : (
+                    <>
+                      <br />
+                    </>
+                  )}
+                </React.Fragment>
+              ))}
+
+            </p>
+
+              
           </div>
           <S.ImageContainer>
             <Image fluid={data.sanityWork.mainImage.asset.fluid} alt={data.sanityWork.title} />
@@ -47,7 +64,7 @@ export default ({ data }) => {
             <Image fluid={data.sanityWork.mainImage.asset.fluid} alt={data.sanityWork.title} />
           </S.ImageContainer>
         </div>
-      </S.Housing>
+      </S.TemplateContainer>
       <Services />
     </Layout>
   )
@@ -55,7 +72,7 @@ export default ({ data }) => {
 
 
 const S = {
-  Housing: styled.section`
+  TemplateContainer: styled.section`
     > div {
       margin: 0 auto;
       max-width: 1900px;
@@ -84,6 +101,8 @@ const S = {
       box-shadow: var(--shadow-one);
       overflow: hidden;
       transform: translate(0, -10px) scale(1.1);
+      cursor: pointer;
+
     }
     > div:first-of-type:hover {
       transform: translate(0, -3vmax) scale(1.1);
@@ -91,13 +110,13 @@ const S = {
     .gatsby-image-wrapper {
       border-radius: 10px;
       max-height: 8vw;
-      img:hover {
-        cursor: pointer;
-      }
     }
     .gatsby-image-wrapper:first-of-type {
       min-height: 35vw;
       grid-column: 1 / -1
+    }
+    .gatsby-image-wrapper:not(:first-child) {
+      min-height: 8vw;
     }
     @media (min-width: 980px) {
       grid-column-start: 2;

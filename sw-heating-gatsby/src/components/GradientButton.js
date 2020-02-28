@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const GradientButton = ({ children }) => {
+const GradientButton = ({ children, onClick }) => {
   return (
-    <S.GradientButtonOutside>
-      <S.GradientButtonInside children={children} />
+    <S.GradientButtonOutside onClick={onClick}>
+      <S.GradientButtonInside children={children} onClick={onClick} />
     </S.GradientButtonOutside>
   )
 }
