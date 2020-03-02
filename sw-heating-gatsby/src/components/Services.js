@@ -34,8 +34,8 @@ const Services = () => {
   return (
     <StyledServicesContainer>
       <div>
-        <div style={{marginBottom: '6rem'}}>
-          <StyledTitle id="Services" >Our services</StyledTitle>
+        <div style={{ marginBottom: '6rem' }}>
+          <StyledTitle id="services" >Our services</StyledTitle>
         </div>
         <StyledList>
           {allSanityWork.edges.map(({ node: work }) => (

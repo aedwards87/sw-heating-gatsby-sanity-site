@@ -15,7 +15,7 @@ const Feedback = () => {
   return (
     <StyledFeedBack>
       <div>
-        <StyledTitle /*smallerLine="252"*/ >What our customers<br/>say about us</StyledTitle>
+        <StyledTitle id="feedback" /*smallerLine="252"*/ >What our customers<br />say about us</StyledTitle>
       </div>
       <StyledListContainer className="items" ref={ref} >
         {/* {allSanityWork.edges.map(({ node: work }) => (

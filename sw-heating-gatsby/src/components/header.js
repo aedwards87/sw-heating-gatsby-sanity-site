@@ -4,9 +4,9 @@ import React, { useState, useEffect, useCallback, useMemo } from "react"
 import styled from 'styled-components'
 import { SWHeatingLogo } from "../assetsjs/index";
 import { Dropdown } from './index'
-import { scrollToElement, scrollToParent, getOffSetTopValue } from '../helpers/scrollTo'
+import { scrollToElement } from '../helpers/scrollTo'
 import { useTransition, animated } from 'react-spring'
-import { navigate } from '@reach/router';
+// import { navigate } from '@reach/router';
 
 
 export const navLinks = [
@@ -63,10 +63,10 @@ const Header = (props, ref) => {
               <li key={navLink.title} style={{ position: 'relative' }} >
                 {!navLink.dropdown ?
                   <S.Link
-                    to={navLink.link ? `/${navLink.title.toLowerCase()}` : `/#${navLink.title}`}
+                    to={navLink.link ? `/${navLink.title.toLowerCase()}` : `/#${navLink.title.toLowerCase()}`}
                     // TODO: take code from conference app, we need to add navLink.title to search
                     // bar and create a function that takes us to the desired section/id 
-                    
+
                     // onClick={!navLink.link ? (() =>
                     //   getOffSetTopValue(navLink.title) < 400 ?
                     //   scrollToParent(navLink.title) : scrollToElement(navLink.title)

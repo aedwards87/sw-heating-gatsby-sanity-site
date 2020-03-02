@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { Link } from "gatsby"
 import { navLinks } from './header'
 import { SWHeatingLogo, Facebook, BritishGas, Ciphe, EnvAgency, Vaillant, Phone, Email, Mobile } from "../assetsjs/index";
+import { scrollToElement } from '../helpers/scrollTo'
 
 // const uuidv4 = require('uuid/v4')
 
@@ -57,10 +58,23 @@ const footer = () => {
         <div>
           <ul>
             {navLinks.map(navLink =>
-              <li key={`${navLink.title}-${Date.now()}`}>
-                <Link to={`/${navLink.title.toLowerCase()}`}>
-                  {navLink.title}
-                </Link>
+              <li key={`${navLink.title}-${Date.now()}`} >
+                {!navLink.dropdown ?
+                  <Link
+                    to={navLink.link ? `/${navLink.title.toLowerCase()}` : `/#${navLink.title.toLowerCase()}`}
+                    activeClassName="active"
+                  >
+                    {navLink.title}
+                  </Link>
+                  :
+                  <Link
+                    as="button"
+                    role="button"
+                    onClick={() => scrollToElement(navLink.title)}
+                  >
+                    {navLink.title}
+                  </Link>
+                }
               </li>
             )}
           </ul>
@@ -224,20 +238,6 @@ const StyledTopFooter = styled.div`
   }
   
 `
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

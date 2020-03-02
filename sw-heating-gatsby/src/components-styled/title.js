@@ -26,8 +26,6 @@ export const StyledTitle = styled.h2`
     left: 0;
     height: 5px;
     width: 100%;
-    /* width: ${({ smallerLine }) => !smallerLine ? '100%' : '61.5%'}; */
-    /* min-width: ${({ smallerLine }) => !smallerLine ? 'auto' : `${smallerLine}px`}; */
     background: ${({ lineColor }) => !lineColor ? 'var(--gradient-one)' : lineColor};
   }
   @media (min-width: 980px) {
@@ -35,12 +33,7 @@ export const StyledTitle = styled.h2`
   }
   @media(min-width: 800px) {
     ::before {
-      height: ${({tall}) => !tall ? '7rem' : 'calc(7rem + 11vw)'};
+      height: ${({ tall }) => !tall ? '7rem' : 'calc(7rem + 3vw)'};
     }
   }
-  /* @media (min-width: 420px) {
-    ::after {
-      width: ${({ smallerLine }) => !smallerLine ? '100%' : '100%'};
-    }
-  } */
 `

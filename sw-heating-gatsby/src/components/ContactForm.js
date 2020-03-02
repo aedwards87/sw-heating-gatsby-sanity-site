@@ -51,12 +51,12 @@ const ContactForm = () => {
   return (
     <S.ContactForm>
       <div>
-        <div style={{marginBottom: '6rem', display: 'grid'}}>
+        <div style={{ marginBottom: '6rem', display: 'grid' }}>
           <StyledTitle
             center
             lineColor="white"
             color="white"
-            id="Contact"
+            id="contact"
           >
             Contact us
           </StyledTitle>

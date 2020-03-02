@@ -7,10 +7,10 @@ const About = ( /* allSanityAboutUs */) => {
   return (
     <StyledAboutContainer>
       <div>
-        <div style={{marginBottom: '6rem'}}>
-          <StyledTitle id="About" tall>Who we are?</StyledTitle>
+        <div style={{ marginBottom: '6rem' }}>
+          <StyledTitle id="about" tall >Who we are?</StyledTitle>
         </div>
-        <StyledContainer>
+        <StyledContentContainer>
           <div>
             <p>
               <strong style={{ fontSize: '1.3rem', lineHeight: '1.43' }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempus urna et pharetra pharetra massa massa ultricies mi quis.</strong>
@@ -19,7 +19,7 @@ const About = ( /* allSanityAboutUs */) => {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempus urna et pharetra pharetra massa massa ultricies mi quis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempus urna et pharetra pharetra massa massa ultricies mi quis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempus urna et pharetra pharetra massa massa ultricies mi quis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempus urna et pharetra pharetra massa massa ultricies mi quis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempus urna et pharetra pharetra massa massa ultricies mi quis.
             </p>
           </div>
-        </StyledContainer>
+        </StyledContentContainer>
       </div>
       <StyledSWLettersSVG />
     </StyledAboutContainer>
@@ -32,7 +32,7 @@ const StyledAboutContainer = styled.section`
   > div {
     max-width: 1900px;
     margin: 0 auto;
-    padding: 0 5% 7rem;
+    padding: 8vw 5% 7rem;
   }
   p { 
     width: 100%;
@@ -49,7 +49,7 @@ const StyledAboutContainer = styled.section`
   }
 `
 
-const StyledContainer = styled.div`
+const StyledContentContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 6%;
