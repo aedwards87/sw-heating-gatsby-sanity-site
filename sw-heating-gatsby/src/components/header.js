@@ -4,16 +4,15 @@ import React, { useState, useEffect, useCallback, useMemo } from "react"
 import styled from 'styled-components'
 import { SWHeatingLogo } from "../assetsjs/index";
 import { Dropdown } from './index'
-import { scrollToElement } from '../helpers/scrollTo'
 import { useTransition, animated } from 'react-spring'
-// import { navigate } from '@reach/router';
+import { Location } from "@reach/router";
 
 
 export const navLinks = [
   { title: 'Services', dropdown: true, link: false },
   { title: 'Gallery', dropdown: false, link: true },
-  { title: 'About', dropdown: false, link: false },
   { title: 'Reviews', dropdown: false, link: true },
+  { title: 'About', dropdown: false, link: false },
   { title: 'Contact', dropdown: false, link: false }
 ]
 
@@ -45,71 +44,81 @@ const Header = (props, ref) => {
   })
 
   return (
-    <S.Header
-      id="header"
-      goingUp={scrollUp ? true : false}
-      position={currentPosition}
-      ref={ref}
-    >
-      <div>
-        <div>
-          <Link to="/">
-            <SWHeatingLogo height="49" />
-          </Link>
-        </div>
-        <nav>
-          <ul>
-            {navLinks.map(navLink =>
-              <li key={navLink.title} style={{ position: 'relative' }} >
-                {!navLink.dropdown ?
-                  <S.Link
-                    to={navLink.link ? `/${navLink.title.toLowerCase()}` : `/#${navLink.title.toLowerCase()}`}
-                    // TODO: take code from conference app, we need to add navLink.title to search
-                    // bar and create a function that takes us to the desired section/id 
+    <Location>
+      {({ location })=> 
+        <S.Header
+          id="header"
+          goingUp={scrollUp ? true : false}
+          position={currentPosition}
+          ref={ref}
+        >
+          <div>
+          {console.log(location.pathname)}
 
-                    // onClick={!navLink.link ? (() =>
-                    //   getOffSetTopValue(navLink.title) < 400 ?
-                    //   scrollToParent(navLink.title) : scrollToElement(navLink.title)
-                    // ) : null}
-                    activeClassName="active"
-                  >
-                    {navLink.title}
-                  </S.Link>
-                  :
-                  <S.Link
-                    as="button"
-                    role="button"
-                    aria-haspopup="true"
-                    aria-expanded={on ? true : null}
-                    // activeClassName="active" Doesnt work because it is a button,
-                    // TODO: give it an active class when #hashtag in the url
-                    // className={url === `#${navLink.title}` && "active"}
-                    onClick={() => scrollToElement(navLink.title)}
-                    onMouseOver={ToggleOn}
-                    onMouseLeave={ToggleOff}
-                    onMouseUp={ToggleOff}
-                    onFocus={ToggleOn}
-                    onBlur={ToggleOff}
-                  >
-                    {navLink.title}
-                  </S.Link>
-                }
-                {transition.map(({ item, key, props }) => (
-                  item && navLink.dropdown &&
-                  <AnimDropdown
-                    key={key}
-                    ToggleOn={ToggleOn}
-                    ToggleOff={ToggleOff}
-                    style={props}
-                    className={!on && 'hide'}
-                  />
-                ))}
-              </li>
-            )}
-          </ul>
-        </nav>
-      </div>
-    </S.Header >
+            <div>
+              <Link to="/">
+                <SWHeatingLogo height="49" />
+              </Link>
+            </div>
+            <nav>
+              <ul>
+                {navLinks.map(navLink =>
+                  <li key={navLink.title} style={{ position: 'relative' }} >
+                    {!navLink.dropdown ?
+                      <S.Link
+                        to={navLink.link 
+                          ? `/${navLink.title.toLowerCase()}` 
+                          : `/#${navLink.title.toLowerCase()}` 
+                        }
+                        // TODO: take code from conference app, we need to add navLink.title to search
+                        // bar and create a function that takes us to the desired section/id 
+
+                        // onClick={!navLink.link ? (() =>
+                        //   getOffSetTopValue(navLink.title) < 400 ?
+                        //   scrollToParent(navLink.title) : scrollToElement(navLink.title)
+                        // ) : null}
+                        activeClassName="active"
+                      >
+                        {navLink.title}
+                      </S.Link>
+                      :
+                      <S.Link
+                        to={`${location.pathname}#${navLink.title.toLowerCase()}`}
+                        // as="button"
+                        // role="button"
+                        aria-haspopup="true"
+                        aria-expanded={on ? true : null}
+                        // activeClassName="active" Doesnt work because it is a button,
+                        // TODO: give it an active class when #hashtag in the url
+                        // className={url === `#${navLink.title}` && "active"}
+                        // onClick={() => scrollToElement(navLink.title)}
+                        onMouseOver={ToggleOn}
+                        onMouseLeave={ToggleOff}
+                        onMouseUp={ToggleOff}
+                        onFocus={ToggleOn}
+                        onBlur={ToggleOff}
+                      >
+                        {navLink.title}
+                      </S.Link>
+                    }
+                    {transition.map(({ item, key, props }) => (
+                      item && navLink.dropdown &&
+                      <AnimDropdown
+                        key={key}
+                        ToggleOn={ToggleOn}
+                        ToggleOff={ToggleOff}
+                        style={props}
+                        className={!on && 'hide'}
+                      />
+                    ))}
+                  </li>
+                )}
+              </ul>
+            </nav>
+          </div>
+        </S.Header >
+      }
+    </Location>
   )
 }
 
@@ -145,7 +154,6 @@ const S = {
       left: 0;
       width: 100%;
     }
-    
     :hover .dropdown {
       display: none;
     }

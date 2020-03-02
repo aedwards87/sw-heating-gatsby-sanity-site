@@ -13,7 +13,7 @@ const Head = ({ sanityLandingPage }) => {
   return (
     <StyledHeadContainer navBarHeight={navBarHeight}>
       <div>
-        <div>
+        <StyledContent>
           <h1>{sanityLandingPage.title}</h1>
           <p>{sanityLandingPage.strapLine}</p>
           <Link to='/#Contact'>
@@ -24,7 +24,7 @@ const Head = ({ sanityLandingPage }) => {
               // )} 
             />
           </Link>
-        </div>
+        </StyledContent>
 
         {/* <Image 
         style={{
@@ -65,22 +65,6 @@ const StyledHeadContainer = styled.header`
     grid-gap: 6%;
     align-items: center;
     transition: height .3s ease;
-    > div:first-of-type {
-      margin-bottom: 40px;
-      width: 75%;
-      z-index: 1;
-    }
-  }
-  h1 {
-    font-size: 2.8rem;
-    font-weight: var(--boldest);
-    margin-bottom: 2.5rem;
-    transition: font-size 0.5s ease;
-  }
-  p {
-    font-size: 1rem;
-    padding: 0;
-    margin-bottom: 2.5rem;
   }
   img {
     height: 100%;
@@ -91,42 +75,63 @@ const StyledHeadContainer = styled.header`
       grid-template-columns: repeat(4, 1fr);
       margin: 0 auto;
       width: 100%;
-      > div:first-of-type {
-        width: 100%;
-        grid-column: 1 / span 2;
-      }
-    };
+    }
   }
+
+
+`
+
+
+const StyledContent = styled.div`
+  margin-bottom: 40px;
+  width: 75%;
+  z-index: 1;
+  h1 {
+    font-size: 2.8rem;
+    font-weight: var(--boldest);
+    margin-bottom: 5vh;
+    transition: font-size 0.5s ease;
+  }
+  p {
+    font-size: 1.11rem;
+    padding: 0;
+    margin-bottom: 5vh;
+    width: 80%;
+    line-height: 1.8rem;
+  }
+  /* Tablet */
+  @media (min-width: 770px) {
+      width: 100%;
+      grid-column: 1 / span 2;
+  }
+  @media (min-width: 1300px) {
+    :first-of-type {
+      width: 110%;
+    }
+  }
+  @media (min-width: 1500px) {
+      width: 110%;
+  }
+  /* Large screens */
+  @media (min-width: 1600px) {
+      width: 120%;
+  }
+  @media (min-width: 1800px) {
+      width: 100%;
+  }
+
+
 
   @media (min-width: 980px) {
     h1 { font-size: 3.2rem; }
   }
   @media (min-width: 1100px) {
-    h1 { font-size: 3.3rem; }
-  }
-
-  @media (min-width: 1300px) {
-    > div > div:first-of-type {
-      width: 110%;
-    }
-  }
-  @media (min-width: 1500px) {
-    > div > div:first-of-type {
-      width: 110%;
-    }
+    h1 { font-size: 3.6rem; }
   }
   /* Large screens */
-  @media (min-width: 1600px) {
+  @media (min-width: 1400px) {
     h1 {
-      font-size: 4.4rem;
-    }
-    > div > div:first-of-type {
-      width: 120%;
-    }
-  }
-  @media (min-width: 1800px) {
-    > div > div:first-of-type {
-      width: 100%;
+      font-size: 4.6rem;
     }
   }
 `

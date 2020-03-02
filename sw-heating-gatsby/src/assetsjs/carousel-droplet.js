@@ -30,6 +30,10 @@ const S = {
       min-height: 800px;
       transition: min-height 0.5s ease;
     }
+    /* transition: right 1s ease;
+    @media (max-width: 1200px) and (min-height: 980px) {
+      right: 1.25vw;
+    } */
   `,
 }
 

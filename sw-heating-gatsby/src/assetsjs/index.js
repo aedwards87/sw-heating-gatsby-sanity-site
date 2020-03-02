@@ -1,6 +1,6 @@
 import SWHeatingLogo from './sw-heating-logo'
 import Facebook from './facebook'
-import BritishGas from './british-gas'
+import GasSafe from './gas-safe'
 import Vaillant from './vaillant'
 import Ciphe from './ciphe'
 import EnvAgency from './environment-agency'
@@ -17,7 +17,7 @@ import SWLettersSVG from './sw-letters'
 export {
   SWHeatingLogo,
   Facebook,
-  BritishGas,
+  GasSafe,
   Vaillant,
   Ciphe,
   EnvAgency,

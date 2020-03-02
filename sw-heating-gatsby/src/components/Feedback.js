@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react'
+import { Link } from "gatsby"
 import styled from 'styled-components';
 import { StyledTitle } from '../components-styled/index'
 import { horizontalDraggableScroll } from '../helpers/horizontalDraggableScroll'
@@ -16,6 +17,7 @@ const Feedback = () => {
     <StyledFeedBack>
       <div>
         <StyledTitle id="feedback" /*smallerLine="252"*/ >What our customers<br />say about us</StyledTitle>
+        <StyledLink>leave us a review</StyledLink>
       </div>
       <StyledListContainer className="items" ref={ref} >
         {/* {allSanityWork.edges.map(({ node: work }) => (
@@ -115,6 +117,33 @@ const StyledFeedBack = styled.section`
     margin: 0 auto;
   }
 `
+const StyledLink = styled(Link)`
+  font-family: var(--fancy-font);
+  font-size: 1.5rem;
+  margin-left: 1.5rem;
+  position: relative;
+  color: var(--primary-four);
+  transition: all 0.3s ease;
+  /* :after {
+    content: "";
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    height: 3px;
+    width: 0;
+    background: var(--primary-one);
+    transition: all 0.3s ease;
+  } */
+  :hover, 
+  :focus {
+    color: var(--primary-two);
+    /* ::after {
+      width: 100%;
+      left: 0;
+    } */
+  }
+`
+
 
 const StyledListContainer = styled.ul`
   list-style: none;

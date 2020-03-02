@@ -4,23 +4,25 @@ import styled from 'styled-components'
 import { Services } from '../components/index'
 import { StyledTitle } from '../components-styled/index'
 
-
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 const Gallery = () => (
   <Layout>
     <SEO title="Gallery" />
-    <S.Reviews>
-      <div>
-        <div style={{ marginBottom: '6rem' }}>
-          <StyledTitle>Gallery</StyledTitle>
+      <S.Reviews>
+        <div>
+          <div style={{ marginBottom: '6rem' }}>
+            <StyledTitle>Gallery</StyledTitle>
+          </div>
         </div>
-      </div>
-    </S.Reviews>
+      </S.Reviews>
     <Services />
   </Layout>
 )
+
+
+// pathName={location.pathname}
 
 const S = {
   Reviews: styled.section`

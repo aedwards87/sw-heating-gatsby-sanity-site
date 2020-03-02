@@ -3,85 +3,85 @@ import React from "react"
 import styled from 'styled-components'
 import { Link } from "gatsby"
 import { navLinks } from './header'
-import { SWHeatingLogo, Facebook, BritishGas, Ciphe, EnvAgency, Vaillant, Phone, Email, Mobile } from "../assetsjs/index";
-import { scrollToElement } from '../helpers/scrollTo'
+import { SWHeatingLogo, Facebook, GasSafe, Ciphe, EnvAgency, Vaillant, Phone, Email, Mobile } from "../assetsjs/index";
+import { Location } from "@reach/router";
 
 // const uuidv4 = require('uuid/v4')
 
 const footer = () => {
   return (
-    <StyledFooterContainer>
-      <StyledTopFooter>
-        <ul>
-          <li className="item1">
-            <Link to='/'>
-              <SWHeatingLogo />
-            </Link>
-            <p>Fully insured</p>
-          </li>
-          <li className="item2">
-            <a href="/">
-              <strong>Like us on</strong>
-              <Facebook />
-            </a>
-          </li>
-          <li className="item3">
-            <h3>Contact info:</h3>
-            <address>
-              <Phone /><a href="tel:+441268778501">01268 778501</a>
-              <Mobile /><a href="tel:+447852128577">07852 128577</a>
-              <Email /><a href="mailto:sw-heating@icloud.com">sw-heating@icloud.com</a>
-              <p>
-                <strong>Company No.</strong> 9948546<br />
-                <strong>VAT No.</strong> 132032668
-              </p>
-            </address>
-          </li>
-          <li className="item4">
-            <h3>Opening hours:</h3>
-            <div>
-              <strong>Mon-Fri:</strong>
-              <time>8am - 6pm</time>
-              <strong>Sat-Sun:</strong>
-              <div>By arrangement or emergency only</div>
-            </div>
-          </li>
-          <li className="item5">
-            <a href="/"><BritishGas /></a>
-            <a href="/"><Vaillant /></a>
-            <a href="/"><Ciphe /></a>
-            <a href="/"><EnvAgency /></a>
-          </li>
-        </ul>
-      </StyledTopFooter>
-      <StyledBottomFooter>
-        <div>
-          <ul>
-            {navLinks.map(navLink =>
-              <li key={`${navLink.title}-${Date.now()}`} >
-                {!navLink.dropdown ?
-                  <Link
-                    to={navLink.link ? `/${navLink.title.toLowerCase()}` : `/#${navLink.title.toLowerCase()}`}
-                    activeClassName="active"
-                  >
-                    {navLink.title}
-                  </Link>
-                  :
-                  <Link
-                    as="button"
-                    role="button"
-                    onClick={() => scrollToElement(navLink.title)}
-                  >
-                    {navLink.title}
-                  </Link>
-                }
+    <Location>
+      {({ location })=> 
+        <StyledFooterContainer>
+          <StyledTopFooter>
+            <ul>
+              <li className="item1">
+                <Link to='/'>
+                  <SWHeatingLogo />
+                </Link>
+                <p>Fully insured</p>
               </li>
-            )}
-          </ul>
-          <p>© SW Heating | Website by Adam Edwards</p>
-        </div>
-      </StyledBottomFooter>
-    </StyledFooterContainer>
+              <li className="item2">
+                <a href="/">
+                  <strong>Like us on</strong>
+                  <Facebook />
+                </a>
+              </li>
+              <li className="item3">
+                <h3>Contact info:</h3>
+                <address>
+                  <Phone /><a href="tel:+441268778501">01268 778501</a>
+                  <Mobile /><a href="tel:+447852128577">07852 128577</a>
+                  <Email /><a href="mailto:sw-heating@icloud.com">sw-heating@icloud.com</a>
+                  <p>
+                    <strong>Company No.</strong> 9948546<br />
+                    <strong>VAT No.</strong> 132032668
+                  </p>
+                </address>
+              </li>
+              <li className="item4">
+                <h3>Opening hours:</h3>
+                <div>
+                  <strong>Mon-Fri:</strong>
+                  <time>8am - 6pm</time>
+                  <strong>Sat-Sun:</strong>
+                  <div>By arrangement or emergency only</div>
+                </div>
+              </li>
+              <li className="item5">
+                <a href="https://www.gassaferegister.co.uk/" target="_blank"><GasSafe /></a>
+                <a href="https://www.vaillant.co.uk/" target="_blank"><Vaillant /></a>
+                <a href="https://www.ciphe.org.uk/" target="_blank"><Ciphe /></a>
+                <a href="https://www.gov.uk/government/organisations/environment-agency" target="_blank"><EnvAgency /></a>
+              </li>
+            </ul>
+          </StyledTopFooter>
+          <StyledBottomFooter>
+            <div>
+              <ul>
+                {navLinks.map(navLink =>
+                  <li key={`${navLink.title}-${Date.now()}`} >
+                    {!navLink.dropdown ?
+                      <Link
+                        to={navLink.link ? `/${navLink.title.toLowerCase()}` : `/#${navLink.title.toLowerCase()}`}
+                        activeClassName="active"
+                      >
+                        {navLink.title}
+                      </Link>
+                      :
+                      <Link to={`${location.pathname}#${navLink.title.toLowerCase()}`}>
+                        {navLink.title}
+                      </Link>
+                    }
+                  </li>
+                )}
+              </ul>
+              <p>© SW Heating | Website by Adam Edwards</p>
+            </div>
+          </StyledBottomFooter>
+        </StyledFooterContainer>
+      }
+    </Location>
   )
 }
 

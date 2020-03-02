@@ -32,13 +32,20 @@ const StyledContainer = styled.div`
   top: -${({ navbarheight }) => navbarheight.navBarHeight}px;
   right: 0;
   height: auto;
-  width: 55%;
+  width: calc(50% + 7vmax);
   overflow: hidden;
+  transition: width 1s ease;
+  @media (min-width: 1500px) {
+    width: calc(50% + 5vmax);
+  }
+  /* @media (max-width: 1200px) and (min-height: 980px) {
+    width: 64%;
+  } */
 `
 
 const StyledHeadFlameBackgroundSVG = styled.svg`
   position: relative;
-  right: -2vw;
+  right: -2vmax;
   top: -100px;
   height: 130vh;
   min-height: 850px;
