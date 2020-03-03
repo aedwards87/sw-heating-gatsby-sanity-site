@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { Link } from "gatsby"
 
@@ -58,7 +58,7 @@ export const TempSanityWork = {
 
 
 const Dropdown = ({ className, ToggleOn, ToggleOff, style }) => {
-  console.log(TempSanityWork)
+  // console.log(TempSanityWork)
   return (
     <S.DropdownHousing
       className={className}
@@ -71,7 +71,10 @@ const Dropdown = ({ className, ToggleOn, ToggleOff, style }) => {
           <li
             key={work.slug.current}
           >
-            <Link to={`/${work.slug.current}`}>
+            <Link
+              to={`/${work.slug.current}`}
+              activeClassName="active"
+            >
               <span>{work.title}</span>
             </Link>
           </li>
@@ -85,7 +88,7 @@ const Dropdown = ({ className, ToggleOn, ToggleOff, style }) => {
 const S = {
   DropdownHousing: styled.div`
     position: absolute;
-    top: 3.3rem;
+    top: 2.2rem;
     left: 50%;
     transform: translate(-50%, 0);
     min-width: 295px;
@@ -138,9 +141,16 @@ const S = {
       transition: all .3s ease;
       width: 100%;
       display: block;
-      :hover, :active, :focus {
+      :hover, :focus {
         color: var(--primary-two);
         transform: translate(5%, 0) scale(1.07);
+      }
+      &.active { 
+        color: var(--primary-two);
+        pointer-events: none;
+        :focus, :hover {
+          transform: translate(0, 0) scale(1);
+        }
       }
     }
   `

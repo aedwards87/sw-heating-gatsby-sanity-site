@@ -11,7 +11,7 @@ import { Location } from "@reach/router";
 const footer = () => {
   return (
     <Location>
-      {({ location })=> 
+      {({ location }) =>
         <StyledFooterContainer>
           <StyledTopFooter>
             <ul>
@@ -49,10 +49,10 @@ const footer = () => {
                 </div>
               </li>
               <li className="item5">
-                <a href="https://www.gassaferegister.co.uk/" target="_blank"><GasSafe /></a>
-                <a href="https://www.vaillant.co.uk/" target="_blank"><Vaillant /></a>
-                <a href="https://www.ciphe.org.uk/" target="_blank"><Ciphe /></a>
-                <a href="https://www.gov.uk/government/organisations/environment-agency" target="_blank"><EnvAgency /></a>
+                <a href="https://www.gassaferegister.co.uk/" target="_blank" rel="noopener noreferrer"><GasSafe /></a>
+                <a href="https://www.vaillant.co.uk/" target="_blank" rel="noopener noreferrer"><Vaillant /></a>
+                <a href="https://www.ciphe.org.uk/" target="_blank" rel="noopener noreferrer"><Ciphe /></a>
+                <a href="https://www.gov.uk/government/organisations/environment-agency" target="_blank" rel="noopener noreferrer"><EnvAgency /></a>
               </li>
             </ul>
           </StyledTopFooter>

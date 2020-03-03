@@ -1,6 +1,6 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import React, { useState, useEffect, useCallback, useMemo } from "react"
+import React, { useState, useEffect, useCallback } from "react"
 import styled from 'styled-components'
 import { SWHeatingLogo } from "../assetsjs/index";
 import { Dropdown } from './index'
@@ -21,8 +21,8 @@ const Header = (props, ref) => {
   const [currentPosition, setCurrentPosition] = useState(window.pageYOffset)
   const [scrollUp, setScrollUp] = useState(false)
 
-  const ToggleOn = useCallback(() => { setOn(true) }, [on])
-  const ToggleOff = useCallback(() => { setOn(false) }, [on])
+  const ToggleOn = useCallback(() => { setOn(true) }, [])
+  const ToggleOff = useCallback(() => { setOn(false) }, [])
 
   // Listens for the when the page is scrolled up
   useEffect(() => {
@@ -45,7 +45,7 @@ const Header = (props, ref) => {
 
   return (
     <Location>
-      {({ location })=> 
+      {({ location }) =>
         <S.Header
           id="header"
           goingUp={scrollUp ? true : false}
@@ -53,8 +53,6 @@ const Header = (props, ref) => {
           ref={ref}
         >
           <div>
-          {console.log(location.pathname)}
-
             <div>
               <Link to="/">
                 <SWHeatingLogo height="49" />
@@ -66,9 +64,9 @@ const Header = (props, ref) => {
                   <li key={navLink.title} style={{ position: 'relative' }} >
                     {!navLink.dropdown ?
                       <S.Link
-                        to={navLink.link 
-                          ? `/${navLink.title.toLowerCase()}` 
-                          : `/#${navLink.title.toLowerCase()}` 
+                        to={navLink.link
+                          ? `/${navLink.title.toLowerCase()}`
+                          : `/#${navLink.title.toLowerCase()}`
                         }
                         // TODO: take code from conference app, we need to add navLink.title to search
                         // bar and create a function that takes us to the desired section/id 

@@ -17,7 +17,7 @@ const Feedback = () => {
     <StyledFeedBack>
       <div>
         <StyledTitle id="feedback" /*smallerLine="252"*/ >What our customers<br />say about us</StyledTitle>
-        <StyledLink>leave us a review</StyledLink>
+        <StyledLink to="/reviews">leave us a review</StyledLink>
       </div>
       <StyledListContainer className="items" ref={ref} >
         {/* {allSanityWork.edges.map(({ node: work }) => (
@@ -119,7 +119,7 @@ const StyledFeedBack = styled.section`
 `
 const StyledLink = styled(Link)`
   font-family: var(--fancy-font);
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   margin-left: 1.5rem;
   position: relative;
   color: var(--primary-four);

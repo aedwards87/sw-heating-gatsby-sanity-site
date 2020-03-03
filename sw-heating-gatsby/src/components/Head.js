@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import { Link } from "gatsby"
 import { UserContext, Carousel, GradientButton } from './index'
 import { HeadFlameBackground } from '../assetsjs/index'
-import { scrollToElement, scrollToParent, getOffSetTopValue } from '../helpers/scrollTo'
 
 
 const Head = ({ sanityLandingPage }) => {
@@ -18,10 +17,10 @@ const Head = ({ sanityLandingPage }) => {
           <p>{sanityLandingPage.strapLine}</p>
           <Link to='/#Contact'>
             <GradientButton children="Contact us"
-              // onClick={(() =>
-              //   getOffSetTopValue('Contact') < 400 ?
-              //   scrollToParent('Contact') : scrollToElement('Contact')
-              // )} 
+            // onClick={(() =>
+            //   getOffSetTopValue('Contact') < 400 ?
+            //   scrollToParent('Contact') : scrollToElement('Contact')
+            // )} 
             />
           </Link>
         </StyledContent>
