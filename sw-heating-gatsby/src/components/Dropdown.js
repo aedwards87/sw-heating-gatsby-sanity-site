@@ -1,72 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from "gatsby"
-
-
-export const TempSanityWork = {
-  edges: [
-    {
-      node: {
-        title: 'Servicing & Maintenance',
-        slug: { current: 'servicing' },
-      }
-    },
-    {
-      node: {
-        title: 'Property Maintenance',
-        slug: { current: 'property-maintenance' },
-      }
-    },
-    {
-      node: {
-        title: 'Gas',
-        slug: { current: 'gas' },
-      }
-    },
-    {
-      node: {
-        title: 'Power Flushing',
-        slug: { current: 'power-flushing' },
-      }
-    },
-    {
-      node: {
-        title: 'Plumbing',
-        slug: { current: 'plumbing' },
-      }
-    },
-    {
-      node: {
-        title: 'Boiler Installations',
-        slug: { current: 'plumbing-job-004' },
-      }
-    },
-    {
-      node: {
-        title: 'Heating & Hot Water',
-        slug: { current: 'heating-and-hot-water' },
-      }
-    },
-    {
-      node: {
-        title: 'Bespoke Bathrooms',
-        slug: { current: 'bespoke-bathrooms' },
-      }
-    },
-  ]
-}
-
+import { TempSanityWork } from '../data/dropdown-data'
 
 const Dropdown = ({ className, ToggleOn, ToggleOff, style }) => {
   // console.log(TempSanityWork)
   return (
-    <S.DropdownHousing
+    <S.Dropdown
       className={className}
       style={style}
       onMouseEnter={ToggleOn}
       onMouseLeave={ToggleOff}
     >
-      <S.DropdownListHousing>
+      <S.ListContainer>
         {TempSanityWork.edges.map(({ node: work }) => (
           <li
             key={work.slug.current}
@@ -79,14 +25,14 @@ const Dropdown = ({ className, ToggleOn, ToggleOff, style }) => {
             </Link>
           </li>
         ))}
-      </S.DropdownListHousing>
-    </S.DropdownHousing>
+      </S.ListContainer>
+    </S.Dropdown>
   )
 }
 
 
 const S = {
-  DropdownHousing: styled.div`
+  Dropdown: styled.div`
     position: absolute;
     top: 2.2rem;
     left: 50%;
@@ -98,17 +44,20 @@ const S = {
     box-shadow: var(--shadow-one);
     z-index: 99;
     /* Triangle arrow at top of dropdown */
+    ::before,
+    ::after {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, 0) rotate(45deg);
+    }
     ::before {
       content: "";
       height: 22px;
       width: 22px;
       border-radius: 3px;
-      background: #f0610a;
+      background: #f37c29;
       z-index: -1;
-      position: absolute;
       top: -7px;
-      left: 50%;
-      transform: translate(-50%, 0) rotate(45deg);
     }
     ::after {
       content: "";
@@ -117,14 +66,11 @@ const S = {
       border-radius: 2px;
       background: #ffffff;
       z-index: 999;
-      position: absolute;
       top: -2px;
-      left: 50%;
-      transform: translate(-50%, 0) rotate(45deg);
     }
 
   `,
-  DropdownListHousing: styled.ul`
+  ListContainer: styled.ul`
     display: grid;
     list-style: none;
     background: #ffffff;

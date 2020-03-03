@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import styled from 'styled-components'
 import { useTransition } from 'react-spring'
 import { CarouselDroplet } from '../assetsjs/index'
@@ -23,9 +23,14 @@ const Carousel = ({ navbarheight }) => {
   // const navBarHeight = useContext(UserContext)
   const [index, setIndex] = useState(0)
 
-  const nextSlide = () => setIndex(state => (state + 1) % 5)
+  const nextSlide = useCallback(() => setIndex(state => (state + 1) % slides.length), []) // Increments index state by 1
   // const targetSlide = (e) => setIndex(parseInt(e.target.value)) // Selects slide matching button value
 
+
+  // CODE to go to the previous slide - decrements index state by 1
+  // const prevSlide = useCallback(() => setIndex(state => (state === 0) ? state = slides.length - 1 : (state - 1) % slides.length), [])
+  
+  // Timer to change images after 4 seconds
   // useEffect(() => {
   //   const Timer = setInterval(() => {
   //     setIndex(state => (state + 1) % 5)
@@ -51,6 +56,8 @@ const Carousel = ({ navbarheight }) => {
           <CarouselButton key={uuidv4()} click={targetSlide} value={i} index={index} />
         )}
       </S.ButtonsContainer> */}
+      
+      {/* <button onClick={prevSlide} style={{ zIndex: 99999999, position: 'absolute', top: 50 }}>back</button> */}
     </S.Carousel>
   )
 }
