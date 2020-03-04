@@ -7,28 +7,28 @@ import desert from "./images/desert.jpg";
 
 import "./gallery.css";
 
+// This will be imported, must remember to import Image from Gatsby
 const images = [
-  ({ style }) => <animated.img src={mountains} alt="Mountains" style={style} />,
-  ({ style }) => <animated.img src={beach} alt="Beach" style={style} />,
-  ({ style }) => <animated.img src={desert} alt="Desert" style={style} />
+  ({ style }) => <animated.Image src={mountains} alt="Mountains" style={style} />,
+  ({ style }) => <animated.Image src={beach} alt="Beach" style={style} />,
+  ({ style }) => <animated.Image src={desert} alt="Desert" style={style} />
 ];
 
-const Gallery = () => {
+const Gallery = ({ from, enter, leave, images, className }) => {
   const [index, setIndex] = useState(0);
   const onClick = useCallback(() => setIndex(state => (state + 1) % images.length), []);
   const prevSlide = useCallback(() => setIndex(state => (state === 0) ? state = images.length - 1 : (state - 1) % images.length), [])
 
   const transitions = useTransition(index, p => p, {
-    from: { opacity: 0, transform: 'scale(0.5)' },
-    enter: { opacity: 1, transform: 'scale(1)' },
-    leave: { opacity: 0, transform: 'scale(1.5)' },
+    from: { opacity: 0, /*transform: 'scale(0.5)'*/ ...from },
+    enter: { opacity: 1, /*transform: 'scale(1)'*/ ...enter },
+    leave: { opacity: 0, /*transform: 'scale(1.5)'*/ ...leave },
     config: config.molasses
   });
 
   return (
     <>
-      <div className="gallery" onClick={onClick}>
-        <p className="gallery-directions" >Click anywhere to see the next image</p>
+      <div className="gallery" onClick={onClick} className={className}>
         {transitions.map(({ item, props, key }) => {
           const Image = images[item];
           return <Image key={key} style={props} />;

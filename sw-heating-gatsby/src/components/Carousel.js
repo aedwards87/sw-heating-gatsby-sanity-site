@@ -1,34 +1,19 @@
 import React, { useState, useCallback } from 'react'
 import styled from 'styled-components'
 import { useTransition } from 'react-spring'
-import { CarouselDroplet } from '../assetsjs/index'
+import { CarouselSlides } from './Carousel/CarouselSlides'
 // import CarouselButton from '../components/Carousel/CarouselButton'
-
-
-const slides = [
-  ({ style, click, sanityLandingPage }) => 
-    <CarouselDroplet style={style} click={click} imageSRC={sanityLandingPage.mainImage.asset.fluid.src} alt={sanityLandingPage.mainImageAltTag} />,
-  ({ style, click, sanityLandingPage }) => 
-    <CarouselDroplet style={style} click={click} imageSRC={sanityLandingPage.secondImage.asset.fluid.src} alt={sanityLandingPage.secondImageAltTag} />,
-  ({ style, click, sanityLandingPage }) => 
-    <CarouselDroplet style={style} click={click} imageSRC={sanityLandingPage.thirdImage.asset.fluid.src} alt={sanityLandingPage.thirdImageAltTag} />,
-  ({ style, click, sanityLandingPage }) => 
-    <CarouselDroplet style={style} click={click} imageSRC={sanityLandingPage.fourthImage.asset.fluid.src} alt={sanityLandingPage.fourthImageAltTag} />,
-  ({ style, click, sanityLandingPage }) => 
-    <CarouselDroplet style={style} click={click} imageSRC={sanityLandingPage.fifthImage.asset.fluid.src} alt={sanityLandingPage.fifthImageAltTag} />,
-]
-
 
 
 const Carousel = ({ navbarheight, sanityLandingPage }) => {
   const [index, setIndex] = useState(0)
 
-  const nextSlide = useCallback(() => setIndex(state => (state + 1) % slides.length), []) // Increments index state by 1
+  const nextSlide = useCallback(() => setIndex(state => (state + 1) % CarouselSlides.length), []) // Increments index state by 1
   // const targetSlide = (e) => setIndex(parseInt(e.target.value)) // Selects slide matching button value
 
   // CODE to go to the previous slide - decrements index state by 1
   // const prevSlide = useCallback(() => setIndex(state => (state === 0) ? state = slides.length - 1 : (state - 1) % slides.length), [])
-  
+
   // Timer to change images after 4 seconds
   // useEffect(() => {
   //   const Timer = setInterval(() => {
@@ -37,7 +22,6 @@ const Carousel = ({ navbarheight, sanityLandingPage }) => {
   //   return () => clearInterval(Timer)
   // })
 
-  console.log(sanityLandingPage.fourthImageAltTag)
 
   const transitions = useTransition(index, p => p, {
     from: { opacity: 0, position: 'absolute', transform: 'translate3d(60%,5%,0) scale(0.5)', zIndex: 4 },
@@ -49,8 +33,15 @@ const Carousel = ({ navbarheight, sanityLandingPage }) => {
   return (
     <S.Carousel navbarheight={navbarheight} >
       {transitions.map(({ item, props, key }) => {
-        const Slide = slides[item]
-        return <Slide key={key} style={props} click={nextSlide} sanityLandingPage={sanityLandingPage} />
+        const Slide = CarouselSlides[item]
+        return (
+          <Slide
+            key={key}
+            style={props}
+            click={nextSlide}
+            sanityLandingPage={sanityLandingPage}
+          />
+        )
       })}
       {/* <S.ButtonsContainer>
         {slides.map((_, i) =>
