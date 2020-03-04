@@ -68,13 +68,7 @@ const Header = (props, ref) => {
                           ? `/${navLink.title.toLowerCase()}`
                           : `/#${navLink.title.toLowerCase()}`
                         }
-                        // TODO: take code from conference app, we need to add navLink.title to search
-                        // bar and create a function that takes us to the desired section/id 
-
-                        // onClick={!navLink.link ? (() =>
-                        //   getOffSetTopValue(navLink.title) < 400 ?
-                        //   scrollToParent(navLink.title) : scrollToElement(navLink.title)
-                        // ) : null}
+                        // TODO: install block-content-addon for sanity
                         activeClassName="active"
                       >
                         {navLink.title}
@@ -82,11 +76,8 @@ const Header = (props, ref) => {
                       :
                       <S.Link
                         to={`${location.pathname}#${navLink.title.toLowerCase()}`}
-                        // as="button"
-                        // role="button"
                         aria-haspopup="true"
                         aria-expanded={on ? true : null}
-                        // activeClassName="active" Doesnt work because it is a button,
                         // TODO: give it an active class when #hashtag in the url
                         // className={url === `#${navLink.title}` && "active"}
                         // onClick={() => scrollToElement(navLink.title)}
@@ -131,29 +122,25 @@ const S = {
     margin: 0;
     position: relative;
     transition: all 0.3s ease;
-    :hover {
+    padding: 1rem 0;
+    :hover, &.active {
       color: ${({ goingUp, position }) => position === 0 || !goingUp ? 'var(--main-text)' : 'var(--primary-two)'}
     }
-    /* ::after {
+    ::after {
       content: "";
       position: absolute;
-      bottom: -20px;
+      bottom: -5px;
       left: 50%;
       height: 3px;
       width: 0;
       background: ${({ goingUp, position }) => position === 0 || !goingUp ? 'var(--primary-two)' : 'var(--primary-one)'};
       transition: all 0.3s ease;
-    } */
+    }
     :hover::after,
     :focus::after,
-    :active::after,
-    &.active::after,
-    button.active::after {
+    &.active::after {
       left: 0;
       width: 100%;
-    }
-    :hover .dropdown {
-      display: none;
     }
   `,
   Header: styled.header`
@@ -164,7 +151,6 @@ const S = {
     left: 0px;
     right: 0px;
     z-index: 99;
-    /* border-bottom: 1px solid #E6EAEA; */
     > div {
       margin: 0 auto;
       max-width: 1900px;
@@ -173,60 +159,7 @@ const S = {
       justify-content: space-between;
       align-items: center;
     }
-    button {
-      background: none;
-      border: none;
-      cursor: pointer;
-      outline: none;
-    }
-    .hide {
-      display: none;
-    }
-    .show {
-      display: block;
-    }
-    
-    div > nav > ul > li:hover .dropdown {
-      display: block;
-    }
     nav { height: 100%; display: none; }
-    /* a {
-      color: var(--main-text);
-      font-weight: var(--bolder);
-      font-weight: 600;
-      font-size: 0.9rem;
-      margin: 0;
-      position: relative;
-    } */
-    div > nav > ul > li > button, 
-    div > nav > ul > li > a {
-      transition: all 0.3s ease;
-      padding: 1rem 0;
-      :hover, &.active {
-        color: ${({ goingUp, position }) => position === 0 || !goingUp ? 'var(--primary-three)' : 'var(--primary-two)'}
-      }
-    }
-    div > nav > ul > li > a::after,
-    button.active::after {
-      content: "";
-      position: absolute;
-      bottom: -5px;
-      left: 50%;
-      height: 3px;
-      width: 0;
-      background: ${({ goingUp, position }) => position === 0 || !goingUp ? 'var(--primary-two)' : 'var(--primary-one)'};
-      transition: all 0.3s ease;
-    }
-
-    /* div > nav > ul > li > a:hover::after,
-    div > nav > ul > li > a:active::after {
-      left: 0;
-      width: 100%;
-    }
-    a:hover .dropdown {
-      display: none;
-    } */
-
     div > nav > ul {
       list-style: none;
       display: flex;
@@ -244,7 +177,6 @@ const S = {
       padding-right: 0;
     }
     @media (min-width: 980px) {
-      svg { height: 55px; }
       nav { display: block; }
       nav > ul > li { padding-left: 1.4rem; padding-right: 1.4rem }
       transition: li 0.3s ease;

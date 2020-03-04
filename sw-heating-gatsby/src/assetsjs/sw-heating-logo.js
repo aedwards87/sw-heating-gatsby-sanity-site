@@ -1,8 +1,9 @@
 import React from 'react'
+import styled from 'styled-components'
 
-const SWHeatingLogo = ({ height = 49, className }) => {
+const SWHeatingLogo = ({ height = 49, medHeight = 55, className }) => {
   return (
-    <svg className={className} height={height} viewBox="0 0 196 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <S.SWHeatingLogo className={className} height={height} medHeight={medHeight} viewBox="0 0 196 49" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M26.4 42.1C27.9 38.4 27 34.6 23.9 31.3C19.4 26.8 17.4 23.2 16.5 20.9C15.6 23.1 13.6 26.8 9.09997 31.3C5.99997 34.5 5.09998 38.5 6.59998 42.1C8.09998 45.6 11.6 48 15.6 48.3C15.9 48.3 16.1 48.3 16.4 48.3C16.7 48.3 16.9 48.3 17.2 48.3C21.4 48 24.9 45.6 26.4 42.1Z" fill="url(#paint0_linear)" />
       <path d="M31.2001 27.5C31.1001 25.2 32.0001 22.3 29.1001 18.8C29.1001 18.8 29.2001 21.1 27.2001 23C27.2001 23 27.9001 19.2 24.8001 14.7C21.6001 10.1 18.8001 8.09999 21.6001 0.799988C21.6001 0.799988 8.10006 7.69999 7.10006 19.6C7.10006 19.6 6.00006 17.9 3.80006 17.4C3.80006 17.4 6.40006 23.1 1.80006 29.6C-1.79994 34.7 1.30006 42.4 8.10006 45.8C3.70006 41.9 2.60006 34.9 8.10006 29.3C16.2001 21 16.5001 15.7 16.5001 15.7C16.5001 15.7 16.9001 21 24.9001 29.3C30.1001 34.7 29.4001 41.3 25.3001 45.3C30.0001 43 32.4001 39.1 32.6001 35.8C32.9001 32.5 31.3001 29.8 31.2001 27.5Z" fill="url(#paint1_linear)" />
       <path d="M109.9 23.7H114.8V28.9H118.6V15.4H114.8V20.3H109.9V15.4H106.1V28.9H109.9V23.7Z" fill="black" />
@@ -64,8 +65,16 @@ const SWHeatingLogo = ({ height = 49, className }) => {
           <stop offset="0.9391" stopColor="#312A71" />
         </radialGradient>
       </defs>
-    </svg>
+    </S.SWHeatingLogo>
   )
+}
+
+const S = {
+  SWHeatingLogo: styled.svg`
+    @media (min-width: 980px) {
+      height: ${({ medHeight }) => `${medHeight}px`}
+    }
+  `
 }
 
 export default SWHeatingLogo

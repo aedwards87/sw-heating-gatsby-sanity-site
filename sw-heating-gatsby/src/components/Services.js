@@ -51,12 +51,6 @@ const Services = () => {
                   <h3>{work.title}</h3>
                 </div>
               </Link>
-              {/* {work._rawDescription.map(({ children }) => (
-                  children.map(({ text }) => (
-                    <p key={children[0]._key}>
-                      {text}
-                    </p>
-                ))))} */}
             </li>
           ))}
         </StyledList>
