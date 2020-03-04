@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const CarouselDropletMaskSVG = ({ height = '80vh', click, imageURI }) => {
+const CarouselDropletMaskSVG = ({ height = '80vh', click, imageSRC, alt }) => {
   return (
     <>
       <S.CarouselDropletMaskSVG
@@ -15,8 +15,8 @@ const CarouselDropletMaskSVG = ({ height = '80vh', click, imageURI }) => {
           </clipPath>
         </defs>
         <S.Image
-          href={imageURI}
-          alt={'To come'}
+          href={imageSRC}
+          alt={alt}
         // preserveAspectRatio 
         />
       </S.CarouselDropletMaskSVG>

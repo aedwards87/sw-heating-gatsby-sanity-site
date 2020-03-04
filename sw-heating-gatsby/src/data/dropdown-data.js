@@ -33,7 +33,7 @@ export const TempSanityWork = {
     {
       node: {
         title: 'Boiler Installations',
-        slug: { current: 'plumbing-job-004' },
+        slug: { current: 'boiler-installations' },
       }
     },
     {

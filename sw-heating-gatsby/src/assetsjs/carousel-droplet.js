@@ -5,11 +5,11 @@ import { CarouselDropletMaskSVG } from './index'
 // import CarouselButtons from '../components/Carousel/CarouselButton'
 
 
-const CarouselDropletHousing = ({ style, click, imageURI }) => {
+const CarouselDropletHousing = ({ style, click, imageSRC, alt }) => {
 
   return (
     <S.CarouselDropletHousing style={style} >
-      <CarouselDropletMaskSVG click={click} imageURI={imageURI} />
+      <CarouselDropletMaskSVG click={click} imageSRC={imageSRC} alt={alt} />
       {/* <CarouselButtons index={index} item={item} click={click} /> */}
     </S.CarouselDropletHousing>
   )

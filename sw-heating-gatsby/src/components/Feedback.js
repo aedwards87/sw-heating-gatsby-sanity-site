@@ -13,6 +13,7 @@ const Feedback = () => {
         allSanityFeedback {
           edges {
             node {
+              id
               name
               message
             }
@@ -25,22 +26,18 @@ const Feedback = () => {
   const ref = useRef(0)
   useEffect(() => {
     horizontalDraggableScroll(ref)
-    // console.log(window.document.getElementById('feed').offsetLeft)
   }, [ref])
 
 
   return (
     <StyledFeedBack>
       <div>
-        <StyledTitle id="feedback" /*smallerLine="252"*/ >What our customers<br />say about us</StyledTitle>
+        <StyledTitle id="feedback">What our customers<br />say about us</StyledTitle>
         <StyledLink to="/reviews">leave us a review</StyledLink>
       </div>
       <StyledListContainer className="items" ref={ref} >
-        {/* {allSanityFeedback.edges.map(({ node: work }) => (
-          <li>{work.text}</li> */}
-        {/* <ul className="items" ref={ref}> */}
-        {allSanityFeedback.edges.map(({ node: { name, message } }) => (
-          <li>
+        {allSanityFeedback.edges.map(({ node: { name, message, id } }) => (
+          <li key={id}>
             <SWDropletQuotes />
             <blockquote>
               <p>{message}</p>
@@ -48,9 +45,7 @@ const Feedback = () => {
             </blockquote>
           </li>
         ))}
-
       </StyledListContainer>
-
     </StyledFeedBack>
   )
 }

@@ -27,6 +27,7 @@ export const pageQuery = graphql`
     sanityLandingPage {
       title
       strapLine
+      mainImageAltTag
       mainImage {
         asset {
           fluid(maxWidth: 1000) {
@@ -34,6 +35,7 @@ export const pageQuery = graphql`
           }
         }
       }
+      secondImageAltTag
       secondImage {
         asset {
           fluid(maxWidth: 1000) {
@@ -42,6 +44,20 @@ export const pageQuery = graphql`
         }
       }
       thirdImage {
+        asset {
+          fluid(maxWidth: 1000) {
+            ...GatsbySanityImageFluid
+          }
+        }
+      }
+      fourthImage {
+        asset {
+          fluid(maxWidth: 1000) {
+            ...GatsbySanityImageFluid
+          }
+        }
+      }
+      fifthImage {
         asset {
           fluid(maxWidth: 1000) {
             ...GatsbySanityImageFluid

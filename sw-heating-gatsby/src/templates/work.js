@@ -19,27 +19,74 @@ export const query = graphql`
           }
         }
       }
+      secondImage {
+        asset {
+          fluid(maxWidth: 1000)  {
+            ...GatsbySanityImageFluid
+          }
+        }
+      }
+      thirdImage {
+        asset {
+          fluid(maxWidth: 1000)  {
+            ...GatsbySanityImageFluid
+          }
+        }
+      }
+      fourthImage {
+        asset {
+          fluid(maxWidth: 1000)  {
+            ...GatsbySanityImageFluid
+          }
+        }
+      }
+      fifthImage {
+        asset {
+          fluid(maxWidth: 1000)  {
+            ...GatsbySanityImageFluid
+          }
+        }
+      }
+      sixthImage {
+        asset {
+          fluid(maxWidth: 1000)  {
+            ...GatsbySanityImageFluid
+          }
+        }
+      }
+      seventhImage {
+        asset {
+          fluid(maxWidth: 1000)  {
+            ...GatsbySanityImageFluid
+          }
+        }
+      }
+      eighthImage {
+        asset {
+          fluid(maxWidth: 1000)  {
+            ...GatsbySanityImageFluid
+          }
+        }
+      }
     }
   }
 `
 
-export default ({ data }) => {
+export default ({ data: { sanityWork } }) => {
 
   return (
     <Layout>
       <S.TemplateContainer>
         <div>
           <div style={{marginBottom: '6rem'}}>
-            <StyledTitle as="h1" normal >{data.sanityWork.title}</StyledTitle>
+            <StyledTitle as="h1" normal >{sanityWork.title}</StyledTitle>
           </div>
           <div>
             <p>
-              {/* {data.sanityWork._rawDescription[0].children[0].text.split('\n')} */}
-
-              {data.sanityWork._rawDescription[0].children[0].text.split('\n').map((text, i) => (
+              {sanityWork._rawDescription[0].children[0].text.split('\n').map((text, i) => (
                 <React.Fragment key={i}>
                   {text}
-                  {data.sanityWork._rawDescription[0].children[0].text.split('\n').length - 1 ===
+                  {sanityWork._rawDescription[0].children[0].text.split('\n').length - 1 ===
                   i ? null : (
                     <>
                       <br />
@@ -53,15 +100,16 @@ export default ({ data }) => {
               
           </div>
           <S.ImageContainer>
-            <Image fluid={data.sanityWork.mainImage.asset.fluid} alt={data.sanityWork.title} />
-            <Image fluid={data.sanityWork.mainImage.asset.fluid} alt={data.sanityWork.title} />
-            <Image fluid={data.sanityWork.mainImage.asset.fluid} alt={data.sanityWork.title} />
-            <Image fluid={data.sanityWork.mainImage.asset.fluid} alt={data.sanityWork.title} />
-            <Image fluid={data.sanityWork.mainImage.asset.fluid} alt={data.sanityWork.title} />
-            <Image fluid={data.sanityWork.mainImage.asset.fluid} alt={data.sanityWork.title} />
-            <Image fluid={data.sanityWork.mainImage.asset.fluid} alt={data.sanityWork.title} />
-            <Image fluid={data.sanityWork.mainImage.asset.fluid} alt={data.sanityWork.title} />
-            <Image fluid={data.sanityWork.mainImage.asset.fluid} alt={data.sanityWork.title} />
+            <Image fluid={sanityWork.mainImage.asset.fluid} alt={sanityWork.title} />
+            <Image fluid={sanityWork.mainImage.asset.fluid} alt={sanityWork.title} />
+            <Image fluid={sanityWork.secondImage.asset.fluid} alt={sanityWork.title} />
+            <Image fluid={sanityWork.thirdImage.asset.fluid} alt={sanityWork.title} />
+            <Image fluid={sanityWork.fourthImage.asset.fluid} alt={sanityWork.title} />
+            <Image fluid={sanityWork.fifthImage.asset.fluid} alt={sanityWork.title} />
+            <Image fluid={sanityWork.sixthImage.asset.fluid} alt={sanityWork.title} />
+            <Image fluid={sanityWork.seventhImage.asset.fluid} alt={sanityWork.title} />
+            {/* <Image fluid={sanityWork.eighthImage.asset.fluid} alt={sanityWork.title} /> */}
+            {console.log(sanityWork.eighthImage)}
           </S.ImageContainer>
         </div>
       </S.TemplateContainer>

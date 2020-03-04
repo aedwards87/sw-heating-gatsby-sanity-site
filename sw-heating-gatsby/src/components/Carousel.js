@@ -3,29 +3,28 @@ import styled from 'styled-components'
 import { useTransition } from 'react-spring'
 import { CarouselDroplet } from '../assetsjs/index'
 // import CarouselButton from '../components/Carousel/CarouselButton'
-import image1 from '../images/image1.jpg'
-import image2 from '../images/image2.jpg'
-import image3 from '../images/image3.jpg'
-import image4 from '../images/image4.jpg'
-import image5 from '../images/image5.jpg'
-// const uuidv4 = require('uuid/v4') // Creates Unique Identifier keu
+
 
 const slides = [
-  ({ style, click }) => <CarouselDroplet style={style} click={click} imageURI={image1} />,
-  ({ style, click }) => <CarouselDroplet style={style} click={click} imageURI={image2} />,
-  ({ style, click }) => <CarouselDroplet style={style} click={click} imageURI={image3} />,
-  ({ style, click }) => <CarouselDroplet style={style} click={click} imageURI={image4} />,
-  ({ style, click }) => <CarouselDroplet style={style} click={click} imageURI={image5} />
+  ({ style, click, sanityLandingPage }) => 
+    <CarouselDroplet style={style} click={click} imageSRC={sanityLandingPage.mainImage.asset.fluid.src} alt={sanityLandingPage.mainImageAltTag} />,
+  ({ style, click, sanityLandingPage }) => 
+    <CarouselDroplet style={style} click={click} imageSRC={sanityLandingPage.secondImage.asset.fluid.src} alt={sanityLandingPage.secondImageAltTag} />,
+  ({ style, click, sanityLandingPage }) => 
+    <CarouselDroplet style={style} click={click} imageSRC={sanityLandingPage.thirdImage.asset.fluid.src} alt={sanityLandingPage.thirdImageAltTag} />,
+  ({ style, click, sanityLandingPage }) => 
+    <CarouselDroplet style={style} click={click} imageSRC={sanityLandingPage.fourthImage.asset.fluid.src} alt={sanityLandingPage.fourthImageAltTag} />,
+  ({ style, click, sanityLandingPage }) => 
+    <CarouselDroplet style={style} click={click} imageSRC={sanityLandingPage.fifthImage.asset.fluid.src} alt={sanityLandingPage.fifthImageAltTag} />,
 ]
 
 
-const Carousel = ({ navbarheight }) => {
-  // const navBarHeight = useContext(UserContext)
+
+const Carousel = ({ navbarheight, sanityLandingPage }) => {
   const [index, setIndex] = useState(0)
 
   const nextSlide = useCallback(() => setIndex(state => (state + 1) % slides.length), []) // Increments index state by 1
   // const targetSlide = (e) => setIndex(parseInt(e.target.value)) // Selects slide matching button value
-
 
   // CODE to go to the previous slide - decrements index state by 1
   // const prevSlide = useCallback(() => setIndex(state => (state === 0) ? state = slides.length - 1 : (state - 1) % slides.length), [])
@@ -38,6 +37,8 @@ const Carousel = ({ navbarheight }) => {
   //   return () => clearInterval(Timer)
   // })
 
+  console.log(sanityLandingPage.fourthImageAltTag)
+
   const transitions = useTransition(index, p => p, {
     from: { opacity: 0, position: 'absolute', transform: 'translate3d(60%,5%,0) scale(0.5)', zIndex: 4 },
     enter: { opacity: 1, transform: 'translate3d(0%,0,0) scale(1)', zIndex: 5 },
@@ -49,14 +50,14 @@ const Carousel = ({ navbarheight }) => {
     <S.Carousel navbarheight={navbarheight} >
       {transitions.map(({ item, props, key }) => {
         const Slide = slides[item]
-        return <Slide key={key} style={props} click={nextSlide} />
+        return <Slide key={key} style={props} click={nextSlide} sanityLandingPage={sanityLandingPage} />
       })}
       {/* <S.ButtonsContainer>
         {slides.map((_, i) =>
           <CarouselButton key={uuidv4()} click={targetSlide} value={i} index={index} />
         )}
       </S.ButtonsContainer> */}
-      
+
       {/* <button onClick={prevSlide} style={{ zIndex: 99999999, position: 'absolute', top: 50 }}>back</button> */}
     </S.Carousel>
   )

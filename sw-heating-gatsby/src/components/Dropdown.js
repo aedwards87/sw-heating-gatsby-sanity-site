@@ -14,13 +14,8 @@ const Dropdown = ({ className, ToggleOn, ToggleOff, style }) => {
     >
       <S.ListContainer>
         {TempSanityWork.edges.map(({ node: work }) => (
-          <li
-            key={work.slug.current}
-          >
-            <Link
-              to={`/${work.slug.current}`}
-              activeClassName="active"
-            >
+          <li key={work.slug.current}>
+            <Link to={`/${work.slug.current}`} activeClassName="active">
               <span>{work.title}</span>
             </Link>
           </li>

@@ -6,7 +6,7 @@ import { UserContext, Carousel, GradientButton } from './index'
 import { HeadFlameBackground } from '../assetsjs/index'
 
 
-const Head = ({ sanityLandingPage }) => {
+const Head = ({ sanityLandingPage }) => {  
   const navBarHeight = useContext(UserContext)
 
   return (
@@ -15,32 +15,12 @@ const Head = ({ sanityLandingPage }) => {
         <StyledContent>
           <h1>{sanityLandingPage.title}</h1>
           <p>{sanityLandingPage.strapLine}</p>
-          <Link to='/#Contact'>
-            <GradientButton children="Contact us"
-            // onClick={(() =>
-            //   getOffSetTopValue('Contact') < 400 ?
-            //   scrollToParent('Contact') : scrollToElement('Contact')
-            // )} 
-            />
+          <Link to='/#contact'>
+            <GradientButton children="Contact us" />
           </Link>
         </StyledContent>
-
-        {/* <Image 
-        style={{
-          position: 'absolute',
-          top: -125, 
-          right: 0, 
-          width: '47%', 
-          gridColumn: '3 / span 2',
-          height: '100vh',
-          zIndex: -1,
-        }} 
-        fluid={sanityLandingPage.thirdImage.asset.fluid}
-        alt={sanityLandingPage.title} 
-       /> */}
-
         <HeadFlameBackground navbarheight={navBarHeight} />
-        <Carousel navbarheight={navBarHeight} />
+        <Carousel navbarheight={navBarHeight} sanityLandingPage={sanityLandingPage} />
       </div>
     </StyledHeadContainer>
   )
