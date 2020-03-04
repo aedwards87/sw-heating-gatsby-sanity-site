@@ -7,8 +7,10 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 // We import object and document schemas
 import blockContent from './blockContent'
 import landingPage from './landingPage'
-import post2 from './post2'
+// import post2 from './post2'
 import work from './work'
+import gallery from './gallery'
+import feedback from './feedback'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -19,9 +21,11 @@ export default createSchema({
   types: schemaTypes.concat([
     // The following are document types which will appear
     // in the studio.
-    post2,
-    work,
+    // post2,
     landingPage,
+    work,
+    gallery,
+    feedback,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     blockContent

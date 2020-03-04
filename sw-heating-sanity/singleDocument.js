@@ -6,15 +6,28 @@ export default () =>
   S.list()
     .title("Content")
     .items([
-        S.listItem()
-            .title("Landing Page")
-            .child(
-                S.editor()
-                    .id('singletonLandingPage')
-                    .schemaType("landingPage")
-                    .documentId("singleton-landing-page")
-            ),
-            ...S.documentTypeListItems()
-              .filter(listItem => !['landingPage']
-              .includes(listItem.getId()))
+      S.listItem()
+        .title("Landing Page")
+        .child(
+          S.document()
+            .id('singletonLandingPage')
+            .schemaType("landingPage")
+            .documentId("singleton-landing-page")
+        ),
+      ...S.documentTypeListItems()
+        .filter(listItem => !['landingPage']
+          .includes(listItem.getId())),
+
+      S.listItem()
+        .title("Photo Gallery")
+        .child(
+          S.document()
+            .id('singletonGalleryPage')
+            .schemaType("gallery")
+            .documentId("singleton-gallery")
+        ),
+      // ...S.documentTypeListItems()
+      //   .filter(listItem => !['gallery']
+      //     .includes(listItem.getId()))
     ]);
+

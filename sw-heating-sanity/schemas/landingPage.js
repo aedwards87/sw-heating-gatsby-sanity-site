@@ -2,7 +2,7 @@ export default {
   name: 'landingPage',
   title: 'Landing Page',
   type: 'document',
-  // __experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'],
+  __experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'],
   fields: [
     {
       name: 'title',
@@ -38,5 +38,21 @@ export default {
         hotspot: true
       }
     },
+    {
+      name: 'fourthImage',
+      title: 'Fourth image',
+      type: 'image',
+      options: {
+        hotspot: true
+      }
+    },
+    {
+      name: 'fifthImage',
+      title: 'Fifth image',
+      type: 'image',
+      options: {
+        hotspot: true
+      }
+    }
   ]
 }

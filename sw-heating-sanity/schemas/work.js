@@ -25,20 +25,6 @@ export default {
         hotspot: true
       }
     },
-    // {
-    //   name: 'description',
-    //   title: 'Description',
-    //   type: 'array',
-    //   of: [
-    //     {
-    //       title: 'Block',
-    //       type: 'block',
-    //       styles: [{ title: 'Normal', value: 'normal' }],
-    //       lists: []
-    //     }
-    //   ]
-    // }
-    // },
     {
       name: 'description',
       title: 'Description',
@@ -62,6 +48,46 @@ export default {
     {
       name: 'thirdImage',
       title: 'Third image',
+      type: 'image',
+      options: {
+        hotspot: true
+      }
+    },
+    {
+      name: 'fourthImage',
+      title: 'Fourth image',
+      type: 'image',
+      options: {
+        hotspot: true
+      }
+    },
+    {
+      name: 'fifthImage',
+      title: 'Fifth image',
+      type: 'image',
+      options: {
+        hotspot: true
+      }
+    },
+    {
+      name: 'sixthImage',
+      title: 'Sixth image',
+      type: 'image',
+      options: {
+        hotspot: true
+      }
+    },
+    {
+      name: 'seventhImage',
+      title: 'Seventh image',
+      type: 'image',
+      options: {
+        hotspot: true
+      }
+    },
+    {
+      name: 'eigthImage',
+      title: 'Eight image',
       type: 'image',
       options: {
         hotspot: true
