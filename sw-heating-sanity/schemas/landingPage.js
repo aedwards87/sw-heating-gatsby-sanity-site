@@ -7,12 +7,14 @@ export default {
     {
       name: 'title',
       title: 'Title',
-      type: 'string'
+      type: 'string',
+      validation: Rule => Rule.required()
     },
     {
       name: 'strapLine',
       title: 'Strap Line',
-      type: 'text'
+      type: 'text',
+      validation: Rule => Rule.required()
     },
     {
       name: 'mainImage',
@@ -20,7 +22,14 @@ export default {
       type: 'image',
       options: {
         hotspot: true
-      }
+      },
+      validation: Rule => Rule.required()
+    },
+    {
+      name: 'mainImageAltTag',
+      title: 'Main image short description',
+      type: 'string',
+      validation: Rule => Rule.required()
     },
     {
       name: 'secondImage',
@@ -28,7 +37,14 @@ export default {
       type: 'image',
       options: {
         hotspot: true
-      }
+      },
+      validation: Rule => Rule.required()
+    },
+    {
+      name: 'secondImageAltTag',
+      title: 'Second image short description',
+      type: 'string',
+      validation: Rule => Rule.required()
     },
     {
       name: 'thirdImage',
@@ -36,7 +52,14 @@ export default {
       type: 'image',
       options: {
         hotspot: true
-      }
+      },
+      validation: Rule => Rule.required()
+    },
+    {
+      name: 'thirdImageAltTag',
+      title: 'Third image short description',
+      type: 'string',
+      validation: Rule => Rule.required()
     },
     {
       name: 'fourthImage',
@@ -44,7 +67,14 @@ export default {
       type: 'image',
       options: {
         hotspot: true
-      }
+      },
+      validation: Rule => Rule.required()
+    },
+    {
+      name: 'fourthImageAltTag',
+      title: 'Fourth image short description',
+      type: 'string',
+      validation: Rule => Rule.required()
     },
     {
       name: 'fifthImage',
@@ -52,7 +82,14 @@ export default {
       type: 'image',
       options: {
         hotspot: true
-      }
+      },
+      validation: Rule => Rule.required()
+    },
+    {
+      name: 'fifthImageAltTag',
+      title: 'Fifth image short description',
+      type: 'string',
+      validation: Rule => Rule.required()
     }
   ]
 }

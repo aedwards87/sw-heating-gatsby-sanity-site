@@ -1,6 +1,6 @@
 export default {
   name: 'work',
-  title: 'Work',
+  title: 'Services',
   type: 'document',
   fields: [
     {
@@ -86,8 +86,8 @@ export default {
       }
     },
     {
-      name: 'eigthImage',
-      title: 'Eight image',
+      name: 'eighthImage',
+      title: 'Eighth image',
       type: 'image',
       options: {
         hotspot: true
