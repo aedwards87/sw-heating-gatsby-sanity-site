@@ -56,16 +56,7 @@ body {
   position: relative;
   /* letter-spacing: 0.1px; */
 }
-@media (min-width: 980px) {
-  body {
-    font-size: 18px;
-  }
-}
-@media (min-width: 1500px) {
-  body {
-    font-size: 20px;
-  }
-}
+
 .hide {
   display: none;
 }
@@ -248,9 +239,25 @@ textarea {
   font: inherit;
 }
 html {
-  font: 112.5%/1.45em 'Montserrat', Helvetica, Arial, sans-serif;
+  font: 112.5%/1.35em 'Montserrat', Helvetica, Arial, sans-serif;
   box-sizing: border-box;
   overflow-y: scroll;
+}
+@media (min-width: 980px) {
+  html {
+    font: 112.5%/1.45em 'Montserrat', Helvetica, Arial, sans-serif;
+  }
+  body {
+    font-size: 18px;
+  }
+}
+@media (min-width: 1500px) {
+  html {
+    font: 112.5%/1.65em 'Montserrat', Helvetica, Arial, sans-serif;
+  }
+  body {
+    font-size: 20px;
+  }
 }
 * {
   box-sizing: inherit;

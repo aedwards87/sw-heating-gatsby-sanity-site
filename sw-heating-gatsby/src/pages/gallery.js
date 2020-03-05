@@ -67,8 +67,8 @@ const Gallery = ({ data: { sanityLandingPage } }) => (
           data={sanityLandingPage}
           slides={slidev2}
           from={{ opacity: 0, position: 'absolute', transform: 'translate3d(0%,0%,0) scale(0.5)' }}
-          enter={{ opacity: 1, transform: 'translate3d(0%,5%,0) scale(1)' }}
-          leave={{ opacity: 0, transform: 'translate3d(0%,5%,0) scale(1)' }}
+          enter={{ opacity: 1, transform: 'translate3d(0%,0%,0) scale(1)' }}
+          leave={{ opacity: 0, transform: 'translate3d(0%,0%,0) scale(1)' }}
         />
       </div>
     </S.Gallery>
