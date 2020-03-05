@@ -66,9 +66,11 @@ const Gallery = ({ data: { sanityLandingPage } }) => (
         <Carousel
           data={sanityLandingPage}
           slides={slidev2}
-          from={{ opacity: 0, position: 'absolute', transform: 'translate3d(0%,0%,0) scale(0.5)' }}
+          fromNext={{ opacity: 1, position: 'absolute', transform: 'translate3d(100%,0%,0) scale(1)' }}
+          fromPrev={{ opacity: 1, position: 'absolute', transform: 'translate3d(-100%,0%,0) scale(1)' }}
           enter={{ opacity: 1, transform: 'translate3d(0%,0%,0) scale(1)' }}
-          leave={{ opacity: 0, transform: 'translate3d(0%,0%,0) scale(1)' }}
+          leaveNext={{ opacity: 1, transform: 'translate3d(-100%,0%,0) scale(1)' }}
+          leavePrev={{ opacity: 1, transform: 'translate3d(100%,0%,0) scale(1)' }}
         />
       </div>
     </S.Gallery>

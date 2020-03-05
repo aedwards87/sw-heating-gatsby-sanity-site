@@ -8,22 +8,38 @@ const Carousel = ({
   data,
   slides,
   from,
+  fromNext,
+  fromPrev,
   enter,
   leave,
-  className
+  leaveNext,
+  leavePrev,
 }) => {
 
   const [index, setIndex] = useState(0)
+  const [slideState, setSlideState] = useState('prev')
 
-  const nextSlide = useCallback(() => setIndex(state => (state + 1) % slides.length), []) // Increments index state by 1
+  const nextSlide = useCallback(() =>
+    setIndex(state => (state + 1) % slides.length),
+    []) // Increments index state by 1
   // const targetSlide = (e) => setIndex(parseInt(e.target.value)) // Selects slide matching button value
   // // CODE to go to the previous slide - decrements index state by 1
-  const prevSlide = useCallback(() => setIndex(state => (state === 0) ? state = slides.length - 1 : (state - 1) % slides.length), [])
+  const prevSlide = useCallback(() =>
+    setIndex(state => (state === 0) ? state = slides.length - 1 : (state - 1) % slides.length),
+    setSlideState(state => state = 'prev'),
+    [])
+  const handlePrev = useCallback(() =>
+    setSlideState(state => state = 'prev'),
+    [slideState])
+  const handleNext = useCallback(() =>
+    setSlideState(state => state = 'next'),
+    [slideState])
+
 
   const transitions = useTransition(index, p => p, {
-    from: from,
+    from: slideState === '' ? from : slideState === 'next' ? fromNext : fromPrev,
     enter: enter,
-    leave: leave,
+    leave: slideState === '' ? leave : slideState === 'next' ? leaveNext : leavePrev,
     config: config.molasses
   })
 
@@ -35,17 +51,18 @@ const Carousel = ({
           <Slide
             key={key}
             style={props}
-            // click={nextSlide}
+            nextSlide={nextSlide}
+            prevSlide={prevSlide}
             sanityLandingPage={data}
           />
         )
       })}
 
-      <Button previous onClick={prevSlide}>
+      <Button previous onClick={prevSlide} onMouseDown={handlePrev}>
         <span>{'Prev'}</span>
       </Button>
 
-      <Button next onClick={nextSlide} >
+      <Button next onClick={nextSlide} onMouseDown={handleNext}>
         <span>{'Next'}</span>
       </Button>
 
@@ -89,7 +106,7 @@ const Button = styled.button`
   }
 `
 
-const PrevButton =styled(Button)`
+const PrevButton = styled(Button)`
 
 `
 
