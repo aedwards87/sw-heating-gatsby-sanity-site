@@ -1,22 +1,77 @@
-import React from "react"
+import React, { useState, useCallback } from 'react'
 import styled from 'styled-components'
 // import { Link } from "gatsby"
 import { Services } from '../components/index'
 import { StyledTitle } from '../components-styled/index'
+import Carousel from '../components/Carousel-2.0'
+import { slidev2 } from '../components/Carousel/CarouselSlides'
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-const Gallery = () => (
+export const pageQuery = graphql`
+  query GalleryQuery {
+    sanityLandingPage {
+      title
+      strapLine
+      mainImageAltTag
+      mainImage {
+        asset {
+          fluid(maxWidth: 1000) {
+            ...GatsbySanityImageFluid
+          }
+        }
+      }
+      secondImageAltTag
+      secondImage {
+        asset {
+          fluid(maxWidth: 1000) {
+            ...GatsbySanityImageFluid
+          }
+        }
+      }
+      thirdImage {
+        asset {
+          fluid(maxWidth: 1000) {
+            ...GatsbySanityImageFluid
+          }
+        }
+      }
+      fourthImage {
+        asset {
+          fluid(maxWidth: 1000) {
+            ...GatsbySanityImageFluid
+          }
+        }
+      }
+      fifthImage {
+        asset {
+          fluid(maxWidth: 1000) {
+            ...GatsbySanityImageFluid
+          }
+        }
+      }
+    }
+  }
+`
+
+const Gallery = ({ data: { sanityLandingPage } }) => (
   <Layout>
     <SEO title="Gallery" />
-      <S.Reviews>
-        <div>
-          <div style={{ marginBottom: '6rem' }}>
-            <StyledTitle>Gallery</StyledTitle>
-          </div>
+    <S.Gallery>
+      <div>
+        <div style={{ marginBottom: '6rem' }}>
+          <StyledTitle>Gallery</StyledTitle>
         </div>
-      </S.Reviews>
+        <Carousel
+          data={sanityLandingPage}
+          slides={slidev2}
+          from={{ opacity: 0, position: 'absolute', transform: 'translate3d(0%,0%,0) scale(0.5)' }}
+          enter={{ opacity: 1, transform: 'translate3d(0%,5%,0) scale(1)' }}
+          leave={{ opacity: 0, transform: 'translate3d(0%,5%,0) scale(1)' }}
+        />
+      </div>
+    </S.Gallery>
     <Services />
   </Layout>
 )
@@ -25,7 +80,7 @@ const Gallery = () => (
 // pathName={location.pathname}
 
 const S = {
-  Reviews: styled.section`
+  Gallery: styled.section`
     width: 100%;
     height: 100%;
     > div {

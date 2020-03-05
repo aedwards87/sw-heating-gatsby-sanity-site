@@ -32,125 +32,116 @@ const Services = () => {
   )
 
   return (
-    <StyledServicesContainer>
+    <S.Services>
       <div>
         <div style={{ marginBottom: '6rem' }}>
           <StyledTitle id="services" >Our services</StyledTitle>
         </div>
-        <StyledList>
+        <S.List>
           {allSanityWork.edges.map(({ node: work }) => (
             <li key={work.slug.current}>
               <Link to={`/${work.slug.current}`}>
-                <StyledImageContainer>
-                  <StyledImage
+                <S.ImageContainer>
+                  <S.Image
                     fluid={work.mainImage.asset.fluid}
                     alt={work.title}
                   />
-                </StyledImageContainer>
+                </S.ImageContainer>
                 <div className="list-heading-container">
                   <h3>{work.title}</h3>
                 </div>
               </Link>
             </li>
           ))}
-        </StyledList>
+        </S.List>
       </div>
-    </StyledServicesContainer>
+    </S.Services>
   )
 }
 
-
-const StyledServicesContainer = styled.section`
-  height: 100%;
-  width: 100%;
-  background: var(--light-bg);
-  > div {
-    max-width: 1900px;
-    margin: 0 auto;
-    padding: 0 5% 7rem;
-  }
-`
-
-const StyledImageContainer = styled.div`
-  overflow: hidden;
-  > div {
+const S = {
+  Services: styled.section`
     height: 100%;
-  }
-  height: 200px;
-  @media (min-width: 727px) {
-    height: 190px;
-  }
-  @media (min-width: 1800px) {
-    /* height: 230px; */
-  }
-`
-
-const StyledImage = styled(Image)`
-  border-radius: 10px 10px 0 0;
-`
-
-const StyledList = styled.ul`
-  list-style: none;
-  margin: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-  grid-gap: 2.5rem;
-  @media(min-width: 1820px) {
-    grid-gap: 4rem;
-  }
-  li {
-    border-radius: 10px;
+    width: 100%;
+    background: var(--light-bg);
+    > div {
+      max-width: 1900px;
+      margin: 0 auto;
+      padding: 0 5% 7rem;
+    }
+  `,
+  ImageContainer: styled.div`
     overflow: hidden;
-    height: 100%;
+    > div {
+      height: 100%;
+    }
+    height: 200px;
+    @media (min-width: 727px) {
+      height: 190px;
+    }
+  `,
+  Image: styled(Image)`
+    border-radius: 10px 10px 0 0;
+  `,
+  List: styled.ul`
+    list-style: none;
     margin: 0;
-    padding: 0;
-    transition: all 0.3s ease;
-    box-shadow: var(--shadow-two);
-    background: white;
-    :hover {
-      background: white;
-      box-shadow: var(--shadow-one);
-      transform: translate(0, -10px);
-    }
-    :hover a h3 {
-      color: var(--primary-three);
-    }
-    /* :hover .list-heading-container {
-      padding-left: 30px;
-    } */
-  }
-  .list-heading-container {
-    padding: 23px;
-    padding-left: 26px;
-    margin: auto 0;
-    height: 100%;
-  }
-  @media (min-width: 480px) {
-    .list-heading-container {
-      padding-left: 30px;
-    }
-  }
-  div {
-    transition: all 1s ease;
-  }
-  a:hover ${StyledImageContainer} > div {
-    transform: scale(1.1);
-  }
-  a h3 {
-    font-weight: var(--bolder);
-    font-size: 1.1rem;
-    line-height: 1.2;
-    color: var(--main-text);
-    transition: color 0.3s ease;
-    height: 100%;
-  }
-  a {
-    height: 100%;
     display: grid;
-    grid-template-columns: 1fr;
-  }
-`
-
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    grid-gap: 2.5rem;
+    @media(min-width: 1820px) {
+      grid-gap: 4rem;
+    }
+    li {
+      border-radius: 10px;
+      overflow: hidden;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-two);
+      background: white;
+      :hover {
+        background: white;
+        box-shadow: var(--shadow-one);
+        transform: translate(0, -10px);
+      }
+      :hover a h3 {
+        color: var(--primary-three);
+      }
+    }
+    .list-heading-container {
+      padding: 23px;
+      padding-left: 26px;
+      margin: auto 0;
+      height: 100%;
+    }
+    @media (min-width: 480px) {
+      .list-heading-container {
+        padding-left: 30px;
+      }
+    }
+    div {
+      transition: all 1s ease;
+    }
+    a:hover div > div {
+      transform: scale(1.1);
+    }
+    a h3 {
+      font-weight: var(--bolder);
+      font-size: 1.1rem;
+      line-height: 1.2;
+      color: var(--main-text);
+      transition: color 0.3s ease;
+      height: 100%;
+    }
+    a {
+      height: 100%;
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+  `
+}
 
 
 /* <StyledButton>

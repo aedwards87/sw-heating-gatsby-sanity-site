@@ -107,11 +107,11 @@ const S = {
         font-size: 3.2rem; 
       }
     }
-    @media (max-width: 980px) {
+    /* @media (max-width: 980px) {
       ${HeadFlameBackground} {
         display: none;
       }
-    }
+    } */
     @media (min-width: 1100px) {
       h1 { font-size: 3.6rem; }
     }

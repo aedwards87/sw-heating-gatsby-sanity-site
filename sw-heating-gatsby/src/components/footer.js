@@ -69,7 +69,10 @@ const footer = () => {
                         {navLink.title}
                       </Link>
                       :
-                      <Link to={`${location.pathname}#${navLink.title.toLowerCase()}`}>
+                      <Link
+                        to={`${location.pathname}#${navLink.title.toLowerCase()}`}
+                        activeClassName="active"
+                      >
                         {navLink.title}
                       </Link>
                     }
@@ -273,7 +276,7 @@ const StyledBottomFooter = styled.div`
         margin-right: 2.3rem;
         > a {
           position: relative;
-          :hover {
+          :hover, &.active {
             color: white;
           }
           ::after {
@@ -287,7 +290,8 @@ const StyledBottomFooter = styled.div`
             transition: all 0.3s ease;
           }
           :hover::after,
-          :active::after {
+          :focus::after,
+          &.active::after {
             left: 0;
             width: 100%;
           }

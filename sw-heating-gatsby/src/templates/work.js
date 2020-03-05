@@ -78,7 +78,7 @@ export default ({ data: { sanityWork } }) => {
     <Layout>
       <S.TemplateContainer>
         <div>
-          <div style={{marginBottom: '6rem'}}>
+          <div style={{ marginBottom: '6rem' }}>
             <StyledTitle as="h1" normal >{sanityWork.title}</StyledTitle>
           </div>
           <div>
@@ -87,17 +87,17 @@ export default ({ data: { sanityWork } }) => {
                 <React.Fragment key={i}>
                   {text}
                   {sanityWork._rawDescription[0].children[0].text.split('\n').length - 1 ===
-                  i ? null : (
-                    <>
-                      <br />
-                    </>
-                  )}
+                    i ? null : (
+                      <>
+                        <br />
+                      </>
+                    )}
                 </React.Fragment>
               ))}
 
             </p>
 
-              
+
           </div>
           <S.ImageContainer>
             <Image fluid={sanityWork.mainImage.asset.fluid} alt={sanityWork.title} />
@@ -108,7 +108,7 @@ export default ({ data: { sanityWork } }) => {
             <Image fluid={sanityWork.fifthImage.asset.fluid} alt={sanityWork.title} />
             <Image fluid={sanityWork.sixthImage.asset.fluid} alt={sanityWork.title} />
             <Image fluid={sanityWork.seventhImage.asset.fluid} alt={sanityWork.title} />
-            {/* <Image fluid={sanityWork.eighthImage.asset.fluid} alt={sanityWork.title} /> */}
+            <Image fluid={sanityWork.eighthImage.asset.fluid} alt={sanityWork.title} />
             {console.log(sanityWork.eighthImage)}
           </S.ImageContainer>
         </div>
@@ -132,7 +132,7 @@ const S = {
     };
     @media (min-width: 980px) {
       > div {
-        grid-template-columns: 1fr 1fr
+        grid-template-columns: 1fr 1fr;
       }
     }
   `,
@@ -140,35 +140,52 @@ const S = {
     display: grid;
     grid-template-columns: repeat(4, minmax(50px, 1fr));
     grid-template-rows: repeat(3, auto);
-    grid-gap: 2vmax;
+    grid-gap: 3.5vmax;
     align-content: start;
+    margin-top: 5vmax;
+    margin-bottom: 5vmax;
     div {
       transition: all .3s ease;
     }
     > div:hover {
       box-shadow: var(--shadow-one);
       overflow: hidden;
-      transform: translate(0, -10px) scale(1.1);
+      transform: translate3d(0, -0.5vmax, 0) scale(1.05);
       cursor: pointer;
-
     }
     > div:first-of-type:hover {
-      transform: translate(0, -3vmax) scale(1.1);
+      transform: translate3d(0, -2vmax, 0) scale(1.05);
     }
     .gatsby-image-wrapper {
       border-radius: 10px;
-      max-height: 8vw;
-    }
-    .gatsby-image-wrapper:first-of-type {
-      min-height: 35vw;
-      grid-column: 1 / -1
+      max-height: 15vw;
     }
     .gatsby-image-wrapper:not(:first-child) {
-      min-height: 8vw;
+      min-height: 15vw;
     }
+    .gatsby-image-wrapper:first-of-type {
+      min-height: 55vw;
+      grid-column: 1 / -1;
+    }
+
     @media (min-width: 980px) {
       grid-column-start: 2;
       grid-row: 1 / span 2;
+      grid-gap: 2vmax;
+      margin: 0;
+      .gatsby-image-wrapper:first-of-type {
+        min-height: 35vw;
+      }
+      .gatsby-image-wrapper {
+        max-height: 8vw;
+      }
+      .gatsby-image-wrapper:not(:first-child) {
+        min-height: 8vw;
+      }
+    }
+
+    @media (max-width: 480px) and (min-height: 600px) {
+      grid-gap: 2.5vmax;
     }
   `
 }

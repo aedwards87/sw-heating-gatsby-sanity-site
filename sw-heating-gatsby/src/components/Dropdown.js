@@ -29,7 +29,7 @@ const Dropdown = ({ className, ToggleOn, ToggleOff, style }) => {
 const S = {
   Dropdown: styled.div`
     position: absolute;
-    top: 2.2rem;
+    top: 2.3rem;
     left: 50%;
     transform: translate(-50%, 0);
     min-width: 295px;
