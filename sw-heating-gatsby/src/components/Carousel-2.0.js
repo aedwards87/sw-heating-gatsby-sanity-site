@@ -17,7 +17,7 @@ const Carousel = ({
 }) => {
 
   const [index, setIndex] = useState(0)
-  const [slideState, setSlideState] = useState('prev')
+  const [slideState, setSlideState] = useState('')
 
   const nextSlide = useCallback(() =>
     setIndex(state => (state + 1) % slides.length),
@@ -26,7 +26,6 @@ const Carousel = ({
   // // CODE to go to the previous slide - decrements index state by 1
   const prevSlide = useCallback(() =>
     setIndex(state => (state === 0) ? state = slides.length - 1 : (state - 1) % slides.length),
-    setSlideState(state => state = 'prev'),
     [])
   const handlePrev = useCallback(() =>
     setSlideState(state => state = 'prev'),

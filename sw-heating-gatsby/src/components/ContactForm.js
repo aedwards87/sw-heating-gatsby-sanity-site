@@ -1,52 +1,44 @@
-import React, { useState, useCallback } from 'react'
+import React from 'react'
 import styled from 'styled-components';
 import { StyledTitle } from '../components-styled/index'
+import useForm from '../hooks/useForm'
+import { validate } from '../hooks/validate';
+// const uuidv4 = require('uuid/v4')
+import { Warning } from '../assetsjs/index'
+
 
 const inputTitles = [
   {
     name: 'Full name',
-    type: 'text'
+    type: 'text',
+    required: true
   },
   {
     name: 'Email',
-    type: 'email'
+    type: 'email',
+    required: true
   },
   {
     name: 'Subject',
-    type: 'text'
+    type: 'text',
+    required: TextTrackCueList
   },
   {
     name: 'Message',
-    type: 'textarea'
+    type: 'textarea',
+    required: true
   }
 ]
 
 
 const ContactForm = () => {
+  const { values, handleChange, handleSubmit, errors } = useForm(submit, validate)
 
-  const [state, setState] = useState([{
-    fullname: "",
-    email: "",
-    subject: "",
-    message: "",
-  }])
-  // const [disable, setDisable] = useState("")
+  function submit() {
+    console.log('success')
+  }
 
-  // Disable button in initial render.
-  // useEffect(() => {
-  //   setDisable(true);
-  // }, []);
-
-
-  const handleChange = useCallback(e => {
-    const name = e.target.name
-    const value = e.target.value
-    setState(state => ([{
-      [name]: state[0][name] = value
-    }]))
-  }, [])
-
-  console.log(state[0])
+  console.log(Object.values(values).some(x => x === ''))
 
   return (
     <S.ContactForm>
@@ -61,8 +53,7 @@ const ContactForm = () => {
             Contact us
           </StyledTitle>
         </div>
-        <form>
-
+        <form onSubmit={handleSubmit} noValidate>
           <input
             type="hidden"
             name="form-name"
@@ -73,30 +64,41 @@ const ContactForm = () => {
             <li>
               <p>If you have any questions or queries, or would like to request a quote or even book an appointment, please get in touch with a member of our team using the form below:</p>
             </li>
-            {inputTitles.map(({ name, type }) =>
-              <li key={`${name}-${Date.now()}`}>
-                <label>{name}:
-                  {type !== 'textarea' ? // not equal to
-                    <>
-                      <S.Input
-                        type={type}
-                        name={`${name.toLowerCase().replace(/\s+/g, '')}`}
-                        onChange={handleChange}
-                      />
-                    </>
-                    :
+            {inputTitles.map(({ name, type }) => {
+              const _name = name.toLowerCase().replace(/\s+/g, '')
+              return (
+                <li
+                  key={name}
+                  className={errors[_name] && 'error'}
+                >
+                  <label>{name}:
                     <S.Input
-                      as={type}
-                      name={`${name.toLowerCase().replace(/\s+/g, '-')}`}
+                      as={type !== 'textarea' ? null : type}
+                      type={type !== 'textarea' ? type : null}
+                      name={_name}
                       onChange={handleChange}
+                      value={values[_name]}
+                      className={errors[_name] && 'error'}
+                      required
                     />
-                  }
-                </label>
-              </li>
-            )}
+                  </label>
+                  {((errors[_name] && _name === Object.keys(values)[0]) || errors[_name]) && (
+                    <S.ErrorMessage><Warning /><span>{errors[_name]}</span></S.ErrorMessage>
+                  )}
+                </li>
+              )
+            })}
             <li>
               <button type="submit" children="Send" />
             </li>
+            {console.log(values)}
+
+            {Object.values(errors).some(e => e !== '') &&
+              <div>
+                <Warning />
+                <span>There are invalid fields, please check these and try again</span>
+              </div>
+            }
           </S.ListContainer>
         </form>
       </div>
@@ -127,7 +129,7 @@ const S = {
   ListContainer: styled.ul`
     display: grid;
     grid-template-columns: 1fr;
-    grid-gap: 1rem;
+    grid-gap: 0.4rem;
     list-style: none;
     margin-left: 0;
     transition: all .3s ease;
@@ -136,7 +138,7 @@ const S = {
       display: grid;
       border-radius: 12px;
       border: 2px solid white;
-      font-size: 1.05rem;
+      font-size: 1rem;
       justify-items: start;
       :first-child {
         border: none;
@@ -144,13 +146,16 @@ const S = {
         margin-bottom: 2rem;
         grid-template-columns: 1fr;
       }
-      :last-child {
+      :last-of-type {
         grid-template-columns: 1fr;
         justify-self: center;
         width: 50%;
         padding: 0;
         border: none;
         outline: none;
+      }
+      &.error {
+        box-shadow: var(--shadow-error);
       }
       > label {
         height: 100%;
@@ -183,6 +188,20 @@ const S = {
           transform: translate(0, -2px);
           box-shadow: var(--shadow-one);
         }
+      }
+    }
+    > div {
+      text-align: center;
+      color: var(--primary-one);
+      display: grid;
+      grid-template-columns: auto auto;
+      justify-content: center;
+      align-items: center;
+      grid-gap: 0.7rem;
+      grid-column: 2 / span 4;
+      font-size: 0.75rem;
+      > span {
+        margin-top: 1.5px;
       }
     }
 
@@ -229,8 +248,65 @@ const S = {
     :focus {
       background: rgba(var(--primary-one-raw),0.3);
     }
+    p {
+      display: none;
+    }
+    .show {
+      display: block;
+    }
+    .hide {
+      display: none;
+    }
+    &.error {
+      border-radius: 0 10px 0 0;
+    }
+  `,
+  ErrorMessage: styled.div`
+    width: 100%;
+    padding: 0.1rem 1.8rem;
+    background: var(--primary-one);
+    color: var(--primary-two);
+    font-weight: var(--bolder);
+    font-size: 0.7rem;
+    border-radius: 0 0 8px 8px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    grid-gap: 0.7rem;
+    > span {
+      margin-top: 1.5px;
+    }
   `
 }
 
 
 export default ContactForm
+
+  // const [state, setState] = useState([{
+  //   fullname: "",
+  //   email: "",
+  //   subject: "",
+  //   message: "",
+  // }])
+  // const [disable, setDisable] = useState("")
+
+  // Disable button in initial render.
+  // useEffect(() => {
+  //   setDisable(true);
+  // }, []);
+  // const handleChange = useCallback(e => {
+  //   const name = e.target.name
+  //   const value = e.target.value
+  //   setState(state => ([{
+  //     [name]: state[0][name] = value
+  //   }]))
+  // }, [])
+
+  // console.log(state[0])
+
+  // const handleSubmit = useCallback(
+  //   () => {
+  //     null
+  //   },
+  //   [],
+  // )

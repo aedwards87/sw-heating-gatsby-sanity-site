@@ -12,7 +12,7 @@ import CarouselDropletMaskSVG from './carousel-droplet-mask-svg'
 import SWDropletQuotes from './sw-droplet-quotes'
 import HeadFlameBackground from './head-flame-background'
 import SWLettersSVG from './sw-letters'
-
+import Warning from './warning'
 
 export {
   SWHeatingLogo,
@@ -29,4 +29,5 @@ export {
   SWDropletQuotes,
   HeadFlameBackground,
   SWLettersSVG,
+  Warning
 }
