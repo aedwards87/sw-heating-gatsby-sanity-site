@@ -564,10 +564,10 @@ address {
   margin-bottom: 1.45rem;
 }
 b {
-  font-weight: var(--bold);
+  font-weight: var(--bolder);
 }
 strong {
-  font-weight: var(--bold);
+  font-weight: var(--bolder);
 }
 dt {
   font-weight: var(--bold);

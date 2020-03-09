@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import Image from 'gatsby-image'
+import PortableText from '@sanity/block-content-to-react'
 import styled from 'styled-components'
 import Layout from "../components/layout"
 import { Services } from '../components/index'
@@ -82,21 +83,9 @@ export default ({ data: { sanityWork } }) => {
             <StyledTitle as="h1" normal >{sanityWork.title}</StyledTitle>
           </div>
           <div>
-            <p>
-              {sanityWork._rawDescription[0].children[0].text.split('\n').map((text, i) => (
-                <React.Fragment key={i}>
-                  {text}
-                  {sanityWork._rawDescription[0].children[0].text.split('\n').length - 1 ===
-                    i ? null : (
-                      <>
-                        <br />
-                      </>
-                    )}
-                </React.Fragment>
-              ))}
-
-            </p>
-
+            <PortableText
+              blocks={sanityWork._rawDescription}
+            />
 
           </div>
           <S.ImageContainer>
