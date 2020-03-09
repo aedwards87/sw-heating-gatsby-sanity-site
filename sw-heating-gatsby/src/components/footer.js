@@ -2,7 +2,7 @@
 import React from "react"
 import styled from 'styled-components'
 import { Link } from "gatsby"
-import { navLinks } from './header'
+import { navLinks } from './index'
 import { SWHeatingLogo, Facebook, GasSafe, Ciphe, EnvAgency, Vaillant, Phone, Email, Mobile } from "../assetsjs/index";
 import { Location } from "@reach/router";
 

@@ -1,17 +1,19 @@
-import Head from '../components/Head'
-import Services from '../components/Services'
-import About from '../components/About'
-import ContactForm from '../components/ContactForm'
-import Feedback from '../components/Feedback'
-import Header from '../components/header'
-import Footer from '../components/footer'
-import Image from '../components/image'
+import Head from './Head'
+import Services from './Services'
+import About from './About'
+import ContactForm from './ContactForm'
+import Feedback from './Feedback'
+import Header from './Nav/header'
+import Footer from './footer'
+import Image from './image'
 import { UserContext } from './layout'
 import Carousel from './carousel'
 import GradientButton from './GradientButton'
 import Dropdown from './Dropdown'
 // import DropdownList from './DropdownList'
 import Toggle from './Toggle'
+import Nav from './Nav/Nav'
+import { navLinks } from './Nav/navLinks'
 
 export {
   Head,
@@ -28,4 +30,6 @@ export {
   Dropdown,
   // DropdownList,
   Toggle,
+  Nav,
+  navLinks,
 }

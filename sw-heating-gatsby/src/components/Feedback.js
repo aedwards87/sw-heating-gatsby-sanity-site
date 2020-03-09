@@ -168,7 +168,7 @@ const StyledListContainer = styled.ul`
   @media (min-width: 736px) {
     grid-auto-columns: minmax(500px, 1fr);
     > li {
-      padding: 4rem 3.5rem;
+      padding: 4rem 3.5rem 4.5rem;
     }
   }
   blockquote {
@@ -180,7 +180,7 @@ const StyledListContainer = styled.ul`
     }
     footer {
       position: absolute;
-      bottom: -2rem;
+      bottom: -2.7rem;
       right: 0;
       font-weight: var(--bolder);
       font-size: 0.8rem;

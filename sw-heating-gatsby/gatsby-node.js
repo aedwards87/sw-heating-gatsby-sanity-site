@@ -8,7 +8,7 @@
 const path = require('path')
 
 exports.createPages = async ({ actions, graphql }) => {
-  const result = await graphql(`
+  const { errors, data } = await graphql(`
     {
       allSanityWork {
         edges {
@@ -21,8 +21,11 @@ exports.createPages = async ({ actions, graphql }) => {
       }
     }
   `)
+  if (errors) {
+    throw new Error('There was an error')
+  }
 
-  const works = result.data.allSanityWork.edges.map(({ node }) => node)
+  const works = data.allSanityWork.edges.map(({ node }) => node)
 
   works.forEach(work => {
     actions.createPage({
