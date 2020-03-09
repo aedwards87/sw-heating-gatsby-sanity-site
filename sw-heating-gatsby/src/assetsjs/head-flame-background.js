@@ -37,7 +37,9 @@ const StyledContainer = styled.div`
   top: -${({ navbarheight }) => navbarheight.navBarHeight}px;
   right: 0;
   height: auto;
-  width: calc(50% + 7vmax);
+  /* width: calc(50% + 7vmax); */
+  width: calc(40% + 15vmax);
+  /* width: 55%; */
   overflow: hidden;
   transition: width 1s ease;
   @media (min-width: 1500px) {

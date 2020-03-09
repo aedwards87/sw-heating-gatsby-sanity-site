@@ -74,11 +74,11 @@ const S = {
     width: 75%;
     z-index: 1;
     > p {
-      font-size: 1.11rem;
+      /* font-size: 1.11rem; */
       padding: 0;
       margin-bottom: 5vh;
       width: 80%;
-      line-height: 1.8rem;
+      /* line-height: 1.8rem; */
     }
     /* Tablet */
     @media (min-width: 770px) {
@@ -113,11 +113,11 @@ const S = {
       }
     } */
     @media (min-width: 1100px) {
-      h1 { font-size: 3.6rem; }
+      h1 { font-size: 3.3rem; }
     }
     /* Large screens */
-    @media (min-width: 1400px) {
-      h1 { font-size: 4.6rem; }
+    @media (min-width: 1500px) {
+      h1 { font-size: 4.4rem; }
     }
   `
 }

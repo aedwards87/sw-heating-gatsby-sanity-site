@@ -246,7 +246,7 @@ html {
 }
 @media (min-width: 980px) {
   html {
-    font: 112.5%/1.45em 'Montserrat', Helvetica, Arial, sans-serif;
+    font: 112.5%/1.6em 'Montserrat', Helvetica, Arial, sans-serif;
   }
   body {
     font-size: 18px;

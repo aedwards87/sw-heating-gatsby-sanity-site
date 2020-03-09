@@ -85,10 +85,12 @@ const S = {
       :hover, :focus {
         color: var(--primary-two);
         transform: translate(5%, 0) scale(1.07);
+        font-weight: var(--bolder);
       }
       &.active { 
         color: var(--primary-two);
         pointer-events: none;
+        font-weight: var(--bolder);
         :focus, :hover {
           transform: translate(0, 0) scale(1);
         }

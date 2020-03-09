@@ -21,18 +21,16 @@ const Carousel = ({
 
   const nextSlide = useCallback(() =>
     setIndex(state => (state + 1) % slides.length),
-    []) // Increments index state by 1
+    [slides.length]) // Increments index state by 1
   // const targetSlide = (e) => setIndex(parseInt(e.target.value)) // Selects slide matching button value
   // // CODE to go to the previous slide - decrements index state by 1
+
   const prevSlide = useCallback(() =>
     setIndex(state => (state === 0) ? state = slides.length - 1 : (state - 1) % slides.length),
-    [])
-  const handlePrev = useCallback(() =>
-    setSlideState(state => state = 'prev'),
-    [slideState])
-  const handleNext = useCallback(() =>
-    setSlideState(state => state = 'next'),
-    [slideState])
+    [slides.length])
+
+  const handlePrev = useCallback(() => setSlideState('prev'), [])
+  const handleNext = useCallback(() => setSlideState('next'), [])
 
 
   const transitions = useTransition(index, p => p, {
@@ -103,10 +101,6 @@ const Button = styled.button`
   span {
     display: none;
   }
-`
-
-const PrevButton = styled(Button)`
-
 `
 
 const StyledDiv = styled.div`

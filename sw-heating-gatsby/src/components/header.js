@@ -129,7 +129,7 @@ const S = {
     ::after {
       content: "";
       position: absolute;
-      bottom: -5px;
+      bottom: -3.5px;
       left: 50%;
       height: 3px;
       width: 0;

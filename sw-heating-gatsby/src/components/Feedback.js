@@ -41,7 +41,7 @@ const Feedback = () => {
             <SWDropletQuotes />
             <blockquote>
               <p>{message}</p>
-              <footer>- {name}</footer>
+              <footer>{name}</footer>
             </blockquote>
           </li>
         ))}
@@ -174,7 +174,7 @@ const StyledListContainer = styled.ul`
   blockquote {
     margin: 0;
     position: relative;
-    font-size: 0.9rem;
+    /* font-size: 0.9rem; */
     p {
       margin-bottom: 0;
     }
@@ -182,8 +182,8 @@ const StyledListContainer = styled.ul`
       position: absolute;
       bottom: -2rem;
       right: 0;
-      font-weight: var(--normal);
-      font-size: 0.7rem;
+      font-weight: var(--bolder);
+      font-size: 0.8rem;
     }
   }
   
