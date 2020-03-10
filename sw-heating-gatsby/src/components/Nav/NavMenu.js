@@ -7,38 +7,43 @@ import { Link } from "gatsby"
 
 const NavMenu = ({ on, location, style, toggleMenu }) => {
   return (
-    <S.NavMenu style={{ height: style.height }} onClick={toggleMenu}>
-      <ul onClick={toggleMenu}>
+    <S.NavMenu style={{ height: style.height }}>
+      <ul>
         {navLinks.map(navLink =>
-          <li 
-          onClick={toggleMenu}
-            key={navLink.title} 
+          <li
+            key={navLink.title}
             style={{ position: 'relative' }}
           >
             {!navLink.dropdown ?
-              <Link
+              <S.Link
                 onClick={toggleMenu}
+                // onMouseUp={}
                 to={navLink.link
                   ? `/${navLink.title.toLowerCase()}`
                   : `/#${navLink.title.toLowerCase()}`
                 }
                 activeClassName="active"
               >
-                {navLink.title}
-              </Link>
+                <span>
+                  {navLink.title}
+                </span>
+              </S.Link>
               :
-              <Link
+              <S.Link
                 to={`${location.pathname}#${navLink.title.toLowerCase()}`}
                 aria-expanded={on ? true : null}
                 style={{ zIndex: -999999999 }}
-              // TODO: Add the hanhtag to the URL when section scrolled into view
-              // in turn gving the link an activeClassName
-              // onClick={ToggleOff}
-              // onFocus={ToggleOn}
-              // onBlur={ToggleOff}
+                // TODO: Add the hanhtag to the URL when section scrolled into view
+                // in turn gving the link an activeClassName
+                // onClick={ToggleOff}
+                // onFocus={ToggleOn}
+                // onBlur={ToggleOff}
+                onClick={toggleMenu}
               >
-                {navLink.title}
-              </Link>
+                <span>
+                  {navLink.title}
+                </span>
+              </S.Link>
             }
           </li>
         )}
@@ -57,18 +62,52 @@ const S = {
     background: white;
     z-index: -1;
     overflow: hidden;
-    font-size: 2.25rem;
+    font-size: 2rem;
     line-height: 3.5rem;
     /* font-weight: var(--bold); */
     letter-spacing: 1px;
     ul {
       margin-left: 0;
       list-style: none;
-      display: grid;
-      justify-content: end;
+      display: flex;
+      /* grid-template-columns: auto; */
+      flex-wrap: wrap;
+      flex-direction: column;
+      justify-content: flex-end;
+      justify-items: auto;
       padding: 160px 5% 1%;
       text-align: right;
     }
+  `,
+  Link: styled(Link)`
+    transition: all 0.3s ease;
+    font-weight: var(--bold);
+    :hover, &.active {
+      color: var(--primary-two);
+    }
+    &.active {
+      pointer-events: none;
+    }
+    span {
+      position: relative;
+    }
+    span::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      height: 3px;
+      width: 0;
+      background: var(--primary-one);
+      transition: all 0.3s ease;
+    }
+    :hover span::after,
+    :focus span::after,
+    &.active span::after {
+      left: 0;
+      width: 99%;
+    }
+
   `
 }
 

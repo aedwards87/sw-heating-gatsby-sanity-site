@@ -116,7 +116,7 @@ const S = {
       h1 { font-size: 3.3rem; }
     }
     /* Large screens */
-    @media (min-width: 1500px) {
+    @media (min-width: 1600px) {
       h1 { font-size: 4.4rem; }
     }
   `
