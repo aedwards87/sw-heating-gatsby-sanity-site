@@ -22,11 +22,11 @@ import { useState } from 'react'
 
 
 const Toggle = ({ children }) => {
-  const [on, setOn] = useState(false)
-  const toggle = () => setOn(!on)
+  const [isOn, setOn] = useState(false)
+  const toggle = () => setOn(!isOn)
 
   return children({
-    on, toggle
+    isOn, toggle, setOn
   })
 }
 

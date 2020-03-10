@@ -12,7 +12,8 @@ import GradientButton from './GradientButton'
 import Dropdown from './Dropdown'
 // import DropdownList from './DropdownList'
 import Toggle from './Toggle'
-import Nav from './Nav/Nav'
+import NavBar from './Nav/NavBar'
+import NavMenu from './Nav/NavMenu'
 import { navLinks } from './Nav/navLinks'
 
 export {
@@ -30,6 +31,7 @@ export {
   Dropdown,
   // DropdownList,
   Toggle,
-  Nav,
+  NavBar,
+  NavMenu,
   navLinks,
 }

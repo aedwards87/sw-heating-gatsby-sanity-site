@@ -4,11 +4,13 @@ import PropTypes from "prop-types"
 import { Link } from "gatsby"
 import { Location } from "@reach/router";
 import { SWHeatingLogo } from "../../assetsjs/index";
-import { Nav } from '../index'
+import { NavBar, NavMenu, navLinks } from '../index'
+import { Desktop, SmallScreen } from '../../hooks/useMedia'
 
 
 const Header = (props, ref) => {
   const [on, setOn] = useState(false)
+  const [isOpen, setOpen] = useState(false)
   const [currentPosition, setCurrentPosition] = useState(window.pageYOffset)
   const [scrollUp, setScrollUp] = useState(false)
 
@@ -27,7 +29,7 @@ const Header = (props, ref) => {
       window.removeEventListener("scroll", handleScroll);
     })
   }, [scrollUp, currentPosition])
-  
+
 
   return (
     <Location>
@@ -39,17 +41,27 @@ const Header = (props, ref) => {
           ref={ref}
         >
           <div>
-            <div>
-              <Link to="/">
-                <SWHeatingLogo height="49" />
-              </Link>
-            </div>
-            <Nav 
-              on={on}
-              ToggleOn={ToggleOn}
-              ToggleOff={ToggleOff}
-              location={location}
-            />
+            {/* Add new div here? */}
+            <Link to="/">
+              <SWHeatingLogo height="49" />
+            </Link>
+            <Desktop>
+              <NavBar
+                on={on}
+                ToggleOn={ToggleOn}
+                ToggleOff={ToggleOff}
+                location={location}
+                navLinks={navLinks}
+              />
+            </Desktop>
+            <SmallScreen>
+              <NavMenu
+                on={on}
+                location={location}
+                navLinks={navLinks}
+              />
+            </SmallScreen>
+
           </div>
         </S.Header >
       }
