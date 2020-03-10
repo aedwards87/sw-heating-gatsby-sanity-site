@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 
 // export default class Toggle extends Component {
 
@@ -22,11 +22,13 @@ import { useState } from 'react'
 
 
 const Toggle = ({ children }) => {
-  const [isOn, setOn] = useState(false)
-  const toggle = () => setOn(!isOn)
+  const [on, setOn] = useState(false)
+  const toggle = useCallback(() => { setOn(!on) }, [on])
+  const toggleOn = useCallback(() => { setOn(true) }, [])
+  const toggleOff = useCallback(() => { setOn(false) }, [])
 
   return children({
-    isOn, toggle, setOn
+    on, toggle, toggleOn, toggleOff
   })
 }
 

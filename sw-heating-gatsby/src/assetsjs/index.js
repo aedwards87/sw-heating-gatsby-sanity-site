@@ -13,6 +13,7 @@ import SWDropletQuotes from './sw-droplet-quotes'
 import HeadFlameBackground from './head-flame-background'
 import SWLettersSVG from './sw-letters'
 import Warning from './warning'
+import MenuIcon from './MenuIcon'
 
 export {
   SWHeatingLogo,
@@ -29,5 +30,6 @@ export {
   SWDropletQuotes,
   HeadFlameBackground,
   SWLettersSVG,
-  Warning
+  Warning,
+  MenuIcon
 }

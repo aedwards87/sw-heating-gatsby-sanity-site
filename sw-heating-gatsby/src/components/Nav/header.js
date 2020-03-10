@@ -3,19 +3,26 @@ import styled from 'styled-components'
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
 import { Location } from "@reach/router";
-import { SWHeatingLogo } from "../../assetsjs/index";
-import { NavBar, NavMenu, navLinks } from '../index'
+import { SWHeatingLogo, MenuIcon } from "../../assetsjs/index";
+import { NavBar, NavMenu, navLinks, Toggle } from '../index'
 import { Desktop, SmallScreen } from '../../hooks/useMedia'
+import { useSpring, animated, config } from 'react-spring'
 
 
 const Header = (props, ref) => {
-  const [on, setOn] = useState(false)
-  const [isOpen, setOpen] = useState(false)
   const [currentPosition, setCurrentPosition] = useState(window.pageYOffset)
   const [scrollUp, setScrollUp] = useState(false)
+  const [open, setOpen] = useState(false)
 
-  const ToggleOn = useCallback(() => { setOn(true) }, [])
-  const ToggleOff = useCallback(() => { setOn(false) }, [])
+
+  const toggleMenu = () => setOpen(!open)
+
+  const fade = useSpring({ 
+    opacity: open || open && !scrollUp ? 1 : 0,
+    // transform: open ? `translate3d(0,0,0)` : `translate3d(0,-100%,0)`,
+    height: open  || open && !scrollUp ? 700 : 0,
+    config: config.slow
+  })
 
   // Listens for the when the page is scrolled up
   useEffect(() => {
@@ -34,41 +41,62 @@ const Header = (props, ref) => {
   return (
     <Location>
       {({ location }) =>
-        <S.Header
-          id="header"
-          goingUp={scrollUp ? true : false}
-          position={currentPosition}
-          ref={ref}
-        >
-          <div>
-            {/* Add new div here? */}
-            <Link to="/">
-              <SWHeatingLogo height="49" />
-            </Link>
-            <Desktop>
-              <NavBar
-                on={on}
-                ToggleOn={ToggleOn}
-                ToggleOff={ToggleOff}
-                location={location}
-                navLinks={navLinks}
-              />
-            </Desktop>
-            <SmallScreen>
-              <NavMenu
-                on={on}
-                location={location}
-                navLinks={navLinks}
-              />
-            </SmallScreen>
+        <Toggle>
+          {({ on: isDropDownOn, toggleOff, toggleOn }) => 
+            <S.Header
+              id="header"
+              goingUp={scrollUp ? true : false}
+              position={currentPosition}
+              ref={ref}
+            >
+              <div>
+                {/* Add new div here? */}
+                <Link to="/">
+                  <SWHeatingLogo height="49" />
+                </Link>
+                <Desktop>
+                  <NavBar
+                    on={isDropDownOn}
+                    ToggleOn={toggleOn}
+                    ToggleOff={toggleOff}
+                    location={location}
+                    navLinks={navLinks}
+                  />
+                </Desktop>
+                <SmallScreen>
+                  <Toggle>
+                    {({ on: isMenuOn, toggle }) => 
+                      <>
+                        <S.MenuButton onClick={() => {
+                          toggleMenu(!open)
 
-          </div>
-        </S.Header >
+                          // setScrollUp(!scrollUp)
+                          // setCurrentPosition(scrollUp ? 0 : 1)
+                        }}>
+                          <MenuIcon />
+                        </S.MenuButton>
+                        {/* {isMenuOn && */}
+                          <AnimNavMenu
+                            style={fade}
+                            toggleMenu={toggleMenu}
+                            location={location}
+                            navLinks={navLinks}
+                          />
+                        {/* } */}
+                      </>
+                    } 
+                  </Toggle>
+                </SmallScreen>
+              </div>
+            </S.Header >
+          }
+        </Toggle>
       }
     </Location>
   )
 }
 
+const AnimNavMenu = animated(NavMenu)
 
 const S = {
   Header: styled.header`
@@ -78,7 +106,7 @@ const S = {
     top: ${({ goingUp, position }) => goingUp ? '0' : position === 0 ? '0' : '-130px'};
     left: 0px;
     right: 0px;
-    z-index: 99;
+    z-index: 99999;
     > div {
       margin: 0 auto;
       max-width: 1900px;
@@ -87,6 +115,12 @@ const S = {
       justify-content: space-between;
       align-items: center;
     }
+  `,
+  MenuButton: styled.button`
+    outline: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
   `
 }
 
