@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { Link } from "gatsby"
 import { StyledTitle } from '../components-styled/index'
 import { useStaticQuery, graphql } from "gatsby"
+import { Waypoint } from 'react-waypoint'
 
 const Services = () => {
   const { allSanityWork } = useStaticQuery(
@@ -31,29 +32,45 @@ const Services = () => {
     `
   )
 
+  const changeURL = () => {
+    let params = new URL(document.location).hash = '#services'
+    window.history.pushState({}, null, params)
+  }
+
+  const removeURL = () => {
+    let params = new URL(document.location).pathname = '/'
+    window.history.pushState({}, null, params)
+  }
+
   return (
     <S.Services>
       <div>
         <div style={{ marginBottom: '6rem' }}>
           <StyledTitle id="services" >Our services</StyledTitle>
         </div>
-        <S.List>
-          {allSanityWork.edges.map(({ node: work }) => (
-            <li key={work.slug.current}>
-              <Link to={`/${work.slug.current}`}>
-                <S.ImageContainer>
-                  <S.Image
-                    fluid={work.mainImage.asset.fluid}
-                    alt={work.title}
-                  />
-                </S.ImageContainer>
-                <div className="list-heading-container">
-                  <h3>{work.title}</h3>
-                </div>
-              </Link>
-            </li>
-          ))}
-        </S.List>
+        <Waypoint
+          onEnter={() => changeURL()}
+          onLeave={() => removeURL()}
+          bottomOffset="30%"
+        >
+          <S.List>
+            {allSanityWork.edges.map(({ node: work }) => (
+              <li key={work.slug.current}>
+                <Link to={`/${work.slug.current}`}>
+                  <S.ImageContainer>
+                    <S.Image
+                      fluid={work.mainImage.asset.fluid}
+                      alt={work.title}
+                    />
+                  </S.ImageContainer>
+                  <div className="list-heading-container">
+                    <h3>{work.title}</h3>
+                  </div>
+                </Link>
+              </li>
+            ))}
+          </S.List>
+        </Waypoint>
       </div>
     </S.Services>
   )

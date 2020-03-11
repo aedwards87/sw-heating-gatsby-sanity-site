@@ -14,13 +14,12 @@ const Header = (props, ref) => {
   const [scrollUp, setScrollUp] = useState(false)
   const [open, setOpen] = useState(false)
 
-
   const toggleMenu = () => setOpen(!open)
 
-  const fade = useSpring({ 
+  const fade = useSpring({
     opacity: open || open && !scrollUp ? 1 : 0,
     // transform: open ? `translate3d(0,0,0)` : `translate3d(0,-100%,0)`,
-    height: open  || open && !scrollUp ? 700 : 0,
+    height: open || open && !scrollUp ? 600 : 0,
     config: config.slow
   })
 
@@ -42,7 +41,7 @@ const Header = (props, ref) => {
     <Location>
       {({ location }) =>
         <Toggle>
-          {({ on: isDropDownOn, toggleOff, toggleOn }) => 
+          {({ on: isDropDownOpen, toggleOff, toggleOn }) =>
             <S.Header
               id="header"
               goingUp={scrollUp ? true : false}
@@ -56,7 +55,7 @@ const Header = (props, ref) => {
                 </Link>
                 <Desktop>
                   <NavBar
-                    on={isDropDownOn}
+                    on={isDropDownOpen}
                     ToggleOn={toggleOn}
                     ToggleOff={toggleOff}
                     location={location}
@@ -65,26 +64,22 @@ const Header = (props, ref) => {
                 </Desktop>
                 <SmallScreen>
                   <Toggle>
-                    {({ on: isMenuOn, toggle }) => 
+                    {({ on: isMenuOn, toggle }) =>
                       <>
                         <S.MenuButton onClick={() => {
                           toggleMenu(!open)
-
-                          // setScrollUp(!scrollUp)
-                          // setCurrentPosition(scrollUp ? 0 : 1)
                         }}>
                           <MenuIcon />
                         </S.MenuButton>
-                        {/* {isMenuOn && */}
-                          <AnimNavMenu
-                            style={fade}
-                            toggleMenu={toggleMenu}
-                            location={location}
-                            navLinks={navLinks}
-                          />
-                        {/* } */}
+                        <AnimNavMenu
+                          on={open}
+                          style={fade}
+                          toggleMenu={toggleMenu}
+                          location={location}
+                          navLinks={navLinks}
+                        />
                       </>
-                    } 
+                    }
                   </Toggle>
                 </SmallScreen>
               </div>

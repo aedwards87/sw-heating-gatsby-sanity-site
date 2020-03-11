@@ -93,12 +93,15 @@ const ContactForm = () => {
             </li>
             {console.log(values)}
 
-            {Object.values(errors).some(e => e !== '') &&
+
+            {/* TODO: Layout collapsing on mobile view with below code */}
+
+            {/* {Object.values(errors).some(e => e !== '') &&
               <div>
                 <Warning />
                 <span>There are invalid fields, please check these and try again</span>
               </div>
-            }
+            } */}
           </S.ListContainer>
         </form>
       </div>

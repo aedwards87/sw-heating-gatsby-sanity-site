@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from "gatsby"
-import { TempSanityWork } from '../data/dropdown-data'
+import { TempSanityWork } from '../../data/dropdown-data'
 
 const Dropdown = ({ className, ToggleOn, ToggleOff, style }) => {
   // console.log(TempSanityWork)

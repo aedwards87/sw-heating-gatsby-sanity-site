@@ -45,6 +45,7 @@ const NavBar = ({
                 onClick={ToggleOff}
                 onFocus={ToggleOn}
                 onBlur={ToggleOff}
+                className="dropdown"
               >
                 {navLink.title}
               </S.Link>
@@ -116,13 +117,15 @@ const S = {
       height: 3px;
       width: 0;
       background: ${({ goingUp, position }) => position === 0 || !goingUp ? 'var(--primary-two)' : 'var(--primary-one)'};
-      transition: all 0.3s ease;
+      transition: all .3s ease;
+      opacity: 0;
     }
     :hover::after,
     :focus::after,
     &.active::after {
       left: 0;
       width: 100%;
+      opacity: 1;
     }
   `
 }
