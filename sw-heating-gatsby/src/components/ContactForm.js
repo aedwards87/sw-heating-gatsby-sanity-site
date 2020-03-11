@@ -158,7 +158,7 @@ const S = {
         outline: none;
       }
       &.error {
-        box-shadow: var(--shadow-error);
+        /* box-shadow: var(--shadow-error); */
       }
       > label {
         height: 100%;

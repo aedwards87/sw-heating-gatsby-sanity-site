@@ -57,7 +57,7 @@ const NavBar = ({
                 ToggleOn={ToggleOn}
                 ToggleOff={ToggleOff}
                 style={props}
-              // className={!on && 'hide'}
+                className={!on && 'hide'}
               />
             ))}
           </li>

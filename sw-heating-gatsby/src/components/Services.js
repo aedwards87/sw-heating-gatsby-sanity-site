@@ -43,36 +43,39 @@ const Services = () => {
   }
 
   return (
-    <S.Services>
-      <div>
-        <div style={{ marginBottom: '6rem' }}>
-          <StyledTitle id="services" >Our services</StyledTitle>
+    <Waypoint
+      onEnter={() => changeURL()}
+      onLeave={() => removeURL()}
+      // topOffset="50%"
+      bottomOffset="10%"
+    >
+      <S.Services>
+        <div>
+          <div style={{ marginBottom: '6rem' }}>
+            <StyledTitle id="services" >Our services</StyledTitle>
+          </div>
+          
+            <S.List>
+              {allSanityWork.edges.map(({ node: work }) => (
+                <li key={work.slug.current}>
+                  <Link to={`/${work.slug.current}`}>
+                    <S.ImageContainer>
+                      <S.Image
+                        fluid={work.mainImage.asset.fluid}
+                        alt={work.title}
+                      />
+                    </S.ImageContainer>
+                    <div className="list-heading-container">
+                      <h3>{work.title}</h3>
+                    </div>
+                  </Link>
+                </li>
+              ))}
+            </S.List>
+          
         </div>
-        <Waypoint
-          onEnter={() => changeURL()}
-          onLeave={() => removeURL()}
-          bottomOffset="30%"
-        >
-          <S.List>
-            {allSanityWork.edges.map(({ node: work }) => (
-              <li key={work.slug.current}>
-                <Link to={`/${work.slug.current}`}>
-                  <S.ImageContainer>
-                    <S.Image
-                      fluid={work.mainImage.asset.fluid}
-                      alt={work.title}
-                    />
-                  </S.ImageContainer>
-                  <div className="list-heading-container">
-                    <h3>{work.title}</h3>
-                  </div>
-                </Link>
-              </li>
-            ))}
-          </S.List>
-        </Waypoint>
-      </div>
-    </S.Services>
+      </S.Services>
+    </Waypoint>
   )
 }
 
