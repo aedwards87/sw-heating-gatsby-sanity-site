@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { navLinks } from './navLinks'
 import styled from 'styled-components'
 import { Link } from "gatsby"
 import { useTransition, useSpring, animated, config } from 'react-spring'
+import { TempSanityWork } from '../../data/dropdown-data'
 
 
 const NavMenu = ({
@@ -12,10 +13,24 @@ const NavMenu = ({
   scrollUp
 }) => {
 
+  const [on, toggle] = useState(false)
+
   const fade = useSpring({
     opacity: isMenuOpen || isMenuOpen && !scrollUp ? 1 : 0,
     height: isMenuOpen || isMenuOpen && !scrollUp ? 600 : 0,
     config: config.slow
+  })
+
+  const fadeTwo = useSpring({
+    opacity: on ? 1 : 0,
+    height: on ? 'auto' : 0,
+    config: config.slow
+  })
+
+  const transition = useTransition(on, null, {
+    from: { position: 'absolute', opacity: 0, height: 0 },
+    enter: { opacity: 1, height: 200 },
+    leave: { opacity: 0, height: 0 }
   })
 
   return (
@@ -41,36 +56,50 @@ const NavMenu = ({
                   </span>
                 </S.Link>
                 :
-                <S.Link
-                  to={`${location.pathname}#${navLink.title.toLowerCase()}`}
-                  aria-expanded={isMenuOpen ? true : null}
-                  // TODO: Add the hanhtag to the URL when section scrolled into view
-                  // in turn gving the link an activeClassName
-                  // onClick={ToggleOff}
-                  // onFocus={ToggleOn}
-                  // onBlur={ToggleOff}
-                  onClick={toggleMenu}
-                >
-                  <span>
-                    {navLink.title}
-                  </span>
-                </S.Link>
-                // {transition.map(({ item, key, props }) => (
-                //   item && navLink.dropdown &&
-                //   <AnimDropdown
-                //     key={key}
-                //     ToggleOn={ToggleOn}
-                //     ToggleOff={ToggleOff}
-                //     style={props}
-                //     className={!on && 'hide'}
-                //   />
-                // ))}
+                <>
+                  <div
+                    className={on && 'active'}
+                    aria-expanded={isMenuOpen ? true : null}
+                    // TODO: Add the hanhtag to the URL when section scrolled into view
+                    // in turn gving the link an activeClassName
+                    // onClick={ToggleOff}
+                    // onFocus={ToggleOn}
+                    // onBlur={ToggleOff}
+                    onClick={() => toggle(!on)}
+                    style={{ position: 'relative', fontWeight: 'var(--bold)' }}
+                  >
+                    <span style={{ paddingBottom: '1rem' }}>
+                      {navLink.title}
+                    </span>
+
+                    {/* {transition.map(({ item, key, props }) => (
+                      item && navLink.dropdown && */}
+                    <animated.ul style={{ ...fadeTwo, display: 'grid', padding: 0 }}>
+                      {TempSanityWork.edges.map(({ node: work }) => (
+                        <li
+                          key={work.slug.current}
+                          style={{ fontSize: '1.2rem', paddingBottom: '0.5rem', letterSpacing: .5 }}
+                          className="tom"
+                        >
+                          <Link
+                            to={`/${work.slug.current}`}
+                            activeClassName="active"
+                            onClick={toggleMenu}
+                          >
+                            <span>{work.title}</span>
+                          </Link>
+                        </li>
+                      ))}
+                    </animated.ul>
+                    {/* ))} */}
+                  </div>
+                </>
               }
             </li>
           )}
         </ul>
       </animated.div>
-    </S.NavMenu>
+    </S.NavMenu >
   )
 }
 
@@ -86,15 +115,12 @@ const S = {
     z-index: -1;
     overflow: hidden;
     font-size: 2rem;
-    line-height: 3.5rem;
     /* font-weight: var(--bold); */
     letter-spacing: 1px;
     pointer-events: ${({ isMenuOpen }) => !isMenuOpen ? 'none' : 'auto'};
-
     > div {
       background: white;
-    overflow: hidden;
-
+      overflow: hidden;
     }
     ul {
       margin-left: 0;
@@ -107,6 +133,12 @@ const S = {
       justify-items: auto;
       padding: 160px 5% 5%;
       text-align: right;
+    }
+    li {
+      padding-bottom: 2rem;
+    }
+    .tom:first-of-type {
+      padding-top: 2rem;
     }
   `,
   Link: styled(Link)`

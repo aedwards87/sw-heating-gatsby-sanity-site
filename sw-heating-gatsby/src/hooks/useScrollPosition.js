@@ -20,6 +20,6 @@ export function useScrollPosition() {
     })
   }, [scrollUp, currentPosition])
 
-  return scrollUp, currentPosition
+  return [scrollUp, currentPosition]
 
 }
