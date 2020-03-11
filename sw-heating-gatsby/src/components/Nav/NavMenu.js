@@ -1,15 +1,26 @@
 import React from 'react'
 import { navLinks } from './navLinks'
-import { useTransition, animated } from 'react-spring'
 import styled from 'styled-components'
 import { Link } from "gatsby"
+import { useTransition, useSpring, animated, config } from 'react-spring'
 
 
-const NavMenu = ({ on, location, style: { height }, toggleMenu }) => {
+const NavMenu = ({
+  isMenuOpen,
+  location,
+  toggleMenu,
+  scrollUp
+}) => {
+
+  const fade = useSpring({
+    opacity: isMenuOpen || isMenuOpen && !scrollUp ? 1 : 0,
+    height: isMenuOpen || isMenuOpen && !scrollUp ? 600 : 0,
+    config: config.slow
+  })
 
   return (
-    <S.NavMenu on={on}>
-      <div style={{ height: height }}>
+    <S.NavMenu isMenuOpen={isMenuOpen}>
+      <animated.div style={fade}>
         <ul>
           {navLinks.map(navLink =>
             <li
@@ -32,8 +43,7 @@ const NavMenu = ({ on, location, style: { height }, toggleMenu }) => {
                 :
                 <S.Link
                   to={`${location.pathname}#${navLink.title.toLowerCase()}`}
-                  aria-expanded={on ? true : null}
-                  style={{ zIndex: -999999999 }}
+                  aria-expanded={isMenuOpen ? true : null}
                   // TODO: Add the hanhtag to the URL when section scrolled into view
                   // in turn gving the link an activeClassName
                   // onClick={ToggleOff}
@@ -45,11 +55,21 @@ const NavMenu = ({ on, location, style: { height }, toggleMenu }) => {
                     {navLink.title}
                   </span>
                 </S.Link>
+                // {transition.map(({ item, key, props }) => (
+                //   item && navLink.dropdown &&
+                //   <AnimDropdown
+                //     key={key}
+                //     ToggleOn={ToggleOn}
+                //     ToggleOff={ToggleOff}
+                //     style={props}
+                //     className={!on && 'hide'}
+                //   />
+                // ))}
               }
             </li>
           )}
         </ul>
-      </div>
+      </animated.div>
     </S.NavMenu>
   )
 }
@@ -69,7 +89,7 @@ const S = {
     line-height: 3.5rem;
     /* font-weight: var(--bold); */
     letter-spacing: 1px;
-    pointer-events: ${({ on }) => !on ? 'none' : 'auto'};
+    pointer-events: ${({ isMenuOpen }) => !isMenuOpen ? 'none' : 'auto'};
 
     > div {
       background: white;

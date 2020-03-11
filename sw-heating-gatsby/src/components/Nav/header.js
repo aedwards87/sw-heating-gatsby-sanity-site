@@ -6,22 +6,13 @@ import { Location } from "@reach/router";
 import { SWHeatingLogo, MenuIcon } from "../../assetsjs/index";
 import { NavBar, NavMenu, navLinks, Toggle } from '../index'
 import { Desktop, SmallScreen } from '../../hooks/useMedia'
-import { useSpring, animated, config } from 'react-spring'
+// import { useScrollPosition } from '../../hooks/useScrollPosition'
 
 
 const Header = (props, ref) => {
   const [currentPosition, setCurrentPosition] = useState(window.pageYOffset)
   const [scrollUp, setScrollUp] = useState(false)
-  const [open, setOpen] = useState(false)
 
-  const toggleMenu = () => setOpen(!open)
-
-  const fade = useSpring({
-    opacity: open || open && !scrollUp ? 1 : 0,
-    // transform: open ? `translate3d(0,0,0)` : `translate3d(0,-100%,0)`,
-    height: open || open && !scrollUp ? 600 : 0,
-    config: config.slow
-  })
 
   // Listens for the when the page is scrolled up
   useEffect(() => {
@@ -64,19 +55,17 @@ const Header = (props, ref) => {
                 </Desktop>
                 <SmallScreen>
                   <Toggle>
-                    {({ on: isMenuOn, toggle }) =>
+                    {({ on: isMenuOpen, toggle: toggleMenu }) =>
                       <>
-                        <S.MenuButton onClick={() => {
-                          toggleMenu(!open)
-                        }}>
+                        <S.MenuButton onClick={toggleMenu}>
                           <MenuIcon />
                         </S.MenuButton>
-                        <AnimNavMenu
-                          on={open}
-                          style={fade}
+                        <NavMenu
+                          isMenuOpen={isMenuOpen}
                           toggleMenu={toggleMenu}
                           location={location}
                           navLinks={navLinks}
+                          scrollUp={scrollUp}
                         />
                       </>
                     }
@@ -91,7 +80,6 @@ const Header = (props, ref) => {
   )
 }
 
-const AnimNavMenu = animated(NavMenu)
 
 const S = {
   Header: styled.header`
