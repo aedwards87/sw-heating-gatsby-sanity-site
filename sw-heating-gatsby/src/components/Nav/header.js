@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react"
+import React from "react"
 import styled from 'styled-components'
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
@@ -6,27 +6,11 @@ import { Location } from "@reach/router";
 import { SWHeatingLogo, MenuIcon } from "../../assetsjs/index";
 import { NavBar, NavMenu, navLinks, Toggle } from '../index'
 import { Desktop, SmallScreen } from '../../hooks/useMedia'
-// import { useScrollPosition } from '../../hooks/useScrollPosition'
+import { useScrollPosition } from '../../hooks/index'
 
 
 const Header = (props, ref) => {
-  const [currentPosition, setCurrentPosition] = useState(window.pageYOffset)
-  const [scrollUp, setScrollUp] = useState(false)
-
-
-  // Listens for the when the page is scrolled up
-  useEffect(() => {
-    const handleScroll = () => {
-      const newPosition = window.pageYOffset
-      setScrollUp(currentPosition === 0 ? false : currentPosition > newPosition);
-      setCurrentPosition(newPosition)
-    };
-    window.addEventListener("scroll", handleScroll);
-    return (() => {
-      window.removeEventListener("scroll", handleScroll);
-    })
-  }, [scrollUp, currentPosition])
-
+  const [scrollUp, currentPosition] = useScrollPosition()
 
   return (
     <Location>
@@ -40,7 +24,6 @@ const Header = (props, ref) => {
               ref={ref}
             >
               <div>
-                {/* Add new div here? */}
                 <Link to="/">
                   <SWHeatingLogo height="49" />
                 </Link>
@@ -85,7 +68,6 @@ const S = {
   Header: styled.header`
     position: fixed;
     transition: all 0.5s ease;
-    background: ${({ goingUp, position }) => position === 0 || !goingUp ? 'transparent' : 'white'};
     top: ${({ goingUp, position }) => goingUp ? '0' : position === 0 ? '0' : '-130px'};
     left: 0px;
     right: 0px;
@@ -97,6 +79,7 @@ const S = {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      background: ${({ goingUp, position }) => position === 0 || !goingUp ? 'transparent' : 'white'};
     }
   `,
   MenuButton: styled.button`
