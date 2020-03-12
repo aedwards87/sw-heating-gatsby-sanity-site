@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { navLinks } from './navLinks'
 import styled from 'styled-components'
 import { Link } from "gatsby"
 import { useTransition, useSpring, animated, config } from 'react-spring'
 import { TempSanityWork } from '../../data/dropdown-data'
-
+import { useMeasure, usePrevious } from '../../hooks/useMeasure'
 
 const NavMenu = ({
   isMenuOpen,
@@ -13,38 +13,40 @@ const NavMenu = ({
   scrollUp
 }) => {
 
-  const [on, toggle] = useState(false)
 
-  const fade = useSpring({
-    opacity: isMenuOpen || isMenuOpen && !scrollUp ? 1 : 0,
-    height: isMenuOpen || isMenuOpen && !scrollUp ? 600 : 0,
+  const [on, toggle] = useState(false)
+  const previous = usePrevious(isMenuOpen)
+  const [bind, { height: viewHeight }] = useMeasure()
+
+  const { height, opacity, transform } = useSpring({
+    from: { height: 0, opacity: 0, transform: 'translate3d(20px,0,0)' },
+    to: {
+      height: isMenuOpen ? viewHeight : 0,
+      opacity: isMenuOpen ? 1 : 0,
+      transform: `translate3d(${on ? -20 : 0}px,0,0)`,
+    },
     config: config.slow
   })
 
   const fadeTwo = useSpring({
     opacity: on ? 1 : 0,
-    height: on ? 'auto' : 0,
+    height: on ? '24rem' : '0rem',
     config: config.slow
   })
 
-  const transition = useTransition(on, null, {
-    from: { position: 'absolute', opacity: 0, height: 0 },
-    enter: { opacity: 1, height: 200 },
-    leave: { opacity: 0, height: 0 }
-  })
-
   return (
-    <S.NavMenu isMenuOpen={isMenuOpen}>
-      <animated.div style={fade}>
+    <S.NavMenu
+      isMenuOpen={isMenuOpen}
+      style={{ opacity, height: isMenuOpen && previous === isMenuOpen ? 'auto' : height, maxHeight: '100vh', overflow: 'hidden', overflowY: 'scroll' }}
+    >
+      <div {...bind}>
         <ul>
           {navLinks.map(navLink =>
-            <li
-              key={navLink.title}
-              style={{ position: 'relative' }}
-            >
+            <li key={navLink.title} >
               {!navLink.dropdown ?
                 <S.Link
                   onClick={toggleMenu}
+                  onBlur={toggle}
                   to={navLink.link
                     ? `/${navLink.title.toLowerCase()}`
                     : `/#${navLink.title.toLowerCase()}`
@@ -55,72 +57,83 @@ const NavMenu = ({
                     {navLink.title}
                   </span>
                 </S.Link>
-                :
-                <>
-                  <div
-                    className={on && 'active'}
-                    aria-expanded={isMenuOpen ? true : null}
-                    // TODO: Add the hanhtag to the URL when section scrolled into view
-                    // in turn gving the link an activeClassName
-                    // onClick={ToggleOff}
-                    // onFocus={ToggleOn}
-                    // onBlur={ToggleOff}
-                    onClick={() => toggle(!on)}
-                    style={{ position: 'relative', fontWeight: 'var(--bold)' }}
-                  >
-                    <span style={{ paddingBottom: '1rem' }}>
-                      {navLink.title}
-                    </span>
 
-                    {/* {transition.map(({ item, key, props }) => (
-                      item && navLink.dropdown && */}
-                    <animated.ul style={{ ...fadeTwo, display: 'grid', padding: 0 }}>
-                      {TempSanityWork.edges.map(({ node: work }) => (
-                        <li
-                          key={work.slug.current}
-                          style={{ fontSize: '1.2rem', paddingBottom: '0.5rem', letterSpacing: .5 }}
-                          className="tom"
+                :
+
+                // Services button and dropdown
+                <div
+                  // aria-expanded={isMenuOpen ? true : null}
+                  style={{ position: 'relative', fontWeight: 'var(--bold)', cursor: 'pointer' }}
+                >
+                  {/* Services button */}
+
+                  <button className={on ? 'active' : null} onClick={() => toggle(!on)}>
+                    {navLink.title}
+                  </button>
+
+                  {/* Dropdown section */}
+                  <animated.ul
+                    style={{ ...fadeTwo, transform, display: 'grid', padding: 0, overflow: 'hidden', borderRight: '1px dashed rgba(0, 0, 0, 0.4)' }}
+                  >
+                    {TempSanityWork.edges.map(({ node: work }) => (
+                      <animated.li
+                        key={work.slug.current}
+                        style={{ transform, fontSize: '1.2rem', paddingBottom: '1.2rem', letterSpacing: .2 }}
+                        className="tom margina"
+                      >
+                        <Link
+                          to={`/${work.slug.current}`}
+                          activeClassName="active"
+                          onClick={toggleMenu}
                         >
-                          <Link
-                            to={`/${work.slug.current}`}
-                            activeClassName="active"
-                            onClick={toggleMenu}
-                          >
-                            <span>{work.title}</span>
-                          </Link>
-                        </li>
-                      ))}
-                    </animated.ul>
-                    {/* ))} */}
-                  </div>
-                </>
+                          <span>{work.title}</span>
+                        </Link>
+                      </animated.li>
+                    ))}
+                  </animated.ul>
+                </div>
               }
             </li>
           )}
         </ul>
-      </animated.div>
+      </div>
     </S.NavMenu >
   )
 }
 
+const AnimNavMenu = animated.nav
+
 const S = {
-  NavMenu: styled.nav`
+  NavMenu: styled(AnimNavMenu)`
     position: fixed;
     /* top: 120.78px; */
+    will-change: transform, opacity, height;
     top: 0;
     right: 0;
     left: 0;
-    height: 600px;
+    /* height: 600px; */
     background: transparent;
     z-index: -1;
     overflow: hidden;
     font-size: 2rem;
     /* font-weight: var(--bold); */
-    letter-spacing: 1px;
+    letter-spacing: 0.7px;
     pointer-events: ${({ isMenuOpen }) => !isMenuOpen ? 'none' : 'auto'};
     > div {
       background: white;
-      overflow: hidden;
+      overflow-y: scroll;
+    }
+    /* li.margina {
+      padding-top: 3rem;
+    } */
+    button { 
+      background: none;
+      outline: none;
+      border: none;
+      cursor: pointer;
+      &.active {
+        color: var(--primary-two);
+      }
     }
     ul {
       margin-left: 0;
@@ -135,10 +148,10 @@ const S = {
       text-align: right;
     }
     li {
-      padding-bottom: 2rem;
-    }
-    .tom:first-of-type {
-      padding-top: 2rem;
+      padding-bottom: 2.5rem;
+      :last-of-type {
+        padding-bottom: 2.5rem;
+      }
     }
   `,
   Link: styled(Link)`
@@ -153,7 +166,7 @@ const S = {
     span {
       position: relative;
     }
-    span::after {
+    /* span::after {
       content: "";
       position: absolute;
       bottom: -10px;
@@ -162,7 +175,7 @@ const S = {
       width: 0;
       background: var(--primary-one);
       transition: all 0.3s ease;
-    }
+    } */
     :hover span::after,
     :focus span::after,
     &.active span::after {
