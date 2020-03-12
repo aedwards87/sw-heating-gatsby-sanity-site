@@ -123,7 +123,7 @@ const S = {
     pointer-events: ${({ isMenuOpen }) => !isMenuOpen ? 'none' : 'auto'};
     > div {
       background: white;
-      padding: calc(100vw - 100%)
+      /* padding: calc(100vw - 100%) */
     }
     /* li.margina {
       padding-top: 3rem;
@@ -155,6 +155,7 @@ const S = {
         padding-bottom: 2.5rem;
       }
     }
+
   `,
   Link: styled(Link)`
     transition: all 0.3s ease;

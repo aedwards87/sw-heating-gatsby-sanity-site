@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 
-export default function useScrollPosition() {
+export default function useScrollPosition(push) {
 
   const [currentPosition, setCurrentPosition] = useState(window.pageYOffset)
   const [scrollUp, setScrollUp] = useState(false)
@@ -20,6 +20,6 @@ export default function useScrollPosition() {
     })
   }, [scrollUp, currentPosition])
 
-  return [scrollUp, currentPosition]
+  return [scrollUp, setScrollUp, currentPosition, setCurrentPosition]
 
 }
