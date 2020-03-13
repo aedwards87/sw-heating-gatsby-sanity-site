@@ -6,12 +6,12 @@ import { useSpring, animated, config } from 'react-spring'
 import { TempSanityWork } from '../../data/dropdown-data'
 import { useMeasure, usePrevious } from '../../hooks/index'
 
+
 const NavMenu = ({
   isMenuOpen,
   toggleMenu,
   location,
 }) => {
-
 
   const [on, toggle] = useState(false)
   const previous = usePrevious(isMenuOpen)

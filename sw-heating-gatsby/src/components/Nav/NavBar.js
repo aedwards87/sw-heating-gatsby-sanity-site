@@ -4,6 +4,7 @@ import { Link } from "gatsby"
 import { useTransition, animated } from 'react-spring'
 import { Dropdown } from '../index'
 
+
 const NavBar = ({
   on,
   ToggleOn,

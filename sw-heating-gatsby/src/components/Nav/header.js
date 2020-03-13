@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react"
+import React, { useRef, useEffect, useCallback } from "react"
 import styled from 'styled-components'
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
@@ -6,11 +6,13 @@ import { Location } from "@reach/router";
 import { SWHeatingLogo, MenuIcon } from "../../assetsjs/index";
 import { NavBar, NavMenu, navLinks, Toggle } from '../index'
 import { Desktop, SmallScreen } from '../../hooks/useMedia'
-import { useScrollPosition } from '../../hooks/index'
+import { useScrollPosition, useBodyLockScroll } from '../../hooks/index'
 
 
 const Header = (props, ref) => {
   const [scrollUp, setScrollUp, currentPosition, setCurrentPosition] = useScrollPosition()
+
+
 
   // useEffect((e) => {
   //   const handleScroll = () => {
@@ -22,7 +24,7 @@ const Header = (props, ref) => {
   //   return (() => {
   //     window.removeEventListener("mousedown", handleScroll);
   //   })
-  // }, [])
+  // }, []) 
 
   return (
     <Location>
@@ -70,7 +72,6 @@ const Header = (props, ref) => {
                         location={location}
                         navLinks={navLinks}
                         scrollUp={scrollUp}
-                        ref={myRef}
                       />
                     </SmallScreen>
                   </div>
