@@ -9,6 +9,7 @@ import { useMeasure, usePrevious } from '../../hooks/index'
 const NavMenu = ({
   isMenuOpen,
   toggleMenu,
+  location,
 }) => {
 
 
@@ -37,16 +38,15 @@ const NavMenu = ({
     <S.NavMenu
       on={on}
       isMenuOpen={isMenuOpen}
-      style={{ opacity, height: isMenuOpen && previous === isMenuOpen ? 'auto' : height, maxHeight: '100vh' }}
+      style={{ opacity, height: isMenuOpen && previous === isMenuOpen ? 'auto' : height }}
     >
       <div {...bind}>
-        <ul>
+        <ul style={{ overflow: 'hidden' }}>
           {navLinks.map(navLink =>
             <li key={navLink.title} >
               {!navLink.dropdown ?
                 <S.Link
                   onClick={toggleMenu}
-                  onBlur={toggle}
                   to={navLink.link
                     ? `/${navLink.title.toLowerCase()}`
                     : `/#${navLink.title.toLowerCase()}`
@@ -61,37 +61,44 @@ const NavMenu = ({
                 :
 
                 // Services button and dropdown
-                <div
-                  // aria-expanded={isMenuOpen ? true : null}
+                //container
+                <S.Link
+                  to={`${location.pathname}#${navLink.title.toLowerCase()}`}
                   style={{ position: 'relative', fontWeight: 'var(--bold)', cursor: 'pointer' }}
+                  onClick={toggleMenu}
                 >
                   {/* Services button */}
 
-                  <button className={on ? 'active' : null} onClick={() => toggle(!on)}>
-                    {navLink.title}
-                  </button>
+                  {/* <button
+                    className={on ? 'active' : undefined}
+                    onClick={() => toggle(!on)}
+                  > */}
+                  {navLink.title}
+                  {/* </button> */}
 
                   {/* Dropdown section */}
-                  <animated.ul
-                    style={{ ...fadeTwo, transform, display: 'grid', padding: 0, overflow: 'hidden', borderRight: '1px dashed rgba(0, 0, 0, 0.4)' }}
-                  >
-                    {TempSanityWork.edges.map(({ node: work }) => (
-                      <animated.li
-                        key={work.slug.current}
-                        style={{ transform, fontSize: '1.2rem', paddingBottom: '1.2rem', letterSpacing: .2 }}
-                        className="tom margina"
-                      >
-                        <Link
-                          to={`/${work.slug.current}`}
-                          activeClassName="active"
-                          onClick={toggleMenu}
+                  {/* <div>
+                    <animated.ul
+                      style={{ ...fadeTwo, transform, display: 'grid', padding: 0, overflow: 'hidden', borderRight: '1px dashed rgba(0, 0, 0, 0.4)' }}
+                    >
+                      {TempSanityWork.edges.map(({ node: work }) => (
+                        <animated.li
+                          key={work.slug.current}
+                          style={{ transform, fontSize: '1.2rem', paddingBottom: '1.2rem', letterSpacing: .2 }}
                         >
-                          <span>{work.title}</span>
-                        </Link>
-                      </animated.li>
-                    ))}
-                  </animated.ul>
-                </div>
+                          <S.Link
+                            to={`/${work.slug.current}`}
+                            activeClassName="active"
+                            onClick={toggleMenu}
+                            className="sub-link-hover"
+                          >
+                            <span>{work.title}</span>
+                          </div>
+                        </animated.li>
+                      ))}
+                    </animated.ul>
+                  </div> */}
+                </S.Link>
               }
             </li>
           )}
@@ -112,11 +119,11 @@ const S = {
     right: 0;
     left: 0;
     /* height: 600px; */
-    background: transparent;
+    background: white;
+    max-height: 100vh;
     z-index: -1;
     overflow: hidden;
     font-size: 2rem;
-    /* font-weight: var(--bold); */
     letter-spacing: 0.7px;
     overflow-y: ${({ on }) => on ? 'scroll' : 'hidden'};
     width: 100vw;
@@ -155,12 +162,11 @@ const S = {
         padding-bottom: 2.5rem;
       }
     }
-
   `,
   Link: styled(Link)`
     transition: all 0.3s ease;
     font-weight: var(--bold);
-    :hover, &.active {
+    &:hover, &.active {
       color: var(--primary-two);
     }
     &.active {
@@ -185,7 +191,9 @@ const S = {
       left: 0;
       width: 99%;
     }
-
+    &.sub-link-hover {
+      padding: 2rem 0;
+    }
   `
 }
 

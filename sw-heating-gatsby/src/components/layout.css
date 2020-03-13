@@ -8,7 +8,9 @@ html {
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
-
+.scroll-lock {
+  overflow: hidden;
+}
 :root {
   --main-text: #242c39;
   --color-dark: #242c39;
