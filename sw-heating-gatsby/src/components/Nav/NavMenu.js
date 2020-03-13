@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { navLinks } from './navLinks'
 import styled from 'styled-components'
 import { Link } from "gatsby"
 import { useSpring, animated, config } from 'react-spring'
-import { TempSanityWork } from '../../data/dropdown-data'
+// import { TempSanityWork } from '../../data/dropdown-data'
 import { useMeasure, usePrevious } from '../../hooks/index'
 
 
@@ -13,7 +13,7 @@ const NavMenu = ({
   location,
 }) => {
 
-  const [on, toggle] = useState(false)
+  // const [on, toggle] = useState(false)
   const previous = usePrevious(isMenuOpen)
   const [bind, { height: viewHeight }] = useMeasure()
 
@@ -23,20 +23,19 @@ const NavMenu = ({
     to: {
       height: isMenuOpen ? viewHeight : 0,
       opacity: isMenuOpen ? 1 : 0,
-      transform: `translate3d(${on ? -20 : 0}px,0,0)`,
+      // transform: `translate3d(${on ? -20 : 0}px,0,0)`,
     },
     config: config.slow
   })
 
-  const fadeTwo = useSpring({
-    opacity: on ? 1 : 0,
-    height: on ? '24rem' : '0rem',
-    config: config.slow
-  })
+  // const fadeTwo = useSpring({
+  //   opacity: on ? 1 : 0,
+  //   height: on ? '24rem' : '0rem',
+  //   config: config.slow
+  // })
 
   return (
     <S.NavMenu
-      on={on}
       isMenuOpen={isMenuOpen}
       style={{ opacity, height: isMenuOpen && previous === isMenuOpen ? 'auto' : height }}
     >
@@ -126,12 +125,10 @@ const S = {
     font-size: 2rem;
     letter-spacing: 0.7px;
     overflow-y: ${({ on }) => on ? 'scroll' : 'hidden'};
-    width: 100vw;
     pointer-events: ${({ isMenuOpen }) => !isMenuOpen ? 'none' : 'auto'};
-    > div {
+    /* > div {
       background: white;
-      /* padding: calc(100vw - 100%) */
-    }
+    } */
     /* li.margina {
       padding-top: 3rem;
     } */

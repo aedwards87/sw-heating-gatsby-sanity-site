@@ -1,39 +1,31 @@
-import React, { useRef, useEffect, useCallback } from "react"
+import React, {useEffect, useState} from "react"
 import styled from 'styled-components'
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
 import { Location } from "@reach/router";
-import { SWHeatingLogo, MenuIcon } from "../../assetsjs/index";
+import { SWHeatingLogo } from "../../assetsjs/index";
 import { NavBar, NavMenu, navLinks, Toggle } from '../index'
 import { Desktop, SmallScreen } from '../../hooks/useMedia'
 import { useScrollPosition, useBodyLockScroll } from '../../hooks/index'
 
 
 const Header = (props, ref) => {
-  const [scrollUp, setScrollUp, currentPosition, setCurrentPosition] = useScrollPosition()
+  const [on, toggle] = useState(false)
+  const [scrollUp, setScrollUp, currentPosition] = useScrollPosition()
 
-
-
-  // useEffect((e) => {
-  //   const handleScroll = () => {
-  //     if (myRef && !myRef.contains(e.target)) {
-  //       console.log('You clicked outside of me!');
-  //     }
-  //   };
-  //   window.addEventListener("mousedown", handleScroll);
-  //   return (() => {
-  //     window.removeEventListener("mousedown", handleScroll);
-  //   })
-  // }, []) 
+  
+  
+  // add hook with event listener for scroll, to check if isMenuOpen === true, setScrollUp === false
 
   return (
     <Location>
       {({ location }) =>
         <Toggle>
           {({ on: isDropDownOpen, toggleOff, toggleOn }) =>
-            <Toggle>
+            <Toggle> 
               {({ on: isMenuOpen, toggle: toggleMenu }) =>
                 <S.Header
+                  on={on}
                   id="header"
                   scrollUp={scrollUp ? true : false}
                   position={currentPosition}
@@ -60,9 +52,10 @@ const Header = (props, ref) => {
                         onClick={() => {
                           toggleMenu()
                           setScrollUp(true)
+                          toggle(!on)
                         }}
                       >
-                        <span className="hamburger-box">
+                        <span id="menu" className="hamburger-box">
                           <span className="hamburger-inner" />
                         </span>
                       </S.MenuButton>
@@ -90,10 +83,11 @@ const S = {
   Header: styled.header`
     position: fixed;
     transition: all 0.5s ease;
-    top: ${({ scrollUp, position }) => scrollUp ? '0' : position === 0 ? '0' : '-130px'};
+    top: ${({ scrollUp, position, on }) => on ? 0 : scrollUp ? 0 : position === 0 ? 0 : '-130px'};
     left: 0px;
     right: 0px;
     z-index: 99999;
+    background: ${({ scrollUp, position, isMenuOpen }) => position === 0 && !isMenuOpen || !scrollUp ? 'transparent' : 'white'};
     > div {
       margin: 0 auto;
       max-width: 1900px;
@@ -101,7 +95,7 @@ const S = {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: ${({ scrollUp, position, isMenuOpen }) => position === 0 && !isMenuOpen || !scrollUp ? 'transparent' : 'white'};
+      /* background: ${({ scrollUp, position, isMenuOpen }) => position === 0 && !isMenuOpen || !scrollUp ? 'transparent' : 'white'}; */
     }
     
     .hamburger {
