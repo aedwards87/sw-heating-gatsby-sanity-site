@@ -35,81 +35,98 @@ const NavMenu = ({
   // })
 
   return (
-    <S.NavMenu
+    <S.NavMenuContainer
       isMenuOpen={isMenuOpen}
-      style={{ opacity, height: isMenuOpen && previous === isMenuOpen ? 'auto' : height }}
-    >
-      <div {...bind}>
-        <ul style={{ overflow: 'hidden' }}>
-          {navLinks.map(navLink =>
-            <li key={navLink.title} >
-              {!navLink.dropdown ?
-                <S.Link
-                  onClick={toggleMenu}
-                  to={navLink.link
-                    ? `/${navLink.title.toLowerCase()}`
-                    : `/#${navLink.title.toLowerCase()}`
-                  }
-                  activeClassName="active"
-                >
-                  <span>
+      style={{
+        opacity,
+      }}>
+      <S.NavMenu
+        isMenuOpen={isMenuOpen}
+        style={{
+          opacity,
+          height: isMenuOpen && previous === isMenuOpen ? 'auto' : height
+        }}>
+        <div {...bind}>
+          <ul style={{ overflow: 'hidden' }}>
+            {navLinks.map(navLink =>
+              <li key={navLink.title} >
+                {!navLink.dropdown ?
+                  <S.Link
+                    onClick={toggleMenu}
+                    to={navLink.link
+                      ? `/${navLink.title.toLowerCase()}`
+                      : `/#${navLink.title.toLowerCase()}`
+                    }
+                    activeClassName="active">
+                    <span>
+                      {navLink.title}
+                    </span>
+                  </S.Link>
+
+                  :
+
+                  // Services button and dropdown
+                  //container
+                  <S.Link
+                    to={`${location.pathname}#${navLink.title.toLowerCase()}`}
+                    style={{ position: 'relative', fontWeight: 'var(--bold)', cursor: 'pointer' }}
+                    onClick={toggleMenu}
+                  >
+                    {/* Services button */}
+
+                    {/* <button
+                      className={on ? 'active' : undefined}
+                      onClick={() => toggle(!on)}
+                    > */}
                     {navLink.title}
-                  </span>
-                </S.Link>
+                    {/* </button> */}
 
-                :
-
-                // Services button and dropdown
-                //container
-                <S.Link
-                  to={`${location.pathname}#${navLink.title.toLowerCase()}`}
-                  style={{ position: 'relative', fontWeight: 'var(--bold)', cursor: 'pointer' }}
-                  onClick={toggleMenu}
-                >
-                  {/* Services button */}
-
-                  {/* <button
-                    className={on ? 'active' : undefined}
-                    onClick={() => toggle(!on)}
-                  > */}
-                  {navLink.title}
-                  {/* </button> */}
-
-                  {/* Dropdown section */}
-                  {/* <div>
-                    <animated.ul
-                      style={{ ...fadeTwo, transform, display: 'grid', padding: 0, overflow: 'hidden', borderRight: '1px dashed rgba(0, 0, 0, 0.4)' }}
-                    >
-                      {TempSanityWork.edges.map(({ node: work }) => (
-                        <animated.li
-                          key={work.slug.current}
-                          style={{ transform, fontSize: '1.2rem', paddingBottom: '1.2rem', letterSpacing: .2 }}
-                        >
-                          <S.Link
-                            to={`/${work.slug.current}`}
-                            activeClassName="active"
-                            onClick={toggleMenu}
-                            className="sub-link-hover"
+                    {/* Dropdown section */}
+                    {/* <div>
+                      <animated.ul
+                        style={{ ...fadeTwo, transform, display: 'grid', padding: 0, overflow: 'hidden', borderRight: '1px dashed rgba(0, 0, 0, 0.4)' }}
+                      >
+                        {TempSanityWork.edges.map(({ node: work }) => (
+                          <animated.li
+                            key={work.slug.current}
+                            style={{ transform, fontSize: '1.2rem', paddingBottom: '1.2rem', letterSpacing: .2 }}
                           >
-                            <span>{work.title}</span>
-                          </div>
-                        </animated.li>
-                      ))}
-                    </animated.ul>
-                  </div> */}
-                </S.Link>
-              }
-            </li>
-          )}
-        </ul>
-      </div>
-    </S.NavMenu >
+                            <S.Link
+                              to={`/${work.slug.current}`}
+                              activeClassName="active"
+                              onClick={toggleMenu}
+                              className="sub-link-hover"
+                            >
+                              <span>{work.title}</span>
+                            </div>
+                          </animated.li>
+                        ))}
+                      </animated.ul>
+                    </div> */}
+                  </S.Link>
+                }
+              </li>
+            )}
+          </ul>
+        </div>
+      </S.NavMenu >
+    </S.NavMenuContainer>
   )
 }
 
 const AnimNavMenu = animated.nav
 
 const S = {
+  NavMenuContainer: styled.div`
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: -2;
+    background: ${({ isMenuOpen }) => !isMenuOpen ? null : '#00000060'};
+    height: 100vh;
+    pointer-events: ${({ isMenuOpen }) => !isMenuOpen ? 'none' : 'auto'};
+  `,
   NavMenu: styled(AnimNavMenu)`
     position: fixed;
     /* top: 120.78px; */
@@ -125,7 +142,7 @@ const S = {
     font-size: 2rem;
     letter-spacing: 0.7px;
     overflow-y: ${({ on }) => on ? 'scroll' : 'hidden'};
-    pointer-events: ${({ isMenuOpen }) => !isMenuOpen ? 'none' : 'auto'};
+    /* pointer-events: ${({ isMenuOpen }) => !isMenuOpen ? 'none' : 'auto'}; */
     /* > div {
       background: white;
     } */

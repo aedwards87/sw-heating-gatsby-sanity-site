@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react"
+import React, { useEffect, useState } from "react"
 import styled from 'styled-components'
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
@@ -13,8 +13,8 @@ const Header = (props, ref) => {
   const [on, toggle] = useState(false)
   const [scrollUp, setScrollUp, currentPosition] = useScrollPosition()
 
-  
-  
+
+
   // add hook with event listener for scroll, to check if isMenuOpen === true, setScrollUp === false
 
   return (
@@ -22,7 +22,7 @@ const Header = (props, ref) => {
       {({ location }) =>
         <Toggle>
           {({ on: isDropDownOpen, toggleOff, toggleOn }) =>
-            <Toggle> 
+            <Toggle>
               {({ on: isMenuOpen, toggle: toggleMenu }) =>
                 <S.Header
                   on={on}
@@ -51,7 +51,7 @@ const Header = (props, ref) => {
                         type="button"
                         onClick={() => {
                           toggleMenu()
-                          setScrollUp(true)
+                          setScrollUp(!scrollUp)
                           toggle(!on)
                         }}
                       >
@@ -83,10 +83,13 @@ const S = {
   Header: styled.header`
     position: fixed;
     transition: all 0.5s ease;
-    top: ${({ scrollUp, position, on }) => on ? 0 : scrollUp ? 0 : position === 0 ? 0 : '-130px'};
+    top: 0;
     left: 0px;
     right: 0px;
     z-index: 99999;
+    transform: ${({ scrollUp, position, isMenuOpen }) =>
+      `translate3d(0, ${isMenuOpen || scrollUp || position === 0 ? 0 : '-100%'}, 0)`
+    };
     background: ${({ scrollUp, position, isMenuOpen }) => position === 0 && !isMenuOpen || !scrollUp ? 'transparent' : 'white'};
     > div {
       margin: 0 auto;
