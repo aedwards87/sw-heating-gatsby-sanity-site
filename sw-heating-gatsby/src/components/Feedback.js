@@ -33,7 +33,7 @@ const Feedback = () => {
     <StyledFeedBack>
       <div>
         <StyledTitle id="feedback">What our customers<br />say about us</StyledTitle>
-        <StyledLink to="/reviews">leave us a review</StyledLink>
+        {/* <StyledLink to="/reviews">Leave us a review</StyledLink> */}
       </div>
       <StyledListContainer className="items" ref={ref} >
         {allSanityFeedback.edges.map(({ node: { name, message, id } }) => (
@@ -65,7 +65,7 @@ const StyledFeedBack = styled.section`
 `
 const StyledLink = styled(Link)`
   font-family: var(--fancy-font);
-  font-size: 1.25rem;
+  font-size: 1.7rem;
   margin-left: 1.5rem;
   position: relative;
   color: var(--primary-four);
@@ -93,7 +93,8 @@ const StyledLink = styled(Link)`
 
 const StyledListContainer = styled.ul`
   list-style: none;
-  padding: 8rem 0 7rem;
+  /* padding: 8rem 0 7rem; */
+  padding: 9rem 0 14vmax;
   margin: 0;
   display: grid;
   grid-gap: 5%;

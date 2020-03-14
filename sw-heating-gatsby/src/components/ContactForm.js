@@ -119,7 +119,8 @@ const S = {
     > div {
       max-width: 1900px;
       height: 100%;
-      padding: 0 5% 7rem;
+      /* padding: 0 5% 7rem; */
+      padding: 0 5% 14vmax;
       /* text-align: left; */
       margin: auto auto;
     }
@@ -135,6 +136,7 @@ const S = {
     grid-gap: 0.4rem;
     list-style: none;
     margin-left: 0;
+    margin-bottom: 0;
     transition: all .3s ease;
     /* padding: 0; */
     > li {
@@ -154,6 +156,7 @@ const S = {
         justify-self: center;
         width: 50%;
         padding: 0;
+        margin-bottom: 0;
         border: none;
         outline: none;
       }
@@ -206,8 +209,11 @@ const S = {
       > span {
         margin-top: 1.5px;
       }
+      > form {
+        margin-bottom: 0;
+      }
     }
-
+    
     @media (min-width: 440px) {
       > li > label {
         padding-left: 1.8rem;

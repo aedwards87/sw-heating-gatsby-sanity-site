@@ -61,7 +61,7 @@ const Gallery = ({ data: { sanityLandingPage } }) => (
     <S.Gallery>
       <div>
         <div style={{ marginBottom: '6rem' }}>
-          <StyledTitle>Gallery</StyledTitle>
+          <StyledTitle heading>Gallery</StyledTitle>
         </div>
         <Carousel
           data={sanityLandingPage}
@@ -88,7 +88,7 @@ const S = {
     > div {
       max-width: 1900px;
       margin: 0 auto;
-      padding: 0 5% 7rem;
+      padding: 4% 5%;
     }
   `
 }

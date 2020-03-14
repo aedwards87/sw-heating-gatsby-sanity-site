@@ -73,26 +73,30 @@ const S = {
     width: 100%;
     height: 100%;
     margin: 0;
-    padding: 1.8rem 2rem;
+    padding: 1.1rem 2rem;
     /* margin: 5px; */
-    > li > a {
-      font-size: 0.9rem;
-      font-weight: var(--bold);
-      line-height: 1.4rem;
-      transition: all .3s ease;
-      width: 100%;
-      display: block;
-      :hover, :focus {
-        color: var(--primary-two);
-        transform: translate(5%, 0) scale(1.07);
-        font-weight: var(--bolder);
-      }
-      &.active { 
-        color: var(--primary-two);
-        pointer-events: none;
-        font-weight: var(--bolder);
-        :focus, :hover {
-          transform: translate(0, 0) scale(1);
+    > li {
+      margin: 0;
+      > a {
+        font-size: 0.9rem;
+        font-weight: var(--bold);
+        line-height: 0.9rem;
+        transition: all .3s ease;
+        width: 100%;
+        display: block;
+        padding: 0.7rem 0;
+        :hover, :focus {
+          color: var(--primary-two);
+          transform: translate(5%, 0) scale(1.07);
+          font-weight: var(--bolder);
+        }
+        &.active { 
+          color: var(--primary-two);
+          pointer-events: none;
+          font-weight: var(--bolder);
+          :focus, :hover {
+            transform: translate(0, 0) scale(1);
+          }
         }
       }
     }

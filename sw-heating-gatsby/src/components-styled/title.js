@@ -13,7 +13,8 @@ export const StyledTitle = styled.h2`
   ::before {
     content: "";
     display: block;
-    height: 7rem;
+    /* height: 7rem; */
+    height: ${({ heading }) => !heading ? '14vmax' : '4%'};
     width: 100%;
     visibility: hidden;
     display: ${({ normal }) => !normal ? null : 'none'};
@@ -29,11 +30,11 @@ export const StyledTitle = styled.h2`
     background: ${({ lineColor }) => !lineColor ? 'var(--gradient-one)' : lineColor};
   }
   @media (min-width: 980px) {
-    font-size: 2.5rem;
+    font-size: 2.4rem;
   }
   @media(min-width: 800px) {
     ::before {
-      height: ${({ tall }) => !tall ? '7rem' : 'calc(7rem + 3vw)'};
+      height: ${({ tall, heading }) => heading ? 0 : !tall ? '8rem' : 'calc(7rem + 3vw)'};
     }
   }
 `

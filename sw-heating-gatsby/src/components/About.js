@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { StyledTitle } from '../components-styled/index'
 import SWLettersSVG from "../assetsjs/sw-letters";
-import { Waypoint } from 'react-waypoint'
 
 const About = ( /* allSanityAboutUs */) => {
 
@@ -17,31 +16,24 @@ const About = ( /* allSanityAboutUs */) => {
   }
 
   return (
-    <Waypoint
-      onEnter={() => changeURL()}
-      onLeave={() => removeURL()}
-      // topOffset="50%"
-      bottomOffset="10%"
-    >
-      <StyledAboutContainer>
-        <div>
-          <div style={{ marginBottom: '6rem' }}>
-            <StyledTitle id="about" tall >Who we are?</StyledTitle>
-          </div>
-          <StyledContentContainer>
-            <div>
-              <p>
-                <strong style={{ fontSize: '1.3rem', lineHeight: '1.43' }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempus urna et pharetra pharetra massa massa ultricies mi quis.</strong>
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempus urna et pharetra pharetra massa massa ultricies mi quis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempus urna et pharetra pharetra massa massa ultricies mi quis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempus urna et pharetra pharetra massa massa ultricies mi quis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempus urna et pharetra pharetra massa massa ultricies mi quis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempus urna et pharetra pharetra massa massa ultricies mi quis.
-              </p>
-            </div>
-          </StyledContentContainer>
+    <StyledAboutContainer>
+      <div>
+        <div style={{ marginBottom: '6rem' }}>
+          <StyledTitle id="about" tall >Who we are?</StyledTitle>
         </div>
-        <StyledSWLettersSVG />
-      </StyledAboutContainer>
-    </Waypoint>
+        <StyledContentContainer>
+          <div>
+            <p>
+              <strong style={{ fontSize: '1.3rem', lineHeight: '1.43' }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempus urna et pharetra pharetra massa massa ultricies mi quis.</strong>
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempus urna et pharetra pharetra massa massa ultricies mi quis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempus urna et pharetra pharetra massa massa ultricies mi quis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempus urna et pharetra pharetra massa massa ultricies mi quis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempus urna et pharetra pharetra massa massa ultricies mi quis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempus urna et pharetra pharetra massa massa ultricies mi quis.
+            </p>
+          </div>
+        </StyledContentContainer>
+      </div>
+      <StyledSWLettersSVG />
+    </StyledAboutContainer>
   )
 }
 
@@ -51,7 +43,8 @@ const StyledAboutContainer = styled.section`
   > div {
     max-width: 1900px;
     margin: 0 auto;
-    padding: 8vw 5% 7rem;
+    /* padding: 0 5% 7rem; */
+    padding: 0 5% 14vmax;
   }
   p { 
     width: 100%;
@@ -61,6 +54,9 @@ const StyledAboutContainer = styled.section`
     margin-bottom: 0;
   }
   @media(min-width: 800px) {
+    > div {
+      padding-top: 8vw;
+    }
     p { 
       width: 85%;
       z-index: 999;

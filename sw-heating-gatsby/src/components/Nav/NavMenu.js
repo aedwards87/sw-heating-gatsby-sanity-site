@@ -69,7 +69,7 @@ const NavMenu = ({
                   //container
                   <S.Link
                     to={`${location.pathname}#${navLink.title.toLowerCase()}`}
-                    style={{ position: 'relative', fontWeight: 'var(--bold)', cursor: 'pointer' }}
+                    style={{ position: 'relative' }}
                     onClick={toggleMenu}
                   >
                     {/* Services button */}
@@ -169,17 +169,21 @@ const S = {
       justify-items: auto;
       padding: 160px 5% 5%;
       text-align: right;
+      font-weight: var(--bolder);
     }
     li {
+      transition: transform .3s ease;
       padding-bottom: 2.5rem;
       :last-of-type {
         padding-bottom: 2.5rem;
+      }
+      :hover {
+        transform: translate3d(-50px, 0, 0) scale(1.1);
       }
     }
   `,
   Link: styled(Link)`
     transition: all 0.3s ease;
-    font-weight: var(--bold);
     &:hover, &.active {
       color: var(--primary-two);
     }

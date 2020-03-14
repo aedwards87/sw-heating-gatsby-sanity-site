@@ -12,43 +12,43 @@ const AnimImage = animated(Image)
 
 const slides = [
   ({ style, click, sanityWork }) => (
-    <animated.div className="bob" onClick={click} style={{ ...style, gridColumn: '1 / -1', width: '100%'}}>
+    <animated.div className="bob" onClick={click} style={{ ...style, gridColumn: '1 / -1', width: '100%' }}>
       <S.Image fluid={sanityWork.mainImage.asset.fluid} alt={sanityWork.title} style={style} />
     </animated.div>
   ),
   ({ style, click, sanityWork }) => (
-    <animated.div className="bob" onClick={click} style={{ ...style, gridColumn: '1 / -1', width: '100%'}} >
-    <S.Image fluid={sanityWork.secondImage.asset.fluid} alt={sanityWork.title}  style={style} />
+    <animated.div className="bob" onClick={click} style={{ ...style, gridColumn: '1 / -1', width: '100%' }} >
+      <S.Image fluid={sanityWork.secondImage.asset.fluid} alt={sanityWork.title} style={style} />
     </animated.div>
   ),
   ({ style, click, sanityWork }) => (
-    <animated.div className="bob" onClick={click} style={{ ...style, gridColumn: '1 / -1', width: '100%'}} >
-    <S.Image fluid={sanityWork.thirdImage.asset.fluid} alt={sanityWork.title}  style={style} />
+    <animated.div className="bob" onClick={click} style={{ ...style, gridColumn: '1 / -1', width: '100%' }} >
+      <S.Image fluid={sanityWork.thirdImage.asset.fluid} alt={sanityWork.title} style={style} />
     </animated.div>
   ),
   ({ style, click, sanityWork }) => (
-    <animated.div className="bob" onClick={click} style={{ ...style, gridColumn: '1 / -1', width: '100%'}} >
-    <S.Image fluid={sanityWork.fourthImage.asset.fluid} alt={sanityWork.title}  style={style} />
+    <animated.div className="bob" onClick={click} style={{ ...style, gridColumn: '1 / -1', width: '100%' }} >
+      <S.Image fluid={sanityWork.fourthImage.asset.fluid} alt={sanityWork.title} style={style} />
     </animated.div>
   ),
   ({ style, click, sanityWork }) => (
-    <animated.div className="bob" onClick={click} style={{ ...style, gridColumn: '1 / -1', width: '100%'}} >
-    <S.Image fluid={sanityWork.fifthImage.asset.fluid} alt={sanityWork.title} style={style} />
+    <animated.div className="bob" onClick={click} style={{ ...style, gridColumn: '1 / -1', width: '100%' }} >
+      <S.Image fluid={sanityWork.fifthImage.asset.fluid} alt={sanityWork.title} style={style} />
     </animated.div>
   ),
   ({ style, click, sanityWork }) => (
-    <animated.div className="bob" onClick={click} style={{ ...style, gridColumn: '1 / -1', width: '100%'}} >
-    <S.Image fluid={sanityWork.sixthImage.asset.fluid} alt={sanityWork.title} style={style} />
+    <animated.div className="bob" onClick={click} style={{ ...style, gridColumn: '1 / -1', width: '100%' }} >
+      <S.Image fluid={sanityWork.sixthImage.asset.fluid} alt={sanityWork.title} style={style} />
     </animated.div>
   ),
   ({ style, click, sanityWork }) => (
-    <animated.div className="bob" onClick={click} style={{ ...style, gridColumn: '1 / -1', width: '100%'}} >
-    <S.Image fluid={sanityWork.seventhImage.asset.fluid} alt={sanityWork.title} style={style} />
+    <animated.div className="bob" onClick={click} style={{ ...style, gridColumn: '1 / -1', width: '100%' }} >
+      <S.Image fluid={sanityWork.seventhImage.asset.fluid} alt={sanityWork.title} style={style} />
     </animated.div>
   ),
   ({ style, click, sanityWork }) => (
-    <animated.div className="bob" onClick={click} style={{ ...style, gridColumn: '1 / -1', width: '100%'}} >
-    <S.Image fluid={sanityWork.eighthImage.asset.fluid} alt={sanityWork.title} style={style} onClick={click} />
+    <animated.div className="bob" onClick={click} style={{ ...style, gridColumn: '1 / -1', width: '100%' }} >
+      <S.Image fluid={sanityWork.eighthImage.asset.fluid} alt={sanityWork.title} style={style} onClick={click} />
     </animated.div>
   )
 ]
@@ -153,8 +153,8 @@ export default ({ data: { sanityWork } }) => {
                   sanityWork={sanityWork}
                 />
               )
-            })} 
-            
+            })}
+
           </S.ImageContainer>
 
           {/* <S.ImageContainer>
@@ -167,7 +167,7 @@ export default ({ data: { sanityWork } }) => {
             <S.Image fluid={sanityWork.seventhImage.asset.fluid} alt={sanityWork.title} />
             <S.Image fluid={sanityWork.eighthImage.asset.fluid} alt={sanityWork.title} />
           </S.ImageContainer> */}
-          
+
         </div>
       </S.TemplateContainer>
       <Services />
@@ -183,7 +183,7 @@ const S = {
     > div {
       margin: 0 auto;
       max-width: 1900px;
-      padding: 6vmax 5%;
+      padding: 4% 5%;
       display: grid;
       grid-template-columns: 1fr;
       grid-template-rows: auto 1fr;
