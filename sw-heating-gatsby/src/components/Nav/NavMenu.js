@@ -167,23 +167,29 @@ const S = {
       flex-direction: column;
       justify-content: flex-end;
       justify-items: auto;
-      padding: 160px 5% 5%;
+      padding: 9rem 5% 2.5rem;
       text-align: right;
       font-weight: var(--bolder);
     }
     li {
       transition: transform .3s ease;
-      padding-bottom: 2.5rem;
+      /* padding: 2.5rem 0;
       :last-of-type {
-        padding-bottom: 2.5rem;
-      }
+        padding: 2.5rem 0;
+      } */
       :hover {
-        transform: translate3d(-50px, 0, 0) scale(1.1);
+        transform: translate3d(-25px, 0, 0) scale(1.05);
       }
     }
   `,
   Link: styled(Link)`
+  display: block;
     transition: all 0.3s ease;
+    width: 100%;
+    padding: 1.25rem 0;
+    :last-of-type {
+      padding: 1.25rem 0;
+    }
     &:hover, &.active {
       color: var(--primary-two);
     }

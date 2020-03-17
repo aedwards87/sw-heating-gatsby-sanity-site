@@ -154,7 +154,6 @@ export default ({ data: { sanityWork } }) => {
                 />
               )
             })}
-
           </S.ImageContainer>
 
           {/* <S.ImageContainer>

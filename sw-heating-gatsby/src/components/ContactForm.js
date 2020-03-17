@@ -18,11 +18,11 @@ const inputTitles = [
     type: 'email',
     required: true
   },
-  {
-    name: 'Subject',
-    type: 'text',
-    required: TextTrackCueList
-  },
+  // {
+  //   name: 'Subject',
+  //   type: 'text',
+  //   required: TextTrackCueList
+  // },
   {
     name: 'Message',
     type: 'textarea',
@@ -71,7 +71,9 @@ const ContactForm = () => {
                   key={name}
                   className={errors[_name] && 'error'}
                 >
-                  <label>{name}:
+                  <label
+                    style={{ alignItems: type === 'textarea' && 'baseline' }}
+                  >{name}:
                     <S.Input
                       as={type !== 'textarea' ? null : type}
                       type={type !== 'textarea' ? type : null}
@@ -83,7 +85,9 @@ const ContactForm = () => {
                     />
                   </label>
                   {((errors[_name] && _name === Object.keys(values)[0]) || errors[_name]) && (
-                    <S.ErrorMessage><Warning /><span>{errors[_name]}</span></S.ErrorMessage>
+                    <S.ErrorMessage>
+                      <Warning /><span>{errors[_name]}</span>
+                    </S.ErrorMessage>
                   )}
                 </li>
               )
@@ -91,18 +95,14 @@ const ContactForm = () => {
             <li>
               <button type="submit" children="Send" />
             </li>
-            {console.log(values)}
-
-
-            {/* TODO: Layout collapsing on mobile view with below code */}
-
-            {/* {Object.values(errors).some(e => e !== '') &&
-              <div>
-                <Warning />
-                <span>There are invalid fields, please check these and try again</span>
-              </div>
-            } */}
           </S.ListContainer>
+
+          {Object.values(errors).some(e => e !== '') &&
+            <div>
+              <Warning />
+              <span>There are invalid fields, please check these and try again</span>
+            </div>
+          }
         </form>
       </div>
     </S.ContactForm>
@@ -119,14 +119,25 @@ const S = {
     > div {
       max-width: 1900px;
       height: 100%;
-      /* padding: 0 5% 7rem; */
       padding: 0 5% 14vmax;
-      /* text-align: left; */
       margin: auto auto;
     }
-    @media(min-width: 480px) {
+    form > div {
+      text-align: center;
+      color: var(--primary-one);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 1rem;
+      font-size: 0.75rem;
+      > span {
+        margin-top: 1.5px;
+        padding-left: 0.7rem;
+      }
+    }
+    @media(min-width: 850px) {
       > div {
-        /* text-align: center; */
+        padding-bottom: 8rem;
       }
     }
   `,
@@ -168,7 +179,7 @@ const S = {
         width: 100%;
         display: grid;
         grid-template-columns: 110px 1fr;
-        align-items: baseline;
+        align-items: center;
         justify-items: start;
         padding-left: 1.1rem;
         font-weight: var(--bold);
@@ -196,23 +207,7 @@ const S = {
         }
       }
     }
-    > div {
-      text-align: center;
-      color: var(--primary-one);
-      display: grid;
-      grid-template-columns: auto auto;
-      justify-content: center;
-      align-items: center;
-      grid-gap: 0.7rem;
-      grid-column: 2 / span 4;
-      font-size: 0.75rem;
-      > span {
-        margin-top: 1.5px;
-      }
-      > form {
-        margin-bottom: 0;
-      }
-    }
+    
     
     @media (min-width: 440px) {
       > li > label {

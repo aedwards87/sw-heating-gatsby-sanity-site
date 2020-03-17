@@ -6,7 +6,6 @@ import { CarouselDropletMaskSVG } from './index'
 
 
 const CarouselDropletHousing = ({ style, click, imageSRC, alt }) => {
-
   return (
     <S.CarouselDropletHousing style={style} >
       <CarouselDropletMaskSVG click={click} imageSRC={imageSRC} alt={alt} />
@@ -21,19 +20,13 @@ const S = {
   CarouselDropletHousing: styled(AnimCarouselDropletHousing)`
     position: relative;
     right: -3.75vw;
-    /* width: 476px; */
     width: 44%;
-    /* height: ${({ navBarHeight }) => `calc(100% - (${navBarHeight.navBarHeight}px) - 15px)`}; */
     height: calc(100% - (126.4px - 15px));
     top: calc(126.4px - 15px);
     @media (min-width: 1680px) {
       min-height: 800px;
       transition: min-height 0.5s ease;
     }
-    /* transition: right 1s ease;
-    @media (max-width: 1200px) and (min-height: 980px) {
-      right: 1.25vw;
-    } */
   `,
 }
 

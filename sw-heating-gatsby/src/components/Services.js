@@ -77,7 +77,10 @@ const S = {
     > div {
       height: 100%;
     }
-    height: 200px;
+    height: 150px;
+    @media (min-width: 500px) {
+      height: 200px;
+    }
     @media (min-width: 727px) {
       height: 190px;
     }
@@ -90,10 +93,10 @@ const S = {
     margin: 0;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-    grid-gap: 2.5rem;
-    /* @media(min-width: 1820px) {
-      grid-gap: 4rem;
-    } */
+    grid-gap: 2rem;
+    @media(min-width: 500px) {
+      grid-gap: 2.5rem;
+    }
     li {
       border-radius: 10px;
       overflow: hidden;
@@ -109,7 +112,7 @@ const S = {
         transform: translate(0, -10px);
       }
       :hover a h3 {
-        color: var(--primary-three);
+        color: var(--primary-two);
       }
     }
     .list-heading-container {

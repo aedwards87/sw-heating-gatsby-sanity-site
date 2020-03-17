@@ -32,7 +32,7 @@ export const StyledTitle = styled.h2`
   @media (min-width: 980px) {
     font-size: 2.4rem;
   }
-  @media(min-width: 800px) {
+  @media(min-width: 850px) {
     ::before {
       height: ${({ tall, heading }) => heading ? 0 : !tall ? '8rem' : 'calc(7rem + 3vw)'};
     }

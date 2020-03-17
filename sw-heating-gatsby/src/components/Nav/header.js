@@ -34,7 +34,7 @@ const Header = (props, ref) => {
                 >
                   <div>
                     <Link to="/">
-                      <SWHeatingLogo height="49" />
+                      <SWHeatingLogo height="42" />
                     </Link>
                     <Desktop>
                       <NavBar
@@ -101,7 +101,14 @@ const S = {
       /* background: ${({ scrollUp, position, isMenuOpen }) => position === 0 && !isMenuOpen || !scrollUp ? 'transparent' : 'white'}; */
     }
     
-    .hamburger {
+    
+  `,
+  MenuButton: styled.button`
+    outline: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    &.hamburger {
       display: grid;
       cursor: pointer;
       transition-property: opacity, filter;
@@ -115,15 +122,15 @@ const S = {
       margin: 0;
       overflow: visible; 
     }
-    .hamburger:hover {
+    &.hamburger:hover {
       opacity: 0.7; 
     }
-    .hamburger.is-active:hover {
+    &.hamburger.is-active:hover {
       opacity: 0.7; 
     }
-    .hamburger.is-active .hamburger-inner,
-    .hamburger.is-active .hamburger-inner::before,
-    .hamburger.is-active .hamburger-inner::after {
+    &.hamburger.is-active .hamburger-inner,
+    &.hamburger.is-active .hamburger-inner::before,
+    &.hamburger.is-active .hamburger-inner::after {
       background-color: #000; 
     }
     .hamburger-box {
@@ -147,9 +154,9 @@ const S = {
       transition-duration: 0.15s;
       transition-timing-function: ease; 
     }
-    .hamburger--collapse.is-active .hamburger-inner,
-    .hamburger--collapse.is-active .hamburger-inner::before, 
-    .hamburger--collapse.is-active .hamburger-inner::after {
+    &.hamburger--collapse.is-active .hamburger-inner,
+    &.hamburger--collapse.is-active .hamburger-inner::before, 
+    &.hamburger--collapse.is-active .hamburger-inner::after {
       background-color: var(--primary-two);
     }
     .hamburger-inner::before, .hamburger-inner::after {
@@ -162,41 +169,35 @@ const S = {
     .hamburger-inner::after {
       bottom: -8px; 
     }
-    .hamburger--collapse .hamburger-inner {
+    &.hamburger--collapse .hamburger-inner {
       top: auto;
       bottom: 0;
       transition-duration: 0.13s;
       transition-delay: 0.13s;
       transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
     }
-    .hamburger--collapse .hamburger-inner::after {
+    &.hamburger--collapse .hamburger-inner::after {
       top: -16px;
       transition: top 0.2s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1), opacity 0.1s linear; 
     }
-    .hamburger--collapse .hamburger-inner::before {
+    &.hamburger--collapse .hamburger-inner::before {
       transition: top 0.12s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1), transform 0.13s cubic-bezier(0.55, 0.055, 0.675, 0.19); 
     }
-    .hamburger--collapse.is-active .hamburger-inner {
+    &.hamburger--collapse.is-active .hamburger-inner {
       transform: translate3d(0, -10px, 0) rotate(-45deg);
       transition-delay: 0.22s;
       transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); 
     }
-    .hamburger--collapse.is-active .hamburger-inner::after {
+    &.hamburger--collapse.is-active .hamburger-inner::after {
       top: 0;
       opacity: 0;
       transition: top 0.2s cubic-bezier(0.33333, 0, 0.66667, 0.33333), opacity 0.1s 0.22s linear; 
     }
-    .hamburger--collapse.is-active .hamburger-inner::before {
+    &.hamburger--collapse.is-active .hamburger-inner::before {
       top: 0;
       transform: rotate(-90deg);
       transition: top 0.1s 0.16s cubic-bezier(0.33333, 0, 0.66667, 0.33333), transform 0.13s 0.25s cubic-bezier(0.215, 0.61, 0.355, 1); 
     }
-  `,
-  MenuButton: styled.button`
-    outline: 0;
-    border: none;
-    background: none;
-    cursor: pointer;
   `
 }
 

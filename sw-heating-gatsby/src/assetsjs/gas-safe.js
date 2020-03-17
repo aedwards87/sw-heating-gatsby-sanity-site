@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const GasSafe = ({ height = 64, className }) => {
+const GasSafe = ({ height = 58, className }) => {
   return (
     <S.GasSafe height={height} className={className} viewBox="0 0 74 80" xmlns="http://www.w3.org/2000/svg">
       <path d="m73.475 76.9c0 1.6305-1.3199 2.9246-2.9245 2.9246h-67.626c-1.6305 0-2.9245-1.3199-2.9245-2.9246v-73.682c0-1.6305 1.3199-2.9245 2.9245-2.9245h67.626c1.6305 0 2.9245 1.3199 2.9245 2.9245v73.682z" />

@@ -79,7 +79,7 @@ const S = {
       margin: 0;
       > a {
         font-size: 0.9rem;
-        font-weight: var(--bold);
+        font-weight: var(--bolder);
         line-height: 0.9rem;
         transition: all .3s ease;
         width: 100%;

@@ -166,6 +166,9 @@ const StyledListContainer = styled.ul`
   :active {
     cursor: grabbing
   }
+  @media(min-width: 850px) {
+    padding-bottom: 8rem;
+  }
   @media (min-width: 736px) {
     grid-auto-columns: minmax(500px, 1fr);
     > li {

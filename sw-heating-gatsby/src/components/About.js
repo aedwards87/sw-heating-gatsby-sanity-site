@@ -24,15 +24,58 @@ const About = ( /* allSanityAboutUs */) => {
         <StyledContentContainer>
           <div>
             <p>
-              <strong style={{ fontSize: '1.3rem', lineHeight: '1.43' }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempus urna et pharetra pharetra massa massa ultricies mi quis.</strong>
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempus urna et pharetra pharetra massa massa ultricies mi quis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempus urna et pharetra pharetra massa massa ultricies mi quis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempus urna et pharetra pharetra massa massa ultricies mi quis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempus urna et pharetra pharetra massa massa ultricies mi quis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempus urna et pharetra pharetra massa massa ultricies mi quis.
+              <strong>At SW Heating, our mission is to keep your taps running and your house warm.</strong>
+              <br /><br />
+            We offer a trust worthy, reliable, professional service in Essex, Kent, Southeast/west London. Plumbing, gas and heating are our core services, but we can offer so much more should the project require it.
+            <br /><br />
+            A design to build bathroom and kitchen services is also available.
             </p>
           </div>
+
         </StyledContentContainer>
       </div>
       <StyledSWLettersSVG />
+      <ProfileContainer>
+        <div>
+          <Profile>
+            <div>
+              <div>
+                <div className='image' />
+              </div>
+              <div className='name-and-title' >
+                <h3>Steven Whitaker</h3>
+                <p>Engineer, director and dad of twins</p>
+              </div>
+            </div>
+          </Profile>
+
+          {/* <Logos>
+            Logos
+          </Logos> */}
+          {/* Bio */}
+          <Bio>
+            <p>
+              <p>
+                Over 15 years ago Steven set out on his own journey and started SW Heating, along the way his picked up some specialist skills and craftmanship.</p>
+              <br /><br />
+              <strong>He is a fully qualified and insured engineer, accredited with:</strong>
+              <br /><br />
+              <ul>
+                <li>Gas Safe Registered </li>
+                <li>Fault Finding</li>
+                <li>Boiler Installation</li>
+                <li>System Design</li>
+                <li>Unvented Hot Water Systems</li>
+                <li>Energy Efficiency</li>
+                <li>Water Regulations</li>
+                <li>Part P Electrical</li>
+                <li>Legionnaires Prevention & Treatment</li>
+                <li>The Chartered Institute of Plumbing & Heating <br />(Full member for over 10 years)</li>
+              </ul>
+            </p>
+          </Bio>
+        </div>
+      </ProfileContainer>
     </StyledAboutContainer>
   )
 }
@@ -44,35 +87,117 @@ const StyledAboutContainer = styled.section`
     max-width: 1900px;
     margin: 0 auto;
     /* padding: 0 5% 7rem; */
-    padding: 0 5% 14vmax;
+    padding: 0 5% 3rem;
+    :last-of-type {
+      padding-bottom: 14vmax;
+    }
   }
-  p { 
-    width: 100%;
-    z-index: 999;
-  }
-  p:last-of-type {
-    margin-bottom: 0;
-  }
-  @media(min-width: 800px) {
+  @media(min-width: 850px) {
     > div {
       padding-top: 8vw;
-    }
-    p { 
-      width: 85%;
-      z-index: 999;
+      :last-of-type {
+        padding-bottom: 8rem;
+      }
     }
   }
 `
 
+
+
 const StyledContentContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 6%;
-  > div {
-    grid-column: 1 / span 3;
+  width: 100%;
+  max-width: 600px;
+  p:last-of-type {
+    margin-bottom: 0;
   }
-  @media(max-width: 900px) {
+  @media(min-width: 575px ) {
+    width: 90%;
+  }
+`
+
+const ProfileContainer = styled.div`
+  position: relative;
+  width: 100%;
+  /* background: pink; */
+  
+  && {
+    padding-top: 2rem;
+  }
+  > div {
+    display: grid;
+    grid-gap: 3rem;
     grid-template-columns: 1fr;
+    justify-items: center;
+  }
+  /* @media (min-width: 980px) {
+    > div {
+      grid-template-columns: auto 1fr;
+      grid-auto-rows: auto 1fr;
+    }
+  } */
+`
+
+const Profile = styled.div`
+  /* background: pink; */
+  > div {
+    display: flex;
+    width: 100%;
+    max-width: 560px;
+    flex-wrap: wrap;
+    grid-gap: 2rem;
+    /* justify-content: center; */
+    align-content: flex-end;
+    margin: 0 auto;
+    
+  }
+  width: 100%;
+  position: relative;
+  :after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0; 
+    right: 0;
+    width: 100vw;
+    margin-left: -5vw;
+    height: 62.5%;
+    background: var(--primary-one);
+    z-index: -1;
+  }
+  h3 {
+    margin-top: 2rem;
+    margin-bottom: 0.3rem;
+  }
+  .image {
+    width: 200px;
+    height: 200px;
+    margin-right: 2rem;
+    /* margin-bottom: 2rem; */
+    background: white;
+  }
+  .name-and-title {
+    align-self: flex-end;
+    p {
+      margin-bottom: 1.6rem;
+    }
+  }
+`
+
+const Bio = styled.div`
+  width: 100%;
+  max-width: 560px;
+  > p > ul > li {
+    margin-bottom: calc(0.45rem / 2);
+  }
+  p:last-of-type {
+    margin-bottom: 0;
+  }
+`
+
+const Logos = styled.div`
+  display: none;
+  @media (min-width: 980px) {
+    display: grid;
   }
 `
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Vaillant = ({ height = 37, className }) => {
+const Vaillant = ({ height = 30, className }) => {
   return (
     <S.Vaillant height={height} className={className} viewBox="0 0 163 39" xmlns="http://www.w3.org/2000/svg">
       <path d="m81.584 10.7h-1.3289c-1.3289 0-2.4137 1.1391-2.4137 2.468v23.025c0 1.3289 1.0577 2.4679 2.4137 2.4679h1.3289c1.3289 0 2.4137-1.139 2.4137-2.4679v-23.025c-0.0813-1.3289-1.139-2.468-2.4137-2.468z" fill="#00917E" />

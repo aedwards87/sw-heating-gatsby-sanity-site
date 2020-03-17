@@ -15,6 +15,7 @@ import Toggle from './Toggle'
 import NavBar from './Nav/NavBar'
 import NavMenu from './Nav/NavMenu'
 import { navLinks } from './Nav/navLinks'
+import MobileCarousel from './Carousel/MobileHeadCarousel'
 
 export {
   Head,
@@ -34,4 +35,5 @@ export {
   NavBar,
   NavMenu,
   navLinks,
+  MobileCarousel
 }

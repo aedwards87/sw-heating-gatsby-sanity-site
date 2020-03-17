@@ -24,6 +24,9 @@ const S = {
       transform: translate(0, -2px);
       box-shadow: var(--shadow-one)
     }
+    @media (max-width: 480px) {
+      width: 100%;
+    }
   `,
   GradientButtonInside: styled.button`
     padding: 0.8rem 1.8rem;
@@ -40,6 +43,9 @@ const S = {
     @media (min-width: 980px) {
       padding: 1rem 2.2rem;
       font-size: 1.2rem;
+    }
+    @media (max-width: 480px) {
+      width: 100%;
     }
   `
 }
