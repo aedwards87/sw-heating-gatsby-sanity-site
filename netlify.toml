@@ -1,0 +1,5 @@
+  
+[build]
+  base = "sw-heating-gatsby/"
+  command = "gatsby build"
+  publish = "sw-heating-gatsby/public"

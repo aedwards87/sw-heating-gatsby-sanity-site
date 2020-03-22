@@ -11,6 +11,7 @@ import landingPage from './landingPage'
 import work from './work'
 import gallery from './gallery'
 import feedback from './feedback'
+import about from './about'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -26,6 +27,7 @@ export default createSchema({
     work,
     gallery,
     feedback,
+    about,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     blockContent
