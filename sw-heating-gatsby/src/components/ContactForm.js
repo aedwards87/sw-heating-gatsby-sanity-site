@@ -22,7 +22,7 @@ const inputTitles = [
   {
     name: 'Subject',
     type: 'text',
-    required: TextTrackCueList
+    required: true
   },
   {
     name: 'Message',
