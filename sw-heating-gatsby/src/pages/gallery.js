@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-// import { Link } from "gatsby"
+import { graphql } from "gatsby"
 import { Services } from '../components/index'
 import { StyledTitle } from '../components-styled/index'
 import Carousel from '../components/Carousel-2.0'
