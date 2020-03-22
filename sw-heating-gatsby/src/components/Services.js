@@ -106,12 +106,14 @@ const S = {
       transition: all 0.3s ease;
       box-shadow: var(--shadow-two);
       background: white;
-      :hover {
+      :hover,
+      :focus {
         background: white;
         box-shadow: var(--shadow-one);
         transform: translate(0, -10px);
       }
-      :hover a h3 {
+      :hover a h3,
+      :focus a h3 {
         color: var(--primary-two);
       }
     }
@@ -123,7 +125,8 @@ const S = {
     div {
       transition: all 1s ease;
     }
-    a:hover div > div {
+    a:hover div > div, 
+    a:focus div > div {
       transform: scale(1.1);
     }
     a h3 {

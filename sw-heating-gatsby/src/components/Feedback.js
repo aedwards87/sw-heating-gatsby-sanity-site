@@ -5,7 +5,6 @@ import { StyledTitle } from '../components-styled/index'
 import { horizontalDraggableScroll } from '../helpers/horizontalDraggableScroll'
 import { SWDropletQuotes } from '../assetsjs/index';
 
-
 const Feedback = () => {
   const { allSanityFeedback } = useStaticQuery(
     graphql`

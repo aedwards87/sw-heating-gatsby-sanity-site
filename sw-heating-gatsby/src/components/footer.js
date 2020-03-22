@@ -12,7 +12,7 @@ const footer = () => {
   return (
     <Location>
       {({ location }) =>
-        <StyledFooterContainer>
+        <StyledFooterContainer id='footer'>
           <StyledTopFooter>
             <ul>
               <li className="item1">

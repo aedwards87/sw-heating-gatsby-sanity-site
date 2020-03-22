@@ -2,18 +2,30 @@ import React from 'react'
 import styled from 'styled-components'
 import { StyledTitle } from '../components-styled/index'
 import SWLettersSVG from "../assetsjs/sw-letters";
+import PortableText from '@sanity/block-content-to-react'
+import Image from 'gatsby-image'
+import { Link, useStaticQuery, graphql } from "gatsby"
 
-const About = ( /* allSanityAboutUs */) => {
+const About = () => {
+  const { sanityAbout } = useStaticQuery(
+    graphql`
+      query AboutQuery {
+        sanityAbout {
+          title
+          _rawContent
+          profileImage {
+            asset {
+              fluid(maxWidth: 1000)  {
+                ...GatsbySanityImageFluid
+              }
+            }
+          }
+          _rawBio
+        }
+      }
+    `
+  )
 
-  const changeURL = () => {
-    let params = new URL(document.location).hash = '#about'
-    window.history.pushState({}, null, params)
-  }
-
-  const removeURL = () => {
-    let params = new URL(document.location).pathname = '/'
-    window.history.pushState({}, null, params)
-  }
 
   return (
     <StyledAboutContainer>
@@ -23,13 +35,16 @@ const About = ( /* allSanityAboutUs */) => {
         </div>
         <StyledContentContainer>
           <div>
-            <p>
+            <PortableText
+              blocks={sanityAbout._rawContent}
+            />
+            {/* <p>
               <strong>At SW Heating, our mission is to keep your taps running and your house warm.</strong>
               <br /><br />
             We offer a trust worthy, reliable, professional service in Essex, Kent, Southeast/west London. Plumbing, gas and heating are our core services, but we can offer so much more should the project require it.
             <br /><br />
             A design to build bathroom and kitchen services is also available.
-            </p>
+            </p> */}
           </div>
 
         </StyledContentContainer>
@@ -39,8 +54,8 @@ const About = ( /* allSanityAboutUs */) => {
         <div>
           <Profile>
             <div>
-              <div>
-                <div className='image' />
+              <div style={{ height: 200, width: 200, marginRight: '2rem' }}>
+                <Image fluid={sanityAbout.profileImage.asset.fluid} alt={sanityAbout.title} />
               </div>
               <div className='name-and-title' >
                 <h3>Steven Whitaker</h3>
@@ -54,25 +69,9 @@ const About = ( /* allSanityAboutUs */) => {
           </Logos> */}
           {/* Bio */}
           <Bio>
-            <p>
-              <p>
-                Over 15 years ago Steven set out on his own journey and started SW Heating, along the way his picked up some specialist skills and craftmanship.</p>
-              <br /><br />
-              <strong>He is a fully qualified and insured engineer, accredited with:</strong>
-              <br /><br />
-              <ul>
-                <li>Gas Safe Registered </li>
-                <li>Fault Finding</li>
-                <li>Boiler Installation</li>
-                <li>System Design</li>
-                <li>Unvented Hot Water Systems</li>
-                <li>Energy Efficiency</li>
-                <li>Water Regulations</li>
-                <li>Part P Electrical</li>
-                <li>Legionnaires Prevention & Treatment</li>
-                <li>The Chartered Institute of Plumbing & Heating <br />(Full member for over 10 years)</li>
-              </ul>
-            </p>
+            <PortableText
+              blocks={sanityAbout._rawBio}
+            />
           </Bio>
         </div>
       </ProfileContainer>
@@ -119,13 +118,12 @@ const ProfileContainer = styled.div`
   position: relative;
   width: 100%;
   /* background: pink; */
-  
   && {
-    padding-top: 2rem;
+    padding-top: 4rem;
   }
   > div {
     display: grid;
-    grid-gap: 3rem;
+    grid-gap: 3.5rem;
     grid-template-columns: 1fr;
     justify-items: center;
   }
@@ -142,7 +140,7 @@ const Profile = styled.div`
   > div {
     display: flex;
     width: 100%;
-    max-width: 560px;
+    max-width: 580px;
     flex-wrap: wrap;
     grid-gap: 2rem;
     /* justify-content: center; */
@@ -181,12 +179,27 @@ const Profile = styled.div`
       margin-bottom: 1.6rem;
     }
   }
+  > div > div > .gatsby-image-wrapper {
+    overflow: visible !important;
+    > div {
+      padding-bottom: 100% !important;
+    }
+    img {
+      height: auto !important;
+      bottom: 0 !important;
+      top: auto !important;
+      margin-bottom: 0;
+    }
+  }
 `
 
 const Bio = styled.div`
   width: 100%;
-  max-width: 560px;
-  > p > ul > li {
+  max-width: 700px;
+  ul {
+    margin-bottom: 0;
+  }
+  ul > li {
     margin-bottom: calc(0.45rem / 2);
   }
   p:last-of-type {

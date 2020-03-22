@@ -16,11 +16,13 @@ const S = {
     background: var(--gradient-one);
     display: inline-block;
     transition: all 0.3s ease;
-    :hover button {
+    :hover button,
+    :focus button {
       background: transparent;
       color: white;
     }
-    :hover {
+    :hover,
+    :focus {
       transform: translate(0, -2px);
       box-shadow: var(--shadow-one)
     }

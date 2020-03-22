@@ -5,11 +5,12 @@ import useForm from '../hooks/useForm'
 import { validate } from '../hooks/validate';
 // const uuidv4 = require('uuid/v4')
 import { Warning } from '../assetsjs/index'
+import { Link } from "gatsby"
 
 
 const inputTitles = [
   {
-    name: 'Full name',
+    name: 'Name',
     type: 'text',
     required: true
   },
@@ -18,11 +19,11 @@ const inputTitles = [
     type: 'email',
     required: true
   },
-  // {
-  //   name: 'Subject',
-  //   type: 'text',
-  //   required: TextTrackCueList
-  // },
+  {
+    name: 'Subject',
+    type: 'text',
+    required: TextTrackCueList
+  },
   {
     name: 'Message',
     type: 'textarea',
@@ -63,6 +64,7 @@ const ContactForm = () => {
           <S.ListContainer>
             <li>
               <p>If you have any questions or queries, or would like to request a quote or even book an appointment, please get in touch with a member of our team using the form below:</p>
+              <p style={{ fontSize: '0.8rem' }}>or <Link to="/#footer" style={{ color: 'var(--primary-one' }}><u>click here</u></Link> to see more details</p>
             </li>
             {inputTitles.map(({ name, type }) => {
               const _name = name.toLowerCase().replace(/\s+/g, '')
@@ -171,14 +173,11 @@ const S = {
         border: none;
         outline: none;
       }
-      &.error {
-        /* box-shadow: var(--shadow-error); */
-      }
       > label {
         height: 100%;
         width: 100%;
         display: grid;
-        grid-template-columns: 110px 1fr;
+        grid-template-columns: 85px 1fr;
         align-items: center;
         justify-items: start;
         padding-left: 1.1rem;
@@ -198,7 +197,8 @@ const S = {
         font-weight: var(--bolder);
         transition: box-shadow 0.3s ease;
         transition: transform 0.3s ease;
-        :hover {
+        :hover,
+        :focus {
           background: white;
           color: var(--primary-two);
           cursor: pointer;
@@ -212,7 +212,7 @@ const S = {
     @media (min-width: 440px) {
       > li > label {
         padding-left: 1.8rem;
-        grid-template-columns: 120px 1fr;
+        grid-template-columns: 110px 1fr;
       }
       /* > li {
         grid-template-columns: 120px 1fr;
@@ -220,7 +220,7 @@ const S = {
     }
     @media (min-width: 481px) {
       > li > label {
-        /* grid-template-columns: 150px 1fr; */
+        grid-template-columns: 120px 1fr;
       }
     }
     @media (min-width: 980px) {
@@ -247,7 +247,7 @@ const S = {
     border-radius: 0 10px 10px 0;
     box-sizing: border-box;
     resize: none;
-    height: ${({ as }) => as && '300px'};
+    height: ${({ as }) => as && '275px'};
     :hover,
     :focus {
       background: rgba(var(--primary-one-raw),0.3);

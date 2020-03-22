@@ -12,10 +12,10 @@ export const validate = (values) => {
     errors.email = "Please enter a valid email address"
   }
   // If false/blank or invalid email send error messsage
-  if (!values.fullname) {
-    errors.fullname = "Please enter your name"
+  if (!values.name) {
+    errors.name = "Please enter your name"
   } else if (!/^[ a-zA-Z\u00C0-\u00FF]+$/.test(values.fullname)) {
-    errors.fullname = "Please only use letters when entering your name"
+    errors.name = "Please only use letters when entering your name"
   }
   // If false/blank subject or message send error messsage
   if (!values.subject) {

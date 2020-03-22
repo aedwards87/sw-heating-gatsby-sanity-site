@@ -3,24 +3,49 @@ import styled from 'styled-components'
 // import { Link } from "gatsby"
 import { Services } from '../components/index'
 import { StyledTitle } from '../components-styled/index'
-
-
+import Form from '../components/Form'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-const Reviews = () => (
-  <Layout>
-    <SEO title="Reviews" />
-    <S.Reviews>
-      <div>
-        <div style={{ marginBottom: '6rem' }}>
-          <StyledTitle heading>Reviews</StyledTitle>
+
+const Reviews = () => {
+
+  const inputTitles = [
+    {
+      name: 'Name',
+      type: 'text',
+    },
+    {
+      name: 'Email',
+      type: 'email',
+    },
+    {
+      name: 'Message',
+      type: 'textarea',
+      required: true
+    }
+  ]
+
+  return (
+    <Layout>
+      <SEO title="Reviews" />
+      <S.Reviews>
+        <div>
+          <div style={{ marginBottom: '6rem' }}>
+            <StyledTitle heading>Reviews</StyledTitle>
+          </div>
+          <Form
+            inputTitles={inputTitles}
+            message="We would love to hear from you"
+          />
         </div>
-      </div>
-    </S.Reviews>
-    <Services />
-  </Layout>
-)
+
+      </S.Reviews>
+      <Services />
+    </Layout>
+  )
+}
+
 
 const S = {
   Reviews: styled.section`
