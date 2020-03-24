@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react'
 import styled from 'styled-components'
-import { useTransition } from 'react-spring'
+import { useTransition, config } from 'react-spring'
 import { CarouselSlides } from './Carousel/CarouselSlides'
 // import CarouselButton from '../components/Carousel/CarouselButton'
 
@@ -27,7 +27,7 @@ const Carousel = ({ navbarheight, sanityLandingPage }) => {
     from: { opacity: 0, position: 'absolute', transform: 'translate3d(60%,5%,0) scale(0.5)', zIndex: 4 },
     enter: { opacity: 1, transform: 'translate3d(0%,0,0) scale(1)', zIndex: 5 },
     leave: { opacity: 0, transform: 'translate3d(0%,0,0) scale(1)', zIndex: 6 },
-    config: { mass: 11, tension: 300, friction: 120 }
+    config: config.molasses
   })
 
   return (

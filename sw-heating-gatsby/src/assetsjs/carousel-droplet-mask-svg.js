@@ -17,7 +17,6 @@ const CarouselDropletMaskSVG = ({ height = '80vh', click, imageSRC, alt }) => {
         <S.Image
           href={imageSRC}
           alt={alt}
-        // preserveAspectRatio 
         />
       </S.CarouselDropletMaskSVG>
       <S.CarouselDropletBorderSVG

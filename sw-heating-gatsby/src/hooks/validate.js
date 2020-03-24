@@ -14,8 +14,8 @@ export const validate = (values) => {
   // If false/blank or invalid email send error messsage
   if (!values.name) {
     errors.name = "Please enter your name"
-  } else if (!/^[ a-zA-Z\u00C0-\u00FF]+$/.test(values.fullname)) {
-    errors.name = "Please only use letters when entering your name"
+  } else if (!/^[ a-zA-Z\u00C0-\u00FF]+$/.test(values.name)) {
+    errors.name = "Please enter a valid name"
   }
   // If false/blank subject or message send error messsage
   if (!values.subject) {

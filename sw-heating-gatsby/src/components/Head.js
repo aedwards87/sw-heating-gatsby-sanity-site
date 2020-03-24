@@ -5,6 +5,7 @@ import { Link } from "gatsby"
 import { UserContext, Carousel, GradientButton, MobileCarousel } from './index'
 import { HeadFlameBackground } from '../assetsjs/index'
 import { Mobile, SmallScreen, Default } from '../hooks/useMedia'
+import Droplet from '../assets/droplet.svg'
 
 // import { CarouselSlides } from '../components/Carousel/CarouselSlides'
 

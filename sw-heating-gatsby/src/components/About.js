@@ -219,8 +219,8 @@ const StyledSWLettersSVG = styled(SWLettersSVG)`
   height: 30vmax;
   /* max-height: 700px; */
   top: 5vw;
-  right: 0;
-  opacity: 20%;
+  right: -2vw;
+  fill-opacity: .1;
   z-index: -1;
   @media(max-width: 850px) {
     display: none;

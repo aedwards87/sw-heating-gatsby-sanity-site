@@ -30,13 +30,14 @@ const Reviews = () => {
     <Layout>
       <SEO title="Reviews" />
       <S.Reviews>
+        {/* <Feedback /> */}
         <div>
           <div style={{ marginBottom: '6rem' }}>
-            <StyledTitle heading>Reviews</StyledTitle>
+            <StyledTitle heading>We would love <br />to hear from you</StyledTitle>
           </div>
           <Form
             inputTitles={inputTitles}
-            message="We would love to hear from you"
+            message="Feel free to leave us a review, your reviews help us to ensure we provide a quality service every visit."
           />
         </div>
 
