@@ -5,7 +5,7 @@ export default function useScrollPosition(on) {
   const [currentPosition, setCurrentPosition] = useState('')
   const [scrollUp, setScrollUp] = useState(false)
 
-  useMemo(() => {
+  useEffect(() => {
     setCurrentPosition(window.pageYOffset)
     // return () => {
     //   setCurrentPosition(window.pageYOffset)
