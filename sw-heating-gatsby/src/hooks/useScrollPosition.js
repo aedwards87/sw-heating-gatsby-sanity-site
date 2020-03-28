@@ -1,14 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 
 
 export default function useScrollPosition(on) {
   const [currentPosition, setCurrentPosition] = useState('')
   const [scrollUp, setScrollUp] = useState(false)
 
-  useEffect(() => {
+  useMemo(() => {
     setCurrentPosition(window.pageYOffset)
     // return () => {
-    //   cleanup
+    //   setCurrentPosition(window.pageYOffset)
     // }
   }, [currentPosition])
 

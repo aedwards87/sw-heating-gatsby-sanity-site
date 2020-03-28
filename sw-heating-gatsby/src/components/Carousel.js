@@ -24,9 +24,9 @@ const Carousel = ({ navbarheight, sanityLandingPage }) => {
 
 
   const transitions = useTransition(index, p => p, {
-    from: { opacity: 0, position: 'absolute', transform: 'translate3d(60%,5%,0) scale(0.5)', zIndex: 4 },
-    enter: { opacity: 1, transform: 'translate3d(0%,0,0) scale(1)', zIndex: 5 },
-    leave: { opacity: 0, transform: 'translate3d(0%,0,0) scale(1)', zIndex: 6 },
+    from: { opacity: 0, position: 'absolute', transform: 'translate3d(60%,-25%,0) scale(0.5)', zIndex: 4, borderRadius: 500 },
+    enter: { opacity: 1, transform: 'translate3d(0%,-50%,0) scale(1)', zIndex: 5, borderRadius: 40 },
+    leave: { opacity: 0, transform: 'translate3d(0%,-50%,0) scale(1)', zIndex: 6, borderRadius: 40 },
     config: config.molasses
   })
 
@@ -56,13 +56,16 @@ const Carousel = ({ navbarheight, sanityLandingPage }) => {
 
 const S = {
   Carousel: styled.div`
-    position: absolute;
+    position: relative; 
+    height: 100%;
+    /*
     right: 0;
     top: -${({ navbarheight }) => navbarheight.navBarHeight}px;
     width: 100%;
     min-height: 500px;
     height: 120vh;
-    overflow: hidden;
+    overflow: hidden; */
+    grid-column: 3 / span 2;
     @media (min-width: 1680px) {
       min-height: 800px;
       transition: min-height 0.5s ease;

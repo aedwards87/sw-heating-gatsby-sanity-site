@@ -38,7 +38,7 @@ const StyledContainer = styled.div`
   right: 0;
   height: auto;
   /* width: calc(50% + 7vmax); */
-  width: calc(40% + 15vmax);
+  width: calc(40% + 16vmax);
   /* width: 55%; */
   overflow: hidden;
   transition: width 1s ease;
@@ -52,7 +52,7 @@ const StyledContainer = styled.div`
 
 const StyledHeadFlameBackgroundSVG = styled.svg`
   position: relative;
-  right: -2vmax;
+  /* right: -2vmax; */
   top: -100px;
   height: 130vh;
   min-height: 850px;

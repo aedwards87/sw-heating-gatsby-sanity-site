@@ -4,8 +4,7 @@ import styled from 'styled-components'
 import { Link } from "gatsby"
 import { UserContext, Carousel, GradientButton, MobileCarousel } from './index'
 import { HeadFlameBackground } from '../assetsjs/index'
-import { Mobile, SmallScreen, Default } from '../hooks/useMedia'
-import Droplet from '../assets/droplet.svg'
+import { SmallScreen, Default } from '../hooks/useMedia'
 
 // import { CarouselSlides } from '../components/Carousel/CarouselSlides'
 
@@ -23,9 +22,6 @@ const Head = ({ sanityLandingPage }) => {
             <GradientButton children="Contact us" />
           </Link>
         </S.Content>
-        {/* <Tablet>
-          <MobileCarousel sanityLandingPage={sanityLandingPage} />
-        </Tablet> */}
         <SmallScreen>
           <MobileCarousel sanityLandingPage={sanityLandingPage} />
         </SmallScreen>
@@ -45,8 +41,6 @@ const S = {
     /* min-height: calc(100vh - 113px); */
     > div {
       /* almost there */
-
-
       width: 100%;
       max-width: 1900px;
       padding: 4% 5% 6%;
@@ -54,7 +48,6 @@ const S = {
 
       /* almost there */
       align-items: end;
-
 
       grid-gap: 2.7rem;
       transition: height .3s ease;
@@ -78,12 +71,14 @@ const S = {
         margin: 0 auto;
         width: 100%;
         align-items: center;
+        align-content: stretch;
+        position: relative;
       }
     }
     
     /* Large screens */
     @media (min-width: 1680px) {
-      min-height: 800px;
+      /* min-height: 800px; */
     }
   `,
 

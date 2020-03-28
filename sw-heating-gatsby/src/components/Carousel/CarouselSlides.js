@@ -9,7 +9,7 @@ export const CarouselSlides = [
     <CarouselDroplet
       style={style}
       click={click}
-      imageSRC={sanityLandingPage.mainImage.asset.fluid.src}
+      imageSRC={sanityLandingPage.mainImage.asset.fluid}
       alt={sanityLandingPage.mainImageAltTag}
     />
   ),
@@ -17,7 +17,7 @@ export const CarouselSlides = [
     <CarouselDroplet
       style={style}
       click={click}
-      imageSRC={sanityLandingPage.secondImage.asset.fluid.src}
+      imageSRC={sanityLandingPage.secondImage.asset.fluid}
       alt={sanityLandingPage.secondImageAltTag}
     />
   ),
@@ -25,7 +25,7 @@ export const CarouselSlides = [
     <CarouselDroplet
       style={style}
       click={click}
-      imageSRC={sanityLandingPage.thirdImage.asset.fluid.src}
+      imageSRC={sanityLandingPage.thirdImage.asset.fluid}
       alt={sanityLandingPage.thirdImageAltTag}
     />
   ),
@@ -33,7 +33,7 @@ export const CarouselSlides = [
     <CarouselDroplet
       style={style}
       click={click}
-      imageSRC={sanityLandingPage.fourthImage.asset.fluid.src}
+      imageSRC={sanityLandingPage.fourthImage.asset.fluid}
       alt={sanityLandingPage.fourthImageAltTag}
     />
   ),
@@ -41,7 +41,7 @@ export const CarouselSlides = [
     <CarouselDroplet
       style={style}
       click={click}
-      imageSRC={sanityLandingPage.fifthImage.asset.fluid.src}
+      imageSRC={sanityLandingPage.fifthImage.asset.fluid}
       alt={sanityLandingPage.fifthImageAltTag}
     />
   )
@@ -53,39 +53,39 @@ const AnimImage = animated(Image)
 
 export const slidev2 = [
   ({ style, sanityLandingPage }) => (
-      <AnimImage
-        style={{ ...style, height: '100%', width: '100%' }}
-        fluid={sanityLandingPage.mainImage.asset.fluid}
-        alt={sanityLandingPage.mainImageAltTag}
-      />
-    
+    <AnimImage
+      style={{ ...style, height: '100%', width: '100%' }}
+      fluid={sanityLandingPage.mainImage.asset.fluid}
+      alt={sanityLandingPage.mainImageAltTag}
+    />
+
   ),
   ({ style, sanityLandingPage }) => (
-      <AnimImage
-        style={{ ...style, height: '100%', width: '100%' }}
-        fluid={sanityLandingPage.secondImage.asset.fluid}
-        alt={sanityLandingPage.secondImageAltTag}
-      />
+    <AnimImage
+      style={{ ...style, height: '100%', width: '100%' }}
+      fluid={sanityLandingPage.secondImage.asset.fluid}
+      alt={sanityLandingPage.secondImageAltTag}
+    />
   ),
   ({ style, sanityLandingPage }) => (
-      <AnimImage
-        style={{ ...style, height: '100%', width: '100%' }}
-        fluid={sanityLandingPage.thirdImage.asset.fluid}
-        alt={sanityLandingPage.thirdImageAltTag}
-      />
+    <AnimImage
+      style={{ ...style, height: '100%', width: '100%' }}
+      fluid={sanityLandingPage.thirdImage.asset.fluid}
+      alt={sanityLandingPage.thirdImageAltTag}
+    />
   ),
   ({ style, sanityLandingPage }) => (
-      <AnimImage
-        style={{ ...style, height: '100%', width: '100%' }}
-        fluid={sanityLandingPage.fourthImage.asset.fluid}
-        alt={sanityLandingPage.fourthImageAltTag}
-      />
+    <AnimImage
+      style={{ ...style, height: '100%', width: '100%' }}
+      fluid={sanityLandingPage.fourthImage.asset.fluid}
+      alt={sanityLandingPage.fourthImageAltTag}
+    />
   ),
   ({ style, sanityLandingPage }) => (
-      <AnimImage
-        style={{ ...style, height: '100%', width: '100%' }}
-        fluid={sanityLandingPage.fifthImage.asset.fluid}
-        alt={sanityLandingPage.fifthImageAltTag}
-      />
+    <AnimImage
+      style={{ ...style, height: '100%', width: '100%' }}
+      fluid={sanityLandingPage.fifthImage.asset.fluid}
+      alt={sanityLandingPage.fifthImageAltTag}
+    />
   )
 ]
