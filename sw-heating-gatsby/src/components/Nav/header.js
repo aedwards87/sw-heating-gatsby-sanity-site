@@ -13,7 +13,8 @@ const Header = (props, ref) => {
   const [on, toggle] = useState(false)
   const [scrollUp, setScrollUp, currentPosition] = useScrollPosition()
 
-  // console.log(currentPosition)
+  console.log(currentPosition)
+  console.log(parseInt(currentPosition))
 
   // add hook with event listener for scroll, to check if isMenuOpen === true, setScrollUp === false
 
