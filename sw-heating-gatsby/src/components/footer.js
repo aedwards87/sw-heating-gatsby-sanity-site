@@ -156,7 +156,7 @@ const StyledTopFooter = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(60px, auto));
     justify-items: center;
     justify-content: start;
-    align-items: end;
+    align-items: center;
     grid-gap: 2.5rem 2.2rem;
     > svg {
       align-self: end;

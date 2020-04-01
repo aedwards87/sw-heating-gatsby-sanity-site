@@ -13,7 +13,7 @@ const Header = (props, ref) => {
   const [on, toggle] = useState(false)
   const [scrollUp, setScrollUp, currentPosition] = useScrollPosition()
 
-
+  console.log(scrollUp, currentPosition)
 
   // add hook with event listener for scroll, to check if isMenuOpen === true, setScrollUp === false
 
@@ -88,9 +88,9 @@ const S = {
     right: 0px;
     z-index: 99999;
     transform: ${({ scrollUp, position, isMenuOpen }) =>
-      `translate3d(0, ${isMenuOpen || scrollUp || position === 0 ? 0 : '-100%'}, 0)`
+      `translate3d(0, ${isMenuOpen || scrollUp || position <= 0 ? 0 : '-100%'}, 0)`
     };
-    background: ${({ scrollUp, position, isMenuOpen }) => position === 0 && !isMenuOpen || !scrollUp ? 'transparent' : 'white'};
+    background: ${({ scrollUp, position, isMenuOpen }) => position <= 0 && !isMenuOpen || !scrollUp ? 'transparent' : 'white'};
     > div {
       margin: 0 auto;
       max-width: 1900px;

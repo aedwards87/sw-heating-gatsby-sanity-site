@@ -115,7 +115,6 @@ const ContactForm = () => {
 const S = {
   ContactForm: styled.section`
     width: 100%;
-    /* height: 105vh; */
     background: var(--gradient-one);
     color: white;
     > div {
@@ -124,17 +123,20 @@ const S = {
       padding: 0 5% 14vmax;
       margin: auto auto;
     }
-    form > div {
-      text-align: center;
-      color: var(--primary-one);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding-top: 1rem;
-      font-size: 0.75rem;
-      > span {
-        margin-top: 1.5px;
-        padding-left: 0.7rem;
+    form {
+      margin-bottom: 0;
+      > div {
+        text-align: center;
+        color: var(--primary-one);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 1rem;
+        font-size: 0.75rem;
+        > span {
+          margin-top: 1.5px;
+          padding-left: 0.7rem;
+        }
       }
     }
     @media(min-width: 850px) {

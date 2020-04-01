@@ -50,6 +50,7 @@ const S = {
     > div > .gatsby-image-wrapper img {
       border-radius: 10px 10px 5px 5px;
     }
+    /* White border */
     :before {
       content: "";
       position: absolute;
@@ -60,6 +61,7 @@ const S = {
       width: calc(100% + 0.9rem);
       height: calc(100% + 0.9rem);
     }
+    /* Gradient box */
     :after {
       content: "";
       position: absolute;

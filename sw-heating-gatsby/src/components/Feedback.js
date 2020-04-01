@@ -27,12 +27,11 @@ const Feedback = () => {
     horizontalDraggableScroll(ref)
   }, [ref])
 
-
   return (
     <StyledFeedBack>
       <div>
-        <StyledTitle id="feedback">What our customers<br />say about us</StyledTitle>
-        {/* <StyledLink to="/reviews">Leave us a review</StyledLink> */}
+        <StyledTitle id="feedback" heading >What our customers<br />say about us</StyledTitle>
+        <StyledLink to="/reviews">Leave us a review</StyledLink>
       </div>
       <StyledListContainer className="items" ref={ref} >
         {allSanityFeedback.edges.map(({ node: { name, message, id } }) => (
@@ -53,12 +52,14 @@ const StyledFeedBack = styled.section`
   width: 100%;
   background: var(--light-bg);
   margin: 0 auto;
+  padding-top: calc(6% + 6.5rem);
   h2 {
     margin-bottom: 0;
   }
   > div {
     max-width: 1900px;
-    padding: 0 5%;
+    padding-right: 5%;
+    padding-left: 5%;
     margin: 0 auto;
   }
 `

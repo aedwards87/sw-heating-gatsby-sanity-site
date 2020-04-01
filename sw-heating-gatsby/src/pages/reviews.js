@@ -1,7 +1,7 @@
 import React from "react"
 import styled from 'styled-components'
 // import { Link } from "gatsby"
-import { Services } from '../components/index'
+import { Services, Feedback } from '../components/index'
 import { StyledTitle } from '../components-styled/index'
 import Form from '../components/Form'
 import Layout from "../components/layout"
@@ -30,17 +30,16 @@ const Reviews = () => {
     <Layout>
       <SEO title="Reviews" />
       <S.Reviews>
-        {/* <Feedback /> */}
+        <Feedback />
         <div>
           <div style={{ marginBottom: '6rem' }}>
-            <StyledTitle heading>We would love <br />to hear from you</StyledTitle>
+            <StyledTitle>We would love <br />to hear from you</StyledTitle>
           </div>
           <Form
             inputTitles={inputTitles}
             message="Feel free to leave us a review, your reviews help us to ensure we provide a quality service every visit."
           />
         </div>
-
       </S.Reviews>
       <Services />
     </Layout>
@@ -55,7 +54,12 @@ const S = {
     > div {
       max-width: 1900px;
       margin: 0 auto;
-      padding: 4% 5%;
+      padding: 0 5% 14vmax;
+    }
+    @media(min-width: 850px) {
+      > div {
+        padding-bottom: 7rem;
+      }
     }
   `
 

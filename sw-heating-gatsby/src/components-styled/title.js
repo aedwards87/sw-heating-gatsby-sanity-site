@@ -34,7 +34,7 @@ export const StyledTitle = styled.h2`
   }
   @media(min-width: 850px) {
     ::before {
-      height: ${({ tall, heading }) => heading ? 0 : !tall ? '8rem' : 'calc(7rem + 3vw)'};
+      height: ${({ tall, heading }) => heading ? 0 : !tall ? '7rem' : 'calc(7rem + 3vw)'};
     }
   }
 `

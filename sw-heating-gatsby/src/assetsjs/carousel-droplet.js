@@ -14,7 +14,7 @@ const CarouselDropletHousing = ({ style, click, imageSRC, alt }) => {
     //   {/* <CarouselButtons index={index} item={item} click={click} /> */}
     // </S.CarouselDropletHousing>
     <S.Square style={style} onClick={click}>
-      <div onClick={click}>
+      <div>
         <Image fluid={imageSRC} alt={alt} style={{ width: '100%', height: '100%' }} />
       </div>
     </S.Square>
@@ -40,13 +40,10 @@ const S = {
 
 
   Square: styled(AnimSquare)`
-    /* left: 0; */
     width: 480px;
     height: 480px;
     top: 50%;
-    /* right: 0; */
     left: 8vw;
-    /* top: 140px; */
     overflow: hidden;
     border: 15px solid white;
     box-shadow: 40px 55px 40px rgba(0, 0, 0, .5);
