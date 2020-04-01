@@ -1,19 +1,14 @@
 import { useState, useEffect } from 'react';
 
-const isBrowser = typeof window !== 'undefined';
-const windowPosition = isBrowser ? window.pageYOffset : 'undefined';
-
-
 export default function useScrollPosition() {
-  const [currentPosition, setCurrentPosition] = useState(windowPosition)
+  const [currentPosition, setCurrentPosition] = useState(0)
   const [scrollUp, setScrollUp] = useState(false)
 
-  // useEffect(() => {
-  //   setCurrentPosition(windowPosition)
-  //   // return () => {
-  //   //   setCurrentPosition(window.pageYOffset)
-  //   // }
-  // }, [currentPosition])
+  useEffect(() => {
+    const isBrowser = typeof window !== 'undefined';
+    const windowPosition = isBrowser ? window.pageYOffset : 'undefined';
+    setCurrentPosition(windowPosition)
+  }, [currentPosition])
 
   // Listens for the when the page is scrolled up
   useEffect(() => {

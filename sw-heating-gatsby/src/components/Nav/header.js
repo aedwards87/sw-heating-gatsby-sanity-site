@@ -89,7 +89,7 @@ const S = {
     right: 0px;
     z-index: 99999;
     transform: ${({ scrollUp, position, isMenuOpen }) =>
-      `translate3d(0, ${position <= 0 || scrollUp  || isMenuOpen ? 0 : '-100%'}, 0)`
+      `translate3d(0, ${position <= 0 || scrollUp || isMenuOpen ? 0 : '-100%'}, 0)`
     };
     background: ${({ scrollUp, position, isMenuOpen }) => position <= 0 && !isMenuOpen || !scrollUp ? 'transparent' : 'white'};
     > div {
