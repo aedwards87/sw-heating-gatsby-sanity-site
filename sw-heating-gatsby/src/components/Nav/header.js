@@ -13,7 +13,7 @@ const Header = (props, ref) => {
   const [on, toggle] = useState(false)
   const [scrollUp, setScrollUp, currentPosition] = useScrollPosition()
 
-  console.log(scrollUp, currentPosition)
+  // console.log(currentPosition)
 
   // add hook with event listener for scroll, to check if isMenuOpen === true, setScrollUp === false
 
@@ -25,7 +25,7 @@ const Header = (props, ref) => {
             <Toggle>
               {({ on: isMenuOpen, toggle: toggleMenu }) =>
                 <S.Header
-                  on={on}
+                  // on={on}
                   id="header"
                   scrollUp={scrollUp ? true : false}
                   position={currentPosition}
@@ -88,7 +88,7 @@ const S = {
     right: 0px;
     z-index: 99999;
     transform: ${({ scrollUp, position, isMenuOpen }) =>
-      `translate3d(0, ${isMenuOpen || scrollUp || position === 0 ? 0 : '-100%'}, 0)`
+      `translate3d(0, ${position <= 0 || scrollUp  || isMenuOpen ? 0 : '-100%'}, 0)`
     };
     background: ${({ scrollUp, position, isMenuOpen }) => position <= 0 && !isMenuOpen || !scrollUp ? 'transparent' : 'white'};
     > div {
@@ -98,7 +98,6 @@ const S = {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      /* background: ${({ scrollUp, position, isMenuOpen }) => position === 0 && !isMenuOpen || !scrollUp ? 'transparent' : 'white'}; */
     }
     
     

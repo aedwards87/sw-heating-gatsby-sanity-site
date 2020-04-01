@@ -39,7 +39,7 @@ const ContactForm = () => {
     console.log('success')
   }
 
-  console.log(Object.values(values).some(x => x === ''))
+  // console.log(Object.values(values).some(x => x === ''))
 
   return (
     <S.ContactForm>
