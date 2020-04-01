@@ -38,6 +38,7 @@ const S = {
   Head: styled.header`
     position: relative;
     width: 100%;
+    padding-top: 6.5rem;
     /* min-height: calc(100vh - 113px); */
     > div {
       /* almost there */
@@ -63,8 +64,10 @@ const S = {
     }
     /* Default */
     @media (min-width: 980px) {
-      min-height: ${({ navBarHeight }) => `calc(650px - ${navBarHeight.navBarHeight}px)`};
-      height: ${({ navBarHeight }) => `calc(100vh - ${navBarHeight.navBarHeight}px)`};
+      /* min-height: ${({ navBarHeight }) => `calc(650px - ${navBarHeight.navBarHeight}px)`}; */
+      min-height: 700px;
+      /* height: ${({ navBarHeight }) => `calc(100vh - ${navBarHeight.navBarHeight}px)`}; */
+      height: 100vh;
       > div {
         grid-template-columns: repeat(4, 1fr);
         min-height: ${({ navBarHeight }) => `calc(100vh - ${navBarHeight.navBarHeight}px)`}; 
