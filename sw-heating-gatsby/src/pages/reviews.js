@@ -33,7 +33,7 @@ const Reviews = () => {
         <Feedback />
         <div>
           <div style={{ marginBottom: '6rem' }}>
-            <StyledTitle>We would love <br />to hear from you</StyledTitle>
+            <StyledTitle id="reviews">We would love <br />to hear from you</StyledTitle>
           </div>
           <Form
             inputTitles={inputTitles}

@@ -45,7 +45,7 @@ const footer = () => {
                   <strong>Mon-Fri:</strong>
                   <time>8am - 6pm</time>
                   <strong>Sat-Sun:</strong>
-                  <div>By arrangement or emergency only</div>
+                  <div>By arrangement <br />or emergency only</div>
                 </div>
               </li>
               <li className="item5">
@@ -177,7 +177,7 @@ const StyledTopFooter = styled.div`
     }
   }
   
-  @media (min-width: 480px) {
+  @media (min-width: 600px) {
     .item3, .item4 {
       grid-column: auto;
     }

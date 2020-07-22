@@ -66,9 +66,14 @@ const S = {
     height: 120vh;
     overflow: hidden; */
     grid-column: 3 / span 2;
+    transition: transform 0.5s ease;
+
     @media (min-width: 1680px) {
-      min-height: 800px;
+      /* min-height: 800px; */
       transition: min-height 0.5s ease;
+      transition: transform 0.5s ease;
+      grid-column: 3 / span 1;
+      transform: scale(1.1);
     }
   `,
   ButtonsContainer: styled.div`

@@ -34,10 +34,11 @@ const Layout = ({ allSanityWork, children }) => {
   }, [ref])
 
   return (
-    <UserContext.Provider value={{
-      navBarHeight: navBarHeight,
-      allSanityWork: allSanityWork
-    }}
+    <UserContext.Provider
+      value={{
+        navBarHeight: navBarHeight,
+        allSanityWork: allSanityWork
+      }}
     >
       <Header siteTitle={data.site.siteMetadata.title} ref={ref} />
       <div

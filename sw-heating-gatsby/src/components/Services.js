@@ -118,9 +118,12 @@ const S = {
       }
     }
     .list-heading-container {
-      padding: 23px 26px;
+      padding: 14px 26px;
       margin: auto 0;
       height: 100%;
+      @media (min-width: 500px) {
+        padding: 20px 26px;
+      }
     }
     div {
       transition: all 1s ease;

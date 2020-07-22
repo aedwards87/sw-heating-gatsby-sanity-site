@@ -5,6 +5,7 @@ import SWLettersSVG from "../assetsjs/sw-letters";
 import PortableText from '@sanity/block-content-to-react'
 import Image from 'gatsby-image'
 import { Link, useStaticQuery, graphql } from "gatsby"
+import { SWHeatingLogo, Facebook, GasSafe, Ciphe, EnvAgency, Vaillant, Phone, Email, Mobile } from "../assetsjs/index";
 
 const About = () => {
   const { sanityAbout } = useStaticQuery(
@@ -38,15 +39,7 @@ const About = () => {
             <PortableText
               blocks={sanityAbout._rawContent}
             />
-            {/* <p>
-              <strong>At SW Heating, our mission is to keep your taps running and your house warm.</strong>
-              <br /><br />
-            We offer a trust worthy, reliable, professional service in Essex, Kent, Southeast/west London. Plumbing, gas and heating are our core services, but we can offer so much more should the project require it.
-            <br /><br />
-            A design to build bathroom and kitchen services is also available.
-            </p> */}
           </div>
-
         </StyledContentContainer>
       </div>
       <StyledSWLettersSVG />
@@ -54,25 +47,30 @@ const About = () => {
         <div>
           <Profile>
             <div>
-              <div style={{ height: 200, width: 200, marginRight: '2rem' }}>
+              {/* <div /> */}
+              {/* <div style={{ marginBottom: '2.5rem', gridColumnStart: 2 }}>
+                <StyledTitle id="our-engineer" small >Our Engineer</StyledTitle>
+              </div> */}
+              <ProImageContainer>
                 <Image fluid={sanityAbout.profileImage.asset.fluid} alt={sanityAbout.title} />
-              </div>
+              </ProImageContainer>
               <div className='name-and-title' >
                 <h3>Steven Whitaker</h3>
                 <p>Engineer, director and dad of twins</p>
               </div>
+              <CertifiedLogos>
+                <a href="https://www.gassaferegister.co.uk/" target="_blank" rel="noopener noreferrer"><GasSafe /></a>
+                <a href="https://www.vaillant.co.uk/" target="_blank" rel="noopener noreferrer"><Vaillant /></a>
+                <a href="https://www.ciphe.org.uk/" target="_blank" rel="noopener noreferrer"><Ciphe /></a>
+                <a href="https://www.gov.uk/government/organisations/environment-agency" target="_blank" rel="noopener noreferrer"><EnvAgency /></a>
+              </CertifiedLogos>
+              <Bio>
+                <PortableText
+                  blocks={sanityAbout._rawBio}
+                />
+              </Bio>
             </div>
           </Profile>
-
-          {/* <Logos>
-            Logos
-          </Logos> */}
-          {/* Bio */}
-          <Bio>
-            <PortableText
-              blocks={sanityAbout._rawBio}
-            />
-          </Bio>
         </div>
       </ProfileContainer>
     </StyledAboutContainer>
@@ -88,6 +86,7 @@ const StyledAboutContainer = styled.section`
     /* padding: 0 5% 7rem; */
     padding: 0 5% 3rem;
     :last-of-type {
+      padding-top: 1.5rem;
       padding-bottom: 14vmax;
     }
   }
@@ -100,8 +99,6 @@ const StyledAboutContainer = styled.section`
     }
   }
 `
-
-
 
 const StyledContentContainer = styled.div`
   width: 100%;
@@ -136,47 +133,57 @@ const ProfileContainer = styled.div`
 `
 
 const Profile = styled.div`
-  /* background: pink; */
-  > div {
-    display: flex;
-    width: 100%;
-    max-width: 580px;
-    flex-wrap: wrap;
-    grid-gap: 2rem;
-    /* justify-content: center; */
-    align-content: flex-end;
-    margin: 0 auto;
-    
-  }
   width: 100%;
   position: relative;
-  :after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0; 
-    right: 0;
-    width: 100vw;
-    margin-left: -5vw;
-    height: 62.5%;
-    background: var(--primary-one);
-    z-index: -1;
+  > div {
+    display: grid;
+    grid-template-columns: auto;
+    width: 100%;
+    max-width: 850px;
+    grid-gap: 2.5rem;
+    align-items: center;
+    margin: 0 auto;
+    :after {
+      content: "";
+      position: absolute;
+      top: 50px;
+      left: 0; 
+      right: 0;
+      width: 100vw;
+      margin-left: -5vw;
+      height: 130px;
+      background: var(--primary-one);
+      z-index: -1;
+    }
+  }
+  @media (min-width: 620px) {
+    > div {
+      grid-template-columns: auto 1fr;
+    }
   }
   h3 {
-    margin-top: 2rem;
     margin-bottom: 0.3rem;
+    text-align: center;
+    @media (min-width: 620px) {
+      margin-top: 2rem;
+      text-align: left;
+    }
   }
   .image {
     width: 200px;
     height: 200px;
-    margin-right: 2rem;
+    /* margin-right: 2rem; */
     /* margin-bottom: 2rem; */
     background: white;
   }
   .name-and-title {
-    align-self: flex-end;
     p {
-      margin-bottom: 1.6rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      @media (min-width: 620px) {
+        margin-bottom: 1.6rem;
+        text-align: left;
+      }
     }
   }
   > div > div > .gatsby-image-wrapper {
@@ -193,6 +200,17 @@ const Profile = styled.div`
   }
 `
 
+const ProImageContainer = styled.div`
+  height: 228px;
+  width: 220px;
+  background: white;
+  border: 14px solid white;
+  border-top: 22px solid white;
+  border-radius: 10px;
+  box-shadow: var(--shadow-two);
+  justify-self: center;
+`
+
 const Bio = styled.div`
   width: 100%;
   max-width: 700px;
@@ -205,18 +223,17 @@ const Bio = styled.div`
   p:last-of-type {
     margin-bottom: 0;
   }
-`
-
-const Logos = styled.div`
-  display: none;
-  @media (min-width: 980px) {
-    display: grid;
+  @media (min-width: 620px) {
+    grid-column: span 2;
+  }
+  @media(min-width: 710px) {
+    grid-column: 2
   }
 `
 
 const StyledSWLettersSVG = styled(SWLettersSVG)`
   position: absolute;
-  height: 30vmax;
+  height: 32vmax;
   /* max-height: 700px; */
   top: 5vw;
   right: -2vw;
@@ -224,6 +241,16 @@ const StyledSWLettersSVG = styled(SWLettersSVG)`
   z-index: -1;
   @media(max-width: 850px) {
     display: none;
+  }
+`
+
+const CertifiedLogos = styled.div`
+  display: none;
+  @media(min-width: 710px) {
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+    grid-gap: 2rem;
   }
 `
 

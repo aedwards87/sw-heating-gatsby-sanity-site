@@ -64,7 +64,7 @@ const ContactForm = () => {
           <S.ListContainer>
             <li>
               <p>If you have any questions or queries, or would like to request a quote or even book an appointment, please get in touch with a member of our team using the form below:</p>
-              <p style={{ fontSize: '0.8rem' }}>or <Link to="/#footer" style={{ color: 'var(--primary-one' }}><u>click here</u></Link> to see more details</p>
+              <p style={{ /*fontSize: '0.8rem'*/ }}>Alternatively, if you would like to see more <Link to="/#footer" style={{ color: 'var(--primary-one' }}>details <div>→</div></Link></p>
             </li>
             {inputTitles.map(({ name, type }) => {
               const _name = name.toLowerCase().replace(/\s+/g, '')
@@ -206,6 +206,16 @@ const S = {
           cursor: pointer;
           transform: translate(0, -2px);
           box-shadow: var(--shadow-one);
+        }
+      }
+      a:hover > div {
+        transform: translate3d(10px, 0, 0);
+      }
+      a {
+        font-weight: var(--bold);
+        > div {
+          display: inline-block;
+          transition: transform 0.3s ease;
         }
       }
     }

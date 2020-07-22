@@ -27,7 +27,10 @@ const Head = ({ sanityLandingPage }) => {
         </SmallScreen>
         <Default>
           <HeadFlameBackground navbarheight={navBarHeight} />
-          <Carousel navbarheight={navBarHeight} sanityLandingPage={sanityLandingPage} />
+          <Carousel
+            navbarheight={navBarHeight}
+            sanityLandingPage={sanityLandingPage}
+          />
         </Default>
       </div>
     </S.Head>
@@ -58,8 +61,7 @@ const S = {
     }
     @media (max-width: 980px) and (max-height: 1000px) {
       > div {
-        min-height: ${({ navBarHeight }) => `calc(100vh - ${navBarHeight.navBarHeight}px)`}; 
-        
+        min-height: ${({ navBarHeight }) => `calc(100vh - ${navBarHeight.navBarHeight}px)`};
       }
     }
     /* Default */
@@ -166,7 +168,7 @@ const S = {
     }
     /* Large screens */
     @media (min-width: 1600px) {
-      h1 { font-size: 4.4rem; }
+      h1 { font-size: 4rem; }
     }
   `
 }

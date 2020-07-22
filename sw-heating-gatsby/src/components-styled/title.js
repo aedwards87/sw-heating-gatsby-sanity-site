@@ -12,12 +12,12 @@ export const StyledTitle = styled.h2`
   /* A little hack to add space above the heading so the text isn't butting up against the top of the broswer  */
   ::before {
     content: "";
-    display: block;
+    /* display: block; */
     /* height: 7rem; */
-    height: ${({ heading }) => !heading ? '14vmax' : '4%'};
+    height: ${({ heading, small }) => heading ? '4%' : small ? '2rem' : '14vmax'};
     width: 100%;
     visibility: hidden;
-    display: ${({ normal }) => !normal ? null : 'none'};
+    display: ${({ heading }) => !heading ? 'block' : 'none'};
   }
   /* Custom underline */
   ::after {
@@ -34,7 +34,8 @@ export const StyledTitle = styled.h2`
   }
   @media(min-width: 850px) {
     ::before {
-      height: ${({ tall, heading }) => heading ? 0 : !tall ? '7rem' : 'calc(7rem + 3vw)'};
+      height: ${({ tall, heading, small }) =>
+    heading ? '6.5rem' : small ? '2rem' : !tall ? '7rem' : 'calc(7rem + 3vw)'};
     }
   }
 `

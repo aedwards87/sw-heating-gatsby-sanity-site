@@ -41,7 +41,9 @@ const Carousel = ({
   })
 
   return (
-    <StyledDiv style={{ width: '100%', height: '500px', overflow: 'hidden', position: 'relative' }}  >
+    <StyledDiv
+    // style={{ width: '100%', height: '80vh', overflow: 'hidden', position: 'relative' }}  
+    >
       {transitions.map(({ item, props, key }) => {
         const Slide = slides[item]
         return (
@@ -104,12 +106,16 @@ const Button = styled.button`
 `
 
 const StyledDiv = styled.div`
-  display: grid;
-  align-items: center;
-  img {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+
+  .gatsby-image-wrapper {
+    max-width: 100%;
+    max-height: 100%;
+    img {
+      object-fit: contain !important;
+    }
   }
 `
 

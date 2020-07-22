@@ -30,8 +30,14 @@ const Feedback = () => {
   return (
     <StyledFeedBack>
       <div>
-        <StyledTitle id="feedback" heading >What our customers<br />say about us</StyledTitle>
-        <StyledLink to="/reviews">Leave us a review</StyledLink>
+        <div>
+          <StyledTitle id="feedback" heading>
+            What our customers<br />say about us
+          </StyledTitle>
+        </div>
+        <StyledLink to="/reviews/#reviews">
+          Leave a review <div>→</div>
+        </StyledLink>
       </div>
       <StyledListContainer className="items" ref={ref} >
         {allSanityFeedback.edges.map(({ node: { name, message, id } }) => (
@@ -52,24 +58,30 @@ const StyledFeedBack = styled.section`
   width: 100%;
   background: var(--light-bg);
   margin: 0 auto;
-  padding-top: calc(6% + 6.5rem);
+  padding-top: calc(4% + 6.5rem);
   h2 {
     margin-bottom: 0;
   }
   > div {
-    max-width: 1900px;
     padding-right: 5%;
     padding-left: 5%;
     margin: 0 auto;
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: baseline;
+    justify-items: space-between;
   }
+  
 `
 const StyledLink = styled(Link)`
-  font-family: var(--fancy-font);
-  font-size: 1.7rem;
+  /* font-family: var(--fancy-font); */
+  font-weight: var(--bolder);
+  font-size: 1rem;
   margin-left: 1.5rem;
   position: relative;
   color: var(--primary-four);
   transition: all 0.3s ease;
+  text-align: right;
   /* :after {
     content: "";
     position: absolute;
@@ -83,10 +95,13 @@ const StyledLink = styled(Link)`
   :hover, 
   :focus {
     color: var(--primary-two);
-    /* ::after {
-      width: 100%;
-      left: 0;
-    } */
+    > div {
+      transform: translate3d(10px, 0, 0);
+    }
+  }
+  > div {
+    transition: transform 0.3s ease;
+    display: inline-block;
   }
 `
 

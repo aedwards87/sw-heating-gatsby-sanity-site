@@ -14,6 +14,7 @@ import HeadFlameBackground from './head-flame-background'
 import SWLettersSVG from './sw-letters'
 import Warning from './warning'
 import MenuIcon from './MenuIcon'
+import ArrowButton from './arrow-button'
 
 export {
   SWHeatingLogo,
@@ -31,5 +32,6 @@ export {
   HeadFlameBackground,
   SWLettersSVG,
   Warning,
-  MenuIcon
+  MenuIcon,
+  ArrowButton
 }

@@ -5,6 +5,8 @@ import { Services } from '../components/index'
 import { StyledTitle } from '../components-styled/index'
 import Carousel from '../components/Carousel-2.0'
 import { slidev2 } from '../components/Carousel/CarouselSlides'
+import Image from 'gatsby-image'
+
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -63,15 +65,17 @@ const Gallery = ({ data: { sanityLandingPage } }) => (
         <div style={{ marginBottom: '6rem' }}>
           <StyledTitle heading>Gallery</StyledTitle>
         </div>
-        <Carousel
-          data={sanityLandingPage}
-          slides={slidev2}
-          fromNext={{ opacity: 1, position: 'absolute', transform: 'translate3d(100%,0%,0) scale(1)' }}
-          fromPrev={{ opacity: 1, position: 'absolute', transform: 'translate3d(-100%,0%,0) scale(1)' }}
-          enter={{ opacity: 1, transform: 'translate3d(0%,0%,0) scale(1)' }}
-          leaveNext={{ opacity: 1, transform: 'translate3d(-100%,0%,0) scale(1)' }}
-          leavePrev={{ opacity: 1, transform: 'translate3d(100%,0%,0) scale(1)' }}
-        />
+        <S.ImageContainer>
+          <Carousel
+            data={sanityLandingPage}
+            slides={slidev2}
+            fromNext={{ opacity: 1, position: 'absolute', transform: 'translate3d(100%,0%,0) scale(1)' }}
+            fromPrev={{ opacity: 1, position: 'absolute', transform: 'translate3d(-100%,0%,0) scale(1)' }}
+            enter={{ opacity: 1, transform: 'translate3d(0%,0%,0) scale(1)' }}
+            leaveNext={{ opacity: 1, transform: 'translate3d(-100%,0%,0) scale(1)' }}
+            leavePrev={{ opacity: 1, transform: 'translate3d(100%,0%,0) scale(1)' }}
+          />
+        </S.ImageContainer>
       </div>
     </S.Gallery>
     <Services />
@@ -88,8 +92,13 @@ const S = {
     > div {
       max-width: 1900px;
       margin: 0 auto;
-      padding: 4% 5%;
+      padding: calc(4% + 6.5rem) 5%;
     }
+  `,
+  ImageContainer: styled.div`
+    position: relative;
+    width: 100%;
+    height: 80vh;
   `
 }
 
