@@ -41,7 +41,7 @@ const Carousel = ({
   })
 
   return (
-    <StyledDiv
+    <S.ImageContainer
     // style={{ width: '100%', height: '80vh', overflow: 'hidden', position: 'relative' }}  
     >
       {transitions.map(({ item, props, key }) => {
@@ -57,13 +57,13 @@ const Carousel = ({
         )
       })}
 
-      <Button previous onClick={prevSlide} onMouseDown={handlePrev}>
+      <S.Button previous onClick={prevSlide} onMouseDown={handlePrev}>
         <span>{'Prev'}</span>
-      </Button>
+      </S.Button>
 
-      <Button next onClick={nextSlide} onMouseDown={handleNext}>
+      <S.Button next onClick={nextSlide} onMouseDown={handleNext}>
         <span>{'Next'}</span>
-      </Button>
+      </S.Button>
 
       {/* {Buttons && (
         <ButtonsContainer>
@@ -75,48 +75,51 @@ const Carousel = ({
 
 
       {/* <button onClick={prevSlide} style={{ zIndex: 99999999, position: 'absolute', top: 50 }}>back</button> */}
-    </StyledDiv>
+    </S.ImageContainer>
   )
 }
 
-const Button = styled.button`
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: ${({ next }) => next && 0};
-  left: ${({ previous }) => previous && 0};
-  width: 50%;
-  height: 100%;
-  background: rgba(0,0,0,0);
-  border: 0;
-  outline: 0;
-  z-index: 99;
-  color: white;
-  transition: all .3s ease;
-  :hover {
-    background: rgba(0,0,0,0.2);
-    cursor: pointer;
+const S = {
+  Button: styled.button`
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: ${({ next }) => next && 0};
+    left: ${({ previous }) => previous && 0};
+    width: 50%;
+    height: 100%;
+    background: rgba(0,0,0,0);
+    border: 0;
+    outline: 0;
+    z-index: 99;
+    color: white;
+    transition: all .3s ease;
+    :hover {
+      background: rgba(0,0,0,0.2);
+      cursor: pointer;
+      span {
+        display: block;
+      }
+    }
     span {
-      display: block;
+      display: none;
     }
-  }
-  span {
-    display: none;
-  }
-`
-
-const StyledDiv = styled.div`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-
-  .gatsby-image-wrapper {
-    max-width: 100%;
-    max-height: 100%;
-    img {
-      object-fit: contain !important;
+  `,
+  ImageContainer: styled.div`
+    width: 100%;
+    height: 80vh;
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    align-items: center;
+    .gatsby-image-wrapper {
+      max-width: 100%;
+      max-height: 100%;
+      img {
+        object-fit: contain !important;
+      }
     }
-  }
-`
+  `
+}
 
 export default Carousel
