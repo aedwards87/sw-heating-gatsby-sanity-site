@@ -48,7 +48,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-portal`,
       options: {
-        key: 'portal',
+        key: 'sw-portal',
         id: 'sw-portal',
       },
     },
