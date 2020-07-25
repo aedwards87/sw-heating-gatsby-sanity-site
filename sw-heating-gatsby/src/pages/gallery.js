@@ -1,15 +1,16 @@
-import React from 'react'
+import React, { useState, useCallback } from 'react'
 import styled from 'styled-components'
+import Image from 'gatsby-image'
 import { graphql } from "gatsby"
-import { Services } from '../components/index'
+import { Services, Modal, Toggle } from '../components/index'
 import { StyledTitle } from '../components-styled/index'
 import Carousel from '../components/Carousel-2.0'
 import { slidev2 } from '../components/Carousel/CarouselSlides'
-import Image from 'gatsby-image'
-
-
+import { useTrail, animated, useTransition } from 'react-spring'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+
+const uuidv4 = require('uuid/v4')
 
 export const pageQuery = graphql`
   query GalleryQuery {
@@ -32,6 +33,7 @@ export const pageQuery = graphql`
           }
         }
       }
+      thirdImageAltTag
       thirdImage {
         asset {
           fluid(maxWidth: 1000) {
@@ -39,6 +41,7 @@ export const pageQuery = graphql`
           }
         }
       }
+      fourthImageAltTag
       fourthImage {
         asset {
           fluid(maxWidth: 1000) {
@@ -46,6 +49,7 @@ export const pageQuery = graphql`
           }
         }
       }
+      fifthImageAltTag
       fifthImage {
         asset {
           fluid(maxWidth: 1000) {
@@ -57,29 +61,91 @@ export const pageQuery = graphql`
   }
 `
 
-const Gallery = ({ data: { sanityLandingPage } }) => (
-  <Layout>
-    <SEO title="Gallery" />
-    <S.Gallery>
-      <div>
-        <div style={{ marginBottom: '6rem' }}>
-          <StyledTitle heading>Gallery</StyledTitle>
-        </div>
-        <Carousel
-          data={sanityLandingPage}
-          slides={slidev2}
-          fromNext={{ opacity: 1, position: 'absolute', transform: 'translate3d(100%,0%,0) scale(1)' }}
-          fromPrev={{ opacity: 1, position: 'absolute', transform: 'translate3d(-100%,0%,0) scale(1)' }}
-          enter={{ opacity: 1, transform: 'translate3d(0%,0%,0) scale(1)' }}
-          leaveNext={{ opacity: 1, transform: 'translate3d(-100%,0%,0) scale(1)' }}
-          leavePrev={{ opacity: 1, transform: 'translate3d(100%,0%,0) scale(1)' }}
-        />
-      </div>
-    </S.Gallery>
-    <Services />
-  </Layout>
-)
+const Gallery = ({ data: { sanityLandingPage } }) => {
 
+  const [index, setIndex] = useState(0)
+  const [on, toggle] = useState(false)
+
+  const sanityLandingPageImages = Object.keys(sanityLandingPage).filter(images => images.includes('Image')).filter(x => !x.includes('AltTag'))
+
+  const trail = useTrail(sanityLandingPageImages.length, {
+    opacity: 1,
+    from: { opacity: 0 },
+    config: { tension: 280, friction: 60 }
+  })
+
+  const targetSlide = (e) => (
+    setIndex(parseInt(e.currentTarget.value))
+  )
+
+  // useLayoutEffect(() => {
+
+  // }, [ref])
+
+  const transitionFade = useTransition(on, null, {
+    from: { opacity: 0, transform: 'translate3d(0,-40px,0)' },
+    enter: { opacity: 1, transform: 'translate3d(0,0,0)' },
+    leave: { opacity: 0, transform: 'translate3d(0,40px,0)' }
+  })
+
+  const handleClick = useCallback((e) => (
+    toggle(!on),
+    targetSlide(e)
+  ), [])
+
+  return (
+    <Layout>
+      <SEO title="Gallery" />
+      <S.Gallery>
+        <div>
+          <div style={{ marginBottom: '6rem' }}>
+            <StyledTitle heading>Gallery</StyledTitle>
+          </div>
+
+          <S.GalleryImageContainer>
+            {trail.map((props, i) =>
+              <animated.button
+                style={{ ...props }}
+                value={i}
+                onClick={handleClick}
+                key={uuidv4()}
+              >
+                <S.Image
+                  fluid={sanityLandingPage[sanityLandingPageImages[i]].asset.fluid}
+                  alt={sanityLandingPage[`${sanityLandingPageImages[i]}AltTag`]}
+                  active={index === i ? true : false}
+                />
+              </animated.button>
+            )}
+          </S.GalleryImageContainer>
+
+          {transitionFade.map(({ item, props, key }) =>
+            item && (
+              <Modal toggle={toggle} key={key} >
+                <Carousel
+                  data={sanityLandingPage}
+                  slides={slidev2}
+                  fromNext={{ opacity: 1, position: 'absolute', transform: 'translate3d(100%,0%,0) scale(1)' }}
+                  fromPrev={{ opacity: 1, position: 'absolute', transform: 'translate3d(-100%,0%,0) scale(1)' }}
+                  enter={{ opacity: 1, transform: 'translate3d(0%,0%,0) scale(1)' }}
+                  leaveNext={{ opacity: 1, transform: 'translate3d(-100%,0%,0) scale(1)' }}
+                  leavePrev={{ opacity: 1, transform: 'translate3d(100%,0%,0) scale(1)' }}
+                  index={index}
+                  setIndex={setIndex}
+                  on={on}
+                  toggle={toggle}
+                  animation={props}
+                />
+              </Modal>
+            )
+          )}
+
+        </div>
+      </S.Gallery>
+      <Services />
+    </Layout>
+  )
+}
 
 // pathName={location.pathname}
 
@@ -92,7 +158,98 @@ const S = {
       margin: 0 auto;
       padding: calc(4% + 6.5rem) 5%;
     }
-  `
+  `,
+  Image: styled(Image)`
+    box-shadow: ${({ active }) => active ? '0 0 6px 1px rgba(var(--primary-two-raw), .8)' : null};
+    box-shadow: ${({ hero }) => hero && 'none'};
+    &.gatsby-image-wrapper:first-child::after {
+      content: "";
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: ${({ active, hero }) => active || hero ? 'none' : 'rgba(0,0,0,0.3)'};
+      transition: all .3s ease;
+      opacity: 1;
+    }
+    /* &.active.gatsby-image-wrapper:not(:first-child)::after, */
+    /* &.gatsby-image-wrapper:not(:first-child):hover::after { */
+    &.active.gatsby-image-wrapper:first-child::after,
+    &.gatsby-image-wrapper:first-child:hover::after,
+    &.gatsby-image-wrapper:first-child:focus::after {
+      opacity: 0;
+    }
+    `,
+  GalleryImageContainer: styled.div`
+    display: grid;
+    position: relative;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    grid-gap: 2vmax;
+    align-content: start;
+    z-index: 0;
+    button {
+      background: none;
+      border: none;
+      border-radius: 10px;
+      width: 100%;
+      height: 36vh;
+    }
+    div,
+    button {
+      transition: all .3s ease;
+    }
+    > div:hover,
+    button:hover,
+    button:focus {
+      box-shadow: var(--shadow-one);
+      overflow: hidden;
+      cursor: pointer;
+      transform: translate3d(0, -0.3vmax, 0) scale(1.05);
+    }
+    button:focus {
+      .gatsby-image-wrapper:first-child::after {
+        opacity: 0;
+      }
+    }
+    button:active {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    .animated-div {
+      border-radius: 10px;
+      overflow: hidden;
+      width: 100%;
+      z-index: 99;
+    }
+    .gatsby-image-wrapper:first-of-type {
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+    }
+    @media (min-width: 480px) and (max-width: 980px) {
+      grid-gap: 3.4vmin;
+    }
+    @media (min-width: 980px) {
+      grid-template-rows: repeat(2, auto);
+      margin-bottom: 5vmax;
+      margin: 0;
+      grid-gap: 2vmax;
+    }
+    @media (min-width: 980px) and (min-height: 1020px) {
+      grid-gap: 2vmin;
+      .gatsby-image-wrapper:first-of-type {
+      }
+    }
+    @media (min-width: 2000px) {
+      grid-gap: 40px;
+    }
+
+    @media (max-width: 480px) and (min-height: 600px) {
+      grid-gap: 3.7vmin;
+    }
+  `,
 }
 
 export default Gallery

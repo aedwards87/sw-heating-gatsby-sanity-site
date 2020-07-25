@@ -82,7 +82,7 @@ const S = {
     top: 0;
     left: 0px;
     right: 0px;
-    z-index: 99999;
+    z-index: 100;
     transform: ${({ scrollUp, position, isMenuOpen }) =>
       `translate3d(0, ${position <= 0 || scrollUp || isMenuOpen ? 0 : '-100%'}, 0)`
     };

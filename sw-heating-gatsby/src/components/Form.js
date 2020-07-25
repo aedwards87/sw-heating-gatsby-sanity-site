@@ -36,7 +36,7 @@ const Form = ({ inputTitles, message }) => {
               className={errors[_name] && 'error'}
             >
               <label
-                for={_name}
+                htmlFor={_name}
                 type={type}
                 style={{
                   alignItems: type === 'textarea' && 'baseline',

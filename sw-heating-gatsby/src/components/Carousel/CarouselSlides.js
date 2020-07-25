@@ -58,7 +58,6 @@ export const slidev2 = [
       fluid={sanityLandingPage.mainImage.asset.fluid}
       alt={sanityLandingPage.mainImageAltTag}
     />
-
   ),
   ({ style, sanityLandingPage }) => (
     <AnimImage

@@ -1,6 +1,8 @@
 import React, { useState, useCallback } from 'react'
 import styled from 'styled-components'
-import { useTransition, config } from 'react-spring'
+import { useTransition, config, animated } from 'react-spring'
+import { ArrowButton } from "../assetsjs/index"
+
 
 const Carousel = ({
   // Component,
@@ -14,26 +16,21 @@ const Carousel = ({
   leave,
   leaveNext,
   leavePrev,
+  index = 0,
+  setIndex,
+  animation,
 }) => {
 
-  const [index, setIndex] = useState(0)
   const [slideState, setSlideState] = useState('')
+  // const [isHovered, setIsHovered] = useState(false)
 
-  const nextSlide = useCallback(() =>
-    setIndex(state => (state + 1) % slides.length),
-    [slides.length]) // Increments index state by 1
-  // const targetSlide = (e) => setIndex(parseInt(e.target.value)) // Selects slide matching button value
-  // // CODE to go to the previous slide - decrements index state by 1
-
-  const prevSlide = useCallback(() =>
-    setIndex(state => (state === 0) ? state = slides.length - 1 : (state - 1) % slides.length),
-    [slides.length])
+  const nextSlide = useCallback(() => setIndex(state => (state + 1) % slides.length), [slides.length])
+  const prevSlide = useCallback(() => setIndex(state => (state === 0) ? state = slides.length - 1 : (state - 1) % slides.length), [slides.length])
 
   const handlePrev = useCallback(() => setSlideState('prev'), [])
   const handleNext = useCallback(() => setSlideState('next'), [])
 
-
-  const transitions = useTransition(index, p => p, {
+  const transitionSlider = useTransition(index, p => p, {
     from: slideState === '' ? from : slideState === 'next' ? fromNext : fromPrev,
     enter: enter,
     leave: slideState === '' ? leave : slideState === 'next' ? leaveNext : leavePrev,
@@ -41,41 +38,37 @@ const Carousel = ({
   })
 
   return (
-    <S.ImageContainer
-    // style={{ width: '100%', height: '80vh', overflow: 'hidden', position: 'relative' }}  
-    >
-      {transitions.map(({ item, props, key }) => {
-        const Slide = slides[item]
-        return (
-          <Slide
-            key={key}
-            style={props}
-            nextSlide={nextSlide}
-            prevSlide={prevSlide}
-            sanityLandingPage={data}
-          />
-        )
-      })}
+    <>
+      <animated.div style={animation}>
+        <S.ImageContainer>
+          {transitionSlider.map(({ item, props, key }) => {
+            const Slide = slides[item]
+            return (
+              <Slide
+                key={key}
+                style={props}
+                nextSlide={nextSlide}
+                prevSlide={prevSlide}
+                sanityLandingPage={data}
+              />
+            )
+          })}
 
-      <S.Button previous onClick={prevSlide} onMouseDown={handlePrev}>
-        <span>{'Prev'}</span>
-      </S.Button>
+          <S.Button
+            previous
+            onClick={prevSlide}
+            onMouseDown={handlePrev}
+          >
+            <ArrowButton />
+          </S.Button>
 
-      <S.Button next onClick={nextSlide} onMouseDown={handleNext}>
-        <span>{'Next'}</span>
-      </S.Button>
+          <S.Button next onClick={nextSlide} onMouseDown={handleNext}>
+            <ArrowButton flip />
+          </S.Button>
 
-      {/* {Buttons && (
-        <ButtonsContainer>
-          {slides.map((_, i) =>
-            <CarouselButton key={uuidv4()} click={targetSlide} value={i} index={index} />
-          )}
-        </ButtonsContainer>
-      )} */}
-
-
-      {/* <button onClick={prevSlide} style={{ zIndex: 99999999, position: 'absolute', top: 50 }}>back</button> */}
-    </S.ImageContainer>
+        </S.ImageContainer>
+      </animated.div>
+    </>
   )
 }
 
@@ -94,8 +87,11 @@ const S = {
     z-index: 99;
     color: white;
     transition: all .3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: ${({ next }) => next ? 'flex-end' : 'flex-start'};
+    padding: 0 5% 0 5%;
     :hover {
-      background: rgba(0,0,0,0.2);
       cursor: pointer;
       span {
         display: block;
@@ -103,6 +99,25 @@ const S = {
     }
     span {
       display: none;
+    }
+    :active svg {
+      transform: ${({ next }) => next ?
+      'translate3d(-2vmax, 0, 0) scale(-.6)' :
+      'translate3d(2vmax, 0, 0) scale(.6)'};
+    }
+    svg { 
+      display: block; 
+      transition: transform .3s ease;
+      transform: ${({ next }) => next ?
+      'translate3d(0.3vmax, 0, 0) scale(-0.9)' :
+      'translate3d(-0.3vmax, 0, 0) scale(.9)'};
+    }
+    @media(min-width: 680px) {
+      width: 20%;
+      justify-content: center;
+      :hover {
+        background: rgba(0,0,0,.2);
+      }
     }
   `,
   ImageContainer: styled.div`
@@ -119,6 +134,20 @@ const S = {
         object-fit: contain !important;
       }
     }
+  `,
+  CloseButton: styled.button`
+    background: none;
+    border: 0;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 2rem;
+    height: 2rem;
+    font-weight: var(--bolder);
+    font-size: 1.3rem;
+    z-index: 102;
   `
 }
 

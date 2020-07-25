@@ -2,11 +2,21 @@ import React from 'react'
 import styled from 'styled-components'
 
 
-const ArrowButton = ({ height = '2.2rem', className, stroke = 'white', fill = 'none', flip }) => {
+const ArrowButton = ({
+  height = '2.2rem',
+  className,
+  stroke = 'white',
+  fill = 'none',
+  flip
+}) => {
   return (
-    <S.ArrowButtonSVG height={height} className={className} viewBox="0 0 43 43" fill="none" xmlns="http://www.w3.org/2000/svg" flip={flip} >
-      <circle cx="21.5" cy="21.5" r="20.5" fill={fill} stroke="white" strokeWidth="2" />
-      <path d="M31.1187 21.4997L12.7305 21.4997M12.7305 21.4997L20.0858 14.1445M12.7305 21.4997L20.0858 28.855" stroke={stroke} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+    <S.ArrowButtonSVG height={height} className={className} viewBox="0 0 43 43" xmlns="http://www.w3.org/2000/svg" flip={flip} >
+      <circle cx="21.5" cy="21.5" r="20.5"
+        fill={fill}
+        stroke="white" strokeWidth="2" />
+      <path d="M31.1187 21.4997L12.7305 21.4997M12.7305 21.4997L20.0858 14.1445M12.7305 21.4997L20.0858 28.855"
+        stroke={stroke}
+        strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
     </S.ArrowButtonSVG>
   )
 }

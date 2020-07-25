@@ -11,43 +11,43 @@ import { ArrowButton } from "../assetsjs/index"
 
 const slides = [
   ({ style, click, sanityWork, isHovered }) => (
-    <animated.div className={`animated-div ${isHovered ? 'hovered' : null}`} onClick={click} style={{ ...style }} >
-      <S.Image hero fluid={sanityWork.mainImage.asset.fluid} alt={sanityWork.title} style={style} />
+    <animated.div className={`animated-div ${isHovered ? 'hovered' : null}`} onClick={click} style={style} >
+      <S.Image hero fluid={sanityWork.mainImage.asset.fluid} alt={sanityWork.title} />
     </animated.div>
   ),
   ({ style, click, sanityWork, isHovered, }) => (
-    <animated.div className={`animated-div ${isHovered ? 'hovered' : null}`} onClick={click} style={{ ...style }} >
-      <S.Image hero fluid={sanityWork.secondImage.asset.fluid} alt={sanityWork.title} style={style} />
+    <animated.div className={`animated-div ${isHovered ? 'hovered' : null}`} onClick={click} style={style} >
+      <S.Image hero fluid={sanityWork.secondImage.asset.fluid} alt={sanityWork.title} />
     </animated.div>
   ),
   ({ style, click, sanityWork, isHovered, }) => (
-    <animated.div className={`animated-div ${isHovered ? 'hovered' : null}`} onClick={click} style={{ ...style }} >
-      <S.Image hero fluid={sanityWork.thirdImage.asset.fluid} alt={sanityWork.title} style={style} />
+    <animated.div className={`animated-div ${isHovered ? 'hovered' : null}`} onClick={click} style={style} >
+      <S.Image hero fluid={sanityWork.thirdImage.asset.fluid} alt={sanityWork.title} />
     </animated.div>
   ),
   ({ style, click, sanityWork, isHovered, }) => (
-    <animated.div className={`animated-div ${isHovered ? 'hovered' : null}`} onClick={click} style={{ ...style }} >
-      <S.Image hero fluid={sanityWork.fourthImage.asset.fluid} alt={sanityWork.title} style={style} />
+    <animated.div className={`animated-div ${isHovered ? 'hovered' : null}`} onClick={click} style={style} >
+      <S.Image hero fluid={sanityWork.fourthImage.asset.fluid} alt={sanityWork.title} />
     </animated.div>
   ),
   ({ style, click, sanityWork, isHovered, }) => (
-    <animated.div className={`animated-div ${isHovered ? 'hovered' : null}`} onClick={click} style={{ ...style }} >
-      <S.Image hero fluid={sanityWork.fifthImage.asset.fluid} alt={sanityWork.title} style={style} />
+    <animated.div className={`animated-div ${isHovered ? 'hovered' : null}`} onClick={click} style={style} >
+      <S.Image hero fluid={sanityWork.fifthImage.asset.fluid} alt={sanityWork.title} />
     </animated.div>
   ),
   ({ style, click, sanityWork, isHovered, }) => (
-    <animated.div className={`animated-div ${isHovered ? 'hovered' : null}`} onClick={click} style={{ ...style }} >
-      <S.Image hero fluid={sanityWork.sixthImage.asset.fluid} alt={sanityWork.title} style={style} />
+    <animated.div className={`animated-div ${isHovered ? 'hovered' : null}`} onClick={click} style={style} >
+      <S.Image hero fluid={sanityWork.sixthImage.asset.fluid} alt={sanityWork.title} />
     </animated.div>
   ),
   ({ style, click, sanityWork, isHovered, }) => (
-    <animated.div className={`animated-div ${isHovered ? 'hovered' : null}`} onClick={click} style={{ ...style }} >
-      <S.Image hero fluid={sanityWork.seventhImage.asset.fluid} alt={sanityWork.title} style={style} />
+    <animated.div className={`animated-div ${isHovered ? 'hovered' : null}`} onClick={click} style={style} >
+      <S.Image hero fluid={sanityWork.seventhImage.asset.fluid} alt={sanityWork.title} />
     </animated.div>
   ),
   ({ style, click, sanityWork, isHovered, }) => (
-    <animated.div className={`animated-div ${isHovered ? 'hovered' : null}`} onClick={click} style={{ ...style }} >
-      <S.Image hero fluid={sanityWork.eighthImage.asset.fluid} alt={sanityWork.title} style={style} onClick={click} />
+    <animated.div className={`animated-div ${isHovered ? 'hovered' : null}`} onClick={click} style={style} >
+      <S.Image hero fluid={sanityWork.eighthImage.asset.fluid} alt={sanityWork.title} onClick={click} />
     </animated.div>
   )
 ]
@@ -58,6 +58,7 @@ export const query = graphql`
     sanityWork(slug: {current: {eq: $slug}}) {
       title
       _rawDescription
+      # mainImageAltTag
       mainImage {
         asset {
           fluid(maxWidth: 1000)  {
@@ -65,6 +66,7 @@ export const query = graphql`
           }
         }
       }
+      # secondImageAltTag
       secondImage {
         asset {
           fluid(maxWidth: 1000)  {
@@ -72,6 +74,7 @@ export const query = graphql`
           }
         }
       }
+      # thirdImageAltTag
       thirdImage {
         asset {
           fluid(maxWidth: 1000)  {
@@ -79,6 +82,7 @@ export const query = graphql`
           }
         }
       }
+      # fourthImageAltTag
       fourthImage {
         asset {
           fluid(maxWidth: 1000)  {
@@ -86,6 +90,7 @@ export const query = graphql`
           }
         }
       }
+      # fifthImageAltTag
       fifthImage {
         asset {
           fluid(maxWidth: 1000)  {
@@ -93,6 +98,7 @@ export const query = graphql`
           }
         }
       }
+      # sixthImageAltTag
       sixthImage {
         asset {
           fluid(maxWidth: 1000)  {
@@ -100,6 +106,7 @@ export const query = graphql`
           }
         }
       }
+      # seventhImageAltTag
       seventhImage {
         asset {
           fluid(maxWidth: 1000)  {
@@ -107,6 +114,7 @@ export const query = graphql`
           }
         }
       }
+      # eighthImageAltTag
       eighthImage {
         asset {
           fluid(maxWidth: 1000)  {
@@ -133,8 +141,6 @@ export default ({ data: { sanityWork } }) => {
   const targetSlide = (e) => (
     setIndex(parseInt(e.currentTarget.value))
   )
-
-  console.log(isHovered)
 
   const sanityWorkImages = Object.keys(sanityWork).filter(images => images.includes('Image'))
 
@@ -184,6 +190,8 @@ export default ({ data: { sanityWork } }) => {
                 onClick={prevSlide}
                 onMouseEnter={handleHoverEnter}
                 onMouseLeave={handleHoverLeave}
+              // onMouseUp={handleHoverEnter}
+              // onMouseDown={handleHoverLeave}
               >
                 <ArrowButton />
               </S.Button>
@@ -192,16 +200,13 @@ export default ({ data: { sanityWork } }) => {
                 onClick={nextSlide}
                 onMouseEnter={handleHoverEnter}
                 onMouseLeave={handleHoverLeave}
+              // onMouseUp={handleHoverEnter}
+              // onMouseDown={handleHoverLeave}
               >
                 <ArrowButton flip />
               </S.Button>
             </S.HeroImageContainer>
-            <S.GalleryImageContainer
-              style={{
-                zIndex: 0,
-                // paddingTop: 'calc(35vw + 2vmax)'
-              }}
-            >
+            <S.GalleryImageContainer>
               {trail.map((props, i) =>
                 <animated.button
                   style={{ ...props }} value={i} onClick={targetSlide}
@@ -209,7 +214,7 @@ export default ({ data: { sanityWork } }) => {
                 >
                   <S.Image
                     fluid={sanityWork[sanityWorkImages[i]].asset.fluid}
-                    alt={sanityWork.title}
+                    // alt={sanityWork[`${sanityWorkImages[i]}AltTag`]}
                     active={index === i ? true : false}
                   />
                 </animated.button>
@@ -231,16 +236,21 @@ const S = {
     > div {
       margin: 0 auto;
       max-width: 1900px;
-      padding: calc(4% + 6.5rem) 5%;
+      padding: calc(4% + 5rem) 5%;
       display: grid;
       grid-template-columns: 1fr;
-      grid-template-rows: repeat(3, auto);
+      grid-template-rows: auto 1fr;
       grid-column-gap: 10%;
-      grid-row-gap: 6rem;
+      grid-row-gap: 5rem;
     };
+    @media (min-width: 480px) {
+
+    }
     @media (min-width: 980px) {
       > div {
         grid-template-columns: 1fr 1fr;
+        padding: calc(4% + 6rem) 5% 7rem;
+        /* grid-row-gap: 0; */
       }
     }
   `,
@@ -337,9 +347,9 @@ const S = {
     outline: 0;
     z-index: 99;
     color: white;
-    display: grid;
+    display: flex;
     align-items: center;
-    justify-content: ${({ next }) => next ? 'end' : 'start'};
+    justify-content: ${({ next }) => next ? 'flex-end' : 'flex-start'};
     padding: 0 3% 0 3%;
     :active svg {
       transform: ${({ next }) => next ?
@@ -388,6 +398,7 @@ const S = {
     grid-template-columns: repeat(4, minmax(50px, 1fr));
     grid-gap: 2vmax;
     align-content: start;
+    z-index: 0;
     button {
       background: none;
       border: none;
@@ -423,7 +434,7 @@ const S = {
     }
     @media (min-width: 980px) {
       grid-template-rows: repeat(2, auto);
-      min-height: 39vw;
+      /* min-height: 39vw; */
       margin-bottom: 5vmax;
       margin: 0;
       grid-gap: 2vmax;

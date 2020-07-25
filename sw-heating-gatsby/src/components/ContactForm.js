@@ -64,7 +64,7 @@ const ContactForm = () => {
           <S.ListContainer>
             <li>
               <p>If you have any questions or queries, or would like to request a quote or even book an appointment, please get in touch with a member of our team using the form below:</p>
-              <p style={{ /*fontSize: '0.8rem'*/ }}>Alternatively, if you would like to see more <Link to="/#footer" style={{ color: 'var(--primary-one' }}>details <div>→</div></Link></p>
+              <p style={{ /*fontSize: '0.8rem'*/ }}>Alternatively, if you would like to see more <Link to="/#footer" style={{ color: 'var(--primary-one' }}>details <span>→</span></Link></p>
             </li>
             {inputTitles.map(({ name, type }) => {
               const _name = name.toLowerCase().replace(/\s+/g, '')
@@ -74,18 +74,25 @@ const ContactForm = () => {
                   className={errors[_name] && 'error'}
                 >
                   <label
-                    style={{ alignItems: type === 'textarea' && 'baseline' }}
-                  >{name}:
-                    <S.Input
-                      as={type !== 'textarea' ? null : type}
-                      type={type !== 'textarea' ? type : null}
-                      name={_name}
-                      onChange={handleChange}
-                      value={values[_name]}
-                      className={errors[_name] && 'error'}
-                      required
-                    />
-                  </label>
+                    htmlFor={_name}
+                    type={type}
+                    style={{
+                      alignItems: type === 'textarea' && 'baseline',
+                      paddingTop: type === 'textarea' && 18
+                    }}
+                  >
+                    {name}:
+                    </label>
+                  <S.Input
+                    as={type !== 'textarea' ? null : type}
+                    type={type !== 'textarea' ? type : null}
+                    name={_name}
+                    onChange={handleChange}
+                    value={values[_name]}
+                    className={errors[_name] && 'error'}
+                    required
+                  />
+
                   {((errors[_name] && _name === Object.keys(values)[0]) || errors[_name]) && (
                     <S.ErrorMessage>
                       <Warning /><span>{errors[_name]}</span>
@@ -120,8 +127,11 @@ const S = {
     > div {
       max-width: 1900px;
       height: 100%;
-      padding: 0 5% 14vmax;
+      padding: 0.1vmax 5% 14vmax;
       margin: auto auto;
+      @media(min-width: 850px) {
+        padding-bottom: 6rem;
+      }
     }
     form {
       margin-bottom: 0;
@@ -129,7 +139,6 @@ const S = {
         text-align: center;
         color: var(--primary-one);
         display: flex;
-        justify-content: center;
         align-items: center;
         padding-top: 1rem;
         font-size: 0.75rem;
@@ -137,11 +146,6 @@ const S = {
           margin-top: 1.5px;
           padding-left: 0.7rem;
         }
-      }
-    }
-    @media(min-width: 850px) {
-      > div {
-        padding-bottom: 8rem;
       }
     }
   `,
@@ -159,6 +163,7 @@ const S = {
       border-radius: 12px;
       border: 2px solid white;
       font-size: 1rem;
+      grid-template-columns: 110px 1fr;
       justify-items: start;
       :first-child {
         border: none;
@@ -168,27 +173,25 @@ const S = {
       }
       :last-of-type {
         grid-template-columns: 1fr;
-        justify-self: center;
+        justify-self: start;
         width: 50%;
         padding: 0;
         margin-bottom: 0;
         border: none;
-        outline: none;
+        /* outline: none; */
       }
       > label {
         height: 100%;
         width: 100%;
         display: grid;
-        grid-template-columns: 85px 1fr;
         align-items: center;
-        justify-items: start;
         padding-left: 1.1rem;
         font-weight: var(--bold);
         cursor: text;
       }
       > button {
         background: transparent;
-        outline: none;
+        /* outline: none; */
         border: none;
         padding: 1rem;
         color: white;
@@ -208,12 +211,12 @@ const S = {
           box-shadow: var(--shadow-one);
         }
       }
-      a:hover > div {
+      a:hover > span {
         transform: translate3d(10px, 0, 0);
       }
       a {
         font-weight: var(--bold);
-        > div {
+        > span {
           display: inline-block;
           transition: transform 0.3s ease;
         }
@@ -222,17 +225,11 @@ const S = {
     
     
     @media (min-width: 440px) {
-      > li > label {
-        padding-left: 1.8rem;
-        grid-template-columns: 110px 1fr;
-      }
-      /* > li {
-        grid-template-columns: 120px 1fr;
-      } */
-    }
-    @media (min-width: 481px) {
-      > li > label {
-        grid-template-columns: 120px 1fr;
+      > li {
+        grid-template-columns: 150px 1fr;
+        > label {
+          padding-left: 1.8rem;
+        }
       }
     }
     @media (min-width: 980px) {
@@ -250,7 +247,7 @@ const S = {
   Input: styled.input`
     background: transparent;
     color: white;
-    outline: none;
+    /* outline: none; */
     border: none;
     width: 100%;
     padding: 1rem;

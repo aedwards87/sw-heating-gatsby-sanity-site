@@ -69,7 +69,7 @@ const S = {
     > div {
       max-width: 1900px;
       margin: 0 auto;
-      padding: 0 5% 7rem;
+      padding: 0 5% ${({ main }) => main ? '6rem' : '2rem'};
     }
   `,
   ImageContainer: styled.div`
@@ -108,7 +108,6 @@ const S = {
       background: white;
       :hover,
       :focus {
-        background: white;
         box-shadow: var(--shadow-one);
         transform: translate(0, -10px);
       }

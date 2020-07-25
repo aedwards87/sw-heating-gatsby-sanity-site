@@ -29,13 +29,13 @@ export const StyledTitle = styled.h2`
     width: 100%;
     background: ${({ lineColor }) => !lineColor ? 'var(--gradient-one)' : lineColor};
   }
-  @media (min-width: 980px) {
-    font-size: 2.4rem;
-  }
   @media(min-width: 850px) {
     ::before {
       height: ${({ tall, heading, small }) =>
     heading ? '6.5rem' : small ? '2rem' : !tall ? '7rem' : 'calc(7rem + 3vw)'};
     }
+  }
+  @media (min-width: 980px) {
+    font-size: 2.4rem;
   }
 `

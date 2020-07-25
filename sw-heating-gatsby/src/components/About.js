@@ -4,8 +4,8 @@ import { StyledTitle } from '../components-styled/index'
 import SWLettersSVG from "../assetsjs/sw-letters";
 import PortableText from '@sanity/block-content-to-react'
 import Image from 'gatsby-image'
-import { Link, useStaticQuery, graphql } from "gatsby"
-import { SWHeatingLogo, Facebook, GasSafe, Ciphe, EnvAgency, Vaillant, Phone, Email, Mobile } from "../assetsjs/index";
+import { useStaticQuery, graphql } from "gatsby"
+import { GasSafe, Ciphe, EnvAgency, Vaillant } from "../assetsjs/index";
 
 const About = () => {
   const { sanityAbout } = useStaticQuery(

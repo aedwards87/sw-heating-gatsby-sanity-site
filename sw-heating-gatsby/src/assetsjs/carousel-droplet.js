@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { animated } from 'react-spring'
-import { CarouselDropletMaskSVG } from './index'
+// import { CarouselDropletMaskSVG } from './index'
 import Image from 'gatsby-image'
 
 // import CarouselButtons from '../components/Carousel/CarouselButton'

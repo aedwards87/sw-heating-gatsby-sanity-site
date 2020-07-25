@@ -67,31 +67,24 @@ const StyledFeedBack = styled.section`
     padding-left: 5%;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto;
     align-items: baseline;
     justify-items: space-between;
+    grid-row-gap: 5rem;
+    @media(min-width: 700px) {
+      grid-template-columns: auto auto;
+    }
   }
   
 `
 const StyledLink = styled(Link)`
-  /* font-family: var(--fancy-font); */
   font-weight: var(--bolder);
   font-size: 1rem;
-  margin-left: 1.5rem;
   position: relative;
   color: var(--primary-four);
   transition: all 0.3s ease;
-  text-align: right;
-  /* :after {
-    content: "";
-    position: absolute;
-    bottom: -12px;
-    left: 50%;
-    height: 3px;
-    width: 0;
-    background: var(--primary-one);
-    transition: all 0.3s ease;
-  } */
+  text-align: left;
+  margin-left: .5rem;
   :hover, 
   :focus {
     color: var(--primary-two);
@@ -103,13 +96,15 @@ const StyledLink = styled(Link)`
     transition: transform 0.3s ease;
     display: inline-block;
   }
+  @media(min-width: 700px) {
+    text-align: right;
+  }
 `
 
 
 const StyledListContainer = styled.ul`
   list-style: none;
-  /* padding: 8rem 0 7rem; */
-  padding: 9rem 0 14vmax;
+  padding: 4rem 0 14vmax;
   margin: 0;
   display: grid;
   grid-gap: 5%;
@@ -117,9 +112,9 @@ const StyledListContainer = styled.ul`
   grid-auto-flow: column;
   grid-auto-columns: 80vw;
   overflow-x: scroll;
-  /* scroll-snap-type: x proximity; */
+  scroll-snap-type: x proximity;
   scrollbar-width: none;
-  scroll-snap-type: both mandatory; 
+  /* scroll-snap-type: both mandatory;  */
   ::-webkit-scrollbar {
     display: none;
   }
@@ -127,6 +122,9 @@ const StyledListContainer = styled.ul`
   :after {
     content: '';
     width: 10px;
+  }
+  @media(min-width: 700px) {
+    padding: 9rem 0 14vmax;
   }
   > li {
     align-self: center;
@@ -154,26 +152,6 @@ const StyledListContainer = styled.ul`
         width: 70px;
       }
     }
-    /* :after {
-      content: '"';
-      top: 0;
-      left: calc(50% - 1rem);
-      font-size: 3rem;
-      font-family: var(--fancy-font);
-      color: #fff;
-    }
-    :before {
-      content: "";
-      top: -40px;
-      left: calc(50% - 40px);
-      height: 80px;
-      width: 80px;
-      background: #fff;
-      background: var(--primary-four);
-      border-radius: 100%;
-      box-shadow: var(--shadow-two);
-      border: 6px solid #fff;
-    } */
   }
   :hover {
     cursor: grab;
@@ -193,7 +171,6 @@ const StyledListContainer = styled.ul`
   blockquote {
     margin: 0;
     position: relative;
-    /* font-size: 0.9rem; */
     p {
       margin-bottom: 0;
     }

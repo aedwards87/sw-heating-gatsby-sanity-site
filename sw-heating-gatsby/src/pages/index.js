@@ -2,7 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { Head, Services, About, Feedback, ContactForm } from '../components/index'
+import { Head, Services, About, ContactForm } from '../components/index'
 
 export const pageQuery = graphql`
   query HomePageQuery {
@@ -72,7 +72,7 @@ const IndexPage = ({ data }, props) => (
   <Layout allSanityWork={data.allSanityWork}>
     <SEO title="Home" />
     <Head sanityLandingPage={data.sanityLandingPage} />
-    <Services allSanityWork={data.allSanityWork} />
+    <Services allSanityWork={data.allSanityWork} main />
     <About /* sanityAboutPage={data.sanityAboutPage} */ />
     {/* <Feedback /> */}
     <ContactForm />
