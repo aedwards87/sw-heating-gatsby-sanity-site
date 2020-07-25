@@ -7,7 +7,7 @@ import Header from './Nav/header'
 import Footer from './footer'
 import Image from './image'
 import Modal from './Modal'
-import Portal from './Portal'
+// import Portal from './Portal'
 import { UserContext } from './layout'
 import Carousel from './Carousel'
 import GradientButton from './GradientButton'
@@ -29,7 +29,7 @@ export {
   Footer,
   Image,
   Modal,
-  Portal,
+  // Portal,
   UserContext,
   Carousel,
   GradientButton,

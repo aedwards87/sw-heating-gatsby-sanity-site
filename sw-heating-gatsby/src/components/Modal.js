@@ -1,17 +1,17 @@
 import React from 'react'
-import Portal from './Portal'
+// import Portal from './Portal'
 import styled from 'styled-components'
 import { useTransition, animated } from 'react-spring'
 
 
 const Modal = ({ children, toggle }) => {
   return (
-    <Portal>
-      <S.ModalContainer>
-        <S.CloseButton onClick={() => toggle(false)}>X</S.CloseButton>
-        {children}
-      </S.ModalContainer>
-    </Portal>
+    // <Portal>
+    <S.ModalContainer>
+      <S.CloseButton onClick={() => toggle(false)}>X</S.CloseButton>
+      {children}
+    </S.ModalContainer>
+    // </Portal>
   )
 }
 
