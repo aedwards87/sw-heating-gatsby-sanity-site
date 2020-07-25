@@ -46,13 +46,6 @@ module.exports = {
       }
     },
     // {
-    //   resolve: `gatsby-plugin-portal`,
-    //   options: {
-    //     key: 'sw-portal',
-    //     id: 'sw-portal',
-    //   },
-    // },
-    // {
     //   resolve: 'gatsby-source-sanity',
     //   options: {
     //     projectId: process.env.SANITY_PROJECT_ID,

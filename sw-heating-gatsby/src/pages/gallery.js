@@ -9,8 +9,7 @@ import { slidev2 } from '../components/Carousel/CarouselSlides'
 import { useTrail, animated, useTransition } from 'react-spring'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-
-const uuidv4 = require('uuid/v4')
+import { v4 as uuidv4 } from 'uuid';
 
 export const pageQuery = graphql`
   query GalleryQuery {
@@ -108,7 +107,7 @@ const Gallery = ({ data: { sanityLandingPage } }) => {
                 style={{ ...props }}
                 value={i}
                 onClick={handleClick}
-                key={uuidv4()}
+                key={uuidv4}
               >
                 <S.Image
                   fluid={sanityLandingPage[sanityLandingPageImages[i]].asset.fluid}
