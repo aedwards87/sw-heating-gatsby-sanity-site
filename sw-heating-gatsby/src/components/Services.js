@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useCallback } from 'react'
 import Image from 'gatsby-image'
 import styled from 'styled-components'
 import { Link } from "gatsby"
@@ -24,12 +24,27 @@ const Services = () => {
                   }
                 }
               }
+              images {
+                title
+                image {
+                  asset {
+                    fluid(maxWidth: 1000) {
+                      ...GatsbySanityImageFluid
+                    }
+                  }
+                }
+              }
             }
           }
         }
       }
     `
   )
+
+  const [isFocused, setIsFocused] = useState(false)
+
+  const handleFocus = useCallback(() => setIsFocused(true), [])
+  const handleBlur = useCallback(() => setIsFocused(false), [])
 
   return (
     <S.Services>
@@ -40,12 +55,29 @@ const Services = () => {
 
         <S.List>
           {allSanityWork.edges.map(({ node: work }) => (
-            <li key={work.slug.current}>
-              <Link to={`/${work.slug.current}`}>
-                <S.ImageContainer>
+            <li
+              key={work.slug.current}
+              onFocus={handleFocus}
+              onBlur={handleBlur}
+              isFocused={isFocused}
+            >
+              <Link
+                to={`/${work.slug.current}`}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
+                isFocused={isFocused}
+              >
+                <S.ImageContainer
+                  onFocus={handleFocus}
+                  onBlur={handleBlur}
+                  isFocused={isFocused}
+                >
                   <S.Image
-                    fluid={work.mainImage.asset.fluid}
-                    alt={work.title}
+                    fluid={work.images[0].image.asset.fluid}
+                    alt={work.images[0].title}
+                    onFocus={handleFocus}
+                    onBlur={handleBlur}
+                    isFocused={isFocused}
                   />
                 </S.ImageContainer>
                 <div className="list-heading-container">
@@ -99,22 +131,10 @@ const S = {
     }
     li {
       border-radius: 10px;
-      overflow: hidden;
       height: 100%;
       margin: 0;
       padding: 0;
       transition: all 0.3s ease;
-      box-shadow: var(--shadow-two);
-      background: white;
-      :hover,
-      :focus {
-        box-shadow: var(--shadow-one);
-        transform: translate(0, -10px);
-      }
-      :hover a h3,
-      :focus a h3 {
-        color: var(--primary-two);
-      }
     }
     .list-heading-container {
       padding: 14px 26px;
@@ -143,6 +163,20 @@ const S = {
       height: 100%;
       display: grid;
       grid-template-columns: 1fr;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-two);
+      background: white;
+      :hover,
+      :focus {
+        box-shadow: var(--shadow-one);
+        transform: translate(0, -10px);
+      }
+      :hover h3,
+      :focus h3 {
+        color: var(--primary-two);
+      }
     }
     @media(min-width: 1500px) {
       a h3 {

@@ -2,84 +2,57 @@ import React, { useState, useCallback } from 'react'
 import styled from 'styled-components'
 import Image from 'gatsby-image'
 import { graphql } from "gatsby"
-import { Services, Modal, Toggle } from '../components/index'
+import { Services, Modal } from '../components/index'
 import { StyledTitle } from '../components-styled/index'
 import Carousel from '../components/Carousel-2.0'
-import { slidev2 } from '../components/Carousel/CarouselSlides'
+// import { slidev2 } from '../components/Carousel/CarouselSlides'
 import { useTrail, animated, useTransition } from 'react-spring'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { v4 as uuidv4 } from 'uuid';
+// import { v4 as uuidv4 } from 'uuid';
 
 export const pageQuery = graphql`
   query GalleryQuery {
-    sanityLandingPage {
-      title
-      strapLine
-      mainImageAltTag
-      mainImage {
-        asset {
-          fluid(maxWidth: 1000) {
-            ...GatsbySanityImageFluid
+    allSanityImages {
+      edges {
+        node {
+          id
+          title
+          image {
+            asset {
+              fluid(maxWidth: 1000) {
+                ...GatsbySanityImageFluid
+              }
+            }
           }
-        }
-      }
-      secondImageAltTag
-      secondImage {
-        asset {
-          fluid(maxWidth: 1000) {
-            ...GatsbySanityImageFluid
-          }
-        }
-      }
-      thirdImageAltTag
-      thirdImage {
-        asset {
-          fluid(maxWidth: 1000) {
-            ...GatsbySanityImageFluid
-          }
-        }
-      }
-      fourthImageAltTag
-      fourthImage {
-        asset {
-          fluid(maxWidth: 1000) {
-            ...GatsbySanityImageFluid
-          }
-        }
-      }
-      fifthImageAltTag
-      fifthImage {
-        asset {
-          fluid(maxWidth: 1000) {
-            ...GatsbySanityImageFluid
+          work {
+            id
+            title
           }
         }
       }
     }
   }
+  
 `
 
-const Gallery = ({ data: { sanityLandingPage } }) => {
+
+const Gallery = ({ data: { allSanityImages } }) => {
 
   const [index, setIndex] = useState(0)
   const [on, toggle] = useState(false)
 
-  const sanityLandingPageImages = Object.keys(sanityLandingPage).filter(images => images.includes('Image')).filter(x => !x.includes('AltTag'))
+  const allImages = allSanityImages.edges.map(({ node: images }) => images)
 
-  const trail = useTrail(sanityLandingPageImages.length, {
+  const trail = useTrail(allImages.length, {
     opacity: 1,
     from: { opacity: 0 },
-    config: { tension: 280, friction: 60 }
+    config: { tension: 400, friction: 60 }
   })
 
   const targetSlide = (e) => (
     setIndex(parseInt(e.currentTarget.value))
   )
-
-  // useLayoutEffect(() => {
-
-  // }, [ref])
 
   const transitionFade = useTransition(on, null, {
     from: { opacity: 0, transform: 'translate3d(0,-40px,0)' },
@@ -102,16 +75,16 @@ const Gallery = ({ data: { sanityLandingPage } }) => {
           </div>
 
           <S.GalleryImageContainer>
-            {trail.map((props, i) =>
+            {trail.map(({ opacity }, i) =>
               <animated.button
-                style={{ ...props }}
+                style={{ opacity }}
                 value={i}
                 onClick={handleClick}
-                key={uuidv4}
+                key={i}
               >
                 <S.Image
-                  fluid={sanityLandingPage[sanityLandingPageImages[i]].asset.fluid}
-                  alt={sanityLandingPage[`${sanityLandingPageImages[i]}AltTag`]}
+                  fluid={allImages[i].image.asset.fluid}
+                  alt={allImages[i].title}
                   active={index === i ? true : false}
                 />
               </animated.button>
@@ -122,18 +95,17 @@ const Gallery = ({ data: { sanityLandingPage } }) => {
             item && (
               <Modal toggle={toggle} key={key} >
                 <Carousel
-                  data={sanityLandingPage}
-                  slides={slidev2}
-                  fromNext={{ opacity: 1, position: 'absolute', transform: 'translate3d(100%,0%,0) scale(1)' }}
-                  fromPrev={{ opacity: 1, position: 'absolute', transform: 'translate3d(-100%,0%,0) scale(1)' }}
-                  enter={{ opacity: 1, transform: 'translate3d(0%,0%,0) scale(1)' }}
-                  leaveNext={{ opacity: 1, transform: 'translate3d(-100%,0%,0) scale(1)' }}
-                  leavePrev={{ opacity: 1, transform: 'translate3d(100%,0%,0) scale(1)' }}
+                  data={allImages}
                   index={index}
                   setIndex={setIndex}
                   on={on}
                   toggle={toggle}
                   animation={props}
+                  fromNext={{ opacity: 1, position: 'absolute', transform: 'translate3d(100%,0%,0) scale(1)' }}
+                  fromPrev={{ opacity: 1, position: 'absolute', transform: 'translate3d(-100%,0%,0) scale(1)' }}
+                  enter={{ opacity: 1, transform: 'translate3d(0%,0%,0) scale(1)' }}
+                  leaveNext={{ opacity: 1, transform: 'translate3d(-100%,0%,0) scale(1)' }}
+                  leavePrev={{ opacity: 1, transform: 'translate3d(100%,0%,0) scale(1)' }}
                 />
               </Modal>
             )
@@ -159,8 +131,8 @@ const S = {
     }
   `,
   Image: styled(Image)`
-    box-shadow: ${({ active }) => active ? '0 0 6px 1px rgba(var(--primary-two-raw), .8)' : null};
-    box-shadow: ${({ hero }) => hero && 'none'};
+    border: ${({ active }) => active ? '3px solid var(--primary-one)' : null};
+    border: ${({ hero }) => hero && 'none'};
     &.gatsby-image-wrapper:first-child::after {
       content: "";
       top: 0;
@@ -174,11 +146,7 @@ const S = {
       transition: all .3s ease;
       opacity: 1;
     }
-    /* &.active.gatsby-image-wrapper:not(:first-child)::after, */
-    /* &.gatsby-image-wrapper:not(:first-child):hover::after { */
-    &.active.gatsby-image-wrapper:first-child::after,
-    &.gatsby-image-wrapper:first-child:hover::after,
-    &.gatsby-image-wrapper:first-child:focus::after {
+    &.active.gatsby-image-wrapper:first-child::after {
       opacity: 0;
     }
     `,
@@ -203,11 +171,11 @@ const S = {
     > div:hover,
     button:hover,
     button:focus {
-      box-shadow: var(--shadow-one);
       overflow: hidden;
       cursor: pointer;
       transform: translate3d(0, -0.3vmax, 0) scale(1.05);
     }
+    button:hover,
     button:focus {
       .gatsby-image-wrapper:first-child::after {
         opacity: 0;

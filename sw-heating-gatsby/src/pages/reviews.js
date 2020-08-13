@@ -3,7 +3,7 @@ import styled from 'styled-components'
 // import { Link } from "gatsby"
 import { Services, Feedback } from '../components/index'
 import { StyledTitle } from '../components-styled/index'
-import Form from '../components/Form'
+import ReviewForm from '../components/ReviewForm'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
@@ -35,7 +35,7 @@ const Reviews = () => {
           <div style={{ marginBottom: '6rem' }}>
             <StyledTitle id="reviews">We would love <br />to hear from you</StyledTitle>
           </div>
-          <Form
+          <ReviewForm
             inputTitles={inputTitles}
             message="Feel free to leave us a review, your reviews help us to ensure we provide a quality service every visit."
           />
@@ -62,7 +62,6 @@ const S = {
       }
     }
   `
-
 }
 
 

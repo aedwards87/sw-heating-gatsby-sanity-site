@@ -59,10 +59,10 @@ const About = () => {
                 <p>Engineer, director and dad of twins</p>
               </div>
               <CertifiedLogos>
-                <a href="https://www.gassaferegister.co.uk/" target="_blank" rel="noopener noreferrer"><GasSafe /></a>
-                <a href="https://www.vaillant.co.uk/" target="_blank" rel="noopener noreferrer"><Vaillant /></a>
-                <a href="https://www.ciphe.org.uk/" target="_blank" rel="noopener noreferrer"><Ciphe /></a>
-                <a href="https://www.gov.uk/government/organisations/environment-agency" target="_blank" rel="noopener noreferrer"><EnvAgency /></a>
+                <a href="https://www.gassaferegister.co.uk/" target="_blank" rel="noopener noreferrer" aria-label="Gas Safe"><GasSafe /></a>
+                <a href="https://www.vaillant.co.uk/" target="_blank" rel="noopener noreferrer" aria-label="Vaillant"><Vaillant /></a>
+                <a href="https://www.ciphe.org.uk/" target="_blank" rel="noopener noreferrer" aria-label="Ciphe"><Ciphe /></a>
+                <a href="https://www.gov.uk/government/organisations/environment-agency" target="_blank" rel="noopener noreferrer" aria-label="Environment Agency"><EnvAgency /></a>
               </CertifiedLogos>
               <Bio>
                 <PortableText

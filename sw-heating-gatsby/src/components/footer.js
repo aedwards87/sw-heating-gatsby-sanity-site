@@ -3,8 +3,19 @@ import React from "react"
 import styled from 'styled-components'
 import { Link } from "gatsby"
 import { navLinks } from './index'
-import { SWHeatingLogo, Facebook, GasSafe, Ciphe, EnvAgency, Vaillant, Phone, Email, Mobile } from "../assetsjs/index";
 import { Location } from "@reach/router";
+import {
+  SWHeatingLogo,
+  Facebook,
+  GasSafe,
+  Ciphe,
+  EnvAgency,
+  Vaillant,
+  Phone,
+  Email,
+  Mobile,
+  Instagram
+} from "../assetsjs/index";
 
 // const uuidv4 = require('uuid/v4')
 
@@ -22,9 +33,12 @@ const footer = () => {
                 <p>Fully insured</p>
               </li>
               <li className="item2">
-                <a href="/">
+                <a href="https://www.facebook.com/sw-heating-and-sons-ltd" target="_blank" rel="noopener noreferrer">
                   <strong>Like us on</strong>
                   <Facebook />
+                </a>
+                <a href="https://www.instagram.com/swheatingandsons" target="_blank" rel="noopener noreferrer">
+                  <Instagram />
                 </a>
               </li>
               <li className="item3">
@@ -49,10 +63,10 @@ const footer = () => {
                 </div>
               </li>
               <li className="item5">
-                <a href="https://www.gassaferegister.co.uk/" target="_blank" rel="noopener noreferrer"><GasSafe /></a>
-                <a href="https://www.vaillant.co.uk/" target="_blank" rel="noopener noreferrer"><Vaillant /></a>
-                <a href="https://www.ciphe.org.uk/" target="_blank" rel="noopener noreferrer"><Ciphe /></a>
-                <a href="https://www.gov.uk/government/organisations/environment-agency" target="_blank" rel="noopener noreferrer"><EnvAgency /></a>
+                <a href="https://www.gassaferegister.co.uk/" target="_blank" rel="noopener noreferrer" aria-label="Gas Safe"><GasSafe /></a>
+                <a href="https://www.vaillant.co.uk/" target="_blank" rel="noopener noreferrer" aria-label="Vaillant"><Vaillant /></a>
+                <a href="https://www.ciphe.org.uk/" target="_blank" rel="noopener noreferrer" aria-label="Ciphe"><Ciphe /></a>
+                <a href="https://www.gov.uk/government/organisations/environment-agency" target="_blank" rel="noopener noreferrer" aria-label="Environment Agency"><EnvAgency /></a>
               </li>
             </ul>
           </StyledTopFooter>
@@ -78,8 +92,16 @@ const footer = () => {
                     }
                   </li>
                 )}
+                <li>
+                  <Link
+                    to='/privacy'
+                    activeClassName="active"
+                  >
+                    Privacy
+                  </Link>
+                </li>
               </ul>
-              <p>© SW Heating | Website by Adam Edwards</p>
+              <p>SW Heating Ltd | Website by Adam Edwards</p>
             </div>
           </StyledBottomFooter>
         </StyledFooterContainer>
@@ -130,6 +152,9 @@ const StyledTopFooter = styled.div`
   .item2 {
     justify-self: end;
     align-self: start;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-gap: 1rem;
     > a {
       color: #1877F2;
       font-size: 0.95rem;

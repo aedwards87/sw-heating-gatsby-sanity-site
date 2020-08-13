@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components';
 import { StyledTitle } from '../components-styled/index'
 import useForm from '../hooks/useForm'
-import { validate } from '../hooks/validate';
+import { validateContact } from '../hooks/validate';
 // const uuidv4 = require('uuid/v4')
 import { Warning } from '../assetsjs/index'
 import { Link } from "gatsby"
@@ -33,7 +33,7 @@ const inputTitles = [
 
 
 const ContactForm = () => {
-  const { values, handleChange, handleSubmit, errors } = useForm(submit, validate)
+  const { values, handleChange, handleSubmit, errors } = useForm(submit, validateContact)
 
   function submit() {
     console.log('success')
@@ -102,7 +102,7 @@ const ContactForm = () => {
               )
             })}
             <li>
-              <button type="submit" children="Send" />
+              <button aria-label="Send" type="submit" children="Send" />
             </li>
           </S.ListContainer>
 
@@ -136,7 +136,7 @@ const S = {
     form {
       margin-bottom: 0;
       > div {
-        text-align: center;
+        justify-content: center;
         color: var(--primary-one);
         display: flex;
         align-items: center;
@@ -275,6 +275,7 @@ const S = {
     }
   `,
   ErrorMessage: styled.div`
+    grid-column: 1 / -1;
     width: 100%;
     padding: 0.1rem 1.8rem;
     background: var(--primary-one);

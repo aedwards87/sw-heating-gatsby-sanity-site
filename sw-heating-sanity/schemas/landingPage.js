@@ -89,7 +89,24 @@ export default {
       name: 'fifthImageAltTag',
       title: 'Fifth image short description',
       type: 'string',
-      validation: Rule => Rule.required()
-    }
+      validation: Rule => Rule.required(),
+    },
+    {
+      name: 'images',
+      title: 'Images',
+      description: 'List of images to appear on the landing page, from top to bottom',
+      type: 'array',
+      of: [{
+        type: 'reference',
+        to: [
+          { type: 'images' },
+
+        ],
+      }],
+      validation: Rule => [
+        Rule.unique().error('You have duplicate images'),
+        Rule.min(4),
+      ],
+    },
   ]
 }

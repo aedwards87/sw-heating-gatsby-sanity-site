@@ -1,5 +1,6 @@
 import SWHeatingLogo from './sw-heating-logo'
 import Facebook from './facebook'
+import Instagram from './instagram'
 import GasSafe from './gas-safe'
 import Vaillant from './vaillant'
 import Ciphe from './ciphe'
@@ -19,6 +20,7 @@ import ArrowButton from './arrow-button'
 export {
   SWHeatingLogo,
   Facebook,
+  Instagram,
   GasSafe,
   Vaillant,
   Ciphe,

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import styled from 'styled-components'
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
@@ -6,7 +6,7 @@ import { Location } from "@reach/router";
 import { SWHeatingLogo } from "../../assetsjs/index";
 import { NavBar, NavMenu, navLinks, Toggle } from '../index'
 import { Desktop, SmallScreen } from '../../hooks/useMedia'
-import { useScrollPosition, useBodyLockScroll } from '../../hooks/index'
+import { useScrollPosition } from '../../hooks/index'
 
 
 const Header = (props, ref) => {

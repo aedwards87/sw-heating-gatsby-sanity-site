@@ -2,13 +2,10 @@ import React, { useState, useCallback } from 'react'
 import styled from 'styled-components'
 import { useTransition, config, animated } from 'react-spring'
 import { ArrowButton } from "../assetsjs/index"
-
+import Image from 'gatsby-image'
 
 const Carousel = ({
-  // Component,
-  // navbarheight,
   data,
-  slides,
   from,
   fromNext,
   fromPrev,
@@ -22,10 +19,9 @@ const Carousel = ({
 }) => {
 
   const [slideState, setSlideState] = useState('')
-  // const [isHovered, setIsHovered] = useState(false)
 
-  const nextSlide = useCallback(() => setIndex(state => (state + 1) % slides.length), [slides.length])
-  const prevSlide = useCallback(() => setIndex(state => (state === 0) ? state = slides.length - 1 : (state - 1) % slides.length), [slides.length])
+  const nextSlide = useCallback(() => setIndex(state => (state + 1) % data.length), [data.length])
+  const prevSlide = useCallback(() => setIndex(state => (state === 0) ? state = data.length - 1 : (state - 1) % data.length), [data.length])
 
   const handlePrev = useCallback(() => setSlideState('prev'), [])
   const handleNext = useCallback(() => setSlideState('next'), [])
@@ -34,25 +30,22 @@ const Carousel = ({
     from: slideState === '' ? from : slideState === 'next' ? fromNext : fromPrev,
     enter: enter,
     leave: slideState === '' ? leave : slideState === 'next' ? leaveNext : leavePrev,
-    config: config.molasses
+    config: { tension: 430, friction: 100 }
   })
+
 
   return (
     <>
       <animated.div style={animation}>
         <S.ImageContainer>
-          {transitionSlider.map(({ item, props, key }) => {
-            const Slide = slides[item]
-            return (
-              <Slide
-                key={key}
-                style={props}
-                nextSlide={nextSlide}
-                prevSlide={prevSlide}
-                sanityLandingPage={data}
-              />
-            )
-          })}
+          {transitionSlider.map(({ item, props, key }) =>
+            <AnimImage
+              fluid={data[item].image.asset.fluid}
+              style={{ ...props, height: '100%', width: '100%' }}
+              key={key}
+              alt={data[item].title}
+            />
+          )}
 
           <S.Button
             previous
@@ -71,6 +64,8 @@ const Carousel = ({
     </>
   )
 }
+
+const AnimImage = animated(Image)
 
 const S = {
   Button: styled.button`
@@ -148,6 +143,10 @@ const S = {
     font-weight: var(--bolder);
     font-size: 1.3rem;
     z-index: 102;
+  `,
+  Image: styled(Image)`
+    height: 100%;
+    width: 100%;
   `
 }
 

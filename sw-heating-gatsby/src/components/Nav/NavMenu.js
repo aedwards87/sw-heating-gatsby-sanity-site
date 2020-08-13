@@ -18,8 +18,12 @@ const NavMenu = ({
   const [bind, { height: viewHeight }] = useMeasure()
 
 
-  const { height, opacity, transform } = useSpring({
-    from: { height: 0, opacity: 0, transform: 'translate3d(20px,0,0)' },
+  const { height, opacity } = useSpring({
+    from: {
+      height: 0,
+      opacity: 0,
+      // transform: 'translate3d(20px,0,0)' 
+    },
     to: {
       height: isMenuOpen ? viewHeight : 0,
       opacity: isMenuOpen ? 1 : 0,

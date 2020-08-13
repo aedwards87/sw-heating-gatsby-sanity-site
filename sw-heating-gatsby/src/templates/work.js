@@ -1,56 +1,14 @@
 import React, { useState, useCallback } from 'react'
 import { graphql } from 'gatsby'
+import SEO from "../components/seo"
 import Image from 'gatsby-image'
 import PortableText from '@sanity/block-content-to-react'
 import styled from 'styled-components'
 import Layout from "../components/layout"
 import { Services } from '../components/index'
 import { StyledTitle } from '../components-styled/index'
-import { useTransition, useTrail, animated, config } from 'react-spring'
+import { useTransition, useTrail, animated } from 'react-spring'
 import { ArrowButton } from "../assetsjs/index"
-
-const slides = [
-  ({ style, click, sanityWork, isHovered }) => (
-    <animated.div className={`animated-div ${isHovered ? 'hovered' : null}`} onClick={click} style={style} >
-      <S.Image hero fluid={sanityWork.mainImage.asset.fluid} alt={sanityWork.title} />
-    </animated.div>
-  ),
-  ({ style, click, sanityWork, isHovered, }) => (
-    <animated.div className={`animated-div ${isHovered ? 'hovered' : null}`} onClick={click} style={style} >
-      <S.Image hero fluid={sanityWork.secondImage.asset.fluid} alt={sanityWork.title} />
-    </animated.div>
-  ),
-  ({ style, click, sanityWork, isHovered, }) => (
-    <animated.div className={`animated-div ${isHovered ? 'hovered' : null}`} onClick={click} style={style} >
-      <S.Image hero fluid={sanityWork.thirdImage.asset.fluid} alt={sanityWork.title} />
-    </animated.div>
-  ),
-  ({ style, click, sanityWork, isHovered, }) => (
-    <animated.div className={`animated-div ${isHovered ? 'hovered' : null}`} onClick={click} style={style} >
-      <S.Image hero fluid={sanityWork.fourthImage.asset.fluid} alt={sanityWork.title} />
-    </animated.div>
-  ),
-  ({ style, click, sanityWork, isHovered, }) => (
-    <animated.div className={`animated-div ${isHovered ? 'hovered' : null}`} onClick={click} style={style} >
-      <S.Image hero fluid={sanityWork.fifthImage.asset.fluid} alt={sanityWork.title} />
-    </animated.div>
-  ),
-  ({ style, click, sanityWork, isHovered, }) => (
-    <animated.div className={`animated-div ${isHovered ? 'hovered' : null}`} onClick={click} style={style} >
-      <S.Image hero fluid={sanityWork.sixthImage.asset.fluid} alt={sanityWork.title} />
-    </animated.div>
-  ),
-  ({ style, click, sanityWork, isHovered, }) => (
-    <animated.div className={`animated-div ${isHovered ? 'hovered' : null}`} onClick={click} style={style} >
-      <S.Image hero fluid={sanityWork.seventhImage.asset.fluid} alt={sanityWork.title} />
-    </animated.div>
-  ),
-  ({ style, click, sanityWork, isHovered, }) => (
-    <animated.div className={`animated-div ${isHovered ? 'hovered' : null}`} onClick={click} style={style} >
-      <S.Image hero fluid={sanityWork.eighthImage.asset.fluid} alt={sanityWork.title} onClick={click} />
-    </animated.div>
-  )
-]
 
 
 export const query = graphql`
@@ -58,67 +16,14 @@ export const query = graphql`
     sanityWork(slug: {current: {eq: $slug}}) {
       title
       _rawDescription
-      # mainImageAltTag
-      mainImage {
-        asset {
-          fluid(maxWidth: 1000)  {
-            ...GatsbySanityImageFluid
-          }
-        }
-      }
-      # secondImageAltTag
-      secondImage {
-        asset {
-          fluid(maxWidth: 1000)  {
-            ...GatsbySanityImageFluid
-          }
-        }
-      }
-      # thirdImageAltTag
-      thirdImage {
-        asset {
-          fluid(maxWidth: 1000)  {
-            ...GatsbySanityImageFluid
-          }
-        }
-      }
-      # fourthImageAltTag
-      fourthImage {
-        asset {
-          fluid(maxWidth: 1000)  {
-            ...GatsbySanityImageFluid
-          }
-        }
-      }
-      # fifthImageAltTag
-      fifthImage {
-        asset {
-          fluid(maxWidth: 1000)  {
-            ...GatsbySanityImageFluid
-          }
-        }
-      }
-      # sixthImageAltTag
-      sixthImage {
-        asset {
-          fluid(maxWidth: 1000)  {
-            ...GatsbySanityImageFluid
-          }
-        }
-      }
-      # seventhImageAltTag
-      seventhImage {
-        asset {
-          fluid(maxWidth: 1000)  {
-            ...GatsbySanityImageFluid
-          }
-        }
-      }
-      # eighthImageAltTag
-      eighthImage {
-        asset {
-          fluid(maxWidth: 1000)  {
-            ...GatsbySanityImageFluid
+      images {
+        title
+        image {
+          asset {
+            id
+            fluid(maxWidth: 1000) {
+              ...GatsbySanityImageFluid
+            }
           }
         }
       }
@@ -130,35 +35,38 @@ export default ({ data: { sanityWork } }) => {
   const [index, setIndex] = useState(0)
   const [isHovered, setIsHovered] = useState(false)
 
-  const nextSlide = useCallback(() => setIndex(state => (state + 1) % slides.length), [])
-  const prevSlide = useCallback(() =>
-    setIndex(state => (state === 0) ? state = slides.length - 1 : (state - 1) % slides.length),
-    [])
+  const sanityImages = sanityWork.images.map(node => node)
 
-  const handleHoverEnter = useCallback(() => setIsHovered(true), [isHovered])
-  const handleHoverLeave = useCallback(() => setIsHovered(false), [isHovered])
+  // const sanityWorkImages = Object.keys(sanityWork).filter(images => images.includes('Image'))
+
+  const nextSlide = useCallback(() => setIndex(state => (state + 1) % sanityImages.length), [])
+  const prevSlide = useCallback(() => setIndex(state => (state === 0) ? state = sanityImages.length - 1 : (state - 1) % sanityImages.length), [])
+
+  const handleHoverEnter = useCallback(() => setIsHovered(true), [])
+  const handleHoverLeave = useCallback(() => setIsHovered(false), [])
 
   const targetSlide = (e) => (
     setIndex(parseInt(e.currentTarget.value))
   )
 
-  const sanityWorkImages = Object.keys(sanityWork).filter(images => images.includes('Image'))
 
-  const trail = useTrail(sanityWorkImages.length, {
+
+  const trail = useTrail(sanityImages.length, {
     opacity: 1,
     from: { opacity: 0 },
-    config: { tension: 280, friction: 60 }
+    config: { tension: 400, friction: 60 }
   })
 
   const transitions = useTransition(index, p => p, {
     from: { opacity: 0, position: 'absolute' },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
-    config: config.molasses
+    config: { tension: 400, friction: 30 }
   })
 
   return (
     <Layout>
+      <SEO title={sanityWork.title} />
       <S.TemplateContainer>
         <div>
           <div
@@ -166,32 +74,37 @@ export default ({ data: { sanityWork } }) => {
           >
             <StyledTitle as="h1" heading>{sanityWork.title}</StyledTitle>
           </div>
+
           <div>
             <PortableText
               blocks={sanityWork._rawDescription}
             />
           </div>
+
           <S.ImageWrapper>
+
             <S.HeroImageContainer >
-              {transitions.map(({ item, props, key }) => {
-                const Slide = slides[item]
-                return (
-                  <Slide
-                    key={key}
-                    style={props}
-                    click={nextSlide}
-                    sanityWork={sanityWork}
-                    isHovered={isHovered}
+              {transitions.map(({ item, props, key }) =>
+                <animated.div
+                  className={`animated-div ${isHovered ? 'hovered' : null}`}
+                  style={props}
+                  key={key}
+                >
+                  <S.Image
+                    hero
+                    fluid={sanityImages[item].image.asset.fluid}
+                    alt={sanityImages[item].title}
+                    onClick={nextSlide}
                   />
-                )
-              })}
+                </animated.div>
+              )}
               <S.Button
                 previous
                 onClick={prevSlide}
                 onMouseEnter={handleHoverEnter}
                 onMouseLeave={handleHoverLeave}
-              // onMouseUp={handleHoverEnter}
-              // onMouseDown={handleHoverLeave}
+                onFocus={handleHoverEnter}
+                onBlur={handleHoverLeave}
               >
                 <ArrowButton />
               </S.Button>
@@ -200,26 +113,30 @@ export default ({ data: { sanityWork } }) => {
                 onClick={nextSlide}
                 onMouseEnter={handleHoverEnter}
                 onMouseLeave={handleHoverLeave}
-              // onMouseUp={handleHoverEnter}
-              // onMouseDown={handleHoverLeave}
+                onFocus={handleHoverEnter}
+                onBlur={handleHoverLeave}
               >
                 <ArrowButton flip />
               </S.Button>
             </S.HeroImageContainer>
+
             <S.GalleryImageContainer>
-              {trail.map((props, i) =>
+              {trail.map(({ opacity }, i) =>
                 <animated.button
-                  style={{ ...props }} value={i} onClick={targetSlide}
-                  key={sanityWorkImages[i]}
+                  style={{ opacity }}
+                  value={i}
+                  onClick={targetSlide}
+                  key={sanityImages[i].image.asset.id}
                 >
                   <S.Image
-                    fluid={sanityWork[sanityWorkImages[i]].asset.fluid}
-                    // alt={sanityWork[`${sanityWorkImages[i]}AltTag`]}
+                    fluid={sanityImages[i].image.asset.fluid}
+                    alt={sanityImages[i].title}
                     active={index === i ? true : false}
                   />
                 </animated.button>
               )}
             </S.GalleryImageContainer>
+
           </S.ImageWrapper>
         </div>
       </S.TemplateContainer>
@@ -289,9 +206,6 @@ const S = {
       transition: all .3s ease;
     }
     .hovered {
-      box-shadow: var(--shadow-one);
-    }
-    .hovered {
       overflow: hidden;
       cursor: pointer;
       transform: translate3d(0, -0.3vmax, 0) scale(1.05);
@@ -330,9 +244,6 @@ const S = {
         min-height: 700px;
         max-height: 700px;
       }
-      /* .gatsby-image-wrapper {
-        max-height: 160px;
-      } */
     }
   `,
   Button: styled.button`
@@ -344,7 +255,6 @@ const S = {
     width: 50%;
     height: 100%;
     border: 0;
-    outline: 0;
     z-index: 99;
     color: white;
     display: flex;
@@ -372,7 +282,8 @@ const S = {
       'translate3d(-0.3vmax, 0, 0) scale(-1)' :
       'translate3d(0.3vmax, 0, 0) scale(1)'};
       }
-      :hover {
+      :hover,
+      :focus {
         cursor: pointer;
         transform: ${({ next }) => next ?
       'translate3d(0.6vmax, -0.3vmax, 0) scale(1.05)' :
@@ -409,14 +320,21 @@ const S = {
       transition: all .3s ease;
     }
     > div:hover,
-      button:hover {
-      box-shadow: var(--shadow-one);
+    > div:focus,
+    button:hover,
+    button:focus {
       overflow: hidden;
       cursor: pointer;
       transform: translate3d(0, -0.3vmax, 0) scale(1.05);
     }
     button:active {
       transform: translate3d(0, 0, 0) scale(1);
+    }
+    button:hover,
+    button:focus {
+      .gatsby-image-wrapper:first-child::after {
+        opacity: 0;
+      }
     }
     .animated-div {
       border-radius: 10px;
@@ -463,8 +381,8 @@ const S = {
     }
   `,
   Image: styled(Image)`
-    box-shadow: ${({ active }) => active ? '0 0 6px 1px rgba(var(--primary-two-raw), .8)' : null};
-    box-shadow: ${({ hero }) => hero && 'none'};
+    border: ${({ active }) => active ? '3px solid var(--primary-one)' : null};
+    border: ${({ hero }) => hero && 'none'};
     &.gatsby-image-wrapper:first-child::after {
       content: "";
       top: 0;
@@ -478,10 +396,7 @@ const S = {
       transition: all .3s ease;
       opacity: 1;
     }
-    /* &.active.gatsby-image-wrapper:not(:first-child)::after, */
-    /* &.gatsby-image-wrapper:not(:first-child):hover::after { */
-    &.active.gatsby-image-wrapper:first-child::after,
-    &.gatsby-image-wrapper:first-child:hover::after {
+    &.active.gatsby-image-wrapper:first-child::after {
       opacity: 0;
     }
   `

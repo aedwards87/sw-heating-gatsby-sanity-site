@@ -7,7 +7,7 @@ export const CarouselSlides = [
     <CarouselDroplet
       style={style}
       click={click}
-      imageSRC={sanityLandingPage.mainImage.asset.fluid.src}
+      imageSRC={sanityLandingPage.mainImage.asset.fluid}
       alt={sanityLandingPage.mainImageAltTag}
     />
   ),
@@ -15,7 +15,7 @@ export const CarouselSlides = [
     <CarouselDroplet
       style={style}
       click={click}
-      imageSRC={sanityLandingPage.secondImage.asset.fluid.src}
+      imageSRC={sanityLandingPage.secondImage.asset.fluid}
       alt={sanityLandingPage.secondImageAltTag}
     />
   ),
@@ -23,7 +23,7 @@ export const CarouselSlides = [
     <CarouselDroplet
       style={style}
       click={click}
-      imageSRC={sanityLandingPage.thirdImage.asset.fluid.src}
+      imageSRC={sanityLandingPage.thirdImage.asset.fluid}
       alt={sanityLandingPage.thirdImageAltTag}
     />
   ),
@@ -31,7 +31,7 @@ export const CarouselSlides = [
     <CarouselDroplet
       style={style}
       click={click}
-      imageSRC={sanityLandingPage.fourthImage.asset.fluid.src}
+      imageSRC={sanityLandingPage.fourthImage.asset.fluid}
       alt={sanityLandingPage.fourthImageAltTag}
     />
   ),
@@ -39,7 +39,7 @@ export const CarouselSlides = [
     <CarouselDroplet
       style={style}
       click={click}
-      imageSRC={sanityLandingPage.fifthImage.asset.fluid.src}
+      imageSRC={sanityLandingPage.fifthImage.asset.fluid}
       alt={sanityLandingPage.fifthImageAltTag}
     />
   )

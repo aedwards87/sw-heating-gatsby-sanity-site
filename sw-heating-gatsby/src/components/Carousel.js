@@ -1,27 +1,21 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 import styled from 'styled-components'
 import { useTransition, config } from 'react-spring'
-import { CarouselSlides } from './Carousel/CarouselSlides'
-// import CarouselButton from '../components/Carousel/CarouselButton'
+import { CarouselDroplet as ImageContainer } from '../assetsjs/index'
 
 
 const Carousel = ({ navbarheight, sanityLandingPage }) => {
   const [index, setIndex] = useState(0)
 
-  const nextSlide = useCallback(() => setIndex(state => (state + 1) % CarouselSlides.length), []) // Increments index state by 1
-  // const targetSlide = (e) => setIndex(parseInt(e.target.value)) // Selects slide matching button value
-
-  // CODE to go to the previous slide - decrements index state by 1
-  // const prevSlide = useCallback(() => setIndex(state => (state === 0) ? state = slides.length - 1 : (state - 1) % slides.length), [])
+  const nextSlide = useCallback(() => setIndex(state => (state + 1) % sanityLandingPage.images.length), []) // Increments index state by 1
 
   // Timer to change images after 4 seconds
-  // useEffect(() => {
-  //   const Timer = setInterval(() => {
-  //     setIndex(state => (state + 1) % 5)
-  //   }, 4000)
-  //   return () => clearInterval(Timer)
-  // })
-
+  useEffect(() => {
+    const Timer = setInterval(() => {
+      setIndex(state => (state + 1) % 5)
+    }, 4000)
+    return () => clearInterval(Timer)
+  })
 
   const transitions = useTransition(index, p => p, {
     from: { opacity: 0, position: 'absolute', transform: 'translate3d(60%,-25%,0) scale(0.5)', zIndex: 4, borderRadius: 500 },
@@ -32,39 +26,24 @@ const Carousel = ({ navbarheight, sanityLandingPage }) => {
 
   return (
     <S.Carousel navbarheight={navbarheight} >
-      {transitions.map(({ item, props, key }) => {
-        const Slide = CarouselSlides[item]
-        return (
-          <Slide
-            key={key}
-            style={props}
-            click={nextSlide}
-            sanityLandingPage={sanityLandingPage}
-          />
-        )
-      })}
-      {/* <S.ButtonsContainer>
-        {slides.map((_, i) =>
-          <CarouselButton key={uuidv4()} click={targetSlide} value={i} index={index} />
-        )}
-      </S.ButtonsContainer> */}
-
-      {/* <button onClick={prevSlide} style={{ zIndex: 99999999, position: 'absolute', top: 50 }}>back</button> */}
+      {transitions.map(({ item, props, key }) =>
+        <ImageContainer
+          key={key}
+          style={props}
+          click={nextSlide}
+          fluid={sanityLandingPage.images[item].image.asset.fluid}
+          alt={sanityLandingPage.images[item].title}
+        />
+      )}
     </S.Carousel>
   )
 }
+
 
 const S = {
   Carousel: styled.div`
     position: relative; 
     height: 100%;
-    /*
-    right: 0;
-    top: -${({ navbarheight }) => navbarheight.navBarHeight}px;
-    width: 100%;
-    min-height: 500px;
-    height: 120vh;
-    overflow: hidden; */
     grid-column: 3 / span 2;
     transition: transform 0.5s ease;
 

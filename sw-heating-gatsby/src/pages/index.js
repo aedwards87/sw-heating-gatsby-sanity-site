@@ -27,40 +27,13 @@ export const pageQuery = graphql`
     sanityLandingPage {
       title
       strapLine
-      mainImageAltTag
-      mainImage {
-        asset {
-          fluid(maxWidth: 1000) {
-            ...GatsbySanityImageFluid
-          }
-        }
-      }
-      secondImageAltTag
-      secondImage {
-        asset {
-          fluid(maxWidth: 1000) {
-            ...GatsbySanityImageFluid
-          }
-        }
-      }
-      thirdImage {
-        asset {
-          fluid(maxWidth: 1000) {
-            ...GatsbySanityImageFluid
-          }
-        }
-      }
-      fourthImage {
-        asset {
-          fluid(maxWidth: 1000) {
-            ...GatsbySanityImageFluid
-          }
-        }
-      }
-      fifthImage {
-        asset {
-          fluid(maxWidth: 1000) {
-            ...GatsbySanityImageFluid
+      images {
+        title
+        image {
+          asset {
+            fluid(maxWidth: 1000) {
+              ...GatsbySanityImageFluid
+            }
           }
         }
       }

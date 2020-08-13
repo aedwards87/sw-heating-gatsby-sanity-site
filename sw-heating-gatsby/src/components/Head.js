@@ -1,12 +1,10 @@
 import React, { useContext } from 'react'
-// import Image from 'gatsby-image'
 import styled from 'styled-components'
 import { Link } from "gatsby"
 import { UserContext, Carousel, GradientButton, MobileCarousel } from './index'
 import { HeadFlameBackground } from '../assetsjs/index'
 import { SmallScreen, Default } from '../hooks/useMedia'
 
-// import { CarouselSlides } from '../components/Carousel/CarouselSlides'
 
 
 const Head = ({ sanityLandingPage }) => {
@@ -22,9 +20,11 @@ const Head = ({ sanityLandingPage }) => {
             <GradientButton children="Contact us" />
           </Link>
         </S.Content>
+
         <SmallScreen>
           <MobileCarousel sanityLandingPage={sanityLandingPage} />
         </SmallScreen>
+
         <Default>
           <HeadFlameBackground navbarheight={navBarHeight} />
           <Carousel

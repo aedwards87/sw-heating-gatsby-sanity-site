@@ -1,23 +1,23 @@
 import React from 'react'
 import styled from 'styled-components';
 import useForm from '../hooks/useForm'
-import { validate } from '../hooks/validate';
+import { validateReview } from '../hooks/validate';
 import { Warning } from '../assetsjs/index'
 
 
-const Form = ({ inputTitles, message }) => {
-  const { values, handleChange, handleSubmit, errors } = useForm(submit, validate)
+const ReviewForm = ({ inputTitles, message }) => {
+  const { values, handleChange, handleSubmit, errors } = useForm(submit, validateReview)
 
   function submit() {
     console.log('success')
   }
 
-  console.log(Object.values(values).some(x => x === ''))
+  // console.log(Object.values(values).some(x => x === ''))
 
-  console.log(message)
+  // console.log(message)
 
   return (
-    <S.Form onSubmit={handleSubmit} noValidate>
+    <S.ReviewForm onSubmit={handleSubmit} noValidate>
       <input
         type="hidden"
         name="form-name"
@@ -65,22 +65,22 @@ const Form = ({ inputTitles, message }) => {
           )
         })}
         <li>
-          <button type="submit" children="Send" />
+          <button aria-label="Send" type="submit" children="Send" />
         </li>
       </S.ListContainer>
 
       {Object.values(errors).some(e => e !== '') &&
         <div>
-          <Warning />
+          <Warning icon='#ffffff' sign='#e30613' />
           <span>There are invalid fields, please check these and try again</span>
         </div>
       }
-    </S.Form>
+    </S.ReviewForm>
   )
 }
 
 const S = {
-  Form: styled.form`
+  ReviewForm: styled.form`
     > div {
       text-align: center;
       color: var(--primary-two);
@@ -103,7 +103,6 @@ const S = {
     margin-left: 0;
     margin-bottom: 0;
     transition: all .3s ease;
-    /* padding: 0; */
     > li {
       display: grid;
       border-radius: 12px;
@@ -124,7 +123,6 @@ const S = {
         padding: 0;
         margin-bottom: 0;
         border: none;
-        outline: none;
       }
       > label {
         height: 100%;
@@ -137,7 +135,6 @@ const S = {
       }
       > button {
         background: transparent;
-        outline: none;
         border: none;
         padding: 1rem;
         color: var(--main-text);
@@ -183,7 +180,6 @@ const S = {
   Input: styled.input`
     background: transparent;
     color: var(--main-text);
-    outline: none;
     border: none;
     width: 100%;
     padding: 1rem;
@@ -229,4 +225,4 @@ const S = {
   `
 }
 
-export default Form
+export default ReviewForm

@@ -7,7 +7,7 @@ import Image from 'gatsby-image'
 // import CarouselButtons from '../components/Carousel/CarouselButton'
 
 
-const CarouselDropletHousing = ({ style, click, imageSRC, alt }) => {
+const CarouselDropletHousing = ({ style, click, fluid, alt }) => {
   return (
     // <S.CarouselDropletHousing style={style} >
     //   <CarouselDropletMaskSVG click={click} imageSRC={imageSRC} alt={alt} />
@@ -15,7 +15,7 @@ const CarouselDropletHousing = ({ style, click, imageSRC, alt }) => {
     // </S.CarouselDropletHousing>
     <S.Square style={style} onClick={click}>
       <div>
-        <Image fluid={imageSRC} alt={alt} style={{ width: '100%', height: '100%' }} />
+        <Image fluid={fluid} alt={alt} style={{ width: '100%', height: '100%' }} />
       </div>
     </S.Square>
   )

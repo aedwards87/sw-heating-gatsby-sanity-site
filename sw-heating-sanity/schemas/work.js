@@ -100,11 +100,22 @@ export default {
         hotspot: true
       }
     },
+    {
+      name: 'images',
+      title: 'Images',
+      type: 'array',
+      of: [{
+        type: 'reference',
+        to: [
+          { type: 'images' },
+        ],
+      }],
+    }
   ],
   preview: {
     select: {
       title: 'title',
-      media: 'mainImage',
+      media: 'images.0.image',
     }
   }
 }

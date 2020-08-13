@@ -1,12 +1,13 @@
 import React, { useState, useCallback, useEffect } from 'react'
 import styled from 'styled-components'
-import { MobileHeadCarouselSlides } from './Slides/MobileHeadCarouselSlides'
-import { useTransition, config } from 'react-spring'
+import { useTransition, config, animated } from 'react-spring'
+import Image from 'gatsby-image'
+
 
 const MobileCarousel = ({ sanityLandingPage }) => {
   const [index, setIndex] = useState(0)
   const nextSlide = useCallback(() =>
-    setIndex(state => (state + 1) % MobileHeadCarouselSlides.length), []
+    setIndex(state => (state + 1) % sanityLandingPage.images.length), []
   )
 
   const transitions = useTransition(index, p => p, {
@@ -17,29 +18,28 @@ const MobileCarousel = ({ sanityLandingPage }) => {
   })
 
   // Timer to change images after 4 seconds
-  // useEffect(() => {
-  //   const Timer = setInterval(() => {
-  //     setIndex(state => (state + 1) % 5)
-  //   }, 4000)
-  //   return () => clearInterval(Timer)
-  // })
+  useEffect(() => {
+    const Timer = setInterval(() => {
+      setIndex(state => (state + 1) % 5)
+    }, 4000)
+    return () => clearInterval(Timer)
+  })
 
   return (
-    <S.MobileCarousel>
-      {transitions.map(({ item, props, key }) => {
-        const Slide = MobileHeadCarouselSlides[item]
-        return (
-          <Slide
-            key={key}
-            style={props}
-            click={nextSlide}
-            sanityLandingPage={sanityLandingPage}
-          />
-        )
-      })}
+    <S.MobileCarousel onClick={nextSlide} >
+      {transitions.map(({ item, props, key }) =>
+        <AnimImage
+          key={key}
+          style={{ ...props, height: '100%', width: '100%' }}
+          fluid={sanityLandingPage.images[item].image.asset.fluid}
+          alt={sanityLandingPage.images[item].title}
+        />
+      )}
     </S.MobileCarousel>
   )
 }
+
+const AnimImage = animated(Image)
 
 const S = {
   MobileCarousel: styled.div`

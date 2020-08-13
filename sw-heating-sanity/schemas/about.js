@@ -6,17 +6,18 @@ export default {
     {
       name: 'title',
       title: 'Title',
-      type: 'string'
+      type: 'string',
+      validation: Rule => Rule.required()
     },
-    {
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
-      options: {
-        source: 'title',
-        maxLength: 96
-      }
-    },
+    // {
+    //   name: 'slug',
+    //   title: 'Slug',
+    //   type: 'slug',
+    //   options: {
+    //     source: 'title',
+    //     maxLength: 96
+    //   }
+    // },
     {
       name: 'content',
       title: 'Content',
@@ -29,7 +30,8 @@ export default {
             { title: 'Normal', value: 'normal' },
           ],
         }
-      ]
+      ],
+      validation: Rule => Rule.required()
     },
     {
       name: 'profileImage',
@@ -51,7 +53,8 @@ export default {
             { title: 'Normal', value: 'normal' },
           ],
         }
-      ]
+      ],
+      validation: Rule => Rule.required()
     },
   ],
   preview: {
