@@ -6,7 +6,7 @@ import { Warning } from '../assetsjs/index'
 
 
 const ReviewForm = ({ inputTitles, message }) => {
-  const { values, handleChange, handleSubmit, errors } = useForm(submit, validateReview)
+  const { values, handleChange, handleSubmit, errors } = useForm(validateReview)
 
   // function submit() {
   //   console.log('success')
