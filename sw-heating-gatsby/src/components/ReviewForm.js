@@ -6,11 +6,11 @@ import { Warning } from '../assetsjs/index'
 
 
 const ReviewForm = ({ inputTitles, message }) => {
-  const { values, handleChange, handleSubmit, errors } = useForm(validateReview)
+  const { values, handleChange, handleSubmit, errors } = useForm(submit, validateReview)
 
-  // function submit() {
-  //   console.log('success')
-  // }
+  function submit() {
+    handleSubmit()
+  }
 
   // console.log(Object.values(values).some(x => x === ''))
 

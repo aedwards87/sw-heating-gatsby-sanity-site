@@ -54,7 +54,7 @@ const ContactForm = () => {
             Contact us
           </StyledTitle>
         </div>
-        <form onSubmit={handleSubmit} noValidate name="contact" method="POST" data-netlify="true">
+        <form onSubmit={handleSubmit} noValidate name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
           <input
             type="hidden"
             name="form-name"
@@ -102,7 +102,7 @@ const ContactForm = () => {
               )
             })}
             <li>
-              <button aria-label="Send" type="submit" children="Send" />
+              <button aria-label="Send" type="submit" children="Send" onSubmit={handleSubmit} />
             </li>
           </S.ListContainer>
 
