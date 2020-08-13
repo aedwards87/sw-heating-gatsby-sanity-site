@@ -5,7 +5,7 @@ import useForm from '../hooks/useForm'
 import { validateContact } from '../hooks/validate';
 import { Warning } from '../assetsjs/index'
 import { Link } from "gatsby"
-import { navigateTo } from "@reach/router";
+import { navigate } from "@reach/router";
 
 const inputTitles = [
   {
@@ -54,7 +54,7 @@ const ContactForm = () => {
       }),
     })
       // .then(() => navigateTo(form.getAttribute("action")))
-      .then(() => navigateTo("/thankyou"))
+      .then(() => navigate("/thankyou"))
       .catch((error) => alert(error))
   }
 
