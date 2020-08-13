@@ -9,7 +9,7 @@ const ReviewForm = ({ inputTitles, message }) => {
   const { values, handleChange, handleSubmit, errors } = useForm(submit, validateReview)
 
   function submit() {
-    handleSubmit()
+    console.log('success')
   }
 
   // console.log(Object.values(values).some(x => x === ''))

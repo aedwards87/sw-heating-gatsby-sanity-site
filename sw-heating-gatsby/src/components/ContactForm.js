@@ -36,7 +36,17 @@ const ContactForm = () => {
   const { values, handleChange, handleSubmit, errors } = useForm(submit, validateContact)
 
   function submit() {
-    console.log('success')
+    const form = e.target
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({
+        'contact-form': form.getAttribute('name'),
+        ...values,
+      }),
+    })
+      .then(() => navigate(form.getAttribute('action')))
+      .catch((error) => alert(error))
   }
 
   // console.log(Object.values(values).some(x => x === ''))
@@ -59,7 +69,7 @@ const ContactForm = () => {
         >
           <input
             type="hidden"
-            name="form-name"
+            name="contact-form"
             value="contact-form"
           // hidden input for Netlify to do there magic
           />
