@@ -46,7 +46,7 @@ const ContactForm = () => {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({
-        'form-name': 'contact-form',
+        'contact-form': 'contact-form',
         ...values,
       }),
     })
@@ -74,7 +74,7 @@ const ContactForm = () => {
         >
           <input
             type="hidden"
-            name="form-name"
+            name="contact-form"
             value="contact-form"
           // hidden input for Netlify to do there magic
           />
