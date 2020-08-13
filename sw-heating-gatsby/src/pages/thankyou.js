@@ -6,20 +6,20 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 
-const NotFoundPage = () => {
+const thankYou = () => {
   return (
     <Layout>
-      <SEO title="404" />
-      <S.NotFoundPage>
+      <SEO title="Thank you" />
+      <S.ThankYou>
         <div>
           <div style={{ marginBottom: '6rem' }}>
-            <StyledTitle id="404" heading>NOT FOUND</StyledTitle>
+            <StyledTitle id="thank-you" heading>Thank you</StyledTitle>
           </div>
           <div>
-            <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+            <p>Your form has been sent</p>
           </div>
         </div>
-      </S.NotFoundPage>
+      </S.ThankYou>
       <Services />
     </Layout>
   )
@@ -27,7 +27,7 @@ const NotFoundPage = () => {
 
 
 const S = {
-  NotFoundPage: styled.section`
+  ThankYou: styled.section`
     width: 100%;
     height: 100%;
     > div {
@@ -44,4 +44,4 @@ const S = {
 }
 
 
-export default NotFoundPage
+export default thankYou

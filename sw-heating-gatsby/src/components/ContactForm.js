@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { StyledTitle } from '../components-styled/index'
 import useForm from '../hooks/useForm'
 import { validateContact } from '../hooks/validate';
-// const uuidv4 = require('uuid/v4')
 import { Warning } from '../assetsjs/index'
 import { Link } from "gatsby"
 
@@ -40,6 +39,11 @@ function encode(data) {
 const ContactForm = () => {
   const { values, handleChange, handleSubmit, errors } = useForm(submit, validateContact)
 
+
+  // function submit() {
+  //   console.log('done')
+  // }
+
   function submit() {
     fetch('/', {
       method: 'POST',
@@ -49,12 +53,10 @@ const ContactForm = () => {
         ...values,
       }),
     })
-      .then(() => alert("Success!"))
+      // .then(() => navigateTo(form.getAttribute("action")))
+      .then(() => navigateTo("/thankyou"))
       .catch((error) => alert(error))
   }
-
-  console.log(values)
-  // console.log(Object.values(values).some(x => x === ''))
 
   return (
     <S.ContactForm>
@@ -72,16 +74,14 @@ const ContactForm = () => {
         <form
           noValidate
           name="contact"
+          action="/thank-you"
           method="POST"
           data-netlify="true"
           data-netlify-honeypot="bot-field"
           onSubmit={handleSubmit}
-        // action="/form-success"
         >
           <input type="hidden" name="bot-field" />
-          <input type="hidden" name="form-name" value="contact"
-          // hidden input for Netlify to do there magic
-          />
+          <input type="hidden" name="form-name" value="contact" />
           <S.ListContainer>
             <li>
               <p>If you have any questions or queries, or would like to request a quote or even book an appointment, please get in touch with a member of our team using the form below:</p>
@@ -123,7 +123,7 @@ const ContactForm = () => {
               )
             })}
             <li>
-              <button aria-label="Send" type="submit" children="Send" onSubmit={handleSubmit} />
+              <button aria-label="Send" type="submit" children="Send" />
             </li>
           </S.ListContainer>
 
