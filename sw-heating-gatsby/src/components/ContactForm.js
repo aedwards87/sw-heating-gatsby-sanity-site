@@ -41,12 +41,11 @@ const ContactForm = () => {
   const { values, handleChange, handleSubmit, errors } = useForm(submit, validateContact)
 
   function submit() {
-    // const form = e.target
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({
-        'form-name': 'contact-form',
+        'form-name': 'contact',
         ...values,
       }),
     })
@@ -70,13 +69,17 @@ const ContactForm = () => {
             Contact us
           </StyledTitle>
         </div>
-        <form onSubmit={handleSubmit} noValidate name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field"
+        <form
+          noValidate
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          onSubmit={handleSubmit}
         // action="/form-success"
         >
-          <input
-            type="hidden"
-            name="form-name"
-            value="contact"
+          <input type="hidden" name="bot-field" />
+          <input type="hidden" name="form-name" value="contact"
           // hidden input for Netlify to do there magic
           />
           <S.ListContainer>
