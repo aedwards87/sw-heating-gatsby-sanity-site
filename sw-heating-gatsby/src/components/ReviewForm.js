@@ -17,7 +17,7 @@ const ReviewForm = ({ inputTitles, message }) => {
   // console.log(message)
 
   return (
-    <S.ReviewForm onSubmit={handleSubmit} noValidate>
+    <S.ReviewForm onSubmit={handleSubmit} noValidate name="review" method="POST" data-netlify="true" data-netlify-recaptcha="true">
       <input
         type="hidden"
         name="form-name"
@@ -64,6 +64,7 @@ const ReviewForm = ({ inputTitles, message }) => {
             </li>
           )
         })}
+        <li><div data-netlify-recaptcha="true"></div></li>
         <li>
           <button aria-label="Send" type="submit" children="Send" />
         </li>

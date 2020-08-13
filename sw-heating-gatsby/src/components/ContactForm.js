@@ -54,7 +54,7 @@ const ContactForm = () => {
             Contact us
           </StyledTitle>
         </div>
-        <form onSubmit={handleSubmit} noValidate>
+        <form onSubmit={handleSubmit} noValidate name="contact" method="POST" data-netlify="true">
           <input
             type="hidden"
             name="form-name"
