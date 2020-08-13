@@ -35,7 +35,7 @@ const inputTitles = [
 const ContactForm = () => {
   const { values, handleChange, handleSubmit, errors } = useForm(submit, validateContact)
 
-  function submit() {
+  function submit(e) {
     const form = e.target
     fetch('/', {
       method: 'POST',
@@ -49,7 +49,6 @@ const ContactForm = () => {
       .catch((error) => alert(error))
   }
 
-  // console.log(Object.values(values).some(x => x === ''))
 
   return (
     <S.ContactForm>
