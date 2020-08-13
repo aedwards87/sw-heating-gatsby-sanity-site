@@ -41,11 +41,6 @@ const Services = () => {
     `
   )
 
-  const [isFocused, setIsFocused] = useState(false)
-
-  const handleFocus = useCallback(() => setIsFocused(true), [])
-  const handleBlur = useCallback(() => setIsFocused(false), [])
-
   return (
     <S.Services>
       <div>
@@ -55,29 +50,12 @@ const Services = () => {
 
         <S.List>
           {allSanityWork.edges.map(({ node: work }) => (
-            <li
-              key={work.slug.current}
-              onFocus={handleFocus}
-              onBlur={handleBlur}
-              isFocused={isFocused}
-            >
-              <Link
-                to={`/${work.slug.current}`}
-                onFocus={handleFocus}
-                onBlur={handleBlur}
-                isFocused={isFocused}
-              >
-                <S.ImageContainer
-                  onFocus={handleFocus}
-                  onBlur={handleBlur}
-                  isFocused={isFocused}
-                >
+            <li key={work.slug.current} >
+              <Link to={`/${work.slug.current}`}>
+                <S.ImageContainer>
                   <S.Image
                     fluid={work.images[0].image.asset.fluid}
                     alt={work.images[0].title}
-                    onFocus={handleFocus}
-                    onBlur={handleBlur}
-                    isFocused={isFocused}
                   />
                 </S.ImageContainer>
                 <div className="list-heading-container">

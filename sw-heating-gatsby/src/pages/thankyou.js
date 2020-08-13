@@ -12,7 +12,7 @@ const thankYou = () => {
       <SEO title="Thank you" />
       <S.ThankYou>
         <div>
-          <div style={{ marginBottom: '6rem' }}>
+          <div style={{ marginBottom: '5rem' }}>
             <StyledTitle id="thank-you" heading>Thank you</StyledTitle>
           </div>
           <div>
@@ -37,7 +37,7 @@ const S = {
     }
     @media(min-width: 850px) {
       > div {
-        padding-bottom: 7rem;
+        padding-bottom: 4rem;
       }
     }
   `

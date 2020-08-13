@@ -5,7 +5,7 @@ import useForm from '../hooks/useForm'
 import { validateContact } from '../hooks/validate';
 import { Warning } from '../assetsjs/index'
 import { Link } from "gatsby"
-
+import { navigateTo } from "@reach/router";
 
 const inputTitles = [
   {
@@ -40,9 +40,9 @@ const ContactForm = () => {
   const { values, handleChange, handleSubmit, errors } = useForm(submit, validateContact)
 
 
-  // function submit() {
-  //   console.log('done')
-  // }
+  function submit() {
+    console.log('done')
+  }
 
   function submit() {
     fetch('/', {
