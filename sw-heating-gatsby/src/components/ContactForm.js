@@ -49,6 +49,7 @@ const ContactForm = () => {
       .catch((error) => alert(error))
   }
 
+  // console.log(Object.values(values).some(x => x === ''))
 
   return (
     <S.ContactForm>
