@@ -54,7 +54,9 @@ const ContactForm = () => {
             Contact us
           </StyledTitle>
         </div>
-        <form onSubmit={handleSubmit} noValidate name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+        <form onSubmit={handleSubmit} noValidate name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field"
+        // action="/form-success"
+        >
           <input
             type="hidden"
             name="form-name"
