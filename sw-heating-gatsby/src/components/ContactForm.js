@@ -40,13 +40,13 @@ function encode(data) {
 const ContactForm = () => {
   const { values, handleChange, handleSubmit, errors } = useForm(submit, validateContact)
 
-  function submit(e) {
+  function submit() {
     // const form = e.target
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({
-        'contact-form': 'contact-form',
+        'form-name': 'contact-form',
         ...values,
       }),
     })
@@ -54,6 +54,7 @@ const ContactForm = () => {
       .catch((error) => alert(error))
   }
 
+  console.log(values)
   // console.log(Object.values(values).some(x => x === ''))
 
   return (
@@ -74,8 +75,8 @@ const ContactForm = () => {
         >
           <input
             type="hidden"
-            name="contact-form"
-            value="contact-form"
+            name="form-name"
+            value="contact"
           // hidden input for Netlify to do there magic
           />
           <S.ListContainer>
