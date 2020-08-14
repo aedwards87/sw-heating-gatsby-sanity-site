@@ -6,7 +6,8 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 
-const thankYou = () => {
+const thankYou = (props) => {
+  console.log(props)
   return (
     <Layout>
       <SEO title="Thank you" />

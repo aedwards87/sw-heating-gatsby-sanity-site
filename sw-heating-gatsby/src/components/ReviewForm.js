@@ -28,7 +28,7 @@ const ReviewForm = ({ inputTitles, message }) => {
         ...values,
       }),
     })
-      .then(() => navigate("/thankyou"))
+      .then(() => navigate("/thankyou", 'review'))
       .catch((error) => alert(error))
   }
 
