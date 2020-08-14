@@ -16,13 +16,6 @@ function encode(data) {
 const ReviewForm = ({ inputTitles, message }) => {
   const { values, handleChange, handleSubmit, errors } = useForm(submit, validateReview)
 
-  // function submit() {
-  //   console.log('done')
-  // }
-
-  var onloadCallback = function () {
-    alert("grecaptcha is ready!");
-  };
 
   function submit() {
     fetch('/', {
