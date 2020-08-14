@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import useForm from '../hooks/useForm'
 import { validateReview } from '../hooks/validate';
 import { Warning } from '../assetsjs/index'
-import { navigate } from "@reach/router";
+// import { navigate } from "@reach/router";
+import { navigate } from 'gatsby';
 
 
 function encode(data) {
@@ -19,6 +20,10 @@ const ReviewForm = ({ inputTitles, message }) => {
   //   console.log('done')
   // }
 
+  var onloadCallback = function () {
+    alert("grecaptcha is ready!");
+  };
+
   function submit() {
     fetch('/', {
       method: 'POST',
@@ -30,7 +35,7 @@ const ReviewForm = ({ inputTitles, message }) => {
       }),
 
     })
-      .then(() => navigate("/thankyou", { replace: false }, { data: 'hello' }))
+      .then(() => navigate("/thankyou", { replace: false, state: "review" }))
       .catch((error) => alert(error))
   }
 
@@ -87,7 +92,7 @@ const ReviewForm = ({ inputTitles, message }) => {
             </li>
           )
         })}
-        <li><div class="g-recaptcha" data-sitekey="6LcFwb4ZAAAAAJ0daAEqHxt--NSD5Wnj81-Gqj86" data-netlify-recaptcha="true"></div></li>
+        <li><div className="g-recaptcha" data-sitekey="6LcFwb4ZAAAAAJ0daAEqHxt--NSD5Wnj81-Gqj86" data-netlify-recaptcha="true"></div></li>
         <li>
           <button aria-label="Send" type="submit" children="Send" />
         </li>

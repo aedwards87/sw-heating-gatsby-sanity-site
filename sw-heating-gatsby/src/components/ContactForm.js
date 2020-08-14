@@ -53,8 +53,7 @@ const ContactForm = () => {
         ...values,
       }),
     })
-      // .then(() => navigateTo(form.getAttribute("action")))
-      .then(() => navigate("/thankyou", { replace: false }))
+      .then(() => navigate("/thankyou", { replace: false, state: "contact" }))
       .catch((error) => alert(error))
   }
 
