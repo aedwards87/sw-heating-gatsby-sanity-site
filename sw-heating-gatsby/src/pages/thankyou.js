@@ -4,10 +4,13 @@ import { Services } from '../components/index'
 import { StyledTitle } from '../components-styled/index'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import { Link } from "gatsby"
 
 
-const thankYou = (props) => {
-  console.log(props)
+
+const thankYou = ({ location }) => {
+  console.log(location)
+
   return (
     <Layout>
       <SEO title="Thank you" />
@@ -17,7 +20,11 @@ const thankYou = (props) => {
             <StyledTitle id="thank-you" heading>Thank you</StyledTitle>
           </div>
           <div>
-            <p>Your form has been sent</p>
+            {(location.origin === '/reviews') ?
+              <p>Your enquiry has successfully been sent, a member of our team will endeavour to respond within the next 48hours. Alternatively, if your matter is urgent, please refer to our <Link to="/thankyou/#footer" style={{ color: 'var(--primary-two' }}>contact details <span>→</span></Link></p>
+              :
+              <p>We appreciate you taking the time to send us a review, we look forward to reading it.</p>
+            }
           </div>
         </div>
       </S.ThankYou>
@@ -36,6 +43,16 @@ const S = {
       margin: 0 auto;
       padding: calc(4% + 6.5rem) 5%;
     }
+    a:hover > span {
+        transform: translate3d(10px, 0, 0);
+      }
+      a {
+        font-weight: var(--bold);
+        > span {
+          display: inline-block;
+          transition: transform 0.3s ease;
+        }
+      }
     @media(min-width: 850px) {
       > div {
         padding-bottom: 4rem;
