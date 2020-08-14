@@ -40,9 +40,9 @@ const ContactForm = () => {
   const { values, handleChange, handleSubmit, errors } = useForm(submit, validateContact)
 
 
-  function submit() {
-    console.log('done')
-  }
+  // function submit() {
+  //   console.log('done')
+  // }
 
   function submit() {
     fetch('/', {

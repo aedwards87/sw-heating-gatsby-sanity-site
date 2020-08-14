@@ -9,9 +9,9 @@ import { navigate } from "@reach/router";
 const ReviewForm = ({ inputTitles, message }) => {
   const { values, handleChange, handleSubmit, errors } = useForm(submit, validateReview)
 
-  function submit() {
-    console.log('done')
-  }
+  // function submit() {
+  //   console.log('done')
+  // }
 
   function encode(data) {
     return Object.keys(data)
