@@ -1,9 +1,8 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components';
 import useForm from '../hooks/useForm'
 import { validateReview } from '../hooks/validate';
 import { Warning } from '../assetsjs/index'
-// import { navigate } from "@reach/router";
 import { navigate } from 'gatsby';
 
 
@@ -15,7 +14,6 @@ function encode(data) {
 
 const ReviewForm = ({ inputTitles, message }) => {
   const { values, handleChange, handleSubmit, errors } = useForm(submit, validateReview)
-
 
   function submit() {
     fetch('/', {
@@ -85,7 +83,6 @@ const ReviewForm = ({ inputTitles, message }) => {
             </li>
           )
         })}
-        <li><div className="g-recaptcha" data-sitekey="6LcFwb4ZAAAAAJ0daAEqHxt--NSD5Wnj81-Gqj86" data-netlify-recaptcha="true"></div></li>
         <li>
           <button aria-label="Send" type="submit" children="Send" />
         </li>
@@ -97,6 +94,7 @@ const ReviewForm = ({ inputTitles, message }) => {
           <span>There are invalid fields, please check these and try again</span>
         </div>
       }
+
     </S.ReviewForm>
   )
 }
@@ -107,7 +105,7 @@ const S = {
       text-align: center;
       color: var(--primary-two);
       display: flex;
-      font-weight: var(--bold);
+      font-weight: var(--bolder);
       align-items: center;
       padding-top: 1rem;
       font-size: 0.75rem;
@@ -234,7 +232,7 @@ const S = {
     padding: 0.1rem 1.8rem;
     background: var(--primary-one);
     color: var(--primary-two);
-    font-weight: var(--bold);
+    font-weight: var(--bolder);
     font-size: 0.7rem;
     border-radius: 0 0 8px 8px;
     display: grid;

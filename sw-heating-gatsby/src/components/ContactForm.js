@@ -151,15 +151,19 @@ const S = {
     form {
       margin-bottom: 0;
       > div {
-        justify-content: center;
+        justify-content: start;
         color: var(--primary-one);
         display: flex;
+        font-weight: var(--bolder);
         align-items: center;
         padding-top: 1rem;
         font-size: 0.75rem;
         > span {
           margin-top: 1.5px;
           padding-left: 0.7rem;
+        }
+        @media(min-width: 980px) {
+          justify-content: center;
         }
       }
     }
@@ -266,7 +270,7 @@ const S = {
     border: none;
     width: 100%;
     padding: 1rem;
-    font-weight: 400;
+    font-weight: var(--bold);
     display: inline-block;
     border-radius: 0 10px 10px 0;
     box-sizing: border-box;
@@ -295,7 +299,7 @@ const S = {
     padding: 0.1rem 1.8rem;
     background: var(--primary-one);
     color: var(--primary-two);
-    font-weight: var(--bolder);
+    font-weight: var(--boldest);
     font-size: 0.7rem;
     border-radius: 0 0 8px 8px;
     display: grid;
@@ -310,32 +314,3 @@ const S = {
 
 
 export default ContactForm
-
-  // const [state, setState] = useState([{
-  //   fullname: "",
-  //   email: "",
-  //   subject: "",
-  //   message: "",
-  // }])
-  // const [disable, setDisable] = useState("")
-
-  // Disable button in initial render.
-  // useEffect(() => {
-  //   setDisable(true);
-  // }, []);
-  // const handleChange = useCallback(e => {
-  //   const name = e.target.name
-  //   const value = e.target.value
-  //   setState(state => ([{
-  //     [name]: state[0][name] = value
-  //   }]))
-  // }, [])
-
-  // console.log(state[0])
-
-  // const handleSubmit = useCallback(
-  //   () => {
-  //     null
-  //   },
-  //   [],
-  // )

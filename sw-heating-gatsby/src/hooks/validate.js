@@ -50,7 +50,7 @@ export const validateReview = (values) => {
   }
 
   if (!values.message) {
-    errors.message = "Please enter a message"
+    errors.message = "Please enter your review"
   }
   return errors
 }

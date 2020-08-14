@@ -7,6 +7,8 @@ module.exports = {
     title: `SW Heating`,
     description: `Plumbing, heating and gas services`,
     author: `Adam Edwards`,
+    // siteUrl: `https://www.example.com`,
+    siteUrl: `https://boring-murdock-f3520c.netlify.app`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -36,6 +38,9 @@ module.exports = {
     },
     {
       resolve: `gatsby-plugin-styled-components`,
+    },
+    {
+      resolve: `gatsby-plugin-sitemap`,
     },
     {
       resolve: 'gatsby-plugin-react-svg',
