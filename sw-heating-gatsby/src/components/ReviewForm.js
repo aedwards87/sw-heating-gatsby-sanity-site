@@ -26,8 +26,9 @@ const ReviewForm = ({ inputTitles, message }) => {
       body: encode({
         'form-name': 'review',
         ...values,
-        captcha: g - recaptcha - response
+        captcha: 'g-recaptcha-response'
       }),
+
     })
       .then(() => navigate("/thankyou", 'review'))
       .catch((error) => alert(error))
@@ -86,7 +87,7 @@ const ReviewForm = ({ inputTitles, message }) => {
             </li>
           )
         })}
-        <li><div class="g-recaptcha" data-sitekey="your_site_key" data-netlify-recaptcha="true"></div></li>
+        <li><div class="g-recaptcha" data-sitekey="6LcFwb4ZAAAAAJ0daAEqHxt--NSD5Wnj81-Gqj86" data-netlify-recaptcha="true"></div></li>
         <li>
           <button aria-label="Send" type="submit" children="Send" />
         </li>
