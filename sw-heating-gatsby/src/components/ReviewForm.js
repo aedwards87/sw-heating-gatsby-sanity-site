@@ -6,18 +6,18 @@ import { Warning } from '../assetsjs/index'
 import { navigate } from "@reach/router";
 
 
+function encode(data) {
+  return Object.keys(data)
+    .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .join('&')
+}
+
 const ReviewForm = ({ inputTitles, message }) => {
   const { values, handleChange, handleSubmit, errors } = useForm(submit, validateReview)
 
   // function submit() {
   //   console.log('done')
   // }
-
-  function encode(data) {
-    return Object.keys(data)
-      .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-      .join('&')
-  }
 
   function submit() {
     fetch('/', {
@@ -26,6 +26,7 @@ const ReviewForm = ({ inputTitles, message }) => {
       body: encode({
         'form-name': 'review',
         ...values,
+        captcha: g - recaptcha - response
       }),
     })
       .then(() => navigate("/thankyou", 'review'))
@@ -85,7 +86,7 @@ const ReviewForm = ({ inputTitles, message }) => {
             </li>
           )
         })}
-        <li><div data-netlify-recaptcha="true"></div></li>
+        <li><div class="g-recaptcha" data-sitekey="your_site_key" data-netlify-recaptcha="true"></div></li>
         <li>
           <button aria-label="Send" type="submit" children="Send" />
         </li>

@@ -54,7 +54,7 @@ const ContactForm = () => {
       }),
     })
       // .then(() => navigateTo(form.getAttribute("action")))
-      .then(() => navigate("/thankyou"))
+      .then(() => navigate("/thankyou", "contact"))
       .catch((error) => alert(error))
   }
 
