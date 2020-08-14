@@ -20,20 +20,19 @@ const ReviewForm = ({ inputTitles, message }) => {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({
-        'form-name': 'review',
+        'form-name': 'reviews',
         ...values,
-        captcha: 'g-recaptcha-response'
       }),
 
     })
-      .then(() => navigate("/thankyou", { replace: false, state: "review" }))
+      .then(() => navigate("/thankyou", { replace: false, state: "reviews" }))
       .catch((error) => alert(error))
   }
 
   return (
     <S.ReviewForm
       noValidate
-      name="review"
+      name="reviews"
       action="/thankyou"
       method="POST"
       data-netlify="true"
@@ -42,7 +41,7 @@ const ReviewForm = ({ inputTitles, message }) => {
       onSubmit={handleSubmit}
     >
       <input type="hidden" name="bot-field" />
-      <input type="hidden" name="form-name" value="review" />
+      <input type="hidden" name="form-name" value="reviews" />
       <S.ListContainer>
         <li>
           <p>{message}</p>
