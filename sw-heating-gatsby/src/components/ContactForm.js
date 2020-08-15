@@ -68,7 +68,6 @@ const ContactForm = () => {
         <form
           noValidate
           name="contact"
-          action="/thank-you"
           method="POST"
           data-netlify="true"
           data-netlify-honeypot="bot-field"

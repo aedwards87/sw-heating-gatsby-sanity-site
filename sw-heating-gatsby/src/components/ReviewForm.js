@@ -33,10 +33,8 @@ const ReviewForm = ({ inputTitles, message }) => {
     <S.ReviewForm
       noValidate
       name="reviews"
-      action="/thankyou"
       method="POST"
       data-netlify="true"
-      data-netlify-recaptcha="true"
       data-netlify-honeypot="bot-field"
       onSubmit={handleSubmit}
     >
