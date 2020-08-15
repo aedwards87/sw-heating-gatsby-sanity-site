@@ -13,7 +13,7 @@ export default function useScrollPosition() {
   // Listens for the when the page is scrolled up
   useEffect(() => {
     const handleScroll = () => {
-      const newPosition = window.pageYOffset
+      const newPosition = window.pageYOffset || document.documentElement.scrollTop
       setScrollUp(currentPosition === 0 ? false : currentPosition > newPosition);
       setCurrentPosition(newPosition)
     };

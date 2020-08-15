@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react'
+import React, { useState, useCallback } from 'react'
 import styled from 'styled-components'
 import Image from 'gatsby-image'
 import { graphql } from "gatsby"
@@ -8,7 +8,6 @@ import Carousel from '../components/Carousel-2.0'
 import { useTrail, animated, useTransition } from 'react-spring'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { navigate } from 'gatsby';
 
 
 export const pageQuery = graphql`
