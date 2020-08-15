@@ -45,7 +45,7 @@ const Services = () => {
     <S.Services>
       <div>
         <div style={{ marginBottom: '6rem' }}>
-          <StyledTitle id="services" >Our services</StyledTitle>
+          <StyledTitle id="services" className="moz" >Our services</StyledTitle>
         </div>
 
         <S.List>

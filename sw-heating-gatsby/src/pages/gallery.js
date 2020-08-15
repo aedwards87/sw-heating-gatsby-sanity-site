@@ -72,7 +72,7 @@ const Gallery = ({ data: { allSanityImages }, location }) => {
       <S.Gallery>
         <div>
           <div style={{ marginBottom: '6rem' }}>
-            <StyledTitle heading>Gallery</StyledTitle>
+            <StyledTitle className="moz" heading>Gallery</StyledTitle>
           </div>
 
           <S.GalleryImageContainer>

@@ -57,10 +57,11 @@ const ContactForm = () => {
       <div>
         <div style={{ marginBottom: '6rem' }}>
           <StyledTitle
-            center
+            id="contact"
+            className="moz"
             lineColor="white"
             color="white"
-            id="contact"
+            center
           >
             Contact us
           </StyledTitle>

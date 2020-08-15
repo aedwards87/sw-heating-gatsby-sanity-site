@@ -32,7 +32,7 @@ const About = () => {
     <StyledAboutContainer>
       <div>
         <div style={{ marginBottom: '6rem' }}>
-          <StyledTitle id="about" tall >Who we are?</StyledTitle>
+          <StyledTitle id="about" tall className="moz" >Who we are?</StyledTitle>
         </div>
         <StyledContentContainer>
           <div>

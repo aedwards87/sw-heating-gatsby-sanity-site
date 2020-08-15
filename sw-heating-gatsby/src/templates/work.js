@@ -75,7 +75,7 @@ export default ({ data: { sanityWork } }) => {
           <div
           // style={{ marginBottom: '6rem' }}
           >
-            <StyledTitle as="h1" heading>{sanityWork.title}</StyledTitle>
+            <StyledTitle className="moz" as="h1" heading>{sanityWork.title}</StyledTitle>
           </div>
 
           <div>

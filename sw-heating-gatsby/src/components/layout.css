@@ -54,6 +54,7 @@ html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
+
 body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
@@ -67,6 +68,7 @@ body {
 .hide {
   display: none;
 }
+
 article,
 aside,
 details,
@@ -698,5 +700,11 @@ pre tt:after {
 @media only screen and (max-width: 480px) {
   html {
     font-size: 100%;
+  }
+}
+
+@-moz-document url-prefix() { 
+  .moz {
+    display: block !important;
   }
 }

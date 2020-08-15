@@ -31,7 +31,7 @@ const Feedback = () => {
     <StyledFeedBack>
       <div>
         <div>
-          <StyledTitle id="feedback" heading>
+          <StyledTitle id="feedback" className="moz" heading>
             What our customers<br />say about us
           </StyledTitle>
         </div>
