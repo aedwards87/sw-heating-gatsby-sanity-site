@@ -15,7 +15,7 @@ const ThankYou = ({ location }) => {
     if (location.state) {
       setVerifyForm((Object.values(location.state).join('')))
     }
-  }, [])
+  }, [location.state])
 
   return (
     <Layout>

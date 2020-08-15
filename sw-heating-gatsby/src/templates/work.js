@@ -34,16 +34,19 @@ export const query = graphql`
 export default ({ data: { sanityWork } }) => {
   const [index, setIndex] = useState(0)
   const [isHovered, setIsHovered] = useState(false)
+  const [isFocused, setIsFocused] = useState(false)
 
   const sanityImages = sanityWork.images.map(node => node)
 
   // const sanityWorkImages = Object.keys(sanityWork).filter(images => images.includes('Image'))
 
-  const nextSlide = useCallback(() => setIndex(state => (state + 1) % sanityImages.length), [])
-  const prevSlide = useCallback(() => setIndex(state => (state === 0) ? state = sanityImages.length - 1 : (state - 1) % sanityImages.length), [])
+  const nextSlide = useCallback(() => setIndex(state => (state + 1) % sanityImages.length), [sanityImages.length])
+  const prevSlide = useCallback(() => setIndex(state => (state === 0) ? state = sanityImages.length - 1 : (state - 1) % sanityImages.length), [sanityImages.length])
 
-  const handleHoverEnter = useCallback(() => setIsHovered(true), [])
-  const handleHoverLeave = useCallback(() => setIsHovered(false), [])
+  const handleHover = useCallback(() => setIsHovered(state => !state), [])
+  // const handleHoverLeave = useCallback(() => setIsHovered(false), [])
+  const handleFocus = useCallback(() => setIsFocused(state => !state), [])
+  // const handleBlur = useCallback(() => setIsFocused(false), [])
 
   const targetSlide = (e) => (
     setIndex(parseInt(e.currentTarget.value))
@@ -86,7 +89,7 @@ export default ({ data: { sanityWork } }) => {
             <S.HeroImageContainer >
               {transitions.map(({ item, props, key }) =>
                 <animated.div
-                  className={`animated-div ${isHovered ? 'hovered' : null}`}
+                  className={`animated-div ${isHovered ? 'hovered' : null} ${isFocused ? 'focused' : null}`}
                   style={props}
                   key={key}
                 >
@@ -101,20 +104,20 @@ export default ({ data: { sanityWork } }) => {
               <S.Button
                 previous
                 onClick={prevSlide}
-                onMouseEnter={handleHoverEnter}
-                onMouseLeave={handleHoverLeave}
-                onFocus={handleHoverEnter}
-                onBlur={handleHoverLeave}
+                onMouseEnter={handleHover}
+                onMouseLeave={handleHover}
+                onFocus={handleFocus}
+                onBlur={handleFocus}
               >
                 <ArrowButton />
               </S.Button>
               <S.Button
                 next
                 onClick={nextSlide}
-                onMouseEnter={handleHoverEnter}
-                onMouseLeave={handleHoverLeave}
-                onFocus={handleHoverEnter}
-                onBlur={handleHoverLeave}
+                onMouseEnter={handleHover}
+                onMouseLeave={handleHover}
+                onFocus={handleFocus}
+                onBlur={handleFocus}
               >
                 <ArrowButton flip />
               </S.Button>
@@ -200,6 +203,7 @@ const S = {
       background: none;
       border: none;
       border-radius: 10px;
+      outline: none;
     }
     div,
     button {
@@ -208,6 +212,10 @@ const S = {
     .hovered {
       overflow: hidden;
       cursor: pointer;
+      transform: translate3d(0, -0.3vmax, 0) scale(1.05);
+    }
+    .focused {
+      outline: rgb(47, 90, 189) auto 5px; 
       transform: translate3d(0, -0.3vmax, 0) scale(1.05);
     }
     .animated-div {

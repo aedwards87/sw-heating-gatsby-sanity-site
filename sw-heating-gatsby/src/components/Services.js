@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import React from 'react'
 import Image from 'gatsby-image'
 import styled from 'styled-components'
 import { Link } from "gatsby"

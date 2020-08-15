@@ -7,7 +7,7 @@ import Image from 'gatsby-image'
 const MobileCarousel = ({ sanityLandingPage }) => {
   const [index, setIndex] = useState(0)
   const nextSlide = useCallback(() =>
-    setIndex(state => (state + 1) % sanityLandingPage.images.length), []
+    setIndex(state => (state + 1) % sanityLandingPage.images.length), [sanityLandingPage.images.length]
   )
 
   const transitions = useTransition(index, p => p, {

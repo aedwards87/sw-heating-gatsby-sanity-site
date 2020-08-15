@@ -1,14 +1,22 @@
 import React from 'react'
 import styled from 'styled-components'
+import { navigate } from 'gatsby';
 
-const Modal = ({ children, toggle }) => {
+
+const Modal = ({ children, toggle, allImages, index, location }) => {
   return (
     <S.ModalContainer>
-      <S.CloseButton onClick={() => toggle(false)}>X</S.CloseButton>
+      <S.CloseButton
+        onClick={() => toggle(false)}
+        onMouseDown={() => navigate(`/gallery#${allImages[index].id}`)}
+      >
+        X
+      </S.CloseButton>
       {children}
     </S.ModalContainer>
   )
 }
+
 
 const S = {
   ModalContainer: styled.div`

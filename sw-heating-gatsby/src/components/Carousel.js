@@ -7,7 +7,7 @@ import { CarouselDroplet as ImageContainer } from '../assetsjs/index'
 const Carousel = ({ navbarheight, sanityLandingPage }) => {
   const [index, setIndex] = useState(0)
 
-  const nextSlide = useCallback(() => setIndex(state => (state + 1) % sanityLandingPage.images.length), []) // Increments index state by 1
+  const nextSlide = useCallback(() => setIndex(state => (state + 1) % sanityLandingPage.images.length), [sanityLandingPage.images.length]) // Increments index state by 1
 
   // Timer to change images after 4 seconds
   useEffect(() => {

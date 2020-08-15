@@ -1,15 +1,15 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 import styled from 'styled-components'
 import Image from 'gatsby-image'
 import { graphql } from "gatsby"
 import { Services, Modal } from '../components/index'
 import { StyledTitle } from '../components-styled/index'
 import Carousel from '../components/Carousel-2.0'
-// import { slidev2 } from '../components/Carousel/CarouselSlides'
 import { useTrail, animated, useTransition } from 'react-spring'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-// import { v4 as uuidv4 } from 'uuid';
+import { navigate } from 'gatsby';
+
 
 export const pageQuery = graphql`
   query GalleryQuery {
@@ -20,6 +20,7 @@ export const pageQuery = graphql`
           title
           image {
             asset {
+              id
               fluid(maxWidth: 1000) {
                 ...GatsbySanityImageFluid
               }
@@ -37,7 +38,7 @@ export const pageQuery = graphql`
 `
 
 
-const Gallery = ({ data: { allSanityImages } }) => {
+const Gallery = ({ data: { allSanityImages }, location }) => {
 
   const [index, setIndex] = useState(0)
   const [on, toggle] = useState(false)
@@ -61,10 +62,9 @@ const Gallery = ({ data: { allSanityImages } }) => {
     config: { tension: 400, friction: 60 }
   })
 
-  const handleClick = useCallback((e) => (
-    toggle(!on),
-    targetSlide(e)
-  ), [])
+  const handleClick = useCallback((e) => {
+    return [toggle(!on), targetSlide(e)]
+  }, [on])
 
   return (
     <Layout>
@@ -82,8 +82,10 @@ const Gallery = ({ data: { allSanityImages } }) => {
                 value={i}
                 onClick={handleClick}
                 key={i}
+                id={allImages[i].id}
               >
                 <S.Image
+                  id={allImages[i].id}
                   fluid={allImages[i].image.asset.fluid}
                   alt={allImages[i].title}
                   active={index === i ? true : false}
@@ -94,13 +96,13 @@ const Gallery = ({ data: { allSanityImages } }) => {
 
           {transitionFade.map(({ item, props, key }) =>
             item && (
-              <Modal toggle={toggle} key={key} >
+              <Modal toggle={toggle} key={key} allImages={allImages} index={index} location={location}>
                 <Carousel
+                  on={on}
+                  toggle={toggle}
                   data={allImages}
                   index={index}
                   setIndex={setIndex}
-                  on={on}
-                  toggle={toggle}
                   animation={props}
                   fromNext={{ opacity: 1, position: 'absolute', transform: 'translate3d(100%,0%,0) scale(1)' }}
                   fromPrev={{ opacity: 1, position: 'absolute', transform: 'translate3d(-100%,0%,0) scale(1)' }}

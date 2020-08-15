@@ -1,8 +1,9 @@
 import React, { useState, useCallback } from 'react'
 import styled from 'styled-components'
-import { useTransition, config, animated } from 'react-spring'
+import { useTransition, animated } from 'react-spring'
 import { ArrowButton } from "../assetsjs/index"
 import Image from 'gatsby-image'
+
 
 const Carousel = ({
   data,
@@ -20,11 +21,11 @@ const Carousel = ({
 
   const [slideState, setSlideState] = useState('')
 
-  const nextSlide = useCallback(() => setIndex(state => (state + 1) % data.length), [data.length])
-  const prevSlide = useCallback(() => setIndex(state => (state === 0) ? state = data.length - 1 : (state - 1) % data.length), [data.length])
+  const nextSlide = useCallback(() => setIndex(state => (state + 1) % data.length), [data.length, setIndex])
+  const prevSlide = useCallback(() => setIndex(state => (state === 0) ? state = data.length - 1 : (state - 1) % data.length), [data.length, setIndex])
 
-  const handlePrev = useCallback(() => setSlideState('prev'), [])
-  const handleNext = useCallback(() => setSlideState('next'), [])
+  const handlePrev = useCallback(() => setSlideState('prev'), [setSlideState])
+  const handleNext = useCallback(() => setSlideState('next'), [setSlideState])
 
   const transitionSlider = useTransition(index, p => p, {
     from: slideState === '' ? from : slideState === 'next' ? fromNext : fromPrev,
@@ -32,7 +33,6 @@ const Carousel = ({
     leave: slideState === '' ? leave : slideState === 'next' ? leaveNext : leavePrev,
     config: { tension: 430, friction: 100 }
   })
-
 
   return (
     <>

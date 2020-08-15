@@ -5,7 +5,7 @@ import useForm from '../hooks/useForm'
 import { validateContact } from '../hooks/validate';
 import { Warning } from '../assetsjs/index'
 import { Link } from "gatsby"
-import { navigate } from "@reach/router";
+import { navigate } from 'gatsby';
 
 const inputTitles = [
   {
@@ -55,7 +55,7 @@ const ContactForm = () => {
   return (
     <S.ContactForm>
       <div>
-        <div style={{ marginBottom: '6rem', display: 'grid' }}>
+        <div style={{ marginBottom: '6rem' }}>
           <StyledTitle
             center
             lineColor="white"
@@ -78,7 +78,7 @@ const ContactForm = () => {
           <S.ListContainer>
             <li>
               <p>If you have any questions or queries, or would like to request a quote or even book an appointment, please get in touch with a member of our team using the form below:</p>
-              <p style={{ /*fontSize: '0.8rem'*/ }}>Alternatively, if you would like to see more <Link to="/#footer" style={{ color: 'var(--primary-one' }}>details <span>→</span></Link></p>
+              <p>Alternatively, if you would like to see more <Link to="/#footer" style={{ color: 'var(--primary-one' }}>details <span>→</span></Link></p>
             </li>
             {inputTitles.map(({ name, type }) => {
               const _name = name.toLowerCase().replace(/\s+/g, '')
@@ -143,8 +143,11 @@ const S = {
       height: 100%;
       padding: 0.1vmax 5% 14vmax;
       margin: auto auto;
-      @media(min-width: 850px) {
+      @media(min-width: 980px) {
         padding-bottom: 6rem;
+        > div {
+          display: grid;
+        }
       }
     }
     form {

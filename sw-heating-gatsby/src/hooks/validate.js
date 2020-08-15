@@ -2,6 +2,9 @@
 // We need the string to be longer then 0 charters
 // and to be an email with an @
 
+
+// #Contact
+
 export const validateContact = (values) => {
   let errors = {}
 
@@ -32,6 +35,9 @@ export const validateContact = (values) => {
   }
   return errors
 }
+
+
+// #Review
 
 export const validateReview = (values) => {
   let errors = {}
