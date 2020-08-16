@@ -7,7 +7,7 @@ module.exports = {
     title: `SW Heating`,
     description: `Plumbing, heating and gas services`,
     author: `Adam Edwards`,
-    // siteUrl: `https://www.example.com`,
+    // siteUrl: `https://www.swheatingandsons.co.uk`,
     siteUrl: `https://boring-murdock-f3520c.netlify.app`,
   },
   plugins: [
@@ -24,16 +24,11 @@ module.exports = {
     {
       resolve: 'gatsby-source-sanity',
       options: {
-        projectId: SANITY_PROJECT_ID,
-        dataset: 'production',
         overlayDrafts: true,
         watchMode: true,
-        // projectId: process.env.SANITY_PROJECT_ID,
-        // dataset: process.env.SANITY_PROJECT_DATASET,
-        // a token with read permissions is required
-        // if you have a private dataset
-        // token: 'skowJfP7FOsDhtTcI3YiEWpaAvkP84BxUqPCsTvIR9WDHSFfxwuZyz2eV9UaLDqjiKjVJzoZvyPJt4Vj2Ryb99TQwyVeZiQjpKhPtEOiCL1hXZgPh5JNdebV0pyaLIyp8KmTHVsz3K8GWvvsLR0U00Vvb2UhzTI7QrRF9rbdmWSMRTvq8Ym6',
-        // token: process.env.SANITY_TOKEN,
+        projectId: process.env.SANITY_PROJECT_ID,
+        dataset: process.env.SANITY_PROJECT_DATASET,
+        token: process.env.SANITY_TOKEN,
       },
     },
     {
@@ -50,15 +45,6 @@ module.exports = {
         }
       }
     },
-    // {
-    //   resolve: 'gatsby-source-sanity',
-    //   options: {
-    //     projectId: process.env.SANITY_PROJECT_ID,
-    //     dataset: process.env.SANITY_DATASET,
-    //     token: process.env.SANITY_TOKEN
-    //     // ...
-    //   }
-    // },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
