@@ -23,6 +23,7 @@ const Header = (props, ref) => {
     setCurrentPos(currPos.y)
   }, [hideOnScroll, currentPos])
 
+  console.log(currentPos)
 
   return (
     <Location>
@@ -95,9 +96,9 @@ const S = {
     right: 0px;
     z-index: 100;
     transform: ${({ scrollUp, position, isMenuOpen }) =>
-      `translate3d(0, ${position === 0 || scrollUp || isMenuOpen ? 0 : '-100%'}, 0)`
+      `translate3d(0, ${position >= 0 || scrollUp || isMenuOpen ? 0 : '-100%'}, 0)`
     };
-    background: ${({ scrollUp, position, isMenuOpen }) => position === 0 && !isMenuOpen || !scrollUp ? 'transparent' : 'white'};
+    background: ${({ scrollUp, position, isMenuOpen }) => position >= 0 && !isMenuOpen || !scrollUp ? 'transparent' : 'white'};
     > div {
       margin: 0 auto;
       max-width: 1900px;
