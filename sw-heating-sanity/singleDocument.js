@@ -18,16 +18,5 @@ export default () =>
         .filter(listItem => !['landingPage']
           .includes(listItem.getId())),
 
-      S.listItem()
-        .title("Photo Gallery")
-        .child(
-          S.document()
-            .id('singletonGalleryPage')
-            .schemaType("gallery")
-            .documentId("singleton-gallery")
-        ),
-      // ...S.documentTypeListItems()
-      //   .filter(listItem => !['gallery']
-      //     .includes(listItem.getId()))
     ]);
 

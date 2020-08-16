@@ -8,7 +8,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 import blockContent from './blockContent'
 import landingPage from './landingPage'
 import work from './work'
-import gallery from './gallery'
+// import gallery from './gallery'
 import feedback from './feedback'
 import about from './about'
 import images from './images'
@@ -25,7 +25,6 @@ export default createSchema({
     // in the studio.
     landingPage,
     work,
-    gallery,
     feedback,
     about,
     images,
