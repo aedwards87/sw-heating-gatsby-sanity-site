@@ -8,15 +8,13 @@ import { useMeasure, usePrevious } from '../../hooks/index'
 
 
 const NavMenu = ({
-  isMenuOpen,
+  on,
   toggleMenu,
   location,
 }) => {
 
-  // const [on, toggle] = useState(false)
-  const previous = usePrevious(isMenuOpen)
+  const previous = usePrevious(on)
   const [bind, { height: viewHeight }] = useMeasure()
-
 
   const { height, opacity } = useSpring({
     from: {
@@ -25,30 +23,25 @@ const NavMenu = ({
       // transform: 'translate3d(20px,0,0)' 
     },
     to: {
-      height: isMenuOpen ? viewHeight : 0,
-      opacity: isMenuOpen ? 1 : 0,
+      height: on ? viewHeight : 0,
+      opacity: on ? 1 : 0,
       // transform: `translate3d(${on ? -20 : 0}px,0,0)`,
     },
     config: config.slow
   })
 
-  // const fadeTwo = useSpring({
-  //   opacity: on ? 1 : 0,
-  //   height: on ? '24rem' : '0rem',
-  //   config: config.slow
-  // })
-
   return (
     <S.NavMenuContainer
-      isMenuOpen={isMenuOpen}
+      className={`${on ? 'is-active' : null}`}
       style={{
         opacity,
+        background: on ? '#00000060' : null,
+        pointerEvents: on ? 'auto' : 'none'
       }}>
       <S.NavMenu
-        isMenuOpen={isMenuOpen}
         style={{
           opacity,
-          height: isMenuOpen && previous === isMenuOpen ? 'auto' : height
+          height: on && previous === on ? 'auto' : height
         }}>
         <div {...bind}>
           <ul style={{ overflow: 'hidden' }}>
@@ -76,37 +69,7 @@ const NavMenu = ({
                     style={{ position: 'relative' }}
                     onClick={toggleMenu}
                   >
-                    {/* Services button */}
-
-                    {/* <button
-                      className={on ? 'active' : undefined}
-                      onClick={() => toggle(!on)}
-                    > */}
                     {navLink.title}
-                    {/* </button> */}
-
-                    {/* Dropdown section */}
-                    {/* <div>
-                      <animated.ul
-                        style={{ ...fadeTwo, transform, display: 'grid', padding: 0, overflow: 'hidden', borderRight: '1px dashed rgba(0, 0, 0, 0.4)' }}
-                      >
-                        {TempSanityWork.edges.map(({ node: work }) => (
-                          <animated.li
-                            key={work.slug.current}
-                            style={{ transform, fontSize: '1.2rem', paddingBottom: '1.2rem', letterSpacing: .2 }}
-                          >
-                            <S.Link
-                              to={`/${work.slug.current}`}
-                              activeClassName="active"
-                              onClick={toggleMenu}
-                              className="sub-link-hover"
-                            >
-                              <span>{work.title}</span>
-                            </div>
-                          </animated.li>
-                        ))}
-                      </animated.ul>
-                    </div> */}
                   </S.Link>
                 }
               </li>
@@ -127,9 +90,7 @@ const S = {
     right: 0;
     left: 0;
     z-index: -2;
-    background: ${({ isMenuOpen }) => !isMenuOpen ? null : '#00000060'};
     height: 100vh;
-    pointer-events: ${({ isMenuOpen }) => !isMenuOpen ? 'none' : 'auto'};
   `,
   NavMenu: styled(AnimNavMenu)`
     position: fixed;

@@ -38,6 +38,18 @@ export function useScrollPos(effect, deps, element, useWindow, wait) {
 
     window.addEventListener('scroll', handleScroll)
 
-    return () => window.removeEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      throttleTimeout && clearTimeout(throttleTimeout)
+    }
   }, deps)
+
+
+}
+
+useScrollPos.defaultProps = {
+  deps: [],
+  element: false,
+  useWindow: false,
+  wait: null,
 }

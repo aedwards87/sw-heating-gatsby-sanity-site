@@ -17,7 +17,7 @@ export function useWindowSize() {
     if (!isClient) {
       return false;
     }
-    
+
     function handleResize() {
       setWindowSize(getSize());
     }
@@ -30,24 +30,3 @@ export function useWindowSize() {
 }
 
 
-
-
-
-
-
-
-// const [windowSize, setWindowSize] = useState(0);
-
-// useEffect(() => {
-//   const a = window.document.querySelector('#feed').offsetLeft
-//   window.addEventListener("resize", () => 
-//     setWindowSize(a)
-//   )
-//   return () => {
-//     window.aremoveEventListener("resize", () => 
-//       setWindowSize(a)
-//     )
-//   }
-// }, [])
-
-// console.log(windowSize)

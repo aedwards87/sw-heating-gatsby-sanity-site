@@ -4,7 +4,6 @@ import { Link } from "gatsby"
 import { TempSanityWork } from '../../data/dropdown-data'
 
 const Dropdown = ({ className, ToggleOn, ToggleOff, style }) => {
-  // console.log(TempSanityWork)
   return (
     <S.Dropdown
       className={className}

@@ -6,13 +6,11 @@ import { Location } from "@reach/router";
 import { SWHeatingLogo } from "../../assetsjs/index";
 import { NavBar, NavMenu, navLinks, Toggle } from '../index'
 import { Desktop, SmallScreen } from '../../hooks/useMedia'
-// import { useScrollPosition } from '../../hooks/index'
 import { useScrollPos } from '../../hooks/useScrollPos'
 
 
 const Header = (props, ref) => {
   const [on, toggle] = useState(false)
-  // const [scrollUp, setScrollUp, currentPosition] = useScrollPosition()
 
   const [hideOnScroll, setHideOnScroll] = useState(true)
   const [currentPos, setCurrentPos] = useState(0)
@@ -23,8 +21,6 @@ const Header = (props, ref) => {
     setCurrentPos(currPos.y)
   }, [hideOnScroll, currentPos])
 
-  console.log(currentPos)
-
   return (
     <Location>
       {({ location }) =>
@@ -33,11 +29,10 @@ const Header = (props, ref) => {
             <Toggle>
               {({ on: isMenuOpen, toggle: toggleMenu }) =>
                 <S.Header
-                  // on={on}
                   id="header"
+                  ref={ref}
                   scrollUp={hideOnScroll ? true : false}
                   position={currentPos}
-                  ref={ref}
                   isMenuOpen={isMenuOpen}
                 >
                   <div>
@@ -58,9 +53,9 @@ const Header = (props, ref) => {
                         className={`hamburger hamburger--collapse ${isMenuOpen ? 'is-active' : null}`}
                         type="button"
                         onClick={() => {
+                          toggle(!on)
                           toggleMenu()
                           setHideOnScroll(!hideOnScroll)
-                          toggle(!on)
                         }}
                       >
                         <span id="menu" className="hamburger-box">
@@ -68,7 +63,7 @@ const Header = (props, ref) => {
                         </span>
                       </S.MenuButton>
                       <NavMenu
-                        isMenuOpen={isMenuOpen}
+                        on={isMenuOpen}
                         toggleMenu={toggleMenu}
                         location={location}
                         navLinks={navLinks}
@@ -96,9 +91,9 @@ const S = {
     right: 0px;
     z-index: 100;
     transform: ${({ scrollUp, position, isMenuOpen }) =>
-      `translate3d(0, ${position >= 0 || scrollUp || isMenuOpen ? 0 : '-100%'}, 0)`
+      `translate3d(0, ${position >= 0 || scrollUp ? 0 : isMenuOpen ? 0 : '-100%'}, 0)`
     };
-    background: ${({ scrollUp, position, isMenuOpen }) => position >= 0 && !isMenuOpen || !scrollUp ? 'transparent' : 'white'};
+      background: ${({ scrollUp, position, isMenuOpen }) => position >= 0 && !isMenuOpen ? 'transparent' : !scrollUp ? 'transparent' : 'white'};
     > div {
       margin: 0 auto;
       max-width: 1900px;
@@ -107,8 +102,6 @@ const S = {
       justify-content: space-between;
       align-items: center;
     }
-    
-    
   `,
   MenuButton: styled.button`
     outline: 0;

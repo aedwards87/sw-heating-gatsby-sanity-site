@@ -22,9 +22,6 @@ export const validateContact = (values) => {
   }
   // If false/blank subject or message send error messsage
 
-  // if (Object.keys(values).includes('subject')) {
-  //   console.log('hello')
-  // }
 
   if (!values.subject) {
     errors.subject = "Please enter a subject (e.g. Plumbing enquiry)"

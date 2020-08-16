@@ -1,5 +1,5 @@
 
-https://codepen.io/thenutz/pen/VwYeYEE
+// https://codepen.io/thenutz/pen/VwYeYEE
 
 
 
@@ -158,7 +158,7 @@ slider.addEventListener('mouseup', () => {
   slider.classList.remove('active');
 });
 slider.addEventListener('mousemove', (e) => {
-  if(!isDown) return;
+  if (!isDown) return;
   e.preventDefault();
   const x = e.pageX - slider.offsetLeft;
   const walk = (x - startX) * 3; //scroll-fast
@@ -173,7 +173,7 @@ slider.addEventListener('mousemove', (e) => {
 <div class="grid-container">
   <header class="grid-item header">
     <h2>🍽 CSS Grid Tem-plated 🍽</h2>
-    
+
   </header>
   <div class="grid-item title">
     <h1>So you wanna side scroll, eh?</h1>

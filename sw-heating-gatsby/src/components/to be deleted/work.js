@@ -134,8 +134,6 @@ export default ({ data: { sanityWork } }) => {
     setIndex(parseInt(e.currentTarget.value))
   )
 
-  console.log(isHovered)
-
   const sanityWorkImages = Object.keys(sanityWork).filter(images => images.includes('Image'))
 
   const trail = useTrail(sanityWorkImages.length, {
