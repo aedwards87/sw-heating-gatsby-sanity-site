@@ -6,12 +6,23 @@ import { Location } from "@reach/router";
 import { SWHeatingLogo } from "../../assetsjs/index";
 import { NavBar, NavMenu, navLinks, Toggle } from '../index'
 import { Desktop, SmallScreen } from '../../hooks/useMedia'
-import { useScrollPosition } from '../../hooks/index'
+// import { useScrollPosition } from '../../hooks/index'
+import { useScrollPos } from '../../hooks/useScrollPos'
 
 
 const Header = (props, ref) => {
   const [on, toggle] = useState(false)
-  const [scrollUp, setScrollUp, currentPosition] = useScrollPosition()
+  // const [scrollUp, setScrollUp, currentPosition] = useScrollPosition()
+
+  const [hideOnScroll, setHideOnScroll] = useState(true)
+  const [currentPos, setCurrentPos] = useState(0)
+
+  useScrollPos(({ prevPos, currPos }) => {
+    const isScrollUp = currPos.y > prevPos.y
+    setHideOnScroll(isScrollUp)
+    setCurrentPos(currPos.y)
+  }, [hideOnScroll, currentPos])
+
 
   return (
     <Location>
@@ -23,8 +34,8 @@ const Header = (props, ref) => {
                 <S.Header
                   // on={on}
                   id="header"
-                  scrollUp={scrollUp ? true : false}
-                  position={currentPosition}
+                  scrollUp={hideOnScroll ? true : false}
+                  position={currentPos}
                   ref={ref}
                   isMenuOpen={isMenuOpen}
                 >
@@ -47,7 +58,7 @@ const Header = (props, ref) => {
                         type="button"
                         onClick={() => {
                           toggleMenu()
-                          setScrollUp(!scrollUp)
+                          setHideOnScroll(!hideOnScroll)
                           toggle(!on)
                         }}
                       >
@@ -60,7 +71,7 @@ const Header = (props, ref) => {
                         toggleMenu={toggleMenu}
                         location={location}
                         navLinks={navLinks}
-                        scrollUp={scrollUp}
+                        scrollUp={hideOnScroll}
                       />
                     </SmallScreen>
                   </div>
@@ -84,9 +95,9 @@ const S = {
     right: 0px;
     z-index: 100;
     transform: ${({ scrollUp, position, isMenuOpen }) =>
-      `translate3d(0, ${position <= 0 || scrollUp || isMenuOpen ? 0 : '-100%'}, 0)`
+      `translate3d(0, ${position === 0 || scrollUp || isMenuOpen ? 0 : '-100%'}, 0)`
     };
-    background: ${({ scrollUp, position, isMenuOpen }) => position <= 0 && !isMenuOpen || !scrollUp ? 'transparent' : 'white'};
+    background: ${({ scrollUp, position, isMenuOpen }) => position === 0 && !isMenuOpen || !scrollUp ? 'transparent' : 'white'};
     > div {
       margin: 0 auto;
       max-width: 1900px;
