@@ -17,13 +17,6 @@ const Services = () => {
                 current
               }
               _rawDescription
-              mainImage {
-                asset {
-                  fluid(maxWidth: 1000) {
-                    ...GatsbySanityImageFluid
-                  }
-                }
-              }
               images {
                 title
                 image {

@@ -33,21 +33,5 @@ export default {
       //   },
       // ]
     },
-    {
-      name: 'work',
-      title: 'Services',
-      description: 'Select the service(s) that relates to the image',
-      type: 'array',
-      of: [{
-        type: 'reference',
-        to: [
-          { type: 'work' },
-        ],
-      }],
-      validation: Rule => [
-        Rule.unique().error('You have duplicate services'),
-        Rule.min(1),
-      ],
-    },
   ],
 }

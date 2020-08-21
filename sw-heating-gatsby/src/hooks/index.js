@@ -2,7 +2,7 @@ import useMeasure from './useMeasure'
 import usePrevious from './usePrevious'
 import useForm from './useForm'
 import { Desktop, SmallScreen, Tablet, Mobile, Default } from './useMedia'
-import useScrollPosition from './useScrollPosition'
+import useScrollPos from './useScrollPos'
 import useBodyLockScroll from './useBodyLockScroll'
 
 export {
@@ -10,6 +10,6 @@ export {
   useForm,
   usePrevious,
   Desktop, SmallScreen, Tablet, Mobile, Default,
-  useScrollPosition,
+  useScrollPos,
   useBodyLockScroll,
 }

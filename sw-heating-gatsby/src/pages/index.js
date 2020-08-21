@@ -14,13 +14,6 @@ export const pageQuery = graphql`
             current
           }
           _rawDescription
-          mainImage {
-            asset {
-              fluid(maxWidth: 1000) {
-                ...GatsbySanityImageFluid
-              }
-            }
-          }
         }
       }
     }
