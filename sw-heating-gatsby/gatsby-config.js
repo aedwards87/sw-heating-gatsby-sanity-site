@@ -44,7 +44,7 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `sw-heating-and-sons`,
-        short_name: `starter`,
+        short_name: `sw-heating-and-sons`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#ffffff`,
