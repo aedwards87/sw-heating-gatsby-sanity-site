@@ -44,14 +44,14 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `sw-heating-and-sons`,
-        short_name: `sw-heating-and-sons`,
+        short_name: `SW Heating`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#ffffff`,
         description: `Plumbing, heating and gas services`,
         // display: `minimal-ui`,
         display: `standalone`,
-        icon: `src/images/sw-heating-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/sw-heating-app-icon.jpg`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
