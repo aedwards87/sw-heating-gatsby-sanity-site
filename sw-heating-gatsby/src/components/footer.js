@@ -259,6 +259,7 @@ const StyledTopFooter = styled.div`
       grid-column: 3 / span 2;
       grid-row: 2;
       justify-items: end;
+      align-items: end;
       grid-template: auto auto / 1fr auto;
       display: grid;
     }

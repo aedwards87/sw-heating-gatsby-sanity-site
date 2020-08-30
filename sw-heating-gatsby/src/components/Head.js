@@ -42,17 +42,12 @@ const S = {
     position: relative;
     width: 100%;
     padding-top: 6.5rem;
-    /* min-height: calc(100vh - 113px); */
     > div {
-      /* almost there */
       width: 100%;
       max-width: 1900px;
       padding: 4% 5% 6%;
       display: grid;
-
-      /* almost there */
       align-items: end;
-
       grid-gap: 2.7rem;
       transition: height .3s ease;
     }
@@ -66,9 +61,7 @@ const S = {
     }
     /* Default */
     @media (min-width: 980px) {
-      /* min-height: ${({ navBarHeight }) => `calc(650px - ${navBarHeight.navBarHeight}px)`}; */
       min-height: 700px;
-      /* height: ${({ navBarHeight }) => `calc(100vh - ${navBarHeight.navBarHeight}px)`}; */
       height: 100vh;
       > div {
         grid-template-columns: repeat(4, 1fr);
@@ -79,11 +72,6 @@ const S = {
         align-content: stretch;
         position: relative;
       }
-    }
-    
-    /* Large screens */
-    @media (min-width: 1680px) {
-      /* min-height: 800px; */
     }
   `,
 
@@ -98,8 +86,6 @@ const S = {
       margin-bottom: 2.5rem;
       width: 100%;
     }
-   
-    
     @media(min-width: 548px) {
       > h1 {
         width: 85%;
@@ -108,18 +94,6 @@ const S = {
         width: 70%;
       }
     }
-
-    /* @media (max-width: 630px) {
-      > h1 {
-        width: 100%;
-      }
-    }
-    @media (max-width: 674px) {
-      > h1 {
-        width: 75%;
-      }
-    } */
-
     @media (min-width: 794px) {
       > h1 {
         width: 64%;
@@ -131,7 +105,6 @@ const S = {
     }
     /* Tablet */
     @media (min-width: 980px) {
-      /* margin-bottom: 40px; */
       width: 100%;
       grid-column: 1 / span 2;
       > h1 {

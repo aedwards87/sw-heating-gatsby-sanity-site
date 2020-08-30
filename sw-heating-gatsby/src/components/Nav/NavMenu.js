@@ -3,7 +3,6 @@ import { navLinks } from './navLinks'
 import styled from 'styled-components'
 import { Link } from "gatsby"
 import { useSpring, animated, config } from 'react-spring'
-// import { TempSanityWork } from '../../data/dropdown-data'
 import { useMeasure, usePrevious } from '../../hooks/index'
 
 
@@ -20,12 +19,10 @@ const NavMenu = ({
     from: {
       height: 0,
       opacity: 0,
-      // transform: 'translate3d(20px,0,0)' 
     },
     to: {
       height: on ? viewHeight : 0,
       opacity: on ? 1 : 0,
-      // transform: `translate3d(${on ? -20 : 0}px,0,0)`,
     },
     config: config.slow
   })
@@ -62,8 +59,6 @@ const NavMenu = ({
 
                   :
 
-                  // Services button and dropdown
-                  //container
                   <S.Link
                     to={`${location.pathname}#${navLink.title.toLowerCase()}`}
                     style={{ position: 'relative' }}
@@ -94,12 +89,10 @@ const S = {
   `,
   NavMenu: styled(AnimNavMenu)`
     position: fixed;
-    /* top: 120.78px; */
     will-change: transform, opacity, height;
     top: 0;
     right: 0;
     left: 0;
-    /* height: 600px; */
     background: white;
     max-height: 100vh;
     z-index: -1;
@@ -107,13 +100,6 @@ const S = {
     font-size: 2rem;
     letter-spacing: 0.7px;
     overflow-y: ${({ on }) => on ? 'scroll' : 'hidden'};
-    /* pointer-events: ${({ isMenuOpen }) => !isMenuOpen ? 'none' : 'auto'}; */
-    /* > div {
-      background: white;
-    } */
-    /* li.margina {
-      padding-top: 3rem;
-    } */
     button { 
       background: none;
       outline: none;
@@ -127,7 +113,6 @@ const S = {
       margin-left: 0;
       list-style: none;
       display: flex;
-      /* grid-template-columns: auto; */
       flex-wrap: wrap;
       flex-direction: column;
       justify-content: flex-end;
@@ -138,10 +123,6 @@ const S = {
     }
     li {
       transition: transform .3s ease;
-      /* padding: 2.5rem 0;
-      :last-of-type {
-        padding: 2.5rem 0;
-      } */
       :hover {
         transform: translate3d(-25px, 0, 0) scale(1.05);
       }
@@ -164,16 +145,6 @@ const S = {
     span {
       position: relative;
     }
-    /* span::after {
-      content: "";
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      height: 3px;
-      width: 0;
-      background: var(--primary-one);
-      transition: all 0.3s ease;
-    } */
     :hover span::after,
     :focus span::after,
     &.active span::after {

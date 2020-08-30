@@ -99,6 +99,7 @@ const ContactForm = () => {
                     {name}:
                     </label>
                   <S.Input
+                    id={_name}
                     as={type !== 'textarea' ? null : type}
                     type={type !== 'textarea' ? type : null}
                     name={_name}

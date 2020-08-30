@@ -24,7 +24,7 @@ export const pageQuery = graphql`
         title
         image {
           asset {
-            fluid(maxWidth: 1000) {
+            fluid(maxWidth: 450, maxHeight: 450) {
               ...GatsbySanityImageFluid
             }
           }
@@ -34,13 +34,14 @@ export const pageQuery = graphql`
   }
 `
 
+
+
 const IndexPage = ({ data }, props) => (
   <Layout allSanityWork={data.allSanityWork}>
     <SEO title="Home" />
     <Head sanityLandingPage={data.sanityLandingPage} />
     <Services allSanityWork={data.allSanityWork} main />
-    <About /* sanityAboutPage={data.sanityAboutPage} */ />
-    {/* <Feedback /> */}
+    <About />
     <ContactForm />
   </Layout>
 )

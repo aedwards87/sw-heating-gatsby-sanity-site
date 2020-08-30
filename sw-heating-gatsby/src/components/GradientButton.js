@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const GradientButton = ({ children, onClick }) => {
   return (
     <S.GradientButtonOutside onClick={onClick}>
-      <S.GradientButtonInside children={children} onClick={onClick} />
+      <S.GradientButtonInside aria-label="contact us" children={children} onClick={onClick} />
     </S.GradientButtonOutside>
   )
 }

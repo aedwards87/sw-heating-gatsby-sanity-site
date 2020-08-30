@@ -9,20 +9,7 @@ export const StyledMainImageContainer = styled.div`
   width: 61%;
   z-index: -1;
   overflow: hidden;
-  /* ::after {
-    content: "";
-    height: var(--head-gradient-height);
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    background: white;
-    background: var(--gradient-three);
-    z-index: 99;
-    left: 0;
-    right: 0;
-  } */
   img {
-    /* display: none; */
     display: block;
     position: absolute;
     object-fit: cover;

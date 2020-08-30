@@ -16,7 +16,7 @@ const About = () => {
           _rawContent
           profileImage {
             asset {
-              fluid(maxWidth: 1000)  {
+              fluid(maxWidth: 200, maxHeight: 200)  {
                 ...GatsbySanityImageFluid
               }
             }
@@ -47,12 +47,8 @@ const About = () => {
         <div>
           <Profile>
             <div>
-              {/* <div /> */}
-              {/* <div style={{ marginBottom: '2.5rem', gridColumnStart: 2 }}>
-                <StyledTitle id="our-engineer" small >Our Engineer</StyledTitle>
-              </div> */}
               <ProImageContainer>
-                <Image fluid={sanityAbout.profileImage.asset.fluid} alt={sanityAbout.title} />
+                <Image fluid={sanityAbout.profileImage.asset.fluid} alt="Steven, SW Heating's engineer, director" />
               </ProImageContainer>
               <div className='name-and-title' >
                 <h3>Steven Whitaker</h3>
@@ -83,7 +79,6 @@ const StyledAboutContainer = styled.section`
   > div {
     max-width: 1900px;
     margin: 0 auto;
-    /* padding: 0 5% 7rem; */
     padding: 0 5% 3rem;
     :last-of-type {
       padding-top: 1.5rem;
@@ -114,7 +109,6 @@ const StyledContentContainer = styled.div`
 const ProfileContainer = styled.div`
   position: relative;
   width: 100%;
-  /* background: pink; */
   && {
     padding-top: 4rem;
   }
@@ -124,12 +118,6 @@ const ProfileContainer = styled.div`
     grid-template-columns: 1fr;
     justify-items: center;
   }
-  /* @media (min-width: 980px) {
-    > div {
-      grid-template-columns: auto 1fr;
-      grid-auto-rows: auto 1fr;
-    }
-  } */
 `
 
 const Profile = styled.div`

@@ -102,6 +102,7 @@ export default ({ data: { sanityWork } }) => {
                 </animated.div>
               )}
               <S.Button
+                aria-label="next image"
                 previous
                 onClick={prevSlide}
                 onMouseEnter={handleHover}
@@ -112,6 +113,7 @@ export default ({ data: { sanityWork } }) => {
                 <ArrowButton />
               </S.Button>
               <S.Button
+                aria-label="previous image"
                 next
                 onClick={nextSlide}
                 onMouseEnter={handleHover}
@@ -126,6 +128,7 @@ export default ({ data: { sanityWork } }) => {
             <S.GalleryImageContainer>
               {trail.map(({ opacity }, i) =>
                 <animated.button
+                  aria-label="show larger image"
                   style={{ opacity }}
                   value={i}
                   onClick={targetSlide}

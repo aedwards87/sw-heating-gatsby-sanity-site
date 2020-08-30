@@ -5,8 +5,7 @@ import { Link } from "gatsby"
 import { Location } from "@reach/router";
 import { SWHeatingLogo } from "../../assetsjs/index";
 import { NavBar, NavMenu, navLinks, Toggle } from '../index'
-import { Desktop, SmallScreen } from '../../hooks/useMedia'
-import { useScrollPos } from '../../hooks/useScrollPos'
+import { Desktop, SmallScreen, useScrollPos } from '../../hooks/index'
 
 
 const Header = (props, ref) => {
@@ -50,6 +49,7 @@ const Header = (props, ref) => {
                     </Desktop>
                     <SmallScreen>
                       <S.MenuButton
+                        aria-label="open/close menu"
                         className={`hamburger hamburger--collapse ${isMenuOpen ? 'is-active' : null}`}
                         type="button"
                         onClick={() => {

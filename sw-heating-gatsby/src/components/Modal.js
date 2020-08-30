@@ -7,6 +7,7 @@ const Modal = ({ children, toggle, allImages, index, location }) => {
   return (
     <S.ModalContainer>
       <S.CloseButton
+        aria-label="close"
         onClick={() => toggle(false)}
         onMouseDown={() => navigate(`/gallery#${allImages[index].id}`)}
       >

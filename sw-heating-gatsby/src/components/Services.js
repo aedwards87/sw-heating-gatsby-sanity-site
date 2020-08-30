@@ -9,19 +9,19 @@ const Services = () => {
   const { allSanityWork } = useStaticQuery(
     graphql`
       query ServicesQuery {
-        allSanityWork {
+        allSanityWork(sort: {fields: order}) {
           edges {
             node {
               title
+              order
               slug {
                 current
               }
-              _rawDescription
               images {
                 title
                 image {
                   asset {
-                    fluid(maxWidth: 1000) {
+                    fluid(maxWidth: 300, maxHeight: 300) {
                       ...GatsbySanityImageFluid
                     }
                   }
@@ -40,7 +40,6 @@ const Services = () => {
         <div style={{ marginBottom: '6rem' }}>
           <StyledTitle id="services" className="moz" >Our services</StyledTitle>
         </div>
-
         <S.List>
           {allSanityWork.edges.map(({ node: work }) => (
             <li key={work.slug.current} >

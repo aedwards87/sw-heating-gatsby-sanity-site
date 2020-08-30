@@ -1,18 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 import { animated } from 'react-spring'
-// import { CarouselDropletMaskSVG } from './index'
 import Image from 'gatsby-image'
-
-// import CarouselButtons from '../components/Carousel/CarouselButton'
 
 
 const CarouselDropletHousing = ({ style, click, fluid, alt }) => {
   return (
-    // <S.CarouselDropletHousing style={style} >
-    //   <CarouselDropletMaskSVG click={click} imageSRC={imageSRC} alt={alt} />
-    //   {/* <CarouselButtons index={index} item={item} click={click} /> */}
-    // </S.CarouselDropletHousing>
     <S.Square style={style} onClick={click}>
       <div>
         <Image fluid={fluid} alt={alt} style={{ width: '100%', height: '100%' }} />
@@ -47,10 +40,6 @@ const S = {
     overflow: hidden;
     border: 15px solid white;
     box-shadow: 40px 55px 40px rgba(0, 0, 0, .5);
-    /* @media (min-width: 1680px) {
-      min-height: 800px;
-      transition: min-height 0.5s ease;
-    } */
     cursor: pointer;
     > div {
       height: 100%;

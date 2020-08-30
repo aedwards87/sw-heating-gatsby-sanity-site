@@ -20,7 +20,7 @@ export const pageQuery = graphql`
           image {
             asset {
               id
-              fluid(maxWidth: 400) {
+              fluid(maxWidth: 1000) {
                 ...GatsbySanityImageFluid
               }
             }
@@ -29,7 +29,6 @@ export const pageQuery = graphql`
       }
     }
   }
-  
 `
 
 
@@ -73,11 +72,12 @@ const Gallery = ({ data: { allSanityImages }, location }) => {
           <S.GalleryImageContainer>
             {trail.map(({ opacity }, i) =>
               <animated.button
-                style={{ opacity }}
-                value={i}
-                onClick={handleClick}
-                key={i}
+                aria-label="Open fullsize image"
                 id={allImages[i].id}
+                key={i}
+                value={i}
+                style={{ opacity }}
+                onClick={handleClick}
               >
                 <S.Image
                   id={allImages[i].id}

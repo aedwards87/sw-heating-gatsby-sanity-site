@@ -5,8 +5,9 @@ import styled from 'styled-components'
 const CarouselButton = ({ index, value, click }) => {
   return (
     <S.CarouselButton
-      onClick={click} 
-      value={value} 
+      aria-label="next image"
+      onClick={click}
+      value={value}
       className={index === value && 'active'}
     />
   )
