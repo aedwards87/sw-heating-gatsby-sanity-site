@@ -33,7 +33,7 @@ const footer = () => {
                 <p>Fully insured</p>
               </li>
               <li className="item2">
-                <a href="https://www.facebook.com/sw-heating-and-sons-ltd" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.facebook.com/SW-Heating-and-Sons-LTD-604164930241677" target="_blank" rel="noopener noreferrer">
                   <strong>Like us on</strong>
                   <Facebook />
                 </a>
@@ -101,7 +101,7 @@ const footer = () => {
                   </Link>
                 </li>
               </ul>
-              <p>SW Heating Ltd | Website by Adam Edwards</p>
+              <p>© SW Heating Ltd  &nbsp;|&nbsp; Website by <a href="https://www.facebook.com/adam.edwards.1650" target="_blank" rel="noopener noreferrer"><strong>Adam Edwards</strong></a></p>
             </div>
           </StyledBottomFooter>
         </StyledFooterContainer>

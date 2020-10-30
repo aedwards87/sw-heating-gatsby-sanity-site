@@ -1,6 +1,9 @@
+import { AiOutlineStar as icon } from 'react-icons/ai';
+
 export default {
   name: 'feedback',
   title: 'Feedback',
+  icon,
   type: 'document',
   fields: [
     {

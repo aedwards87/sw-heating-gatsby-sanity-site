@@ -1,6 +1,9 @@
+import { FaInfo as icon } from 'react-icons/fa';
+
 export default {
   name: 'about',
   title: 'About',
+  icon,
   type: 'document',
   fields: [
     {

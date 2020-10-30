@@ -1,8 +1,10 @@
 // This needs to take in all images from what will already be in the other files
+import { IoIosImages as icon } from 'react-icons/io';
 
 export default {
   name: 'images',
   title: 'Images',
+  icon,
   type: 'document',
   fields: [
     {
