@@ -24,7 +24,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-sanity',
       options: {
-        overlayDrafts: true,
+        overlayDrafts: !process.env.production,
         watchMode: true,
         projectId: process.env.SANITY_PROJECT_ID,
         dataset: process.env.SANITY_PROJECT_DATASET,

@@ -1,6 +1,9 @@
+import { GoFlame as icon } from 'react-icons/go';
+
 export default {
   name: 'work',
   title: 'Services',
+  icon,
   type: 'document',
   fields: [
     {

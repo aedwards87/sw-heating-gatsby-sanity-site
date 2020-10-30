@@ -1,6 +1,9 @@
+import { ImEyeBlocked as icon } from 'react-icons/im';
+
 export default {
   name: 'privacy',
   title: 'Privacy',
+  icon,
   type: 'document',
   fields: [
     {
