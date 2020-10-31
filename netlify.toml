@@ -1,8 +1,4 @@
-  
-[build]
-  base = "sw-heating-gatsby/"
-  command = "gatsby build"
-  publish = "/public"
+ 
 
 [[plugins]]
   package = "netlify-plugin-submit-sitemap"
