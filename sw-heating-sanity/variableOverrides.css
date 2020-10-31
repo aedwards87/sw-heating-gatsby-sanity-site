@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --brand-primary: #18aae2;
+  --brand-secondary: #e30613;
+  --font-family-base: 'Montserrat';
+  --hairline-color: #312b7030;
+  --black: #000000;
+  /* --main-navigation-color: #fdc503; */
+  --timeline-event-selected-icon-bg: #e30613;
+}
+
+/* 
+
+red: #e30613
+red2: #e52e17
+blue: #18aae2 
+purple: #312b70
+yellow: #fdc503
+
+*/
