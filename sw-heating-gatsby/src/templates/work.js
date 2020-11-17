@@ -43,16 +43,9 @@ export default ({ data: { sanityWork } }) => {
   const nextSlide = useCallback(() => setIndex(state => (state + 1) % sanityImages.length), [sanityImages.length])
   const prevSlide = useCallback(() => setIndex(state => (state === 0) ? state = sanityImages.length - 1 : (state - 1) % sanityImages.length), [sanityImages.length])
 
-  const handleHover = useCallback(() => setIsHovered(state => !state), [])
-  // const handleHoverLeave = useCallback(() => setIsHovered(false), [])
-  const handleFocus = useCallback(() => setIsFocused(state => !state), [])
-  // const handleBlur = useCallback(() => setIsFocused(false), [])
-
   const targetSlide = (e) => (
     setIndex(parseInt(e.currentTarget.value))
   )
-
-
 
   const trail = useTrail(sanityImages.length, {
     opacity: 1,
@@ -89,9 +82,13 @@ export default ({ data: { sanityWork } }) => {
             <S.HeroImageContainer >
               {transitions.map(({ item, props, key }) =>
                 <animated.div
-                  className={`animated-div ${isHovered ? 'hovered' : null} ${isFocused ? 'focused' : null}`}
-                  style={props}
                   key={key}
+                  className={`
+                    animated-div 
+                    ${isHovered ? 'hovered' : null} 
+                    ${isFocused ? 'focused' : null}
+                  `}
+                  style={props}
                 >
                   <S.Image
                     hero
@@ -105,10 +102,11 @@ export default ({ data: { sanityWork } }) => {
                 aria-label="next image"
                 previous
                 onClick={prevSlide}
-                onMouseEnter={handleHover}
-                onMouseLeave={handleHover}
-                onFocus={handleFocus}
-                onBlur={handleFocus}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseOver={() => {setIsHovered(true)}}
+                onMouseLeave={() => setIsHovered(false)}
+                onFocus={() => setIsFocused(true)}
+                onBlur={() => setIsFocused(false)}
               >
                 <ArrowButton />
               </S.Button>
@@ -116,10 +114,11 @@ export default ({ data: { sanityWork } }) => {
                 aria-label="previous image"
                 next
                 onClick={nextSlide}
-                onMouseEnter={handleHover}
-                onMouseLeave={handleHover}
-                onFocus={handleFocus}
-                onBlur={handleFocus}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseOver={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+                onFocus={() => setIsFocused(true)}
+                onBlur={() => setIsFocused(false)}
               >
                 <ArrowButton flip />
               </S.Button>
@@ -219,6 +218,7 @@ const S = {
     }
     .focused {
       outline: rgb(47, 90, 189) auto 5px; 
+      outline-offset: .2rem;
       transform: translate3d(0, -0.3vmax, 0) scale(1.05);
     }
     .animated-div {
@@ -337,6 +337,7 @@ const S = {
       overflow: hidden;
       cursor: pointer;
       transform: translate3d(0, -0.3vmax, 0) scale(1.05);
+      outline-offset: .2rem;
     }
     button:active {
       transform: translate3d(0, 0, 0) scale(1);

@@ -71,7 +71,7 @@ const S = {
     > div {
       max-width: 1900px;
       margin: 0 auto;
-      padding: 0 5% ${({ main }) => main ? '6rem' : '2rem'};
+      padding: 0 5% 6rem;
     }
   `,
   ImageContainer: styled.div`
@@ -142,6 +142,7 @@ const S = {
       :focus {
         box-shadow: var(--shadow-one);
         transform: translate(0, -10px);
+        outline-offset: .3rem;
       }
       :hover h3,
       :focus h3 {
