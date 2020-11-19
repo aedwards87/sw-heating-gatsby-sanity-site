@@ -5,7 +5,7 @@ import { StyledTitle } from '../components-styled/index'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import PortableText from '@sanity/block-content-to-react'
-
+import { graphql } from 'gatsby' 
 
 export const pageQuery = graphql`
   query PrivacyPageQuery {

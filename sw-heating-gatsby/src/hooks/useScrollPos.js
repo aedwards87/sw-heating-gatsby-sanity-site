@@ -1,4 +1,7 @@
-import { useRef, useLayoutEffect, useCallback } from 'react'
+import { useRef, useLayoutEffect, useEffect } from 'react'
+
+const useIsomorphicLayoutEffect =
+  typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
 const isBrowser = typeof window !== `undefined`
 
@@ -18,14 +21,14 @@ export function useScrollPos(effect, deps, element, useWindow, wait) {
 
   let throttleTimeout = null
 
-  const callBack = useCallback(() => {
+  const callBack = () => {
     const currPos = getScrollPosition({ element, useWindow })
     effect({ prevPos: position.current, currPos })
     position.current = currPos
     throttleTimeout = null
-  }, [position])
+  }
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const handleScroll = () => {
       if (wait) {
         if (throttleTimeout === null) {

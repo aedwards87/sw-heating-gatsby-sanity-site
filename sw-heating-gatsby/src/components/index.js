@@ -5,7 +5,6 @@ import ContactForm from './ContactForm'
 import Feedback from './Feedback'
 import Header from './Nav/header'
 import Footer from './footer'
-import Image from './image'
 import Modal from './Modal'
 import { UserContext } from './layout'
 import Carousel from './Carousel'
@@ -25,7 +24,6 @@ export {
   Feedback,
   Header,
   Footer,
-  Image,
   Modal,
   // Portal,
   UserContext,
