@@ -4,7 +4,8 @@ import { Link } from "gatsby"
 import { UserContext, Carousel, GradientButton, MobileCarousel } from './index'
 import { HeadFlameBackground } from '../assetsjs/index'
 import { SmallScreen, Default } from '../hooks/useMedia'
-
+import { animated } from 'react-spring'
+import useStandardSpring from '../hooks/useStandardSpring'
 
 
 const Head = ({ sanityLandingPage }) => {
@@ -13,11 +14,11 @@ const Head = ({ sanityLandingPage }) => {
   return (
     <S.Head navBarHeight={navBarHeight}>
       <div>
-        <S.Content>
-          <h1>{sanityLandingPage.title}</h1>
-          <p>{sanityLandingPage.strapLine}</p>
+        <S.Content >
+          <animated.h1 style={useStandardSpring()}>{sanityLandingPage.title}</animated.h1>
+          <animated.p style={useStandardSpring(200)}>{sanityLandingPage.strapLine}</animated.p>
           <Link to='/#contact'>
-            <GradientButton children="Contact us" />
+            <GradientButton buttonAnim={useStandardSpring(400)} children="Contact us" />
           </Link>
         </S.Content>
 
@@ -36,6 +37,7 @@ const Head = ({ sanityLandingPage }) => {
     </S.Head>
   )
 }
+
 
 const S = {
   Head: styled.header`

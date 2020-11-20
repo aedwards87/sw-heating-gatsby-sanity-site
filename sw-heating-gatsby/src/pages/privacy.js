@@ -6,6 +6,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import PortableText from '@sanity/block-content-to-react'
 import { graphql } from 'gatsby' 
+import TitleAnimation from '../components/TitleAnimation'
 
 export const pageQuery = graphql`
   query PrivacyPageQuery {
@@ -22,9 +23,9 @@ const privacy = ({ data: { sanityPrivacy } }) => {
       <SEO title="Reviews" />
       <S.Privacy>
         <div>
-          <div style={{ marginBottom: '6rem' }}>
+          <TitleAnimation>
             <StyledTitle id="privacy" heading>{sanityPrivacy.title}</StyledTitle>
-          </div>
+          </TitleAnimation>
           <div>
             <PortableText
               blocks={sanityPrivacy._rawDescription}
@@ -45,6 +46,9 @@ const S = {
       max-width: 1900px;
       margin: 0 auto;
       padding: calc(4% + 6.5rem) 5%;
+      & > div:first-of-type {
+        padding-bottom: 6rem;
+      }
       > div:last-of-type {
         width: 60%;
       }

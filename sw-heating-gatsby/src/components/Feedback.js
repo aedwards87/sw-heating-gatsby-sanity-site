@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { StyledTitle } from '../components-styled/index'
 import { horizontalDraggableScroll } from '../helpers/horizontalDraggableScroll'
 import { SWDropletQuotes } from '../assetsjs/index';
+import TitleAnimation from './TitleAnimation';
 
 const Feedback = () => {
   const { allSanityFeedback } = useStaticQuery(
@@ -30,11 +31,11 @@ const Feedback = () => {
   return (
     <StyledFeedBack>
       <div>
-        <div>
+        <TitleAnimation>
           <StyledTitle id="feedback" className="moz" heading>
             What our customers<br />say about us
           </StyledTitle>
-        </div>
+        </TitleAnimation>
         <StyledLink to="/reviews/#reviews">
           Leave a review <div>→</div>
         </StyledLink>

@@ -74,7 +74,7 @@ const footer = () => {
             <div>
               <ul>
                 {navLinks.map(navLink =>
-                  <li key={`${navLink.title}-${Date.now()}`} >
+                  <li key={`${navLink.title}-${new Date().getTime().toString()}`} >
                     {!navLink.dropdown ?
                       <Link
                         to={navLink.link ? `/${navLink.title.toLowerCase()}` : `/#${navLink.title.toLowerCase()}`}

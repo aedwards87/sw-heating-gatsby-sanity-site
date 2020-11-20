@@ -5,10 +5,10 @@ import { graphql } from "gatsby"
 import { Services, Modal } from '../components/index'
 import { StyledTitle } from '../components-styled/index'
 import Carousel from '../components/Carousel-2.0'
-import { useTrail, animated, useTransition } from 'react-spring'
+import { useTrail, animated, useTransition, config } from 'react-spring'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-
+import TitleAnimation from '../components/TitleAnimation'
 
 export const pageQuery = graphql`
   query GalleryQuery {
@@ -40,9 +40,9 @@ const Gallery = ({ data: { allSanityImages }, location }) => {
   const allImages = allSanityImages.edges.map(({ node: images }) => images)
 
   const trail = useTrail(allImages.length, {
-    opacity: 1,
-    from: { opacity: 0 },
-    config: { tension: 400, friction: 60 }
+    from: { opacity: 0, transform: 'translate3d(0,10%,0)' },
+    to: { opacity: 1, transform: 'translate3d(0,0%,0)' },
+    config: { mass: 1, tension: 400, friction: 60 }
   })
 
   const targetSlide = (e) => (
@@ -50,8 +50,8 @@ const Gallery = ({ data: { allSanityImages }, location }) => {
   )
 
   const transitionFade = useTransition(on, null, {
-    from: { opacity: 0, transform: 'translate3d(0,-40px,0)' },
-    enter: { opacity: 1, transform: 'translate3d(0,0,0)' },
+    from: { opacity: 0 },
+    enter: { opacity: 1, transform: 'translate3d(0,0px,0)' },
     leave: { opacity: 0, transform: 'translate3d(0,40px,0)' },
     config: { tension: 400, friction: 60 }
   })
@@ -65,18 +65,18 @@ const Gallery = ({ data: { allSanityImages }, location }) => {
       <SEO title="Gallery" />
       <S.Gallery>
         <div>
-          <div style={{ marginBottom: '6rem' }}>
+          <TitleAnimation>
             <StyledTitle className="moz" heading>Gallery</StyledTitle>
-          </div>
+          </TitleAnimation>
 
           <S.GalleryImageContainer>
-            {trail.map(({ opacity }, i) =>
+            {trail.map((props, i) =>
               <animated.button
                 aria-label="Open fullsize image"
                 id={allImages[i].id}
                 key={i}
                 value={i}
-                style={{ opacity }}
+                style={props}
                 onClick={handleClick}
               >
                 <S.Image
@@ -126,6 +126,9 @@ const S = {
       max-width: 1900px;
       margin: 0 auto;
       padding: calc(4% + 6.5rem) 5%;
+      & > div:first-of-type {
+        padding-bottom: 6rem;
+      }
     }
   `,
   Image: styled(Image)`
@@ -151,7 +154,7 @@ const S = {
   GalleryImageContainer: styled.div`
     display: grid;
     position: relative;
-    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
     grid-gap: 2vmax;
     align-content: start;
     z-index: 0;
@@ -196,8 +199,22 @@ const S = {
     @media (min-width: 480px) and (max-width: 980px) {
       grid-gap: 3.4vmin;
     }
+
+    @media (max-width: 640px) {
+      grid-template-columns: repeat(2, auto);
+      button {
+        height: 20vh;
+      }
+    }
+    @media (max-width: 250px) {
+      grid-template-columns: 1fr;
+      button {
+        height: 20vh;
+      }
+    }
     @media (min-width: 980px) {
       grid-template-rows: repeat(2, auto);
+      grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
       margin-bottom: 5vmax;
       margin: 0;
       grid-gap: 2vmax;

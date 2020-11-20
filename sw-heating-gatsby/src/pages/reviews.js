@@ -1,11 +1,11 @@
 import React from "react"
 import styled from 'styled-components'
-// import { Link } from "gatsby"
 import { Services, Feedback } from '../components/index'
 import { StyledTitle } from '../components-styled/index'
 import ReviewForm from '../components/ReviewForm'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import TitleAnimation from '../components/TitleAnimation'
 
 
 const Reviews = () => {
@@ -32,9 +32,9 @@ const Reviews = () => {
       <S.Reviews>
         <Feedback />
         <div>
-          <div style={{ marginBottom: '6rem' }}>
+          <TitleAnimation>
             <StyledTitle id="reviews" className="moz" >We would love <br />to hear from you</StyledTitle>
-          </div>
+          </TitleAnimation>
           <ReviewForm
             inputTitles={inputTitles}
             message="Feel free to leave us a review, your reviews help us to ensure we provide a quality service every visit."
@@ -55,6 +55,9 @@ const S = {
       max-width: 1900px;
       margin: 0 auto;
       padding: 0 5% 14vmax;
+      & > div:first-of-type {
+        padding-bottom: 6rem;
+      }
     }
     @media(min-width: 850px) {
       > div {

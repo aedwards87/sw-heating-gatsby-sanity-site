@@ -4,6 +4,8 @@ import styled from 'styled-components'
 import { Link } from "gatsby"
 import { StyledTitle } from '../components-styled/index'
 import { useStaticQuery, graphql } from "gatsby"
+import TitleAnimation from './TitleAnimation'
+import { useTrail, animated, config } from 'react-spring'
 
 const Services = () => {
   const { allSanityWork } = useStaticQuery(
@@ -34,27 +36,35 @@ const Services = () => {
     `
   )
 
+  const trail = useTrail(8, {
+    from: { opacity: 0, transform: 'translate3d(0,10%,0)' },
+    to: { opacity: 1, transform: 'translate3d(0,0%,0)' },
+    config: { tension: 150, friction: 50 }
+  })
+
+  const allWork = allSanityWork.edges.map(({ node: work }) => work)
+
   return (
     <S.Services>
       <div>
-        <div style={{ marginBottom: '6rem' }}>
+        <TitleAnimation>
           <StyledTitle id="services" className="moz" >Our services</StyledTitle>
-        </div>
+        </TitleAnimation>
         <S.List>
-          {allSanityWork.edges.map(({ node: work }) => (
-            <li key={work.slug.current} >
-              <Link to={`/${work.slug.current}`}>
+          {trail.map((props, i) => (
+            <animated.li key={allWork[i].slug.current} style={props} >
+              <Link to={`/${allWork[i].slug.current}`}>
                 <S.ImageContainer>
                   <S.Image
-                    fluid={work.images[0].image.asset.fluid}
-                    alt={work.images[0].title}
+                    fluid={allWork[i].images[0].image.asset.fluid}
+                    alt={allWork[i].images[0].title}
                   />
                 </S.ImageContainer>
                 <div className="list-heading-container">
-                  <h3>{work.title}</h3>
+                  <h3>{allWork[i].title}</h3>
                 </div>
               </Link>
-            </li>
+            </animated.li>
           ))}
         </S.List>
 
@@ -72,6 +82,9 @@ const S = {
       max-width: 1900px;
       margin: 0 auto;
       padding: 0 5% 6rem;
+      & > div:first-of-type {
+        padding-bottom: 6rem;
+      }
     }
   `,
   ImageContainer: styled.div`

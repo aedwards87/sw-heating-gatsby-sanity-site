@@ -9,6 +9,7 @@ import { Services } from '../components/index'
 import { StyledTitle } from '../components-styled/index'
 import { useTransition, useTrail, animated } from 'react-spring'
 import { ArrowButton } from "../assetsjs/index"
+import TitleAnimation from '../components/TitleAnimation'
 
 
 export const query = graphql`
@@ -65,11 +66,9 @@ export default ({ data: { sanityWork } }) => {
       <SEO title={sanityWork.title} />
       <S.TemplateContainer>
         <div>
-          <div
-          // style={{ marginBottom: '6rem' }}
-          >
-            <StyledTitle className="moz" as="h1" heading>{sanityWork.title}</StyledTitle>
-          </div>
+          <TitleAnimation>
+              <StyledTitle className="moz" as="h1" heading>{sanityWork.title}</StyledTitle>
+          </TitleAnimation>
 
           <div>
             <PortableText

@@ -1,16 +1,20 @@
 import React from 'react'
 import styled from 'styled-components'
+import { animated } from 'react-spring'
 
-const GradientButton = ({ children, onClick }) => {
+
+const GradientButton = ({ children, onClick, buttonAnim }) => {
   return (
-    <S.GradientButtonOutside onClick={onClick}>
+    <S.GradientButtonOutside onClick={onClick} style={buttonAnim}>
       <S.GradientButtonInside aria-label="contact us" children={children} onClick={onClick} />
     </S.GradientButtonOutside>
   )
 }
 
+const AnimGradientButtonOutside = animated.div
+
 const S = {
-  GradientButtonOutside: styled.div`
+  GradientButtonOutside: styled(AnimGradientButtonOutside)`
     padding: 0.22rem;
     border-radius: 10px;
     background: var(--gradient-one);

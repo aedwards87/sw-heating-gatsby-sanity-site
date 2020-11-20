@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { StyledTitle } from '../components-styled/index'
 import SWLettersSVG from "../assetsjs/sw-letters";
@@ -6,8 +6,13 @@ import PortableText from '@sanity/block-content-to-react'
 import Image from 'gatsby-image'
 import { useStaticQuery, graphql } from "gatsby"
 import { GasSafe, Ciphe, EnvAgency, Vaillant } from "../assetsjs/index";
+import TitleAnimation from './TitleAnimation';
+import { animated, config, useSpring } from 'react-spring';
+import { Waypoint } from 'react-waypoint';
 
 const About = () => {
+  const [show, setShow] = useState(false)
+
   const { sanityAbout } = useStaticQuery(
     graphql`
       query AboutQuery {
@@ -27,13 +32,19 @@ const About = () => {
     `
   )
 
-
+  const SpringAnimation = useSpring({ 
+    opacity: show ? 1 : 0,
+    transform: show ? 'translate3d(0vw,0,0)' : 'translate3d(-10vw,0,0)',
+    config: config.molasses, 
+  })
+  
   return (
-    <StyledAboutContainer>
+    <StyledAboutContainer >
       <div>
-        <div style={{ marginBottom: '6rem' }}>
+        <TitleAnimation>
           <StyledTitle id="about" tall className="moz" >Who we are?</StyledTitle>
-        </div>
+        </TitleAnimation>
+        
         <StyledContentContainer>
           <div>
             <PortableText
@@ -47,9 +58,14 @@ const About = () => {
         <div>
           <Profile>
             <div>
-              <ProImageContainer>
-                <Image fluid={sanityAbout.profileImage.asset.fluid} alt="Steven, SW Heating's engineer, director" />
-              </ProImageContainer>
+              <Waypoint 
+                onEnter={() => setShow(true)} 
+                bottomOffset='80px'
+              >
+                <ProImageContainer style={SpringAnimation}>
+                  <Image fluid={sanityAbout.profileImage.asset.fluid} alt="Steven, SW Heating's engineer, director" />
+                </ProImageContainer>
+              </Waypoint>
               <div className='name-and-title' >
                 <h3>Steven Whitaker</h3>
                 <p>Engineer, director and dad of twins</p>
@@ -73,6 +89,7 @@ const About = () => {
   )
 }
 
+const AnimatedProImageContainer = animated.div
 
 const StyledAboutContainer = styled.section`
   position: relative;
@@ -80,6 +97,9 @@ const StyledAboutContainer = styled.section`
     max-width: 1900px;
     margin: 0 auto;
     padding: 0 5% 3rem;
+    &:first-of-type > div:first-of-type {
+      padding-bottom: 6rem;
+    }
     :last-of-type {
       padding-top: 1.5rem;
       padding-bottom: 14vmax;
@@ -188,7 +208,7 @@ const Profile = styled.div`
   }
 `
 
-const ProImageContainer = styled.div`
+const ProImageContainer = styled(AnimatedProImageContainer)`
   height: 228px;
   width: 220px;
   background: white;

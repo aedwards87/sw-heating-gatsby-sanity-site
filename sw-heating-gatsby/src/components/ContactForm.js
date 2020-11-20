@@ -6,6 +6,7 @@ import { validateContact } from '../hooks/validate';
 import { Warning } from '../assetsjs/index'
 import { Link } from "gatsby"
 import { navigate } from 'gatsby';
+import TitleAnimation from './TitleAnimation';
 
 const inputTitles = [
   {
@@ -55,7 +56,7 @@ const ContactForm = () => {
   return (
     <S.ContactForm>
       <div>
-        <div style={{ marginBottom: '6rem' }}>
+        <TitleAnimation>
           <StyledTitle
             id="contact"
             className="moz"
@@ -65,7 +66,7 @@ const ContactForm = () => {
           >
             Contact us
           </StyledTitle>
-        </div>
+        </TitleAnimation>
         <form
           noValidate
           name="contact"
@@ -145,6 +146,9 @@ const S = {
       height: 100%;
       padding: 0.1vmax 5% 14vmax;
       margin: auto auto;
+      & > div:first-of-type {
+        padding-bottom: 6rem;
+      }
       @media(min-width: 980px) {
         padding-bottom: 6rem;
         > div {
