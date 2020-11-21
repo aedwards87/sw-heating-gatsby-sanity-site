@@ -5,13 +5,13 @@ import { Link } from "gatsby"
 import { Location } from "@reach/router";
 import { SWHeatingLogo } from "../../assetsjs/index";
 import { NavBar, NavMenu, navLinks, Toggle } from '../index'
-import { Desktop, SmallScreen, useScrollPos } from '../../hooks/index'
+import { Desktop, SmallScreen, useScrollPos, useStore } from '../../hooks/index'
 
 
 const Header = (props, ref) => {
   const [on, toggle] = useState(false)
+  const [hideOnScroll, setHideOnScroll] = useStore()
 
-  const [hideOnScroll, setHideOnScroll] = useState(true)
   const [currentPos, setCurrentPos] = useState(0)
 
   useScrollPos(({ prevPos, currPos }) => {
@@ -45,6 +45,8 @@ const Header = (props, ref) => {
                         ToggleOff={toggleOff}
                         location={location}
                         navLinks={navLinks}
+                        hideOnScroll={hideOnScroll}
+                        setHideOnScroll={setHideOnScroll}
                       />
                     </Desktop>
                     <SmallScreen>
@@ -68,6 +70,8 @@ const Header = (props, ref) => {
                         location={location}
                         navLinks={navLinks}
                         scrollUp={hideOnScroll}
+                        hideOnScroll={hideOnScroll}
+                        setHideOnScroll={setHideOnScroll}
                       />
                     </SmallScreen>
                   </div>

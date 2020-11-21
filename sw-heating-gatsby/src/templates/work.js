@@ -39,10 +39,11 @@ export default ({ data: { sanityWork } }) => {
 
   const sanityImages = sanityWork.images.map(node => node)
 
-  // const sanityWorkImages = Object.keys(sanityWork).filter(images => images.includes('Image'))
-
-  const nextSlide = useCallback(() => setIndex(state => (state + 1) % sanityImages.length), [sanityImages.length])
-  const prevSlide = useCallback(() => setIndex(state => (state === 0) ? state = sanityImages.length - 1 : (state - 1) % sanityImages.length), [sanityImages.length])
+  const nextSlide = useCallback(() => 
+    setIndex(state => (state + 1) % sanityImages.length), [sanityImages.length])
+    
+  const prevSlide = useCallback(() => 
+    setIndex(state => (state === 0) ? state = sanityImages.length - 1 : (state - 1) % sanityImages.length), [sanityImages.length])
 
   const targetSlide = (e) => (
     setIndex(parseInt(e.currentTarget.value))
@@ -67,7 +68,7 @@ export default ({ data: { sanityWork } }) => {
       <S.TemplateContainer>
         <div>
           <TitleAnimation>
-              <StyledTitle className="moz" as="h1" heading>{sanityWork.title}</StyledTitle>
+            <StyledTitle className="moz" as="h1" heading>{sanityWork.title}</StyledTitle>
           </TitleAnimation>
 
           <div>
@@ -157,7 +158,7 @@ const S = {
     > div {
       margin: 0 auto;
       max-width: 1900px;
-      padding: calc(4% + 5rem) 5%;
+      padding: calc(4% + 6.5rem) 5%;
       display: grid;
       grid-template-columns: 1fr;
       grid-template-rows: auto 1fr;

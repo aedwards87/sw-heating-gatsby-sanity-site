@@ -10,7 +10,9 @@ const NavBar = ({
   ToggleOn,
   ToggleOff,
   location,
-  navLinks
+  navLinks,
+  hideOnScroll,
+  setHideOnScroll
 }) => {
 
   const transition = useTransition(on, null, {
@@ -18,6 +20,13 @@ const NavBar = ({
     enter: { opacity: 1 },
     leave: { opacity: 0 }
   })
+
+  const handleClick = () => {
+    ToggleOff()
+    setTimeout(() => {
+      setHideOnScroll(false)
+    }, 100)
+  }
 
   return (
     <S.NavBar>
@@ -31,6 +40,7 @@ const NavBar = ({
                   : `/#${navLink.title.toLowerCase()}`
                 }
                 activeClassName="active"
+                onClick={navLink.hideNav && handleClick}
               >
                 {navLink.title}
               </S.Link>
@@ -43,7 +53,7 @@ const NavBar = ({
                 // in turn gving the link an activeClassName
                 onMouseOver={ToggleOn}
                 onMouseLeave={ToggleOff}
-                onClick={ToggleOff}
+                onClick={handleClick}
                 onFocus={ToggleOn}
                 onBlur={ToggleOff}
                 className="dropdown"

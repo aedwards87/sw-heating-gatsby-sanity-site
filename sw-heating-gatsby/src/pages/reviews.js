@@ -8,7 +8,8 @@ import SEO from "../components/seo"
 import TitleAnimation from '../components/TitleAnimation'
 
 
-const Reviews = () => {
+const Reviews = (props) => {
+  {console.log({props})}
 
   const inputTitles = [
     {

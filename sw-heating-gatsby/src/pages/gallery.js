@@ -5,7 +5,7 @@ import { graphql } from "gatsby"
 import { Services, Modal } from '../components/index'
 import { StyledTitle } from '../components-styled/index'
 import Carousel from '../components/Carousel-2.0'
-import { useTrail, animated, useTransition, config } from 'react-spring'
+import { useTrail, animated, useTransition } from 'react-spring'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import TitleAnimation from '../components/TitleAnimation'

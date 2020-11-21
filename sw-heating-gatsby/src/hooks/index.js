@@ -4,6 +4,7 @@ import useForm from './useForm'
 import { Desktop, SmallScreen, Tablet, Mobile, Default } from './useMedia'
 import { useScrollPos } from './useScrollPos'
 import useBodyLockScroll from './useBodyLockScroll'
+import useStore, { StoreProvider } from './useStore'
 
 export {
   useMeasure,
@@ -12,4 +13,6 @@ export {
   Desktop, SmallScreen, Tablet, Mobile, Default,
   useScrollPos,
   useBodyLockScroll,
+  useStore,
+  StoreProvider
 }

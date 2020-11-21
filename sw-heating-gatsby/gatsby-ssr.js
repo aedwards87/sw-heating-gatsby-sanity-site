@@ -5,3 +5,8 @@
  */
 
 // You can delete this file if you're not using it
+
+import { wrapRootElement } from './gatsby-browser';
+// import { OrderProvider } from './src/components/OrderContext';
+
+export { wrapRootElement };

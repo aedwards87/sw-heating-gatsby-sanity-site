@@ -5,7 +5,7 @@ import { Link } from "gatsby"
 import { StyledTitle } from '../components-styled/index'
 import { useStaticQuery, graphql } from "gatsby"
 import TitleAnimation from './TitleAnimation'
-import { useTrail, animated, config } from 'react-spring'
+import { useTrail, animated } from 'react-spring'
 
 const Services = () => {
   const { allSanityWork } = useStaticQuery(
