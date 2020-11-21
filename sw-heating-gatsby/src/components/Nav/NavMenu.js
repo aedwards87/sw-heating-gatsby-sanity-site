@@ -10,6 +10,7 @@ const NavMenu = ({
   on,
   toggleMenu,
   location,
+  setHideOnScroll
 }) => {
 
   const previous = usePrevious(on)
@@ -26,6 +27,13 @@ const NavMenu = ({
     },
     config: config.slow
   })
+
+  const handleClick = () => {
+    toggleMenu()
+    setTimeout(() => {
+      setHideOnScroll(false)
+    }, 100)
+  }
 
   return (
     <S.NavMenuContainer
@@ -46,7 +54,7 @@ const NavMenu = ({
               <li key={navLink.title} >
                 {!navLink.dropdown ?
                   <S.Link
-                    onClick={toggleMenu}
+                    onClick={navLink.hideNav ? handleClick : null}
                     to={navLink.link
                       ? `/${navLink.title.toLowerCase()}`
                       : `/#${navLink.title.toLowerCase()}`
@@ -62,7 +70,7 @@ const NavMenu = ({
                   <S.Link
                     to={`${location.pathname}#${navLink.title.toLowerCase()}`}
                     style={{ position: 'relative' }}
-                    onClick={toggleMenu}
+                    onClick={handleClick}
                   >
                     {navLink.title}
                   </S.Link>

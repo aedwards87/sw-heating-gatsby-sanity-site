@@ -11,7 +11,6 @@ const NavBar = ({
   ToggleOff,
   location,
   navLinks,
-  hideOnScroll,
   setHideOnScroll
 }) => {
 
@@ -40,7 +39,7 @@ const NavBar = ({
                   : `/#${navLink.title.toLowerCase()}`
                 }
                 activeClassName="active"
-                onClick={navLink.hideNav && handleClick}
+                onClick={navLink.hideNav ? handleClick : null}
               >
                 {navLink.title}
               </S.Link>

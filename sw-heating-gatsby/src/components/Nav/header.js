@@ -45,7 +45,6 @@ const Header = (props, ref) => {
                         ToggleOff={toggleOff}
                         location={location}
                         navLinks={navLinks}
-                        hideOnScroll={hideOnScroll}
                         setHideOnScroll={setHideOnScroll}
                       />
                     </Desktop>
@@ -70,7 +69,6 @@ const Header = (props, ref) => {
                         location={location}
                         navLinks={navLinks}
                         scrollUp={hideOnScroll}
-                        hideOnScroll={hideOnScroll}
                         setHideOnScroll={setHideOnScroll}
                       />
                     </SmallScreen>
